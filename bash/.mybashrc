@@ -1,0 +1,83 @@
+# Path
+PATH="$PATH:$HOME/.local/bin"
+
+# Aliases that allows easy access to the dotgit bare repo.
+alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+alias dgit='dotgit'
+
+alias dotgit_update='dotgit add ~/.config/nvim/SchilkSnips/. ~/.config/nvim/SchilkWiki/. ~/.config/nvim/spell/*.add ~/.vimrc ~/.config/nvim/plugin_config/. ~/.config/nvim/init.vim ~/.mybashrc'
+alias dgitupd='dotgit_update'
+
+alias dgita='dotgit add'
+alias dgits='dotgit status'
+alias dgitgg='dotgit log --graph --oneline --all'
+
+# In a vim-like state of mind..
+set -o vi
+bind 'set show-mode-in-prompt on'
+bind '"jk":vi-movement-mode'
+bind '"jj":vi-movement-mode'
+
+# Use 'vi' to open neovim, but use standard vim as system editor
+alias vi='nvim'
+
+export VISUAL=nvim
+export EDITOR="nvim"
+
+# Git
+alias gs='git status'
+alias ga='git add'
+alias gl='git log -n 8'
+alias gll='git log'
+alias ggg='git log --graph --oneline --all'
+alias gg='git log --graph --oneline --all -n 20'
+alias gc='git clean -fdx -i'
+
+# Get back to repo root, or jump back with popd
+groot() {
+    if git_root=$(git rev-parse --show-toplevel 2>/dev/null); then
+        pushd "${git_root}"
+    fi
+}
+
+# Georg exclusive
+alias csb="echo \"cool story bro\" | cowsay | lolcat"
+alias CSB="echo \"cool story bro\" | figlet | lolcat"
+alias spou="echo \"so proud of you\" | cowsay | lolcat"
+
+# pretty print json
+alias prettyjson='python3 -m json.tool'
+
+# Correct git author
+alias git_author_priv="git config user.name \"Philipp Schilk\"; git config user.email \"schilk.philipp@gmail.com\""
+alias git_author_ethz="git config user.name \"schilkp\"; git config user.email \"schilkp@student.ethz.ch\""
+
+# Activate python venv
+activate() {
+    if [ "$#" -eq 1 ]; then
+        source $1/bin/activate
+    elif [ -f env/bin/activate ]; then
+        source env/bin/activate
+    elif [ -f venv/bin/activate ]; then
+        source venv/bin/activate
+    elif [ -f .env/bin/activate ]; then
+        source .env/bin/activate
+    fi
+}
+
+# here
+here() {
+    if command -v thunar &> /dev/null 
+    then
+        thunar &
+    elif command -v nautilus &> /dev/null 
+    then
+        nautilus &
+    fi
+}
+
+# just autocomplete
+if [ -f ~/.just_complete ]; then
+    source ~/.just_complete
+fi
+

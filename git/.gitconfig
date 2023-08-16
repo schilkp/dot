@@ -1,0 +1,13 @@
+[credential]
+	helper = store
+[user]
+	email = schilk.philipp@gmail.com
+	name = Philipp Schilk
+[core]
+	editor = nvim
+    autocrlf = input
+[diff "odf"]
+    binary = true
+    textconv = odt2txt
+
+
