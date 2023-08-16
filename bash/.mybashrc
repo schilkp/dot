@@ -1,17 +1,6 @@
 # Path
 PATH="$PATH:$HOME/.local/bin"
 
-# Aliases that allows easy access to the dotgit bare repo.
-alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
-alias dgit='dotgit'
-
-alias dotgit_update='dotgit add ~/.config/nvim/SchilkSnips/. ~/.config/nvim/SchilkWiki/. ~/.config/nvim/spell/*.add ~/.vimrc ~/.config/nvim/plugin_config/. ~/.config/nvim/init.vim ~/.mybashrc'
-alias dgitupd='dotgit_update'
-
-alias dgita='dotgit add'
-alias dgits='dotgit status'
-alias dgitgg='dotgit log --graph --oneline --all'
-
 # In a vim-like state of mind..
 set -o vi
 bind 'set show-mode-in-prompt on'
