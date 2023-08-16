@@ -2,10 +2,6 @@
     TODO: LSP Saga? Noice?
     TODO python3 host prog:
        let g:python3_host_prog = '~/.config/nvim/nvim_env/bin/python'
-    TODO Transparent background
-    TODO Telescope +/ FZF
-        TODO Notes/Wiki! Better setup?
-    TODO highlight on yank
     TODO Show Whitespace?
     TODO FloatTerm Maps
         let g:floaterm_keymap_toggle = '<leader>tt'
@@ -17,9 +13,6 @@
         let g:floaterm_width  = 0.95 let g:floaterm_opener = 'tabe'
     TODO finally learn :TERM (+ *Official Escape*)
     TODO LuaSnips
-    TODO EasyAlign
-    TODO Commentrary
-    TODO Gitsigns?
 
 ]]
 --
@@ -153,6 +146,8 @@ require('lazy').setup({
         lazy = false,
     },
     'tpope/vim-fugitive',
+
+    'junegunn/vim-easy-align'
 })
 
 
@@ -372,3 +367,8 @@ vim.keymap.set('n', '<leader>ww', telescope_notes, { desc = 'Open Buffer.' })
 
 -- Comment:
 require('Comment').setup()
+
+
+-- Easy Align:
+vim.keymap.set({ 'x', 'n' }, 'ga', '<Plug>(EasyAlign)', { silent = true, desc = "EasyAlign", remap=true})
+
