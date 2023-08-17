@@ -57,15 +57,6 @@ function M.config()
             { name = 'nvim_lsp_signature_help' }
         },
     }
-
-
-    cmp.setup.cmdline(':', {
-        sources = cmp.config.sources({
-            { name = 'path', max_item_count = 15 }
-        }, {
-            { name = 'cmdline', keyword_pattern = [=[[^[:blank:]\!]*]=], max_item_count = 15 }
-        })
-    })
 end
 
 return M
