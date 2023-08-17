@@ -27,14 +27,24 @@ function M.config()
 
     local function telescope_config_files()
         require('telescope.builtin').find_files({
-            search_dirs = { "~/.config/nvim/init.lua", "~/.config/nvim/plugin/", "~/.config/nvim/lua/", "~/.vimrc" } })
+            search_dirs = { "~/.config/nvim/init.lua", "~/.config/nvim/lua/", "~/.vimrc" }
+        })
     end
     vim.keymap.set('n', '<leader>=e', telescope_config_files, { desc = 'Open Buffer.' })
 
     local function telescope_notes()
-        require('telescope.builtin').find_files({ search_dirs = { "~/notes" } })
+        local files = {}
+        for name, type in vim.fs.dir("~/notes/") do
+            if type == "file" or type == "link" then
+                files[# files + 1] = vim.fs.normalize("~/notes/" .. name)
+            end
+        end
+        -- vim.print(files)
+        require('telescope.builtin').find_files({
+            search_dirs = files
+        })
     end
-    vim.keymap.set('n', '<leader>ww', telescope_notes, { desc = 'Open Buffer.' })
+    vim.keymap.set('n', '<leader>ww', telescope_notes, { desc = 'Open notes.' })
 end
 
 return M
