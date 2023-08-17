@@ -115,7 +115,9 @@ require('lazy').setup({
     {
         'lervag/vimtex',
         config = require('schilk.config.vimtex').config,
-    }
+    },
+    -- Justfile syntax highlighting:
+    'NoahTheDuke/vim-just'
 })
 
 require('schilk.config.nvim').config_highlight_on_yank()
