@@ -14,6 +14,9 @@ local function config_lsp()
     -- ClangD:
     lspconfig.clangd.setup({
         capabilities = capabilities,
+        on_attach = function()
+            require('schilk.config.lsp.clangd_extensions').on_attach()
+        end
     })
 
     -- Lua:

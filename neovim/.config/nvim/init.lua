@@ -22,12 +22,11 @@ require('lazy').setup({
         dependencies = {
             { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
             'folke/neodev.nvim',
-            -- Rust:
-            {
-                'simrat39/rust-tools.nvim',
-            },
-            'rust-lang/rust.vim'
-
+            -- rust:
+            'simrat39/rust-tools.nvim',
+            'rust-lang/rust.vim',
+            -- clangd:
+            'p00f/clangd_extensions.nvim'
         },
         config = require('schilk.config.lsp').config
     },
