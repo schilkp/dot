@@ -50,10 +50,22 @@ function M.config()
 
         -- Sources::
         sources = {
-            { name = 'nvim_lsp' },
+            { name = 'nvim_lsp',               priority = 50 },
             { name = 'luasnip' },
+            { name = 'path',                   max_item_count = 5 },
+            { name = 'buffer',                 max_item_count = 5 },
+            { name = 'nvim_lsp_signature_help' }
         },
     }
+
+
+    cmp.setup.cmdline(':', {
+        sources = cmp.config.sources({
+            { name = 'path', max_item_count = 15 }
+        }, {
+            { name = 'cmdline', keyword_pattern = [=[[^[:blank:]\!]*]=], max_item_count = 15 }
+        })
+    })
 end
 
 return M
