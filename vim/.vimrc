@@ -144,9 +144,6 @@ nnoremap <leader>h mz*`z
 " Disable mouse (prevent floatterm cursor jump on window re-select)
 set mouse=
 
-" Get out of terminal mode on ctrl-\
-tnoremap <C-\> <C-\><C-n>
-
 "========================================
 "                 Utils                    
 "========================================
