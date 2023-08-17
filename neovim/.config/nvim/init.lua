@@ -3,15 +3,6 @@
     TODO python3 host prog:
        let g:python3_host_prog = '~/.config/nvim/nvim_env/bin/python'
     TODO Show Whitespace?
-    TODO FloatTerm Maps
-        let g:floaterm_keymap_toggle = '<leader>tt'
-        let g:floaterm_keymap_new    = '<leader>tn'
-        let g:floaterm_keymap_prev   = '<leader>tk'
-        let g:floaterm_keymap_next   = '<leader>tj'
-        let g:floaterm_keymap_kill   = '<leader>tx'
-        let g:floaterm_height = 0.95
-        let g:floaterm_width  = 0.95 let g:floaterm_opener = 'tabe'
-    TODO finally learn :TERM (+ *Official Escape*)
     TODO LuaSnips
 
 ]]
@@ -66,8 +57,6 @@ require('lazy').setup({
         lazy = false,
         config = true,
     },
-    -- FloatTerm:
-    'voldikss/vim-floaterm',
     -- OneDark Colorscheme:
     {
         -- Theme inspired by Atom
@@ -125,3 +114,5 @@ require('lazy').setup({
 })
 
 require('schilk.config.nvim').config_highlight_on_yank()
+
+require('schilk.config.nvim').config_floatterm_replacement()
