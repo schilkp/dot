@@ -112,6 +112,11 @@ require('lazy').setup({
     },
     -- Vim Indent Objects:
     'michaeljsmith/vim-indent-object',
+    -- VimTEX:
+    {
+        'lervag/vimtex',
+        config = require('schilk.config.vimtex').config,
+    }
 })
 
 require('schilk.config.nvim').config_highlight_on_yank()
