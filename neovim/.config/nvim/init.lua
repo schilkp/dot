@@ -110,7 +110,9 @@ require('lazy').setup({
     {
         'junegunn/vim-easy-align',
         config = require('schilk.config.easy_align').config,
-    }
+    },
+    -- Vim Indent Objects:
+    'michaeljsmith/vim-indent-object',
 })
 
 require('schilk.config.nvim').config_highlight_on_yank()
