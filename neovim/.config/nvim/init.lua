@@ -117,7 +117,12 @@ require('lazy').setup({
         config = require('schilk.config.vimtex').config,
     },
     -- Justfile syntax highlighting:
-    'NoahTheDuke/vim-just'
+    'NoahTheDuke/vim-just',
+    -- Slime: Push-to-REPL:
+    {
+        'jpalardy/vim-slime',
+        config = require('schilk.config.vim_slime').config
+    }
 })
 
 require('schilk.config.nvim').config_highlight_on_yank()
