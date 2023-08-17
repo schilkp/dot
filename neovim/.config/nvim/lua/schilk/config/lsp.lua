@@ -11,10 +11,12 @@ local function config_lsp()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+    -- ClangD:
     lspconfig.clangd.setup({
         capabilities = capabilities,
     })
 
+    -- Lua:
     lspconfig.lua_ls.setup({
         capabilities = capabilities,
         settings = {
@@ -29,6 +31,12 @@ local function config_lsp()
                 }
             }
         }
+    })
+
+    -- Rust-Analyzer:
+    -- Note: LSP-Config is called/configured by rust-tools.nvim.
+    require('schilk.config.lsp.rust_tools').config({
+        capabilities = capabilities,
     })
 end
 
