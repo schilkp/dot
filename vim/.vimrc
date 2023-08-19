@@ -54,9 +54,6 @@ set cmdheight=1
 " Scroll already before cursor bottoms out
 set scrolloff=10
 
-" A mild suggestion
-set colorcolumn=80,100,120
-
 " Keep 2 columns next to numbers for plugins:
 set signcolumn=yes:2
 
