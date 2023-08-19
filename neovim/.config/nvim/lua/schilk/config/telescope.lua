@@ -117,7 +117,7 @@ function M.config()
 
     vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags,
         { silent = true, desc = 'Search Help Tag.' })
-    vim.keymap.set('n', '<leader>fr>', require('telescope.builtin').oldfiles,
+    vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles,
         { silent = true, desc = 'Open Recent File.' })
     vim.keymap.set('n', '<leader>fl', find_in_buffer, { silent = true, desc = 'Search in current buffer.' })
     vim.keymap.set('n', '<leader>fe', find_emoji, { silent = true, desc = 'Find Emoji.' })
