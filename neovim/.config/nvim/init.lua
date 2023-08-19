@@ -45,14 +45,11 @@ require('lazy').setup({
     },
     -- Trouble:
     {
-        'folke/trouble.nvim',
-        lazy = false,
-        config = true
+        'folke/trouble.nvim', opts = {}
     },
     -- Which-Key:
     {
         'folke/which-key.nvim',
-        lazy = false,
         config = require('schilk.config.whichkey').config
     },
     -- OneDark Colorscheme:
