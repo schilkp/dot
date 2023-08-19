@@ -81,7 +81,8 @@ require('lazy').setup({
                     return vim.fn.executable 'make' == 1
                 end,
             },
-            'nvim-tree/nvim-web-devicons'
+            'nvim-tree/nvim-web-devicons',
+            'nvim-telescope/telescope-symbols.nvim'
         },
         config = require('schilk.config.telescope').config
     },
