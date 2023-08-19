@@ -53,7 +53,7 @@ require('lazy').setup({
     {
         'folke/which-key.nvim',
         lazy = false,
-        config = true,
+        config = require('schilk.config.whichkey').config
     },
     -- OneDark Colorscheme:
     {
