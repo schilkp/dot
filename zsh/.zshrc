@@ -76,6 +76,9 @@ source ${HOME}/.zplug/init.zsh
 # Prompt:
 zplug romkatv/powerlevel10k, as:theme, depth:1
 
+# VI Style editing:
+zplug "jeffreytse/zsh-vi-mode"
+
 zplug load
 
 
