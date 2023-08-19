@@ -59,9 +59,9 @@ local function config_keybinds()
         { silent = true, desc = "LSP: Switch Header/Source." })
 
     -- LSP Action Binds:
-    vim.keymap.set({ 'n' }, '<leader>rn', vim.lsp.buf.rename, { silent = true, desc = "LSP: Rename." })
-    vim.keymap.set({ 'n' }, '<leader>F', vim.lsp.buf.format, { silent = true, desc = "LSP: Format." })
+    vim.keymap.set({ 'n' }, '<leader>gN', vim.lsp.buf.rename, { silent = true, desc = "LSP: Rename." })
     vim.keymap.set({ 'n' }, '<leader>ga', vim.lsp.buf.code_action, { silent = true, desc = "LSP: Code Actions" })
+    vim.keymap.set({ 'n' }, '<leader>F', vim.lsp.buf.format, { silent = true, desc = "LSP: Format." })
 
     -- Diagnostics:
     vim.keymap.set({ 'n' }, '<leader>gH', require('trouble').toggle, { silent = true, desc = "LSP: Diagnostics" })
