@@ -3,7 +3,7 @@ local M = {}
 function M.config()
     require('onedark').setup {
         -- Main options --
-        style = 'dark',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+        style = 'cool',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
         transparent = true,           -- Show/hide background
         term_colors = true,           -- Change terminal color as per the selected theme style
         ending_tildes = true,         -- Show the end-of-buffer tildes. By default they are hidden
@@ -18,7 +18,7 @@ function M.config()
         -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
         code_style = {
             comments = 'italic',
-            keywords = 'none',
+            keywords = 'bold',
             functions = 'none',
             strings = 'none',
             variables = 'none'
@@ -35,7 +35,7 @@ function M.config()
 
         -- Plugins Config --
         diagnostics = {
-            darker = true,      -- darker colors for diagnostic
+            darker = false,     -- darker colors for diagnostic
             undercurl = true,   -- use undercurl instead of underline for diagnostics
             background = false, -- use background color for virtual text
         },
