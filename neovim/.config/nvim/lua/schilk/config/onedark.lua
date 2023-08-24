@@ -30,8 +30,13 @@ function M.config()
         },
 
         -- Custom Highlights --
-        colors = {},     -- Override default colors
-        highlights = {}, -- Override highlight groups
+        colors = {
+        }, -- Override default colors
+        highlights = {
+            Comment = { fg = '#848b98' },
+            SpecialComment = { fg = '#848b98' },
+            TSComment = { fg = '#848b98' }
+        }, -- Override highlight groups
 
         -- Plugins Config --
         diagnostics = {
