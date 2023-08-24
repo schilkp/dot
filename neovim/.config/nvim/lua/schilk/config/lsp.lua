@@ -70,7 +70,7 @@ local function config_keybinds()
 
     -- Diagnostics:
     vim.keymap.set({ 'n' }, '<leader>gH', require('trouble').toggle, { silent = true, desc = "LSP: Diagnostics" })
-    vim.keymap.set({ 'n' }, '<leader>k', vim.lsp.buf.hover, { silent = true, desc = "LSP: Documentation" })
+    vim.keymap.set({ 'n' }, '<C-k>', vim.lsp.buf.hover, { silent = true, desc = "LSP: Documentation" })
 end
 
 function M.config()
