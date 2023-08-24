@@ -138,14 +138,11 @@ nnoremap <leader>sf z=
 " Highlight word under curose on leader-h
 nnoremap <leader>h mz*`z
 
-" Disable mouse (prevent floatterm cursor jump on window re-select)
-set mouse=
 
 "========================================
 "                 Utils                    
 "========================================
 
-" yoinked from the primeagen
 fun! EmptyRegisters()
     let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
     for r in regs
@@ -166,35 +163,3 @@ function Checkbox_check()
     call winrestview(l:c)
 endfunction
 nnoremap <leader>x :call Checkbox_check()<CR>
-
-function Start_profile()
-	profile start profile.log
-	profile func *
-	profile file *
-endfunction
-command! StartProfile :call Start_profile()
-
-function Stop_profile()
-    profile pause
-    noautocmd qall!
-endfunction
-command! StopProfile :call Stop_profile()
-
-
-let s:hidden_all = 0
-function! ToggleHiddenAll()
-    if s:hidden_all  == 0
-        let s:hidden_all = 1
-        set noshowmode
-        set noruler
-        set laststatus=0
-        set cmdheight=1
-    else
-        let s:hidden_all = 0
-        set showmode
-        set ruler
-        set laststatus=2
-        set cmdheight=2
-    endif
-endfunction
-
