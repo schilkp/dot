@@ -135,3 +135,6 @@ require('lazy').setup({
 require('schilk.config.nvim').config_highlight_on_yank()
 
 require('schilk.config.nvim').config_floatterm_replacement()
+
+require('schilk.utils.sv_module_instantiation').setup()
+
