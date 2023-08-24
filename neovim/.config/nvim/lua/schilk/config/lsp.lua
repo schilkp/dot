@@ -36,6 +36,11 @@ local function config_lsp()
         }
     })
 
+    -- Verible:
+    require 'lspconfig'.verible.setup({
+        capabilities = capabilities,
+    })
+
     -- Rust-Analyzer:
     -- Note: LSP-Config is called/configured by rust-tools.nvim.
     require('schilk.config.lsp.rust_tools').config({
