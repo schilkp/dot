@@ -6,8 +6,4 @@
 [core]
 	editor = nvim
     autocrlf = input
-[diff "odf"]
-    binary = true
-    textconv = odt2txt
-
 
