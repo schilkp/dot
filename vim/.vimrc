@@ -138,6 +138,21 @@ nnoremap <leader>sf z=
 " Highlight word under curose on leader-h
 nnoremap <leader>h mz*`z
 
+" Allow pane control without escaping terminal mode:
+tnoremap <C-W><C-W> <C-\><C-n><C-W><C-W>
+tnoremap <C-W><C-q> <C-\><C-n><C-W><C-q>
+tnoremap <C-W><C-o> <C-\><C-n><C-W><C-o>
+tnoremap <C-W><C-s> <C-\><C-n><C-W><C-s>
+tnoremap <C-W><C-T> <C-\><C-n><C-W><C-T>
+tnoremap <C-W><C-v> <C-\><C-n><C-W><C-v>
+tnoremap <C-W><C-x> <C-\><C-n><C-W><C-x>
+
+tnoremap <C-W><C-h> <C-\><C-n><C-W><C-h>
+tnoremap <C-W><C-j> <C-\><C-n><C-W><C-j>
+tnoremap <C-W><C-k> <C-\><C-n><C-W><C-k>
+tnoremap <C-W><C-l> <C-\><C-n><C-W><C-l>
+
+
 
 "========================================
 "                 Utils                    
