@@ -6,6 +6,7 @@ function M.config()
     luasnip.add_snippets('c++', require('schilk.snippets.c').snippets);
     luasnip.add_snippets('tex', require('schilk.snippets.tex').snippets);
     luasnip.add_snippets('python', require('schilk.snippets.python').snippets);
+    luasnip.add_snippets('rust', require('schilk.snippets.rust').snippets);
 end
 
 return M
