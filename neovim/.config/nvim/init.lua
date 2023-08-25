@@ -32,9 +32,13 @@ require('lazy').setup({
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lsp-signature-help',
-            'L3MON4D3/LuaSnip',
             'saadparwaiz1/cmp_luasnip',
+            {
+                'L3MON4D3/LuaSnip',
+                config = require('schilk.config.lua_snip').config
+            }
         },
+
         config = require('schilk.config.cmp').config
     },
     -- Trouble:
