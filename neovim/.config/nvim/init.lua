@@ -1,6 +1,10 @@
 -- Source basic VIM settings:
 vim.cmd('source $HOME/.vimrc')
 
+-- Disable netrw (Recommended by nvim tree):
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Activate/install package manager:
 require('schilk.lazy').activate()
 
@@ -119,7 +123,16 @@ require('lazy').setup({
             "nvim-tree/nvim-web-devicons",
         },
         opts = {},
+    },
+    -- NVIM Tree:
+    {
+        'nvim-tree/nvim-tree.lua',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons'
+        },
+        config = require('schilk.config.nvim_tree').config
     }
+
 })
 
 require('schilk.config.nvim').config_py3_env()
