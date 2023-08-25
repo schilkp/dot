@@ -12,7 +12,7 @@ function M.config_highlight_on_yank()
 end
 
 function M.config_floatterm_replacement()
-    vim.keymap.set({ 'n' }, '<leader>t', ':split | terminal <CR>', { silent = true, desc = "Open terminal split." })
+    vim.keymap.set({ 'n' }, '<leader>t', ':split | terminal <CR>', { silent = true, desc = "📠 Open Terminal Split." })
 end
 
 M.py_env_dir = vim.fs.normalize('~/.config/nvim/nvim_env')
