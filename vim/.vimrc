@@ -91,6 +91,9 @@ set nofoldenable
 "     autocmd BufRead * normal zR
 " augroup END
 
+" Disable splashscreen/welcome message:
+set shortmess=I
+
 " Do not auto-continue comments:
 set formatoptions-=cr
 augroup Schilk_folding
