@@ -6,21 +6,21 @@ function M.config()
     -- Document binding categories and bindings from vimrc:
     wk.register({
         f = {
-            name = "🔍 Find",
+            name = "🔍 Find...",
         },
         g = {
-            name = "🖥️ LSP",
+            name = "🖥️ LSP...",
         },
         s = {
-            name = "❗ Spelling",
+            name = "❗ Spelling...",
         },
-        a = "Select All.",
-        w = "Save.",
-        W = "Save All.",
-        R = "Reload.",
-        x = "Toggle Checkbox.",
-        h = "Highlight word under cursor.",
-        ["/"] = "Clear highlighting.",
+        a = "🔦 Select All.",
+        w = "💾 Save.",
+        W = "💾 Save All.",
+        R = "♻️  Reload.",
+        x = "✅ Toggle Checkbox.",
+        h = "🔦 Highlight Word Under Cursor.",
+        ["/"] = "🔦 Clear Highlighting.",
     }, { prefix = "<leader>" })
 end
 

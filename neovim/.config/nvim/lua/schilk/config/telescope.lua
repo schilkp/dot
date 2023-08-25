@@ -109,11 +109,11 @@ function M.config()
     pcall(require('telescope').load_extension, 'fzf')
 
     -- Key binds:
-    vim.keymap.set('n', '<leader>o', require('telescope.builtin').find_files, { silent = true, desc = 'Open File.' })
-    vim.keymap.set('n', '<leader>O', find_in_parent, { silent = true, desc = 'Open File in Parent Dir.' })
-    vim.keymap.set('n', '<leader>i', require('telescope.builtin').git_files, { silent = true, desc = 'Open Git File.' })
-    vim.keymap.set('n', '<leader>p', ':Rg<CR>', { silent = true, desc = 'Live RipGrep.' })
-    vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { silent = true, desc = 'Open Buffer.' })
+    vim.keymap.set('n', '<leader>o', require('telescope.builtin').find_files, { silent = true, desc = '🔍 Find File.' })
+    vim.keymap.set('n', '<leader>O', find_in_parent, { silent = true, desc = '🔍 Find File in Parent Dir.' })
+    vim.keymap.set('n', '<leader>i', require('telescope.builtin').git_files, { silent = true, desc = '🔍 Open Git File.' })
+    vim.keymap.set('n', '<leader>p', ':Rg<CR>', { silent = true, desc = '🔍 Live RipGrep.' })
+    vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { silent = true, desc = '🔍 Open Buffer.' })
 
     vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags,
         { silent = true, desc = 'Search Help Tag.' })
