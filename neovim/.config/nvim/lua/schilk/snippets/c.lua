@@ -35,6 +35,32 @@ M.snippets = {
     $0
     #endif /* $1_H_ */
     ]]),
+    ls.parser.parse_snippet({ trig = "ifdef" }, [[
+    #ifdef $1
+    $0
+    #endif /* $1 */
+    ]]),
+    ls.parser.parse_snippet({ trig = "ifndef" }, [[
+    #ifndef $1
+    $0
+    #endif /* $1 */
+    ]]),
+    ls.parser.parse_snippet({ trig = "dox_brief" }, [[
+    /** @brief $1 */ $0
+    ]]),
+    ls.parser.parse_snippet({ trig = "dox_line" }, [[
+    //!< $0
+    ]]),
+    ls.parser.parse_snippet({ trig = "dox_header" }, [[
+    /**
+     * @file $1
+     * @brief $2
+     * @author Philipp Schilk 2023
+     */
+    $0
+    ]]),
 }
+
+
 
 return M
