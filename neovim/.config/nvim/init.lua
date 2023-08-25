@@ -1,13 +1,3 @@
---[[
-    TODO: LSP Saga? Noice?
-    TODO python3 host prog:
-       let g:python3_host_prog = '~/.config/nvim/nvim_env/bin/python'
-    TODO Show Whitespace?
-    TODO LuaSnips
-
-]]
---
-
 -- Source basic VIM settings:
 vim.cmd('source $HOME/.vimrc')
 
@@ -132,9 +122,10 @@ require('lazy').setup({
     }
 })
 
+require('schilk.config.nvim').config_py3_env()
+
 require('schilk.config.nvim').config_highlight_on_yank()
 
 require('schilk.config.nvim').config_floatterm_replacement()
 
 require('schilk.utils.sv_module_instantiation').setup()
-
