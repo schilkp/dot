@@ -183,8 +183,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Gaps:
-gaps outer 10
-gaps inner 10
+gaps outer 5
+gaps inner 5
 
 # Disable Header:
 default_border pixel 4
@@ -217,5 +217,6 @@ exec --no-startup-id dunst
 exec --no-startup-id insync start
 exec --no-startup-id owncloud
 exec --no-startup-id ferdi
+
 
 
