@@ -135,6 +135,10 @@ require('lazy').setup({
             'nvim-tree/nvim-web-devicons'
         },
         config = require('schilk.config.nvim_tree').config
+    },
+    {
+        'elihunter173/dirbuf.nvim',
+        config = require('schilk.config.dirbuf').config
     }
 
 })
