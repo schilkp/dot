@@ -50,6 +50,12 @@ local function config_lsp()
     require('schilk.config.lsp.rust_tools').config({
         capabilities = capabilities,
     })
+
+    -- Pyright:
+    require 'lspconfig'.pyright.setup({
+        capabilities = capabilities,
+    })
+
 end
 
 local function config_keybinds()
@@ -70,7 +76,6 @@ local function config_keybinds()
     -- LSP Action Binds:
     vim.keymap.set({ 'n' }, '<leader>gN', vim.lsp.buf.rename, { silent = true, desc = "LSP: Rename." })
     vim.keymap.set({ 'n' }, '<leader>ga', vim.lsp.buf.code_action, { silent = true, desc = "LSP: Code Actions" })
-    vim.keymap.set({ 'n' }, '<leader>F', vim.lsp.buf.format, { silent = true, desc = "🧹 Format." })
 
     -- Diagnostics:
     vim.keymap.set({ 'n' }, '<leader>gH', require('trouble').toggle, { silent = true, desc = "LSP: Diagnostics" })
