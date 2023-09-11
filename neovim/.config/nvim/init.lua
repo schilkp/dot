@@ -145,6 +145,10 @@ require('lazy').setup({
         dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
         config = require('schilk.config.hardtime').config
     },
+    {
+        'mhartington/formatter.nvim',
+        config = require('schilk.config.formatter').config
+    }
 })
 
 require('schilk.config.nvim').config_py3_env()
