@@ -1,6 +1,10 @@
 local M = {}
 
 local function config_lsp()
+    -- Disable the LSP log:
+    -- It gets too big too fast..
+    vim.lsp.set_log_level("off")
+
     -- Configure NeoDev, which overrides Lua-LS LSP config for all NeoVim config files:
     require('neodev').setup()
 
