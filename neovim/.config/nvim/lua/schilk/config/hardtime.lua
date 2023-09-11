@@ -2,16 +2,13 @@ local M = {}
 
 function M.config()
     local function toggle_hardtime()
-        -- Possible once PR merged..
-        -- if (not require('hardtime').is_enabled()) then
-        --     vim.print("Enabling hardtime..")
-        --     require('hardtime').enable()
-        -- else
-        --     vim.print("Disabling hardtime..")
-        --     require('hardtime').disable()
-        -- end
-        vim.print("Toggling hardtime..")
-        require('hardtime').toggle()
+        if (not require('hardtime').is_enabled) then
+            vim.print("Enabling hardtime..")
+            require('hardtime').enable()
+        else
+            vim.print("Disabling hardtime..")
+            require('hardtime').disable()
+        end
     end
     require('hardtime').setup({
         enabled = false
