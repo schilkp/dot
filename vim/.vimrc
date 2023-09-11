@@ -79,6 +79,9 @@ set spelllang=en_us,de_de
 set t_Co=256
 colorscheme slate
 
+" Colorcolumns:
+set colorcolumn=80,100,120
+
 " Disable folding
 set nofoldenable
 " By default, fold using indent
