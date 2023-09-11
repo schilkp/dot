@@ -14,6 +14,9 @@ function M.config()
         s = {
             name = "❗ Spelling...",
         },
+        m = {
+            name = "🔧 Modes..",
+        },
         a = "🔦 Select All.",
         w = "💾 Save.",
         W = "💾 Save All.",
