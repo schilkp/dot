@@ -139,8 +139,12 @@ require('lazy').setup({
     {
         'elihunter173/dirbuf.nvim',
         config = require('schilk.config.dirbuf').config
-    }
-
+    },
+    {
+        "m4xshen/hardtime.nvim",
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+        config = require('schilk.config.hardtime').config
+    },
 })
 
 require('schilk.config.nvim').config_py3_env()
