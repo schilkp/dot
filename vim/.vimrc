@@ -55,7 +55,9 @@ set cmdheight=1
 set scrolloff=10
 
 " Keep 2 columns next to numbers for plugins:
+if has('nvim')
 set signcolumn=yes:2
+endif
 
 " Setup tabs default (4, expanded)
 set tabstop=4 softtabstop=4 shiftwidth=4 " Indent using 4 spaces
