@@ -155,5 +155,6 @@ require('schilk.config.nvim').config_py3_env()
 require('schilk.config.nvim').config_highlight_on_yank()
 require('schilk.config.nvim').config_floatterm_replacement()
 require('schilk.config.nvim').config_large_file_mode()
+require('schilk.config.nvim').config_no_jk_mapping_trainig()
 
 require('schilk.utils.sv_module_instantiation').setup()
