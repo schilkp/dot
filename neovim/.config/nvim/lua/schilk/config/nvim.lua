@@ -15,6 +15,13 @@ function M.config_floatterm_replacement()
     vim.keymap.set({ 'n' }, '<leader>t', ':split | terminal <CR>', { silent = true, desc = "📠 Open Terminal Split." })
 end
 
+function M.config_no_jk_mapping_trainig()
+    local function NO()
+        vim.api.nvim_err_writeln("NO!");
+    end
+    vim.keymap.set("i", "jk", NO);
+end
+
 M.py_env_dir = vim.fs.normalize('~/.config/nvim/nvim_env')
 M.py = vim.fs.normalize(M.py_env_dir .. '/bin/python')
 

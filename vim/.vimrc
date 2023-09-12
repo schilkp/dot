@@ -116,9 +116,6 @@ augroup END
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" Escape on jk
-imap jk <esc>
-
 " Save on leader-w
 nnoremap <leader>w :w<CR>
 
