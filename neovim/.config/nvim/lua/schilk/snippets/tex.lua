@@ -30,9 +30,9 @@ local k = require("luasnip.nodes.key_indexer").new_key
 
 M.snippets = {
     ls.parser.parse_snippet({ trig = "env" }, [[
-    \begin($1)
+    \begin{$1}
         $0
-    \end($1)
+    \end{$1}
     ]]),
 }
 
