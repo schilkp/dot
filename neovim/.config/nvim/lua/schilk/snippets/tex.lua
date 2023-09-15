@@ -34,6 +34,7 @@ M.snippets = {
         $0
     \end{$1}
     ]]),
+    ls.parser.parse_snippet({ trig = "todo" }, "\textbf{\textcolor{red}{TODO}}$0"),
 }
 
 return M
