@@ -51,16 +51,13 @@ M.snippets = {
     ls.parser.parse_snippet({ trig = "dox_line" }, [[
     //!< $0
     ]]),
-    ls.parser.parse_snippet({ trig = "dox_header" }, [[
-    /**
-     * @file $1
-     * @brief $2
-     * @author Philipp Schilk 2023
-     */
-    $0
-    ]]),
+    s({ trig = "dox_header" }, {
+        t({ "/**", "" }),
+        t({ " * @file " }), f(function(_, _) return vim.fs.basename(vim.api.nvim_buf_get_name(0)) end), t({ "", "" }),
+        t({ " * @brief " }), i(1), t({ "", "" }),
+        t({ " * @author Philipp Schilk, " }), f(function(_, _) return os.date("%Y", os.time()) end), t({ "", "" }),
+        t({ " */", "" }),
+        i(0)
+    })
 }
-
-
-
 return M
