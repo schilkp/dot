@@ -35,9 +35,22 @@ colors:
 
 font:
   normal:
-    family: JetBrainsMono Nerd Font Mono
-  size: 10.0
+    family: TerminalFont
+    style: Regular
 
+  bold:
+    family: TerminalFont
+    style: Bold
+
+  italic:
+    family: TerminalFont
+    style: Italic
+
+  bold_italic:
+    family: TerminalFont
+    style: Bold Italic
+
+  size: 10
 
 window:
   opacity: 0.80
