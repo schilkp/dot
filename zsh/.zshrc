@@ -1,13 +1,14 @@
 #### ZSH Config  ###############################################################
 
-autoload -Uz compinit promptinit; compinit
+fpath=(~/.zsh/completion $fpath)
+
+autoload -Uz compinit promptinit
 
 # Include hidden files:
 _comp_options+=(globdots)
 
 # Use same colors as LS:
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
@@ -74,7 +75,7 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     CYAN='\033[0;36m'
     NC='\033[0m'
 
-    # Download plugins if they are not present:
+    # Download/generate plugins if they are not present:
     if [[ ! -a ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme ]]; then
         mkdir -p ~/.zsh
         echo "[${CYAN}zshrc${NC}] ${RED}Installing p10k..${NC}"
@@ -89,6 +90,14 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
         mkdir -p ~/.zsh
         echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-autosuggestions..${NC}"
         git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    fi
+    if [[ ! -a ~/.zsh/completion/_just.zsh ]]; then
+        if command -v just &> /dev/null; then
+            mkdir -p ~/.zsh
+            mkdir -p ~/.zsh/completion
+            echo "[${CYAN}zshrc${NC}] ${RED}Installing completion for just..${NC}"
+            just --completions zsh > ~/.zsh/completion/_just.zsh
+        fi
     fi
 
     # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -108,8 +117,6 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     # Load zsh zsh-autosuggestions:
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+    # Initialise completion:
+    compinit
 fi
-
-# # Autocomplete:
-# zplug "zsh-users/zsh-autosuggestions"
-#
