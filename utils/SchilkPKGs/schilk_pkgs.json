@@ -1,0 +1,49 @@
+{
+    "base": [
+        "extra/alacritty",
+        "extra/tmux",
+        "extra/neovim",
+        "extra/vim",
+        "extra/keepassxc",
+        "extra/stow",
+        "extra/git",
+        "extra/firefox",
+        "extra/ttf-jetbrains-mono-nerd",
+        "extra/noto-fonts-emoji",
+        "extra/zsh",
+        "extra/ripgrep",
+        "aur/insync",
+        "extra/just",
+        "extra/okular",
+        "extra/lua-language-server"
+    ],
+    "c": [
+        "extra/clang",
+        "extra/cmake",
+        "extra/ninja"
+    ],
+    "python": [
+        "extra/pyright",
+        "extra/python-isort",
+        "extra/autopep8"
+    ],
+    "rust": [
+        "extra/rustup"
+    ],
+    "rtl": [
+        "extra/verible-bin"
+    ],
+    "embedded": [
+        "aur/jlink"
+    ],
+    "zephyr_nrf": [
+        "aur/python-west",
+        "aur/zephyr-sdk",
+        "aur/nrf5x-command-line-tools",
+        "extra/python-intelhex"
+    ],
+    "latex": [
+        "extra/texlive-meta",
+        "extra/python-pygments"
+    ]
+}
