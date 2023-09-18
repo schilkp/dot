@@ -57,43 +57,59 @@ activate() {
 
 # here
 here() {
-    if command -v thunar &> /dev/null 
+    if command -v thunar &> /dev/null
     then
         thunar &
-    elif command -v nautilus &> /dev/null 
+    elif command -v nautilus &> /dev/null
     then
         nautilus &
     fi
 }
 
+#### Plugins ###################################################################
+# Note: Plugin install/loading can be disabled by touching ~/.zsh/basic_install
+if [[ ! -a ~/.zsh/basic_install ]]; then
 
-#### P10K Instant Load #########################################################
+    RED='\033[0;31m'
+    CYAN='\033[0;36m'
+    NC='\033[0m'
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    # Download plugins if they are not present:
+    if [[ ! -a ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+        mkdir -p ~/.zsh
+        echo "[${CYAN}zshrc${NC}] ${RED}Installing p10k..${NC}"
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
+    fi
+    if [[ ! -a ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]]; then
+        mkdir -p ~/.zsh
+        echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-vi-mode..${NC}"
+        git clone https://github.com/jeffreytse/zsh-vi-mode.git ~/.zsh/zsh-vi-mode
+    fi
+    if [[ ! -a ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+        mkdir -p ~/.zsh
+        echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-autosuggestions..${NC}"
+        git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+    fi
+
+    # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+    # Initialization code that may require console input (password prompts, [y/n]
+    # confirmations, etc.) must go above this block; everything else may go below.
+    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    fi
+
+    # Load p10k:
+    source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+    # Load zsh-vi-mode:
+    source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+    # Load zsh zsh-autosuggestions:
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 fi
 
-#### Plugins + Extensions ######################################################
-
-if [[ ! -a ~/.zplug ]]; then
-   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh 
-fi
-source ${HOME}/.zplug/init.zsh
-
-# Prompt:
-zplug romkatv/powerlevel10k, as:theme, depth:1
-
-# VI Style editing:
-zplug "jeffreytse/zsh-vi-mode"
-
-# Autocomplete:
-zplug "zsh-users/zsh-autosuggestions"
-
-zplug load
-
-#### Load P10K config ##########################################################
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# # Autocomplete:
+# zplug "zsh-users/zsh-autosuggestions"
+#
