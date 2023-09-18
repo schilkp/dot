@@ -1,6 +1,5 @@
 #### ZSH Config  ###############################################################
 
-fpath=(~/.zsh/completion $fpath)
 
 autoload -Uz compinit promptinit
 
@@ -91,6 +90,11 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
         echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-autosuggestions..${NC}"
         git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     fi
+    if [[ ! -a ~/.zsh/zsh-completions/README.md ]]; then
+        mkdir -p ~/.zsh
+        echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-completions..${NC}"
+        git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
+    fi
     if [[ ! -a ~/.zsh/completion/_just.zsh ]]; then
         if command -v just &> /dev/null; then
             mkdir -p ~/.zsh
@@ -118,5 +122,7 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
     # Initialise completion:
+    fpath=(~/.zsh/completion $fpath)
+    fpath=(~/.zsh/zsh-completion/src $fpath)
     compinit
 fi
