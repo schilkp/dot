@@ -34,7 +34,65 @@ M.snippets = {
         $0
     \end{$1}
     ]]),
-    ls.parser.parse_snippet({ trig = "todo" }, "\textbf{\textcolor{red}{TODO}}$0"),
+
+    ls.parser.parse_snippet({ trig = "todo" }, [[
+    \textbf{\textcolor{red}{TODO}}$0
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "fig" }, [[
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.80\linewidth]{fig/$1}
+        \captionof{figure}{$0}
+        \label{fig:$2}
+    \end{figure}
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "fig_dual" }, [[
+    \begin{figure}[htbp]
+        \centering
+        \begin{minipage}{.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{$1}
+            \captionof{figure}{$3}
+            \label{fig:$2}
+        \end{minipage}%
+        \begin{minipage}{.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{fig/$4}
+            \captionof{figure}{$0}
+            \label{fig:$5}
+        \end{minipage}
+    \end{figure}
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "tcol_tasks" }, [[
+    \begin{tcolorbox}[title=Tasks]
+        \begin{itemize}
+          \item $0
+        \end{itemize}
+    \end{tcolorbox}
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "lst" }, [[
+    \begin{listing}[htb]
+        $0
+        \vspace{-1.5\baselineskip}
+        \caption{$1}
+        \label{lst:$2}
+    \end{listing}
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "lst_minted" }, [[
+    \begin{listing}[htb]
+        \begin{minted}{$1}
+        $0
+        \end{minted}
+        \vspace{-1.5\baselineskip}
+        \caption{$2}
+        \label{lst:$3}
+    \end{listing}
+    ]]),
 }
 
 return M
