@@ -16,12 +16,14 @@
         "aur/ferdium-bin",
         "extra/just",
         "extra/okular",
-        "extra/lua-language-server"
+        "extra/lua-language-server",
+        "extra/htop"
     ],
     "c": [
         "extra/clang",
         "extra/cmake",
-        "extra/ninja"
+        "extra/ninja",
+        "extra/bear"
     ],
     "python": [
         "extra/pyright",
@@ -41,7 +43,8 @@
         "aur/python-west",
         "aur/zephyr-sdk",
         "aur/nrf5x-command-line-tools",
-        "extra/python-intelhex"
+        "extra/python-intelhex",
+        "aur/nrfconnect-appimage"
     ],
     "latex": [
         "extra/texlive-meta",
