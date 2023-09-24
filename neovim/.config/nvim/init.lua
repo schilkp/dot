@@ -14,7 +14,10 @@ require('lazy').setup({
     {
         'neovim/nvim-lspconfig',
         dependencies = {
-            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+            {
+                'j-hui/fidget.nvim',
+                config = require('schilk.config.fidget').config
+            },
             'folke/neodev.nvim',
             -- rust:
             'simrat39/rust-tools.nvim',
