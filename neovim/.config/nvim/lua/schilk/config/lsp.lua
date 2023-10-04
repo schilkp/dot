@@ -56,6 +56,11 @@ local function config_lsp()
         capabilities = capabilities,
     })
 
+    -- Ocamllsp
+    require 'lspconfig'.ocamllsp.setup({
+        capabilities = capabilities,
+    })
+
 end
 
 local function config_keybinds()
