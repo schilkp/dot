@@ -48,7 +48,9 @@
     ],
     "latex": [
         "extra/texlive-meta",
-        "extra/python-pygments"
+        "extra/python-pygments",
+        "extra/texlab",
+        "aur/ltex-ls-bin"
     ],
     "office": [
         "aur/onlyoffice-bin",
