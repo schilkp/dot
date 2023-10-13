@@ -1,6 +1,5 @@
 #### ZSH Config  ###############################################################
 
-
 autoload -Uz compinit promptinit
 
 # Include hidden files:
@@ -57,12 +56,15 @@ activate() {
 
 # here
 here() {
-    if command -v thunar &> /dev/null
+    if command -v dolphin &> /dev/null
     then
-        thunar &
+        dolphin . 1>/dev/null 2>/dev/null &
+    elif command -v thunar &> /dev/null
+    then
+        thunar 1>/dev/null 2>/dev/null &
     elif command -v nautilus &> /dev/null
     then
-        nautilus &
+        nautilus 1>/dev/null 2>/dev/null &
     fi
 }
 
@@ -125,4 +127,8 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     fpath=(~/.zsh/completion $fpath)
     fpath=(~/.zsh/zsh-completion/src $fpath)
     compinit
+
+    if command -v zoxide &> /dev/null; then
+        eval "$(zoxide init zsh)"
+    fi
 fi
