@@ -61,6 +61,15 @@ local function config_lsp()
         capabilities = capabilities,
     })
 
+    -- texlab (Latex LSP):
+    require 'lspconfig'.texlab.setup({
+        capabilities = capabilities,
+    })
+
+    -- ltex (Latex Spelling):
+    require 'lspconfig'.ltex.setup({
+        capabilities = capabilities,
+    })
 end
 
 local function config_keybinds()
