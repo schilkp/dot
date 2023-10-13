@@ -88,7 +88,7 @@ local function config_keybinds()
         { silent = true, desc = "LSP: Switch Header/Source." })
 
     -- LSP Action Binds:
-    vim.keymap.set({ 'n' }, '<leader>gN', vim.lsp.buf.rename, { silent = true, desc = "LSP: Rename." })
+    vim.keymap.set({ 'n' }, '<leader>gn', vim.lsp.buf.rename, { silent = true, desc = "LSP: Rename." })
     vim.keymap.set({ 'n' }, '<leader>ga', vim.lsp.buf.code_action, { silent = true, desc = "LSP: Code Actions" })
 
     -- Diagnostics:
