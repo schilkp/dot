@@ -1,23 +1,29 @@
 {
     "base": [
         "extra/alacritty",
-        "extra/tmux",
         "extra/neovim",
+        "extra/tmux",
         "extra/vim",
-        "extra/keepassxc",
         "extra/stow",
         "extra/git",
         "extra/firefox",
         "extra/ttf-jetbrains-mono-nerd",
         "extra/noto-fonts-emoji",
-        "extra/zsh",
-        "extra/ripgrep",
-        "aur/insync",
-        "aur/ferdium-bin",
-        "extra/just",
-        "extra/okular",
         "extra/lua-language-server",
         "extra/htop"
+    ],
+    "desktop": [
+        "aur/insync",
+        "extra/keepassxc",
+        "aur/ferdium-bin",
+        "extra/okular"
+    ],
+    "shell": [
+        "extra/zsh",
+        "extra/ripgrep",
+        "extra/just",
+        "aur/rm-improved",
+        "aur/zoxide"
     ],
     "c": [
         "extra/clang",
