@@ -152,6 +152,11 @@ require('lazy').setup({
     {
         'mhartington/formatter.nvim',
         config = require('schilk.config.formatter').config
+    },
+    {
+        "danymat/neogen",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = require('schilk.config.neogen').config,
     }
 })
 
