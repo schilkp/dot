@@ -29,28 +29,28 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
 M.snippets = {
-    ls.parser.parse_snippet({ trig = "once" }, [[
-    #ifndef $1_H_
-    #define $1_H_
-    $0
-    #endif /* $1_H_ */
-    ]]),
-    ls.parser.parse_snippet({ trig = "ifdef" }, [[
-    #ifdef $1
-    $0
-    #endif /* $1 */
-    ]]),
-    ls.parser.parse_snippet({ trig = "ifndef" }, [[
-    #ifndef $1
-    $0
-    #endif /* $1 */
-    ]]),
-    ls.parser.parse_snippet({ trig = "dox_brief" }, [[
-    /** @brief $1 */ $0
-    ]]),
-    ls.parser.parse_snippet({ trig = "dox_line" }, [[
-    //!< $0
-    ]]),
+    s({ trig = "once" }, {
+        t("#ifndef "), i(1), t({ "_H_", "" }),
+        t("#define "), rep(1), t({ "_H_", "" }),
+        i(0), t({ "", "" }),
+        t("#endif /* "), rep(1), t("_H_ */")
+    }),
+    s({ trig = "ifdef" }, {
+        t("#ifdef "), i(1), t({ "", "" }),
+        i(0), t({ "", "" }),
+        t("#endif /* "), rep(1), t(" */")
+    }),
+    s({ trig = "ifndef" }, {
+        t("#ifndef "), i(1), t({ "", "" }),
+        i(0), t({ "", "" }),
+        t("#endif /* "), rep(1), t(" */")
+    }),
+    s({ trig = "dox_brief" }, {
+        t("/** @brief "), i(1), t(" */ "), i(0)
+    }),
+    s({ trig = "dox_line" }, {
+        t({ "//!< " }), i(0)
+    }),
     s({ trig = "dox_header" }, {
         t({ "/**", "" }),
         t({ " * @file " }), f(function(_, _) return vim.fs.basename(vim.api.nvim_buf_get_name(0)) end), t({ "", "" }),
