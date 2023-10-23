@@ -16,6 +16,7 @@ require('lazy').setup({
         dependencies = {
             {
                 'j-hui/fidget.nvim',
+                tag = 'legacy',
                 config = require('schilk.config.fidget').config
             },
             'folke/neodev.nvim',
