@@ -130,5 +130,6 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
 
     if command -v zoxide &> /dev/null; then
         eval "$(zoxide init zsh)"
+        alias cd=z
     fi
 fi
