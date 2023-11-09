@@ -157,6 +157,10 @@ require('lazy').setup({
         "danymat/neogen",
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = require('schilk.config.neogen').config,
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        config = require('schilk.config.indent_blankline').config,
     }
 })
 
