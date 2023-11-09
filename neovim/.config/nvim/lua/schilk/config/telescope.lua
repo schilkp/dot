@@ -104,7 +104,16 @@ end
 
 function M.config()
     -- See `:help telescope` and `:help telescope.setup()`
-    require('telescope').setup {}
+    local actions = require('telescope.actions')
+    require('telescope').setup {
+        defaults = {
+            mappings = {
+                i = {
+                    ["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist;
+                },
+            },
+        }
+    }
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
 
