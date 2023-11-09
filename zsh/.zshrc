@@ -37,6 +37,14 @@ alias ls='ls --color=auto'
 alias la='ls --color=auto -a'
 alias ll='ls --color=auto -la'
 
+# Re-run last shell command with sudo:
+function ffs {
+  local last_cmd=$(fc -ln -1)
+  local sudo_cmd="sudo zsh -c '"$(fc -ln -1)"'"
+  echo $sudo_cmd
+  eval $sudo_cmd
+}
+
 # Correct git author
 alias git_author_priv="git config user.name \"Philipp Schilk\"; git config user.email \"schilk.philipp@gmail.com\""
 alias git_author_ethz="git config user.name \"schilkp\"; git config user.email \"schilkp@student.ethz.ch\""
