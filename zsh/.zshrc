@@ -66,13 +66,13 @@ activate() {
 here() {
     if command -v dolphin &> /dev/null
     then
-        dolphin . 1>/dev/null 2>/dev/null &
+        dolphin . 1>/dev/null 2>/dev/null & disown
     elif command -v thunar &> /dev/null
     then
-        thunar 1>/dev/null 2>/dev/null &
+        thunar 1>/dev/null 2>/dev/null & disown
     elif command -v nautilus &> /dev/null
     then
-        nautilus 1>/dev/null 2>/dev/null &
+        nautilus 1>/dev/null 2>/dev/null & disown
     fi
 }
 
