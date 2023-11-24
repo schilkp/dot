@@ -17,7 +17,7 @@ require('lazy').setup({
             {
                 'j-hui/fidget.nvim',
                 tag = 'legacy',
-                config = require('schilk.config.fidget').config
+                config = require('schilk.config.plugins.fidget').config
             },
             'folke/neodev.nvim',
             -- rust:
@@ -26,7 +26,7 @@ require('lazy').setup({
             -- clangd:
             'p00f/clangd_extensions.nvim'
         },
-        config = require('schilk.config.lsp').config
+        config = require('schilk.config.plugins.lsp').config
     },
     -- CMP Autocomplete + LuaSnip:
     {
@@ -39,11 +39,11 @@ require('lazy').setup({
             'saadparwaiz1/cmp_luasnip',
             {
                 'L3MON4D3/LuaSnip',
-                config = require('schilk.config.lua_snip').config
+                config = require('schilk.config.plugins.lua_snip').config
             }
         },
 
-        config = require('schilk.config.cmp').config
+        config = require('schilk.config.plugins.cmp').config
     },
     -- Trouble:
     {
@@ -52,19 +52,19 @@ require('lazy').setup({
     -- Which-Key:
     {
         'folke/which-key.nvim',
-        config = require('schilk.config.whichkey').config
+        config = require('schilk.config.plugins.whichkey').config
     },
     -- OneDark Colorscheme:
     {
         -- Theme inspired by Atom
         'navarasu/onedark.nvim',
         priority = 1000,
-        config = require('schilk.config.onedark').config
+        config = require('schilk.config.plugins.onedark').config
     },
     -- LuaLine:
     {
         'nvim-lualine/lualine.nvim',
-        opts = require('schilk.config.lualine').opts()
+        opts = require('schilk.config.plugins.lualine').opts()
     },
     -- Commenting:
     { 'numToStr/Comment.nvim', opts = {} },
@@ -83,7 +83,7 @@ require('lazy').setup({
             'nvim-tree/nvim-web-devicons',
             'nvim-telescope/telescope-symbols.nvim'
         },
-        config = require('schilk.config.telescope').config
+        config = require('schilk.config.plugins.telescope').config
     },
     -- Treesitter:
     {
@@ -100,28 +100,28 @@ require('lazy').setup({
     {
         -- Adds git related signs to the gutter, as well as utilities for managing changes
         'lewis6991/gitsigns.nvim',
-        opts = require('schilk.config.gitsigns').opts()
+        opts = require('schilk.config.plugins.gitsigns').opts()
     },
     -- Git Integration:
     'tpope/vim-fugitive',
     -- Easy Align:
     {
         'junegunn/vim-easy-align',
-        config = require('schilk.config.easy_align').config,
+        config = require('schilk.config.plugins.easy_align').config,
     },
     -- Vim Indent Objects:
     'michaeljsmith/vim-indent-object',
     -- VimTEX:
     {
         'lervag/vimtex',
-        config = require('schilk.config.vimtex').config,
+        config = require('schilk.config.plugins.vimtex').config,
     },
     -- Justfile syntax highlighting:
     'NoahTheDuke/vim-just',
     -- Slime: Push-to-REPL:
     {
         'jpalardy/vim-slime',
-        config = require('schilk.config.vim_slime').config
+        config = require('schilk.config.plugins.vim_slime').config
     },
     -- Barbecue top status/location line:
     {
@@ -138,36 +138,35 @@ require('lazy').setup({
         dependencies = {
             'nvim-tree/nvim-web-devicons'
         },
-        config = require('schilk.config.nvim_tree').config
+        config = require('schilk.config.plugins.nvim_tree').config
     },
     {
         'elihunter173/dirbuf.nvim',
-        config = require('schilk.config.dirbuf').config
+        config = require('schilk.config.plugins.dirbuf').config
     },
     {
         "m4xshen/hardtime.nvim",
         dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        config = require('schilk.config.hardtime').config
+        config = require('schilk.config.plugins.hardtime').config
     },
     {
         'mhartington/formatter.nvim',
-        config = require('schilk.config.formatter').config
+        config = require('schilk.config.plugins.formatter').config
     },
     {
         "danymat/neogen",
         dependencies = "nvim-treesitter/nvim-treesitter",
-        config = require('schilk.config.neogen').config,
+        config = require('schilk.config.plugins.neogen').config,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        config = require('schilk.config.indent_blankline').config,
+        config = require('schilk.config.plugins.indent_blankline').config,
     }
 })
 
-require('schilk.config.nvim').config_py3_env()
 require('schilk.config.nvim').config_highlight_on_yank()
 require('schilk.config.nvim').config_floatterm_replacement()
 require('schilk.config.nvim').config_large_file_mode()
-require('schilk.config.nvim').config_no_jk_mapping_trainig()
+require('schilk.config.py3_env').config_py3_env()
 
 require('schilk.utils.sv_module_instantiation').setup()
