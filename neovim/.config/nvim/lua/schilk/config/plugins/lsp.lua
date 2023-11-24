@@ -19,7 +19,7 @@ local function config_lsp()
     lspconfig.clangd.setup({
         capabilities = capabilities,
         on_attach = function()
-            require('schilk.config.lsp.clangd_extensions').on_attach()
+            require('schilk.config.plugins.lsp.clangd_extensions').on_attach()
         end
     })
 
@@ -47,7 +47,7 @@ local function config_lsp()
 
     -- Rust-Analyzer:
     -- Note: LSP-Config is called/configured by rust-tools.nvim.
-    require('schilk.config.lsp.rust_tools').config({
+    require('schilk.config.plugins.lsp.rust_tools').config({
         capabilities = capabilities,
     })
 
