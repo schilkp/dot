@@ -168,5 +168,6 @@ require('schilk.config.nvim').config_highlight_on_yank()
 require('schilk.config.nvim').config_floatterm_replacement()
 require('schilk.config.nvim').config_large_file_mode()
 require('schilk.config.py3_env').config_py3_env()
+require('schilk.config.spellfiles').config_spellfiles()
 
 require('schilk.utils.sv_module_instantiation').setup()
