@@ -50,7 +50,7 @@ font:
     family: TerminalFont
     style: Bold Italic
 
-  size: 10
+  size: 9
 
 window:
   opacity: 0.80
