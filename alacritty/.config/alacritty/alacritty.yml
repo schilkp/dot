@@ -54,3 +54,10 @@ font:
 
 window:
   opacity: 0.80
+
+mouse:
+  hide_when_typing: true
+
+cursor:
+  style: Beam
+
