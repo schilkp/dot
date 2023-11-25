@@ -61,3 +61,8 @@ mouse:
 cursor:
   style: Beam
 
+shell:
+  program: /usr/bin/zsh
+  args:
+    - -c
+    - tmux new-session -A -s main && exec zsh
