@@ -1,0 +1,18 @@
+_default:
+    just --choose --chooser fzf -f tmux_layout_justfile
+
+reset:
+    tmux kill-pane -a        \;
+
+dbg:
+    tmux kill-pane -a        \; \
+         split-window -h     \; \
+         resize-pane -R 20   \; \
+         split-window -v     \; \
+         select-pane -t 1
+
+dev:
+    tmux kill-pane -a        \; \
+         split-window -v     \; \
+         resize-pane -y 6    \; \
+         select-pane -t 1
