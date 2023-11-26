@@ -1,12 +1,12 @@
 _default:
-    just --choose --chooser fzf -f tmux_layout_justfile
+    just --choose -f {{justfile()}} --chooser "fzf --preview 'just -f {{justfile()}} --show {} | bat -l make -p --color=always'" 
 
 # Return to single-pane layout.
-reset:
+layout_reset:
     tmux kill-pane -a        \;
 
 # Main debugger/editor pane with two side panes.
-dbg:
+layout_dbg:
     tmux kill-pane -a        \; \
          split-window -h     \; \
          resize-pane -R 20   \; \
@@ -14,8 +14,16 @@ dbg:
          select-pane -t 1
 
 # Editor pane with one bottom console pane.
-dev:
+layout_dev:
     tmux kill-pane -a        \; \
          split-window -v     \; \
          resize-pane -y 6    \; \
          select-pane -t 1
+
+# Create a new main session.
+new_main:
+    #!/bin/sh
+    if ! tmux has-session -t=main 2> /dev/null; then
+        tmux new-session -ds main -c $HOME
+    fi
+    tmux switch-client -t main
