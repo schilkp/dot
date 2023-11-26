@@ -2,7 +2,6 @@
     "base": [
         "extra/alacritty",
         "extra/neovim",
-        "extra/tmux",
         "extra/vim",
         "extra/stow",
         "extra/git",
@@ -20,6 +19,8 @@
     ],
     "shell": [
         "extra/zsh",
+        "extra/tmux",
+        "extra/bat",
         "extra/ripgrep",
         "extra/just",
         "aur/rm-improved",
