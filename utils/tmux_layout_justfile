@@ -1,9 +1,11 @@
 _default:
     just --choose --chooser fzf -f tmux_layout_justfile
 
+# Return to single-pane layout.
 reset:
     tmux kill-pane -a        \;
 
+# Main debugger/editor pane with two side panes.
 dbg:
     tmux kill-pane -a        \; \
          split-window -h     \; \
@@ -11,6 +13,7 @@ dbg:
          split-window -v     \; \
          select-pane -t 1
 
+# Editor pane with one bottom console pane.
 dev:
     tmux kill-pane -a        \; \
          split-window -v     \; \
