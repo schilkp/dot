@@ -1,9 +1,13 @@
 #!/usr/bin/sh
 
-selected=$(                                                                          \
-    find ~/es ~/patch-it ~/reps ~/dotfiles ~/.config -mindepth 1 -maxdepth 3 -type d \
-    | grep -v -F -e ".git" -e ".bfg-report" -e "__pycache__"                         \
-    | fzf                                                                            \
+selected=$(                                                   \
+    {                                                         \
+      find ~/es ~/patch-it -mindepth 1 -maxdepth 3 -type d && \
+      find ~/reps          -mindepth 1 -maxdepth 1 -type d && \
+      find ~/dotfiles      -mindepth 0 -maxdepth 1 -type d;   \
+    }                                                         \
+    | grep -v -F -e ".git" -e ".bfg-report" -e "__pycache__"  \
+    | fzf                                                     \
 )
 
 if [[ -z $selected ]]; then
