@@ -1,5 +1,9 @@
 _default:
-    just --choose -f {{justfile()}} --chooser "fzf --preview 'just -f {{justfile()}} --show {} | bat -l make -p --color=always'" 
+    #!/bin/sh
+    # Move to invocation_directory(), to ensure that invocation_directory() is preserved
+    # on nested just call.
+    cd {{invocation_directory()}}
+    just --choose -f {{justfile()}} --chooser "fzf --preview 'just -f {{justfile()}} --show {} | bat -l make -p --color=always'"
 
 # Return to single-pane layout.
 layout_reset:
@@ -7,6 +11,9 @@ layout_reset:
 
 # Main debugger/editor pane with two side panes.
 layout_dbg:
+    #!/bin/sh
+    # Move to invocation_directory() so new panes are opened at the correct path:
+    cd {{invocation_directory()}}
     tmux kill-pane -a        \; \
          split-window -h     \; \
          resize-pane -R 20   \; \
@@ -15,6 +22,9 @@ layout_dbg:
 
 # Editor pane with one bottom console pane.
 layout_dev:
+    #!/bin/sh
+    # Move to invocation_directory() so new panes are opened at the correct path:
+    cd {{invocation_directory()}}
     tmux kill-pane -a        \; \
          split-window -v     \; \
          resize-pane -y 6    \; \
