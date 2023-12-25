@@ -19,7 +19,7 @@ local function find_dotfiles()
     })
 end
 
-local function find_notes()
+function M.find_notes()
     local files = {}
     for name, type in vim.fs.dir(require("schilk.utils.notes").note_dir) do
         if type == "file" or type == "link" then
@@ -139,7 +139,7 @@ function M.config()
     vim.keymap.set('n', '<leader>fP', require('telescope.builtin').commands, { silent = true, desc = 'Find command.' })
 
     vim.keymap.set('n', '<leader>fd', find_dotfiles, { silent = true, desc = 'Open dotfiles.' })
-    vim.keymap.set('n', '<leader>fn', find_notes, { silent = true, desc = 'Open notes.' })
+    vim.keymap.set('n', '<leader>fn', M.find_notes, { silent = true, desc = 'Open notes.' })
 end
 
 return M
