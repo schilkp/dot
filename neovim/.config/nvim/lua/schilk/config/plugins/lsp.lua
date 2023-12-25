@@ -70,6 +70,11 @@ local function config_lsp()
     require 'lspconfig'.ltex.setup({
         capabilities = capabilities,
     })
+
+    -- marksman (Markdown):
+    require 'lspconfig'.marksman.setup({
+        capabilities = capabilities,
+    })
 end
 
 local function config_keybinds()

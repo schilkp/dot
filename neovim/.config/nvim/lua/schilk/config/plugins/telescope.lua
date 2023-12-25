@@ -21,9 +21,9 @@ end
 
 local function find_notes()
     local files = {}
-    for name, type in vim.fs.dir("~/notes/") do
+    for name, type in vim.fs.dir(require("schilk.utils.notes").note_dir) do
         if type == "file" or type == "link" then
-            files[# files + 1] = vim.fs.normalize("~/notes/" .. name)
+            files[# files + 1] = vim.fs.normalize(require("schilk.utils.notes").note_dir .. name)
         end
     end
     require('telescope.builtin').find_files({
@@ -109,7 +109,7 @@ function M.config()
         defaults = {
             mappings = {
                 i = {
-                    ["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist;
+                    ["<C-q>"] = actions.smart_add_to_qflist + actions.open_qflist,
                 },
             },
         }
