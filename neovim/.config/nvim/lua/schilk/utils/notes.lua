@@ -18,6 +18,11 @@ function M.note_exists(name)
 end
 
 function M.note(args)
+    if #args.fargs == 0 then
+        require("schilk.config.plugins.telescope").find_notes()
+        return
+    end
+
     local name = args.fargs[1]
 
     local note_path = M.note_exists(name)
@@ -35,7 +40,7 @@ function M.journal(_args)
 end
 
 function M.setup()
-    vim.api.nvim_create_user_command('Note', M.note, { nargs = 1 })
+    vim.api.nvim_create_user_command('Note', M.note, { nargs = '?' })
     vim.api.nvim_create_user_command('Journal', M.journal, { nargs = 0 })
 end
 
