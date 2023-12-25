@@ -51,6 +51,22 @@ alias csb="echo 'cool story bro'|cowsay"
 alias git_author_priv="git config user.name \"Philipp Schilk\"; git config user.email \"schilk.philipp@gmail.com\""
 alias git_author_ethz="git config user.name \"schilkp\"; git config user.email \"schilkp@student.ethz.ch\""
 
+function journal {
+  nvim +"Journal"
+}
+
+function note {
+  nvim +"Note "$1
+}
+
+function note_push {
+    pushd ~/Notes
+    git add .
+    git commit -m "Notes update."
+    git push
+    popd
+}
+
 # Activate python venv
 activate() {
     if [ "$#" -eq 1 ]; then
