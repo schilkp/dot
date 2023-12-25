@@ -43,6 +43,9 @@
     "rtl": [
         "aur/verible-bin"
     ],
+    "md": [
+        "aur/marksman-bin"
+    ],
     "embedded": [
         "aur/jlink"
     ],

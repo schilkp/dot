@@ -171,3 +171,4 @@ require('schilk.config.py3_env').config_py3_env()
 require('schilk.config.spellfiles').config_spellfiles()
 
 require('schilk.utils.sv_module_instantiation').setup()
+require('schilk.utils.notes').setup()
