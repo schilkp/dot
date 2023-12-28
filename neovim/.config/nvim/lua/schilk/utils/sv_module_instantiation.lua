@@ -117,7 +117,9 @@ function M.convert_to_instantiation(inp)
     return result
 end
 
+-- Convert the selected system-verilog module definition to an instantiation:
 function M.convert_selection()
+
     -- Determine range of lines selected:
     local vstart = vim.fn.getpos("v")
     local vcurrent = vim.fn.getcurpos()
@@ -148,18 +150,6 @@ function M.convert_selection()
 end
 
 function M.setup()
-    -- local sv_shortcut_group = vim.api.nvim_create_augroup('SchilkSV', { clear = true })
-    -- local function map_convert()
-    --     -- vim.keymap.set("v", "gm", M.convert_selection, {})
-    --     vim.print("WTF")
-    -- end
-    -- vim.api.nvim_create_autocmd('FileType', {
-    --     callback = function()
-    --         vim.keymap.set("v", "gm", map_convert, { Desc = "Convert" })
-    --     end,
-    --     group = sv_shortcut_group,
-    --     pattern = 'verilog,systemverilog',
-    -- })
     vim.keymap.set("v", "gm", M.convert_selection)
 end
 

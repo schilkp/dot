@@ -3,6 +3,8 @@ local M = {}
 M.note_dir = "~/Notes/pages/"
 M.journal_dir = "~/Notes/journals/"
 
+-- Check if a given note file already exists in the note 
+-- directory:
 function M.note_exists(name)
     for filename, type in vim.fs.dir(M.note_dir) do
         if type == "file" then
@@ -17,6 +19,8 @@ function M.note_exists(name)
     return nil
 end
 
+-- ':Note' command. Opens a fuzzy note finder if no argument is given.
+-- If an arguemnt is given that note is opened, being created if necessary.
 function M.note(args)
     if #args.fargs == 0 then
         require("schilk.config.plugins.telescope").find_notes()
@@ -34,6 +38,8 @@ function M.note(args)
     end
 end
 
+-- ':Journal' command. Opens (and creates if necessary) todays
+-- journal file.
 function M.journal(_args)
     local journal_today = M.journal_dir .. os.date("%Y_%m_%d.md")
     vim.cmd("e " .. journal_today)
