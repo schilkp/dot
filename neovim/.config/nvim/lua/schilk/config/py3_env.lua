@@ -4,16 +4,20 @@ M.py_env_dir = vim.fs.normalize('~/.config/nvim/nvim_env')
 M.py = vim.fs.normalize(M.py_env_dir .. '/bin/python')
 
 function M.config_py3_env()
+    -- Register command to create py3 venv:
     vim.cmd("command CreatePy3Env lua require('schilk.config.py3_env').create_py3_env()")
+
     if (vim.fn.filereadable(M.py) == 1) then
         -- Venv exists: Use it
         vim.g.python3_host_prog = M.py
     else
-        -- Venv does not exist. Try to create it:
+        -- Venv does not exist. Prompt to create it:
         vim.print("No NVIM py3 venv exists. Call `:CreatePy3Env`.")
     end
 end
 
+-- Create a python 3 virtual environment for nvim if one does not
+-- exist yet:
 function M.create_py3_env()
     if (vim.fn.filereadable(M.py) == 1) then
         vim.print("NVIM py3 venv already exists.")
