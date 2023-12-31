@@ -7,7 +7,7 @@ _default:
 
 # Return to single-pane layout.
 layout_reset:
-    tmux kill-pane -a        \;
+    tmux kill-pane -a
 
 # Main debugger/editor pane with two side panes.
 layout_dbg:
@@ -27,7 +27,7 @@ layout_dev:
     cd {{invocation_directory()}}
     tmux kill-pane -a        \; \
          split-window -v     \; \
-         resize-pane -y 6    \; \
+         resize-pane -y 15   \; \
          select-pane -t 1
 
 # Create a new main session.
