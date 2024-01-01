@@ -96,7 +96,7 @@ here() {
 
 # SchilkFetch
 source ~/dotfiles/utils/SchilkFetch.bash
-SchilkFetch_auto
+SchilkFetch
 
 #### Plugins ###################################################################
 # Note: Plugin install/loading can be disabled by touching ~/.zsh/basic_install
