@@ -32,11 +32,27 @@ layout_dev:
 
 # Reload tmux config.
 reload:
-    tmux source ~/.config/tmux/tmux.conf
+    -tmux source ~/.config/tmux/tmux.conf
+    @echo "Press any key to continue.."
+    @read
 
-# Install TMUX package manager.
-tpm_install:
-    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+# Setup TMUX package manager.
+tpm_setup:
+    -git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+    @echo "Press any key to continue.."
+    @read
+
+# Install TPM plugins.
+tpm_install_plugins:
+    -~/.config/tmux/plugins/tpm/bin/install_plugins
+    @echo "Press any key to continue.."
+    @read
+
+# Update TPM plugins.
+tpm_update_plugins:
+    -~/.config/tmux/plugins/tpm/bin/update_plugins all
+    @echo "Press any key to continue.."
+    @read
 
 # Create a new main session.
 main:
