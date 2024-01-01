@@ -145,7 +145,7 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
 
     # Load p10k:
     source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
 
     # Load zsh-vi-mode:
     source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
