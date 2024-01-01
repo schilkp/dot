@@ -34,6 +34,10 @@ layout_dev:
 reload:
     tmux source ~/.config/tmux/tmux.conf
 
+# Install TMUX package manager.
+tpm_install:
+    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+
 # Create a new main session.
 main:
     #!/bin/sh
