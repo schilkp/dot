@@ -77,6 +77,21 @@ local function config_lsp()
     })
 end
 
+
+local lsp_diagnostics = true
+
+local function toogle_lsp_diagnostics()
+    if (lsp_diagnostics) then
+        vim.print("Hiding LSP diagnostics..")
+        vim.diagnostic.disable()
+        lsp_diagnostics = false
+    else
+        vim.print("Showing LSP diagnostics..")
+        vim.diagnostic.enable()
+        lsp_diagnostics = true
+    end
+end
+
 local function config_keybinds()
     -- LSP Navigation Binds:
     vim.keymap.set({ 'n' }, '<leader>gd', vim.lsp.buf.definition, { silent = true, desc = "LSP: Goto Definition." })      -- TODO make saga?
@@ -99,6 +114,8 @@ local function config_keybinds()
     -- Diagnostics:
     vim.keymap.set({ 'n' }, '<leader>gH', require('trouble').toggle, { silent = true, desc = "LSP: Diagnostics" })
     vim.keymap.set({ 'n' }, '<C-k>', vim.lsp.buf.hover, { silent = true, desc = "LSP: Documentation" })
+
+    vim.keymap.set("n", "<leader>md", toogle_lsp_diagnostics, { silent = true, desc = " 💡 Toggle LSP diagnostics." })
 end
 
 function M.config()
