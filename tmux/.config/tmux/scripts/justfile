@@ -30,6 +30,10 @@ layout_dev:
          resize-pane -y 15   \; \
          select-pane -t 1
 
+# Reload tmux config.
+reload:
+    tmux source ~/.config/tmux/tmux.conf
+
 # Create a new main session.
 new_main:
     #!/bin/sh
