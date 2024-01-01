@@ -3,7 +3,7 @@
 "========================================
 
 " We don't need to be vi-compatible..
-set nocompatible 
+set nocompatible
 
 set nomodeline
 
@@ -40,7 +40,7 @@ syntax on
 " No error bells
 set noerrorbells
 
-" Enable incremental search 
+" Enable incremental search
 set incsearch
 " Enable smartcase search
 set ignorecase
@@ -109,7 +109,7 @@ augroup END
 
 
 "========================================
-"                 Remaps                    
+"                 Remaps
 "========================================
 
 " Set leader to space
@@ -128,7 +128,7 @@ nnoremap <leader>/ :noh<CR>
 " Reload current file on leader-R
 nnoremap <leader>R :e!<CR>
 
-" Select whole file on leader-a 
+" Select whole file on leader-a
 " nnoremap <C-a> ggVG
 nnoremap <leader>a ggVG
 
@@ -157,10 +157,14 @@ tnoremap <C-W><C-j> <C-\><C-n><C-W><C-j>
 tnoremap <C-W><C-k> <C-\><C-n><C-W><C-k>
 tnoremap <C-W><C-l> <C-\><C-n><C-W><C-l>
 
-
+" Open help in vertical split (instead of the default horizontal):
+augroup vertical_help
+autocmd!
+    autocmd FileType help wincmd L
+augroup END
 
 "========================================
-"                 Utils                    
+"                 Utils
 "========================================
 
 fun! EmptyRegisters()
