@@ -40,6 +40,10 @@
     "rust": [
         "extra/rustup"
     ],
+    "shellscripting": [
+        "extra/bash-language-server",
+        "extra/shellcheck"
+    ],
     "rtl": [
         "aur/verible-bin"
     ],

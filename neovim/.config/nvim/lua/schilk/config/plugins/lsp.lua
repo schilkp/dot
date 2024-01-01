@@ -75,6 +75,11 @@ local function config_lsp()
     require 'lspconfig'.marksman.setup({
         capabilities = capabilities,
     })
+
+    -- bash-language-server (Bash/Shell sripting):
+    require 'lspconfig'.bashls.setup({
+        capabilities = capabilities,
+    })
 end
 
 
