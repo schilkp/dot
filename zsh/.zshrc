@@ -26,10 +26,23 @@ alias ggg='git log --graph --oneline --all'
 alias gg='git log --graph --oneline --all -n 20'
 alias gc='git clean -fdx -i'
 
-# Get back to repo root, or jump back with popd
+# Get back to repo root.
 groot() {
     if git_root=$(git rev-parse --show-toplevel 2>/dev/null); then
+        echo "${git_root}"
         pushd "${git_root}"
+    fi
+}
+
+# Get back to repo root.
+troot() {
+    if [ -n "$TMUX" ]; then
+        if tmux_session_root=$(tmux display -p \#{session_path}); then
+            echo ${tmux_session_root}
+            pushd "${tmux_session_root}"
+        fi
+    else 
+        echo "Not inside tmux."
     fi
 }
 
