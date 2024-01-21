@@ -50,6 +50,13 @@ alias ls='ls --color=auto'
 alias la='ls --color=auto -a'
 alias ll='ls --color=auto -la'
 
+# Bat: 
+# By default like cat but with color (disables sidebar/line nos and pager):
+alias bat="bat --style=plain --paging=never"
+# No line-nos but pager:
+alias batp="bat --style=plain --paging=always"
+
+
 # Re-run last shell command with sudo:
 function ffs {
   local last_cmd=$(fc -ln -1)
