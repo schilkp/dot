@@ -163,6 +163,10 @@ autocmd!
     autocmd FileType help wincmd L
 augroup END
 
+" Keep cursor centerd when moving up/down half a page:
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
 "========================================
 "                 Utils
 "========================================
