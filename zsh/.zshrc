@@ -25,6 +25,7 @@ alias gll='git log'
 alias ggg='git log --graph --oneline --all'
 alias gg='git log --graph --oneline --all -n 20'
 alias gc='git clean -fdx -i'
+alias gi='git log -n 1 --patch'
 
 # Get back to repo root.
 groot() {
