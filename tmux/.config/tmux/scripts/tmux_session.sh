@@ -4,7 +4,8 @@ selected=$(                                                                     
     {                                                                                          \
       find ~/es ~/patch-it -mindepth 1 -maxdepth 3 -type d &&                                  \
       find ~/reps          -mindepth 1 -maxdepth 1 -type d &&                                  \
-      find ~/dotfiles      -mindepth 0 -maxdepth 1 -type d;                                    \
+      find ~/dotfiles      -mindepth 0 -maxdepth 1 -type d &&                                  \
+      realpath ~/calc;                                                                         \
     }                                                                                          \
     | grep -v -F -e ".bfg-report" -e "__pycache__"   `# Remove pointless files.`               \
     | grep -v -e "\.git\($\|/\)"                     `# Remove .git and .git/ but not .github` \
