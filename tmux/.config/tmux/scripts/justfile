@@ -53,11 +53,3 @@ tpm_update_plugins:
     -~/.config/tmux/plugins/tpm/bin/update_plugins all
     @echo "Press any key to continue.."
     @read
-
-# Create a new main session.
-main:
-    #!/bin/sh
-    if ! tmux has-session -t=main 2> /dev/null; then
-        tmux new-session -ds main -c $HOME
-    fi
-    tmux switch-client -t main
