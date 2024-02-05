@@ -9,9 +9,10 @@ options_dirs=$(                                                                 
     | grep -v -F -e ".bfg-report" -e "__pycache__"   `# Remove pointless files.`               \
     | grep -v -e "\.git\($\|/\)"                     `# Remove .git and .git/ but not .github` \
     | xargs -L 1 realpath --relative-to="${HOME}"    `# Remove path to home directory.`        \
+    | sed -E "sQ^Q~/Q" \
 )
 
-options_sessions=$(tmux list-sessions -F "#{session_name} [#{session_id}]")
+options_sessions=$(tmux list-sessions -F "#{p20:session_name} [#{p-3:session_id}]")
 
 options_others="main"
 
@@ -21,7 +22,7 @@ selected=$(                                                                     
         echo "${options_sessions}" &&                                                          \
         echo "${options_dirs}";                                                                \
     }                                                                                          \
-    | fzf --reverse --scheme=path
+    | fzf --reverse
 )
 
 # Exit if nothing selected:
@@ -31,7 +32,7 @@ fi
 
 # If an existing session was selected, go to that session:
 if [[ $selected =~ \[\$[0-9]+\]$ ]];  then
-    selected_session=$(echo "$selected" | sed -E 's/ \[\$([0-9]+)\]$//')
+    selected_session=$(echo "$selected" | sed -E 's/ +\[\$([0-9]+)\]$//')
     tmux switch-client -t "$selected_session"
     exit
 fi
@@ -42,7 +43,7 @@ fi
 if [ "$selected" = "main" ]; then
     selected_path="${HOME}"
 else
-    selected_path=$(echo "${selected}" | sed -E "sQ^Q${HOME}/Q")
+    selected_path=$(echo "${selected}" | sed -E "sQ^~/Q${HOME}/Q")
 fi
 
 selected_name=$(basename "$selected" | tr . _)
