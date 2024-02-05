@@ -31,8 +31,8 @@ if [ -z "$selected" ]; then
 fi
 
 # If an existing session was selected, go to that session:
-if [[ $selected =~ \[\$[0-9]+\]$ ]];  then
-    selected_session=$(echo "$selected" | sed -E 's/ +\[\$([0-9]+)\]$//')
+if [[ $selected =~ \[[[:space:]]*\$[0-9]+\]$ ]];  then
+    selected_session=$(echo "$selected" | sed -E 's/ +\[ *\$([0-9]+)\]$//')
     tmux switch-client -t "$selected_session"
     exit
 fi
