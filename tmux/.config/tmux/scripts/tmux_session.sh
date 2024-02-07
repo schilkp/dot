@@ -1,10 +1,11 @@
 #!/usr/bin/bash
 options_dirs=$(                                                                                \
     {                                                                                          \
-      find ~/patch-it      -mindepth 1 -maxdepth 3 -type d &&                                  \
       find ~/es            -mindepth 1 -maxdepth 2 -type d &&                                  \
       find ~/reps          -mindepth 1 -maxdepth 1 -type d &&                                  \
       find ~/dotfiles      -mindepth 0 -maxdepth 1 -type d &&                                  \
+      realpath ~/patch-it/fw/patchOS_ws/patchOS &&                                             \
+      realpath ~/patch-it/software/patchCTRL &&                                                \
       realpath ~/calc;                                                                         \
     }                                                                                          \
     | grep -v -F -e ".bfg-report" -e "__pycache__"   `# Remove pointless files.`               \
