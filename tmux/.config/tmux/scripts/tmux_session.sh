@@ -23,7 +23,7 @@ selected=$(                                                                     
         echo "${options_others}" &&                                                            \
         echo "${options_dirs}";                                                                \
     }                                                                                          \
-    | fzf --reverse
+    | fzf --reverse --scheme=path --tiebreak=index
 )
 
 # Exit if nothing selected:
