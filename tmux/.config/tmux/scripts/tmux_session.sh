@@ -19,8 +19,8 @@ options_others="main"
 
 selected=$(                                                                                    \
     {                                                                                          \
-        echo "${options_others}" &&                                                            \
         echo "${options_sessions}" &&                                                          \
+        echo "${options_others}" &&                                                            \
         echo "${options_dirs}";                                                                \
     }                                                                                          \
     | fzf --reverse
