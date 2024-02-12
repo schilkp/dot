@@ -23,8 +23,7 @@
         "extra/bat",
         "extra/ripgrep",
         "extra/just",
-        "aur/rm-improved",
-        "aur/zoxide"
+        "aur/rm-improved"
     ],
     "c": [
         "extra/clang",
