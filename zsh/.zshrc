@@ -180,9 +180,4 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     fpath=(~/.zsh/completion $fpath)
     fpath=(~/.zsh/zsh-completion/src $fpath)
     compinit
-
-    if command -v zoxide &> /dev/null; then
-        eval "$(zoxide init zsh)"
-        alias cd=z
-    fi
 fi
