@@ -3,8 +3,8 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 export HISTFILE="$HOME/.zhistory"
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 
 export PATH=$PATH:~/.local/bin
 
