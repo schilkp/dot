@@ -1,36 +1,5 @@
 local M = {}
 
-local function find_in_parent()
-    require('telescope.builtin').find_files({ find_command = { "rg", "--files", "--color", "never", ".." } })
-end
-
-local function find_in_buffer()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-        winblend = 10,
-        previewer = false,
-    })
-end
-
-local function find_dotfiles()
-    require('telescope.builtin').find_files({
-        cwd = "~/dotfiles",
-        hidden = true
-    })
-end
-
-function M.find_notes()
-    local files = {}
-    for name, type in vim.fs.dir(require("schilk.utils.notes").note_dir) do
-        if type == "file" or type == "link" then
-            files[# files + 1] = vim.fs.normalize(require("schilk.utils.notes").note_dir .. name)
-        end
-    end
-    require('telescope.builtin').find_files({
-        search_dirs = files
-    })
-end
-
 local function find_emoji()
     require 'telescope.builtin'.symbols { sources = { 'emoji' } }
 end
@@ -117,29 +86,11 @@ function M.config()
     -- Enable telescope fzf native, if installed
     pcall(require('telescope').load_extension, 'fzf')
 
-    -- Key binds:
-    vim.keymap.set('n', '<leader>o', require('telescope.builtin').find_files, { silent = true, desc = '🔍 Find File.' })
-    vim.keymap.set('n', '<leader>O', find_in_parent, { silent = true, desc = '🔍 Find File in Parent Dir.' })
-    vim.keymap.set('n', '<leader>i', require('telescope.builtin').git_files, { silent = true, desc = '🔍 Open Git File.' })
-    vim.keymap.set('n', '<leader>p', ':Rg<CR>', { silent = true, desc = '🔍 Live RipGrep.' })
-    vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, { silent = true, desc = '🔍 Open Buffer.' })
-
-    vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags,
-        { silent = true, desc = 'Search Help Tag.' })
-    vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles,
-        { silent = true, desc = 'Open Recent File.' })
-    vim.keymap.set('n', '<leader>fl', find_in_buffer, { silent = true, desc = 'Search in current buffer.' })
     vim.keymap.set('n', '<leader>fe', find_emoji, { silent = true, desc = 'Find Emoji.' })
     vim.keymap.set('n', '<leader>fg', find_gitmoji, { silent = true, desc = 'Find Gitmoji.' })
     vim.keymap.set('n', '<leader>fs', find_symbol, { silent = true, desc = 'Find Symbol.' })
     vim.keymap.set('n', '<leader>fc', find_from_compile_cmds,
         { silent = true, desc = 'Find file from compile_commands.json.' })
-    vim.keymap.set('n', '<leader>fC', require('telescope.builtin').colorscheme,
-        { silent = true, desc = 'Find colorscheme.' })
-    vim.keymap.set('n', '<leader>fP', require('telescope.builtin').commands, { silent = true, desc = 'Find command.' })
-
-    vim.keymap.set('n', '<leader>fd', find_dotfiles, { silent = true, desc = 'Open dotfiles.' })
-    vim.keymap.set('n', '<leader>fn', M.find_notes, { silent = true, desc = 'Open notes.' })
 end
 
 return M

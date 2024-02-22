@@ -28,6 +28,14 @@ require('lazy').setup({
         },
         config = require('schilk.config.plugins.lsp').config
     },
+    -- Fuzzy finding:
+    {
+        "ibhagwan/fzf-lua",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons"
+        },
+        config = require('schilk.config.plugins.fzflua').config
+    },
     -- CMP Autocomplete + LuaSnip:
     {
         'hrsh7th/nvim-cmp',
