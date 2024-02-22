@@ -117,8 +117,9 @@ local function config_keybinds()
     vim.keymap.set({ 'n' }, '<leader>ga', vim.lsp.buf.code_action, { silent = true, desc = "LSP: Code Actions" })
 
     -- Diagnostics:
-    vim.keymap.set({ 'n' }, '<leader>gH', require('trouble').toggle, { silent = true, desc = "LSP: Diagnostics" })
+    vim.keymap.set({ 'n' }, '<leader>gH', require('trouble').toggle, { silent = true, desc = "LSP: Open Diagnostics Pane" })
     vim.keymap.set({ 'n' }, '<C-k>', vim.lsp.buf.hover, { silent = true, desc = "LSP: Documentation" })
+    vim.keymap.set({ 'n' }, '<leader>ge', vim.diagnostic.open_float, { silent = true, desc = "LSP: Diagnostics" })
 
     vim.keymap.set("n", "<leader>md", toogle_lsp_diagnostics, { silent = true, desc = " 💡 Toggle LSP diagnostics." })
 end
