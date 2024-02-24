@@ -126,6 +126,8 @@ require('lazy').setup({
     },
     -- Justfile syntax highlighting:
     'NoahTheDuke/vim-just',
+    -- HJSON syntax highlighting:
+    'hjson/vim-hjson',
     -- Slime: Push-to-REPL:
     {
         'jpalardy/vim-slime',
