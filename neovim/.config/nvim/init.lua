@@ -24,7 +24,9 @@ require('lazy').setup({
             'simrat39/rust-tools.nvim',
             'rust-lang/rust.vim',
             -- clangd:
-            'p00f/clangd_extensions.nvim'
+            'p00f/clangd_extensions.nvim',
+            -- json/yaml schemas:
+            'b0o/schemastore.nvim',
         },
         config = require('schilk.config.plugins.lsp').config
     },
