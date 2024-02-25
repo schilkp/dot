@@ -80,6 +80,11 @@ local function config_lsp()
     require 'lspconfig'.bashls.setup({
         capabilities = capabilities,
     })
+
+    -- Yaml
+    require 'lspconfig'.yamlls.setup({
+        capabilities = capabilities,
+    })
 end
 
 
