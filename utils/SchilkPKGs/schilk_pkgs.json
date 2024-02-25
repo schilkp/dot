@@ -39,6 +39,9 @@
     "rust": [
         "extra/rustup"
     ],
+    "yaml": [
+        "extra/yaml-language-server"
+    ],
     "shellscripting": [
         "extra/bash-language-server",
         "extra/shellcheck"
