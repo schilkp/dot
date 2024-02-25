@@ -42,6 +42,9 @@
     "yaml": [
         "extra/yaml-language-server"
     ],
+    "json_css_html": [
+        "aur/vscode-langservers-extracted"
+    ],
     "shellscripting": [
         "extra/bash-language-server",
         "extra/shellcheck"
@@ -74,5 +77,4 @@
         "extra/inkscape",
         "extra/gimp"
     ]
-
 }
