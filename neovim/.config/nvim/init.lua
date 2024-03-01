@@ -173,7 +173,13 @@ require('lazy').setup({
     {
         "lukas-reineke/indent-blankline.nvim",
         config = require('schilk.config.plugins.indent_blankline').config,
-    }
+    },
+    {
+        "michaelrommel/nvim-silicon",
+        lazy = true,
+        cmd = "Silicon",
+        config = require('schilk.config.plugins.silicon').config,
+    },
 })
 
 require('schilk.config.nvim').config_highlight_on_yank()
