@@ -52,7 +52,6 @@ require('lazy').setup({
                 config = require('schilk.config.plugins.lua_snip').config
             }
         },
-
         config = require('schilk.config.plugins.cmp').config
     },
     -- Trouble:
@@ -179,11 +178,13 @@ require('lazy').setup({
     },
 })
 
+-- Config:
 require('schilk.config.nvim').config_highlight_on_yank()
 require('schilk.config.nvim').config_floatterm_replacement()
 require('schilk.config.nvim').config_large_file_mode()
 require('schilk.config.py3_env').config_py3_env()
 require('schilk.config.spellfiles').config_spellfiles()
 
+-- Custom scripts/utils:
 require('schilk.utils.sv_module_instantiation').setup()
 require('schilk.utils.notes').setup()
