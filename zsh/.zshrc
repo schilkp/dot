@@ -19,11 +19,10 @@ alias vi='nvim'
 
 # Git
 alias gs='git status'
-alias ga='git add'
 alias gl='git log -n 8'
 alias gll='git log'
-alias ggg='git log --graph --oneline --all'
 alias gg='git log --graph --oneline --all -n 20'
+alias ggg='git log --graph --oneline --all'
 alias gc='git clean -fdx -i'
 alias gi='git log -n 1 --patch'
 
