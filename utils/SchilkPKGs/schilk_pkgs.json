@@ -23,6 +23,7 @@
         "extra/bat",
         "extra/ripgrep",
         "extra/just",
+        "extra/atuin",
         "aur/rm-improved"
     ],
     "c": [

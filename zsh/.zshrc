@@ -41,7 +41,7 @@ troot() {
             echo ${tmux_session_root}
             pushd "${tmux_session_root}"
         fi
-    else 
+    else
         echo "Not inside tmux."
     fi
 }
@@ -50,7 +50,7 @@ alias ls='ls --color=auto'
 alias la='ls --color=auto -a'
 alias ll='ls --color=auto -la'
 
-# Bat: 
+# Bat:
 # By default like cat but with color (disables sidebar/line nos and pager):
 alias bat="bat --style=plain --paging=never"
 # No line-nos but pager:
@@ -174,6 +174,10 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
 
     # Load zsh zsh-autosuggestions:
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+    if command -v atuin &> /dev/null; then
+        eval "$(atuin init zsh)"
+    fi
 
     # Initialise completion:
     fpath=(~/.zsh/completion $fpath)
