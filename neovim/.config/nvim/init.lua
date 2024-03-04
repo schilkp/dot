@@ -103,9 +103,6 @@ require('lazy').setup({
         },
         build = ':TSUpdate',
     },
-    -- FZF:
-    "junegunn/fzf",
-    'junegunn/fzf.vim',
     -- Git Signs:
     {
         -- Adds git related signs to the gutter, as well as utilities for managing changes
