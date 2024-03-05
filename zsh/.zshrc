@@ -175,8 +175,15 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     # Load zsh zsh-autosuggestions:
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+    # If autin is installed, enable it.
     if command -v atuin &> /dev/null; then
-        eval "$(atuin init zsh --disable-up-arrow)"
+        # Note: Since zsh-vi-mode lazy-loads keybinds, it will overwrite
+        # Some of the keybinds set by atuin. The following creates a 'callback'
+        # that loads atuin after zsh-vi-mode has applied all keymaps.
+        function my_init() {
+            eval "$(atuin init zsh --disable-up-arrow)"
+        }
+        zvm_after_init_commands+=(my_init)
     fi
 
     # Initialise completion:
