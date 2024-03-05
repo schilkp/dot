@@ -176,7 +176,7 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
     if command -v atuin &> /dev/null; then
-        eval "$(atuin init zsh)"
+        eval "$(atuin init zsh --disable-up-arrow)"
     fi
 
     # Initialise completion:
