@@ -50,11 +50,8 @@ alias ls='ls --color=auto'
 alias la='ls --color=auto -a'
 alias ll='ls --color=auto -la'
 
-# Bat:
-# By default like cat but with color (disables sidebar/line nos and pager):
-alias bat="bat --style=plain --paging=never"
-# No line-nos but pager:
-alias batp="bat --style=plain --paging=always"
+# Bat: Remove sidebar/linenos
+alias bat="bat --style=plain"
 
 
 # Re-run last shell command with sudo:
