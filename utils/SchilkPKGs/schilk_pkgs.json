@@ -77,5 +77,10 @@
         "aur/onlyoffice-bin",
         "extra/inkscape",
         "extra/gimp"
+    ],
+    "kicad": [
+        "extra/kicad",
+        "extra/kicad-library",
+        "extra/kicad-library-3d"
     ]
 }
