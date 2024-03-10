@@ -146,14 +146,6 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
         echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-completions..${NC}"
         git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
     fi
-    if [[ ! -a ~/.zsh/completion/_just.zsh ]]; then
-        if command -v just &> /dev/null; then
-            mkdir -p ~/.zsh
-            mkdir -p ~/.zsh/completion
-            echo "[${CYAN}zshrc${NC}] ${RED}Installing completion for just..${NC}"
-            just --completions zsh > ~/.zsh/completion/_just.zsh
-        fi
-    fi
 
     # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
     # Initialization code that may require console input (password prompts, [y/n]
