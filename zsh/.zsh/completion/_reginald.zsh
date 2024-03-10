@@ -357,3 +357,5 @@ if [ "$funcstack[1]" = "_reginald" ]; then
 else
     compdef _reginald reginald
 fi
+
+# reginald 0.0.3

@@ -630,3 +630,5 @@ if [ "$funcstack[1]" = "_bender" ]; then
 else
     compdef _bender bender
 fi
+
+# bender 0.28.1
