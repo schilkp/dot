@@ -66,7 +66,7 @@ alias csb="echo 'cool story bro'|cowsay"
 
 # Correct git author
 alias git_author_priv="git config user.name \"schilkp\"; git config user.email \"schilk.philipp@gmail.com\""
-alias git_author_ethz="git config user.name \"schilkp\"; git config user.email \"schilkp@student.ethz.ch\""
+alias git_author_ethz="git config user.name \"schilkp\"; git config user.email \"schilkp@ethz.ch\""
 
 function journal {
   nvim +"Journal"
