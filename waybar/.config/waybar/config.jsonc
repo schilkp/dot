@@ -1,0 +1,108 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-left": [
+        "hyprland/workspaces",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "pulseaudio/slider",
+        "bluetooth",
+        // "cpu",
+        // "memory",
+        "battery",
+        "tray",
+        "clock"
+    ],
+    "hyprland/workspaces": {
+        "window-rewrite": {}
+    },
+    "hyprland/window": {
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "🌎 $1",
+            "Alacritty": " "
+        },
+        "separate-outputs": true
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%)   ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr}   ",
+        "format-disconnected": "Disconnected ⚠  "
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    "bluetooth": {
+        // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+        "format": " {status}  ",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {num_connections} connected  ",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+    },
+    "wlr/taskbar": {
+        "format": "{icon} {title}",
+        "icon-size": 14,
+        "icon-theme": "Numix-Circle",
+        "tooltip": "false",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": " Firefox"
+        }
+    }
+}

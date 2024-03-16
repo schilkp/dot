@@ -82,5 +82,21 @@
         "extra/kicad",
         "extra/kicad-library",
         "extra/kicad-library-3d"
+    ],
+    "hyprland": [
+        "extra/hyprland",
+        "extra/hyprpaper",
+        "extra/wl-clipboard",
+        "extra/alacritty",
+        "aur/swaylock-effects",
+        "aur/nwg-displays",
+        "aur/wlr-randr",
+        "extra/waybar",
+        "extra/blueman",
+        "extra/network-manager-applet",
+        "extra/gnome-keyring",
+        "extra/dunst",
+        "extra/polkit-kde-agent",
+        "extra/cliphist"
     ]
 }
