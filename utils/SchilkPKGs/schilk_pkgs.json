@@ -97,6 +97,7 @@
         "extra/gnome-keyring",
         "extra/dunst",
         "extra/polkit-kde-agent",
-        "extra/cliphist"
+        "extra/cliphist",
+        "aur/hyprshot"
     ]
 }
