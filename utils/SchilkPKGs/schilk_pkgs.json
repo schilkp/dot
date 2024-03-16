@@ -98,6 +98,7 @@
         "extra/dunst",
         "extra/polkit-kde-agent",
         "extra/cliphist",
-        "aur/hyprshot"
+        "aur/hyprshot",
+        "extra/fuzzel"
     ]
 }
