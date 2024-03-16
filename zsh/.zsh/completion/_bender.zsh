@@ -82,11 +82,11 @@ _arguments "${_arguments_options[@]}" \
 '--dir=[Sets a custom root working directory]: : ' \
 '-g[Print the dependencies for each package]' \
 '--graph[Print the dependencies for each package]' \
-'-f[Do not group packages by topological rank. If the \`--graph\` option is specified, print multiple lines per package, one for each dependency.]' \
-'--flat[Do not group packages by topological rank. If the \`--graph\` option is specified, print multiple lines per package, one for each dependency.]' \
+'-f[Do not group packages by topological rank]' \
+'--flat[Do not group packages by topological rank]' \
 '--local[Disables fetching of remotes (e.g. for air-gapped computers)]' \
-'-h[Print help]' \
-'--help[Print help]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (sources)
@@ -175,8 +175,8 @@ _arguments "${_arguments_options[@]}" \
 '-d+[Sets a custom root working directory]: : ' \
 '--dir=[Sets a custom root working directory]: : ' \
 '--local[Disables fetching of remotes (e.g. for air-gapped computers)]' \
-'-h[Print help]' \
-'--help[Print help]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 ":: :_bender__vendor_commands" \
 "*::: :->vendor" \
 && ret=0
@@ -205,8 +205,8 @@ _arguments "${_arguments_options[@]}" \
 '-n[Do not apply patches when initializing dependencies]' \
 '--no_patch[Do not apply patches when initializing dependencies]' \
 '--local[Disables fetching of remotes (e.g. for air-gapped computers)]' \
-'-h[Print help]' \
-'--help[Print help]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (patch)
@@ -215,10 +215,10 @@ _arguments "${_arguments_options[@]}" \
 '*--message=[The message to be associated with the format-patch.]: : ' \
 '-d+[Sets a custom root working directory]: : ' \
 '--dir=[Sets a custom root working directory]: : ' \
-'--plain[Generate a plain diff instead of a format-patch. Includes all local changes (not only the staged ones).]' \
+'--plain[Generate a plain diff instead of a format-patch.]' \
 '--local[Disables fetching of remotes (e.g. for air-gapped computers)]' \
-'-h[Print help]' \
-'--help[Print help]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (help)
@@ -393,8 +393,8 @@ _bender_commands() {
 'config:Emit the configuration' \
 'script:Emit tool scripts for the package' \
 'checkout:Checkout all dependencies referenced in the Lock file' \
-'vendor:Copy source code from upstream external repositories into this repository. Functions similar to the lowrisc vendor.py script. Type bender vendor <SUBCOMMAND> --help for more information about the subcommands.' \
-'fusesoc:Creates a FuseSoC \`.core\` file for all dependencies where none is present.' \
+'vendor:Copy source code from upstream external repositories into this repository' \
+'fusesoc:Creates a FuseSoC \`.core\` file for all dependencies where none is present' \
 'init:Initialize a Bender package' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
@@ -478,8 +478,8 @@ _bender__help_commands() {
 'config:Emit the configuration' \
 'script:Emit tool scripts for the package' \
 'checkout:Checkout all dependencies referenced in the Lock file' \
-'vendor:Copy source code from upstream external repositories into this repository. Functions similar to the lowrisc vendor.py script. Type bender vendor <SUBCOMMAND> --help for more information about the subcommands.' \
-'fusesoc:Creates a FuseSoC \`.core\` file for all dependencies where none is present.' \
+'vendor:Copy source code from upstream external repositories into this repository' \
+'fusesoc:Creates a FuseSoC \`.core\` file for all dependencies where none is present' \
 'init:Initialize a Bender package' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
@@ -494,7 +494,7 @@ _bender__help__help_commands() {
 _bender__vendor__help_commands() {
     local commands; commands=(
 'diff:Display a diff of the local tree and the upstream tree with patches applied.' \
-'init:(Re-)initialize the external dependencies. Copies the upstream files into the target directories and applies existing patches.' \
+'init:(Re-)initialize the external dependencies.' \
 'patch:Generate a patch file from staged local changes' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
@@ -609,7 +609,7 @@ _bender__update_commands() {
 _bender__help__vendor_commands() {
     local commands; commands=(
 'diff:Display a diff of the local tree and the upstream tree with patches applied.' \
-'init:(Re-)initialize the external dependencies. Copies the upstream files into the target directories and applies existing patches.' \
+'init:(Re-)initialize the external dependencies.' \
 'patch:Generate a patch file from staged local changes' \
     )
     _describe -t commands 'bender help vendor commands' commands "$@"
@@ -618,7 +618,7 @@ _bender__help__vendor_commands() {
 _bender__vendor_commands() {
     local commands; commands=(
 'diff:Display a diff of the local tree and the upstream tree with patches applied.' \
-'init:(Re-)initialize the external dependencies. Copies the upstream files into the target directories and applies existing patches.' \
+'init:(Re-)initialize the external dependencies.' \
 'patch:Generate a patch file from staged local changes' \
 'help:Print this message or the help of the given subcommand(s)' \
     )

@@ -49,13 +49,15 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 '--field-enum-prefix=[Prefix the name of a local field enum with the name of the containing register]:FIELD_ENUM_PREFIX:(true false)' \
 '--registers-as-bitfields=[Make register structs bitfields to reduce their memory size]:REGISTERS_AS_BITFIELDS:(true false)' \
-'--clang-format-guard=[Surround header with a clang-format off guard]:CLANG_FORMAT_GUARD:(true false)' \
-'--generate-enums=[Generate field/shared enums]:GENERATE_ENUMS:(true false)' \
-'--generate-registers=[Generate register structs and property defines]:GENERATE_REGISTERS:(true false)' \
-'--generate-register-functions=[Generate register packing and unpacking functions]:GENERATE_REGISTER_FUNCTIONS:(true false)' \
-'--generate-generic-macros=[Generate generic register packing and unpacking macros]:GENERATE_GENERIC_MACROS:(true false)' \
-'--generate-validation-functions=[Generate enum and struct unpacking validation functions]:GENERATE_VALIDATION_FUNCTIONS:(true false)' \
 '*--add-include=[Header file that should be included at the top of the generated header]:ADD_INCLUDE: ' \
+'--funcs-static-inline=[Make all functions static inline.]:FUNCS_STATIC_INLINE:(true false)' \
+'--funcs-as-prototypes=[Generate function prototypes instead of full implementations.]:FUNCS_AS_PROTOTYPES:(true false)' \
+'--validation=[This enables the generation of validation functions/macros that check if a given value can be represented as an enum or struct.]:VALIDATION:(true false)' \
+'--clang-format-guard=[Surround file with a clang-format off guard]:CLANG_FORMAT_GUARD:(true false)' \
+'--include-guards=[Generate include guard]:INCLUDE_GUARDS:(true false)' \
+'--doxy-comments=[Generate doxygen comments.]:DOXY_COMMENTS:(true false)' \
+'(--dont-generate)*--only-generate=[Only generate a subset of the elements/sections usually included in a complete output file.]:ONLY_GENERATE:(enums enum-validation-funcs register-structs register-properties register-conversion-funcs register-validation-funcs generic-macros)' \
+'(--only-generate)*--dont-generate=[Skip generation of some element/section usually included in a complete output file.]:DONT_GENERATE:(enums enum-validation-funcs register-structs register-properties register-conversion-funcs register-validation-funcs generic-macros)' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
@@ -81,10 +83,15 @@ _arguments "${_arguments_options[@]}" \
 ':map -- Path to YAML register dump file:_files' \
 && ret=0
 ;;
-(rs-nodeps)
+(rs-struct-no-deps)
 _arguments "${_arguments_options[@]}" \
-'-h[Print help]' \
-'--help[Print help]' \
+'--address-type=[Rust type to use for register addresses.]:ADDRESS_TYPE: ' \
+'--unpacking-error-msg=[Include static string error messages for unpacking errors.]:UNPACKING_ERROR_MSG:(true false)' \
+'--register-block-mods=[Wrap each register block into its own module.]:REGISTER_BLOCK_MODS:(true false)' \
+'*--struct-derive=[Trait to derive on all register structs.]:STRUCT_DERIVE: ' \
+'*--enum-derive=[Trait to derive on all enums.]:ENUM_DERIVE: ' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
 && ret=0
 ;;
 (help)
@@ -115,7 +122,7 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 && ret=0
 ;;
-(rs-nodeps)
+(rs-struct-no-deps)
 _arguments "${_arguments_options[@]}" \
 && ret=0
 ;;
@@ -178,7 +185,7 @@ _arguments "${_arguments_options[@]}" \
 _arguments "${_arguments_options[@]}" \
 && ret=0
 ;;
-(rs-nodeps)
+(rs-struct-no-deps)
 _arguments "${_arguments_options[@]}" \
 && ret=0
 ;;
@@ -258,8 +265,8 @@ _reginald__gen_commands() {
 'c-funcpack:C header with register structs, and packing/unpacking functions' \
 'c-macromap:C header with field mask/shift macros' \
 'md-datasheet:Markdown datasheet' \
-'md-regdump-decode:Decode register dump' \
-'rs-nodeps:Rust module with no dependency' \
+'md-regdump-decode:Markdown decode report of register dump' \
+'rs-struct-no-deps:Rust module with register structs and no dependencies' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'reginald gen commands' commands "$@"
@@ -270,8 +277,8 @@ _reginald__help__gen_commands() {
 'c-funcpack:C header with register structs, and packing/unpacking functions' \
 'c-macromap:C header with field mask/shift macros' \
 'md-datasheet:Markdown datasheet' \
-'md-regdump-decode:Decode register dump' \
-'rs-nodeps:Rust module with no dependency' \
+'md-regdump-decode:Markdown decode report of register dump' \
+'rs-struct-no-deps:Rust module with register structs and no dependencies' \
     )
     _describe -t commands 'reginald help gen commands' commands "$@"
 }
@@ -281,8 +288,8 @@ _reginald__gen__help_commands() {
 'c-funcpack:C header with register structs, and packing/unpacking functions' \
 'c-macromap:C header with field mask/shift macros' \
 'md-datasheet:Markdown datasheet' \
-'md-regdump-decode:Decode register dump' \
-'rs-nodeps:Rust module with no dependency' \
+'md-regdump-decode:Markdown decode report of register dump' \
+'rs-struct-no-deps:Rust module with register structs and no dependencies' \
 'help:Print this message or the help of the given subcommand(s)' \
     )
     _describe -t commands 'reginald gen help commands' commands "$@"
@@ -336,20 +343,20 @@ _reginald__help__gen__md-regdump-decode_commands() {
     local commands; commands=()
     _describe -t commands 'reginald help gen md-regdump-decode commands' commands "$@"
 }
-(( $+functions[_reginald__gen__help__rs-nodeps_commands] )) ||
-_reginald__gen__help__rs-nodeps_commands() {
+(( $+functions[_reginald__gen__help__rs-struct-no-deps_commands] )) ||
+_reginald__gen__help__rs-struct-no-deps_commands() {
     local commands; commands=()
-    _describe -t commands 'reginald gen help rs-nodeps commands' commands "$@"
+    _describe -t commands 'reginald gen help rs-struct-no-deps commands' commands "$@"
 }
-(( $+functions[_reginald__gen__rs-nodeps_commands] )) ||
-_reginald__gen__rs-nodeps_commands() {
+(( $+functions[_reginald__gen__rs-struct-no-deps_commands] )) ||
+_reginald__gen__rs-struct-no-deps_commands() {
     local commands; commands=()
-    _describe -t commands 'reginald gen rs-nodeps commands' commands "$@"
+    _describe -t commands 'reginald gen rs-struct-no-deps commands' commands "$@"
 }
-(( $+functions[_reginald__help__gen__rs-nodeps_commands] )) ||
-_reginald__help__gen__rs-nodeps_commands() {
+(( $+functions[_reginald__help__gen__rs-struct-no-deps_commands] )) ||
+_reginald__help__gen__rs-struct-no-deps_commands() {
     local commands; commands=()
-    _describe -t commands 'reginald help gen rs-nodeps commands' commands "$@"
+    _describe -t commands 'reginald help gen rs-struct-no-deps commands' commands "$@"
 }
 
 if [ "$funcstack[1]" = "_reginald" ]; then
