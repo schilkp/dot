@@ -34,7 +34,7 @@ foreground = "0xffffff"
 # ==== Font ==================================================================
 
 [font]
-size = 9
+size = 12
 
 [font.bold]
 family = "TerminalFont"
@@ -59,10 +59,6 @@ style = "Beam"
 
 [mouse]
 hide_when_typing = true
-
-[shell]
-args = ["-c", "tmux new-session -A -s main -c ~ && exec zsh"]
-program = "/usr/bin/zsh"
 
 [window]
 opacity = 0.8
