@@ -26,63 +26,6 @@
         "extra/atuin",
         "aur/rm-improved"
     ],
-    "c": [
-        "extra/clang",
-        "extra/cmake",
-        "extra/ninja",
-        "extra/bear"
-    ],
-    "python": [
-        "extra/pyright",
-        "extra/python-isort",
-        "extra/autopep8"
-    ],
-    "rust": [
-        "extra/rustup"
-    ],
-    "yaml": [
-        "extra/yaml-language-server"
-    ],
-    "json_css_html": [
-        "aur/vscode-langservers-extracted"
-    ],
-    "shellscripting": [
-        "extra/bash-language-server",
-        "extra/shellcheck"
-    ],
-    "rtl": [
-        "aur/verible-bin"
-    ],
-    "md": [
-        "aur/marksman-bin"
-    ],
-    "embedded": [
-        "aur/jlink"
-    ],
-    "zephyr_nrf": [
-        "aur/python-west",
-        "aur/zephyr-sdk",
-        "aur/nrf5x-command-line-tools",
-        "extra/python-intelhex",
-        "extra/python-pylink-square",
-        "aur/nrfconnect-appimage"
-    ],
-    "latex": [
-        "extra/texlive-meta",
-        "extra/python-pygments",
-        "extra/texlab",
-        "aur/ltex-ls-bin"
-    ],
-    "office": [
-        "aur/onlyoffice-bin",
-        "extra/inkscape",
-        "extra/gimp"
-    ],
-    "kicad": [
-        "extra/kicad",
-        "extra/kicad-library",
-        "extra/kicad-library-3d"
-    ],
     "hyprland": [
         "extra/hyprland",
         "extra/hyprpaper",
@@ -100,5 +43,62 @@
         "extra/cliphist",
         "aur/hyprshot",
         "extra/fuzzel"
+    ],
+    "devel-c": [
+        "extra/clang",
+        "extra/cmake",
+        "extra/ninja",
+        "extra/bear"
+    ],
+    "devel-python": [
+        "extra/pyright",
+        "extra/python-isort",
+        "extra/autopep8"
+    ],
+    "devel-rust": [
+        "extra/rustup"
+    ],
+    "devel-yaml": [
+        "extra/yaml-language-server"
+    ],
+    "devel-json_css_html": [
+        "aur/vscode-langservers-extracted"
+    ],
+    "devel-shell": [
+        "extra/bash-language-server",
+        "extra/shellcheck"
+    ],
+    "devel-rtl": [
+        "aur/verible-bin"
+    ],
+    "devel-md": [
+        "aur/marksman-bin"
+    ],
+    "devel-embedded": [
+        "aur/jlink"
+    ],
+    "devel-zephyr_nrf": [
+        "aur/python-west",
+        "aur/zephyr-sdk",
+        "aur/nrf5x-command-line-tools",
+        "extra/python-intelhex",
+        "extra/python-pylink-square",
+        "aur/nrfconnect-appimage"
+    ],
+    "devel-latex": [
+        "extra/texlive-meta",
+        "extra/python-pygments",
+        "extra/texlab",
+        "aur/ltex-ls-bin"
+    ],
+    "office": [
+        "aur/onlyoffice-bin",
+        "extra/inkscape",
+        "extra/gimp"
+    ],
+    "kicad": [
+        "extra/kicad",
+        "extra/kicad-library",
+        "extra/kicad-library-3d"
     ]
 }
