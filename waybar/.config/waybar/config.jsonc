@@ -23,17 +23,27 @@
     "custom/logo": {
         "format": "     {}     ",
         "exec": "~/dotfiles/scripts/random_emoji.bash",
+        "tooltip": "false",
         "interval": 120,
         "on-click": "exec fuzzel"
     },
     "hyprland/workspaces": {
         "window-rewrite": {},
-        "format": "{name}{icon}",
+        "format": "{name}{icon}  ",
         "format-icons": {
             "1": ":  ",
             "4": ":  @",
             "5": ":  󰍡",
             "default": ""
+        },
+        "persistent-workspaces": {
+            "HDMI-A-1": [
+                1
+            ],
+            "DP-4": [
+                4,
+                5
+            ]
         }
     },
     "hyprland/window": {
