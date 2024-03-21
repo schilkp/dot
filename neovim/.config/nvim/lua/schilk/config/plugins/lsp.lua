@@ -105,6 +105,12 @@ local function config_lsp()
             },
         },
     })
+
+    -- Zig language server
+    require 'lspconfig'.zls.setup({
+        capabilities = capabilities,
+    })
+
 end
 
 
