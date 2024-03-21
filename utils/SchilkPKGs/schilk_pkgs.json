@@ -44,6 +44,23 @@
         "aur/hyprshot",
         "extra/fuzzel"
     ],
+    "river": [
+        "extra/river",
+        "aur/wdisplays",
+        "extra/wl-clipboard",
+        "extra/alacritty",
+        "aur/swaylock-effects",
+        "aur/way-displays",
+        "extra/swaybg",
+        "extra/waybar",
+        "extra/blueman",
+        "extra/network-manager-applet",
+        "extra/gnome-keyring",
+        "extra/dunst",
+        "extra/polkit-kde-agent",
+        "extra/cliphist",
+        "extra/fuzzel"
+    ],
     "devel-c": [
         "extra/clang",
         "extra/cmake",
