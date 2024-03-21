@@ -3,6 +3,7 @@
     "position": "top",
     "height": 30,
     "modules-left": [
+        "custom/logo",
         "hyprland/workspaces",
         "wlr/taskbar"
     ],
@@ -13,19 +14,25 @@
         "pulseaudio",
         "pulseaudio/slider",
         "bluetooth",
-        // "cpu",
-        // "memory",
+        "cpu",
+        "memory",
         "battery",
         "tray",
         "clock"
     ],
+    "custom/logo": {
+        "format": "     {}     ",
+        "exec": "~/dotfiles/scripts/random_emoji.bash",
+        "interval": 120,
+        "on-click": "exec fuzzel"
+    },
     "hyprland/workspaces": {
         "window-rewrite": {},
         "format": "{name}{icon}",
         "format-icons": {
             "1": ":  ",
-            "2": ":  @",
-            "4": ":  󰍡",
+            "4": ":  @",
+            "5": ":  󰍡",
             "default": ""
         }
     },
@@ -41,13 +48,45 @@
         "spacing": 10
     },
     "clock": {
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "󰥔   {:%H:%M   󰃮   %Y-%m-%d}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
     "cpu": {
-        "format": "{usage}% "
+        "format": "  {usage}% {icon} ",
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ]
     },
     "memory": {
-        "format": "{}% "
+        "format": "   {}% "
     },
     "battery": {
         "bat": "BAT0",
@@ -56,7 +95,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{icon}  {capacity}% ",
         "format-icons": [
             "",
             "",
@@ -73,7 +112,7 @@
     "pulseaudio": {
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
+        "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
             "phone": "",
@@ -101,12 +140,12 @@
         "on-click": "blueman-manager"
     },
     "wlr/taskbar": {
-        "format": "{icon} {title}",
+        "format": "{icon} {title:15}",
         "icon-size": 14,
         "icon-theme": "Numix-Circle",
         "tooltip": "false",
         "on-click": "activate",
-        "on-click-middle": "close",
+        "on-click-middle": "minimize",
         "rewrite": {
             "(.*) — Mozilla Firefox": " Firefox"
         }
