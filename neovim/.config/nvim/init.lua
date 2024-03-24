@@ -101,6 +101,7 @@ require('lazy').setup({
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
         build = ':TSUpdate',
+        config = require('schilk.config.plugins.treesitter').config
     },
     -- Git Signs:
     {
