@@ -5,6 +5,7 @@
         "extra/vim",
         "extra/stow",
         "extra/git",
+        "extra/difftastic",
         "extra/firefox",
         "extra/ttf-jetbrains-mono-nerd",
         "extra/noto-fonts-emoji",
