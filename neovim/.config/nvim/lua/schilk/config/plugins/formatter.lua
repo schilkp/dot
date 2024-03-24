@@ -12,6 +12,9 @@ function M.config()
         log_level = vim.log.levels.WARN,
         -- All formatter configurations are opt-in
         filetype = {
+            yaml = {
+                require("formatter.filetypes.yaml").prettier,
+            },
             python = {
                 require("formatter.filetypes.python").autopep8,
                 require("formatter.filetypes.python").isort,
