@@ -77,7 +77,8 @@
         "extra/rustup"
     ],
     "devel-yaml": [
-        "extra/yaml-language-server"
+        "extra/yaml-language-server",
+        "extra/prettier"
     ],
     "devel-json_css_html": [
         "aur/vscode-langservers-extracted"
