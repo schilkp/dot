@@ -149,6 +149,11 @@ require('lazy').setup({
         },
         config = require('schilk.config.plugins.nvim_tree').config
     },
+    -- NVIM Outline:
+    {
+        "hedyhli/outline.nvim",
+        config = require('schilk.config.plugins.nvim_outline').config
+    },
     {
         'elihunter173/dirbuf.nvim',
         config = require('schilk.config.plugins.dirbuf').config
