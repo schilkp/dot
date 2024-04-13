@@ -51,6 +51,9 @@ M.snippets = {
     s({ trig = "dox_line" }, {
         t({ "//!< " }), i(0)
     }),
+    s({ trig = "header" }, {
+        t({ "// ==== " }), i(0), t({ " ======================================================================="})
+    }),
     s({ trig = "dox_header" }, {
         t({ "/**", "" }),
         t({ " * @file " }), f(function(_, _) return vim.fs.basename(vim.api.nvim_buf_get_name(0)) end), t({ "", "" }),
