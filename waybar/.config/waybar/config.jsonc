@@ -40,7 +40,14 @@
             "HDMI-A-1": [
                 1
             ],
+            "DP-1": [
+                1
+            ],
             "DP-4": [
+                4,
+                5
+            ],
+            "DP-5": [
                 4,
                 5
             ]
@@ -150,14 +157,10 @@
         "on-click": "blueman-manager"
     },
     "wlr/taskbar": {
-        "format": "{icon} {title:15}",
+        "format": "{icon} {title:.15}",
         "icon-size": 14,
         "icon-theme": "Numix-Circle",
         "tooltip": "false",
-        "on-click": "activate",
-        "on-click-middle": "minimize",
-        "rewrite": {
-            "(.*) — Mozilla Firefox": " Firefox"
-        }
+        "on-click": "activate"
     }
 }
