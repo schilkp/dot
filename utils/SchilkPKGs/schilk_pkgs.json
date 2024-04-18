@@ -24,8 +24,7 @@
         "extra/bat",
         "extra/ripgrep",
         "extra/just",
-        "extra/atuin",
-        "aur/rm-improved"
+        "extra/atuin"
     ],
     "hyprland": [
         "extra/hyprland",
@@ -49,23 +48,6 @@
         "extra/qt5-wayland",
         "extra/qt6ct",
         "extra/qt6-wayland"
-    ],
-    "river": [
-        "extra/river",
-        "aur/wdisplays",
-        "extra/wl-clipboard",
-        "extra/alacritty",
-        "aur/swaylock-effects",
-        "aur/way-displays",
-        "extra/swaybg",
-        "extra/waybar",
-        "extra/blueman",
-        "extra/network-manager-applet",
-        "extra/gnome-keyring",
-        "extra/dunst",
-        "extra/polkit-kde-agent",
-        "extra/cliphist",
-        "extra/fuzzel"
     ],
     "devel-c": [
         "extra/clang",
