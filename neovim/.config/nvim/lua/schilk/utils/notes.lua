@@ -1,9 +1,9 @@
 local M = {}
 
-M.note_dir = "~/Notes/pages/"
+M.note_dir    = "~/Notes/pages/"
 M.journal_dir = "~/Notes/journals/"
 
--- Check if a given note file already exists in the note 
+-- Check if a given note file already exists in the note
 -- directory:
 function M.note_exists(name)
     for filename, type in vim.fs.dir(M.note_dir) do
@@ -23,7 +23,7 @@ end
 -- If an arguemnt is given that note is opened, being created if necessary.
 function M.note(args)
     if #args.fargs == 0 then
-        require("schilk.config.plugins.telescope").find_notes()
+        M.find_notes()
         return
     end
 
@@ -40,14 +40,43 @@ end
 
 -- ':Journal' command. Opens (and creates if necessary) todays
 -- journal file.
-function M.journal(_args)
+function M.journal(_)
     local journal_today = M.journal_dir .. os.date("%Y_%m_%d.md")
     vim.cmd("e " .. journal_today)
+end
+
+-- Fuzzy-find note
+function M.find_notes()
+    local fzf_lua = require 'fzf-lua'
+    fzf_lua.files({ cwd = M.note_dir })
+end
+
+-- Fuzzy-find in notes
+function M.grep_notes()
+    local fzf_lua = require 'fzf-lua'
+    fzf_lua.live_grep_native({ cwd = M.note_dir })
+end
+
+-- Fuzzy-find journal
+function M.find_journal()
+    local fzf_lua = require 'fzf-lua'
+    fzf_lua.files({ cwd = M.journal_dir })
+end
+
+-- Fuzzy-find in journals
+function M.grep_journal()
+    local fzf_lua = require 'fzf-lua'
+    fzf_lua.live_grep_native({ cwd = M.journal_dir })
 end
 
 function M.setup()
     vim.api.nvim_create_user_command('Note', M.note, { nargs = '?' })
     vim.api.nvim_create_user_command('Journal', M.journal, { nargs = 0 })
+
+    vim.keymap.set('n', '<leader>fn', M.find_notes, { silent = true, desc = 'Open note.' })
+    vim.keymap.set('n', '<leader>fN', M.grep_notes, { silent = true, desc = 'Find in notes.' })
+    vim.keymap.set('n', '<leader>fj', M.find_journal, { silent = true, desc = 'Open journal.' })
+    vim.keymap.set('n', '<leader>fJ', M.grep_journal, { silent = true, desc = 'Find in journals.' })
 end
 
 return M
