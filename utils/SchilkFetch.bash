@@ -42,8 +42,6 @@ function SchilkFetch_repo_status() {
 function SchilkFetch() {
     printf "📦 "
     SchilkFetch_repo_status dot "${HOME}/dotfiles"
-    printf "   "
-    SchilkFetch_repo_status note "${HOME}/Notes"
     printf "\n"
 }
 
