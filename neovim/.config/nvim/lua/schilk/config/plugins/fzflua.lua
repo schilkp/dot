@@ -8,32 +8,6 @@ local function find_in_parent()
     require('fzf-lua').files({ cwd = '..' })
 end
 
-function M.find_notes()
-    local fzf_lua = require 'fzf-lua'
-
-    local files = {}
-    for name, type in vim.fs.dir(require("schilk.utils.notes").note_dir) do
-        if type == "file" or type == "link" then
-            files[# files + 1] = name
-        end
-    end
-
-    local opts = {}
-    opts.fn_transform = function(x)
-        return fzf_lua.utils.ansi_codes.magenta(x)
-    end
-    opts.actions = {
-        ['default'] = function(selected)
-            local full_path = vim.fs.normalize(require("schilk.utils.notes").note_dir .. selected[1])
-            vim.cmd("e " .. full_path)
-        end
-    }
-    opts.preview = "bat --style=plain --color=always " ..
-    vim.fs.normalize(require("schilk.utils.notes").note_dir) .. "/{}"
-
-    fzf_lua.fzf_exec(files, opts)
-end
-
 function M.config()
     require("fzf-lua").setup({
         winopts = {
@@ -61,7 +35,6 @@ function M.config()
     vim.keymap.set('n', '<leader>fC', require('fzf-lua').colorschemes, { silent = true, desc = 'Find colorscheme.' })
     vim.keymap.set('n', '<leader>fP', require('fzf-lua').commands, { silent = true, desc = 'Find command.' })
 
-    vim.keymap.set('n', '<leader>fn', M.find_notes, { silent = true, desc = 'Open notes.' })
 end
 
 return M
