@@ -31,6 +31,9 @@ yellow = "0xfee409"
 background = "0x000000"
 foreground = "0xffffff"
 
+[env]
+TERM = "xterm-256color"
+
 # ==== Font ==================================================================
 
 [font]
