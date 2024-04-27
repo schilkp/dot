@@ -1,16 +1,18 @@
 #!/usr/bin/bash
-options_dirs=$(                                                                                \
-    {                                                                                          \
-      find ~/es            -mindepth 1 -maxdepth 2 -type d &&                                  \
-      find ~/reps          -mindepth 1 -maxdepth 1 -type d &&                                  \
-      find ~/dotfiles      -mindepth 0 -maxdepth 1 -type d &&                                  \
-      realpath ~/patch-it/fw/patchOS_ws/patchOS &&                                             \
-      realpath ~/patch-it/software/patchCTRL &&                                                \
-      realpath ~/calc;                                                                         \
-    }                                                                                          \
-    | grep -v -F -e ".bfg-report" -e "__pycache__"   `# Remove pointless files.`               \
-    | grep -v -e "\.git\($\|/\)"                     `# Remove .git and .git/ but not .github` \
-    | xargs -L 1 realpath --relative-to="${HOME}"    `# Remove path to home directory.`        \
+options_dirs=$(                                                                                    \
+    {                                                                                              \
+      find ~/es            -mindepth 1 -maxdepth 2 -type d &&                                      \
+      find ~/reps          -mindepth 1 -maxdepth 1 -type d &&                                      \
+      find ~/dotfiles      -mindepth 0 -maxdepth 1 -type d &&                                      \
+      echo ~/patch-it/fw/patchOS_ws/patchOS &&                                                     \
+      echo ~/patch-it/software/patchCTRL &&                                                        \
+      echo ~/notes/pages &&                                                                        \
+      echo ~/notes/journals &&                                                                     \
+      echo ~/calc;                                                                                 \
+    }                                                                                              \
+    | grep -v -F -e ".bfg-report" -e "__pycache__"   `# Remove pointless files.`                   \
+    | grep -v -e "\.git\($\|/\)"                     `# Remove .git and .git/ but not .github`     \
+    | xargs -L 1 realpath -s --relative-to="${HOME}"    `# Remove path to home directory.`         \
     | sed -E "sQ^Q~/Q" \
 )
 
@@ -18,12 +20,12 @@ options_sessions=$(tmux list-sessions -F "#{p20:session_name} [#{p-3:session_id}
 
 options_others="main"
 
-selected=$(                                                                                    \
-    {                                                                                          \
-        echo "${options_sessions}" &&                                                          \
-        echo "${options_others}" &&                                                            \
-        echo "${options_dirs}";                                                                \
-    }                                                                                          \
+selected=$(                                                                                        \
+    {                                                                                              \
+        echo "${options_sessions}" &&                                                              \
+        echo "${options_others}" &&                                                                \
+        echo "${options_dirs}";                                                                    \
+    }                                                                                              \
     | fzf --reverse --scheme=path --tiebreak=index
 )
 
