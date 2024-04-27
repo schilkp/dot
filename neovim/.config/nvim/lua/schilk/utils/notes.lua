@@ -1,7 +1,7 @@
 local M       = {}
 
-M.note_dir    = "~/Insync/schilksync@gmail.com/Google Drive/LogSeq/pages/"
-M.journal_dir = "~/Insync/schilksync@gmail.com/Google Drive/LogSeq/journals/"
+M.note_dir    = "~/notes/pages/"
+M.journal_dir = "~/notes/journals/"
 
 -- Check if a given note file already exists in the note
 -- directory:
