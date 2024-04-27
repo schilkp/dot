@@ -63,13 +63,20 @@ require('lazy').setup({
         'folke/which-key.nvim',
         config = require('schilk.config.plugins.whichkey').config
     },
-    -- OneDark Colorscheme:
+    -- -- OneDark Colorscheme:
+    -- {
+    --     -- Theme inspired by Atom
+    --     'navarasu/onedark.nvim',
+    --     priority = 1000,
+    --     config = require('schilk.config.plugins.onedark').config
+    -- },
     {
-        -- Theme inspired by Atom
-        'navarasu/onedark.nvim',
+        "catppuccin/nvim",
         priority = 1000,
-        config = require('schilk.config.plugins.onedark').config
+        name = "catppuccin",
+        config = require('schilk.config.plugins.catppuccin').config
     },
+
     -- LuaLine:
     {
         'nvim-lualine/lualine.nvim',
