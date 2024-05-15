@@ -33,9 +33,7 @@ def workspace_contains_app(workspace, app) -> bool:
 
 
 if workspace_contains_app(1, "Alacritty"):
-    print("Is there")
     run_cmd(['hyprctl', '--batch', 'dispatch workspace 1;'])
 else:
-    print("Is not there")
     run_cmd(['hyprctl', '--batch', 'dispatch workspace 1;', 
              'dispatch exec alacritty -e /usr/bin/zsh -c "tmux new-session -A -s main -c ${HOME} && exec zsh"'])
