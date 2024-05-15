@@ -76,14 +76,6 @@ function note {
   nvim +"Note "$1
 }
 
-function note_push {
-    pushd ~/Notes
-    git add .
-    git commit -m "Notes update."
-    git push
-    popd
-}
-
 # Activate python venv
 activate() {
     if [ "$#" -eq 1 ]; then
