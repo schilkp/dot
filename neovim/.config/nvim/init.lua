@@ -189,6 +189,13 @@ require('lazy').setup({
         cmd = "Silicon",
         config = require('schilk.config.plugins.silicon').config,
     },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+        config = require('schilk.config.plugins.markdown_preview').config
+    }
 })
 
 -- Config:
