@@ -18,6 +18,9 @@ setopt PUSHD_SILENT
 alias d='dirs -v'
 for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
+# Ultra basic prompt:
+PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+
 #### Util Aliases + Functions ##################################################
 
 alias vi='nvim'
@@ -122,12 +125,6 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     CYAN='\033[0;36m'
     NC='\033[0m'
 
-    # Download/generate plugins if they are not present:
-    if [[ ! -a ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme ]]; then
-        mkdir -p ~/.zsh
-        echo "[${CYAN}zshrc${NC}] ${RED}Installing p10k..${NC}"
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
-    fi
     if [[ ! -a ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh ]]; then
         mkdir -p ~/.zsh
         echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-vi-mode..${NC}"
@@ -143,17 +140,14 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
         echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-completions..${NC}"
         git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
     fi
-
-    # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-    # Initialization code that may require console input (password prompts, [y/n]
-    # confirmations, etc.) must go above this block; everything else may go below.
-    if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-      source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    if ! type oh-my-posh &> /dev/null ; then
+        echo "[${CYAN}zshrc${NC}] ${RED}Installing oh-my-posh..${NC}"
+        ~/.config/oh-my-posh/install_oh_my_posh.sh -d ~/.local/bin/
     fi
 
-    # Load p10k:
-    source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-    [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+    if type oh-my-posh &> /dev/null ; then
+        eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config.yaml)"
+    fi
 
     # Load zsh-vi-mode:
     source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
@@ -177,4 +171,3 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     fpath=(~/.zsh/zsh-completion/src $fpath)
     compinit
 fi
-
