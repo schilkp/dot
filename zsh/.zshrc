@@ -5,6 +5,12 @@ autoload -Uz compinit promptinit
 # Include hidden files:
 _comp_options+=(globdots)
 
+# History:
+export HISTFILE="$HOME/.zhistory"
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+setopt HIST_IGNORE_SPACE
+
 # Use same colors as LS:
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 setopt AUTO_PUSHD
@@ -172,3 +178,4 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     fpath=(~/.zsh/zsh-completion/src $fpath)
     compinit
 fi
+
