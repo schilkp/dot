@@ -37,6 +37,10 @@ set relativenumber
 " Enable Syntax highlighting
 syntax on
 
+" Disable syntax highlighting after 400 cols to stop major slowdown if file 
+" contains very large lines:
+set synmaxcol=400
+
 " No error bells
 set noerrorbells
 
