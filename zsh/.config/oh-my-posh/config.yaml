@@ -1,0 +1,121 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 2
+
+palette:
+  catppuccin_latte_rosewater: "#dc8a78"
+  catppuccin_latte_flamingo: "#dd7878"
+  catppuccin_latte_pink: "#ea76cb"
+  catppuccin_latte_mauve: "#8839ef"
+  catppuccin_latte_red: "#d20f39"
+  catppuccin_latte_maroon: "#e64553"
+  catppuccin_latte_peach: "#fe640b"
+  catppuccin_latte_yellow: "#df8e1d"
+  catppuccin_latte_green: "#40a02b"
+  catppuccin_latte_teal: "#179299"
+  catppuccin_latte_sky: "#04a5e5"
+  catppuccin_latte_sapphire: "#209fb5"
+  catppuccin_latte_blue: "#1e66f5"
+  catppuccin_latte_lavender: "#7287fd"
+  catppuccin_latte_text: "#4c4f69"
+  catppuccin_latte_subtext1: "#5c5f77"
+  catppuccin_latte_subtext0: "#6c6f85"
+  catppuccin_latte_overlay2: "#7c7f93"
+  catppuccin_latte_overlay1: "#8c8fa1"
+  catppuccin_latte_overlay0: "#9ca0b0"
+  catppuccin_latte_surface2: "#acb0be"
+  catppuccin_latte_surface1: "#bcc0cc"
+  catppuccin_latte_surface0: "#ccd0da"
+  catppuccin_latte_base: "#eff1f5"
+  catppuccin_latte_mantle: "#e6e9ef"
+  catppuccin_latte_crust: "#dce0e8"
+
+blocks:
+  - type: prompt
+    alignment: left
+    segments:
+      - type: os
+        style: plain
+        foreground: "p:catppuccin_latte_teal"
+        template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}} "
+        properties:
+          macos: 🍎
+          linux: 🐧
+          windows: 🪟
+
+      - type: path
+        style: plain
+        foreground: "p:catppuccin_latte_sky"
+        template: " {{ .Path }} "
+        properties:
+          style: powerlevel
+
+      - type: git
+        style: plain
+        foreground: "p:catppuccin_latte_green"
+        # foreground_templates:
+        #   - "{{ if .Working.Changed}}p:catppuccin_latte_yellow{{ end }}"
+        #   - "{{ if .Staging.Changed}}p:catppuccin_latte_peach{{ end }}"
+        #   - "{{ if gt .StashCount 0 }}p:catppuccin_latte_peach{{ end }}"
+        # template: "{{ .UpstreamIcon }} {{ .HEAD }}{{
+        #   if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{
+        #   if or (.Working.Changed) (.Staging.Changed) }} {{ end }}{{
+        #   if gt .StashCount 0 }}   {{ .StashCount }}{{ end }}"
+        template: "{{ .UpstreamIcon }} {{ .HEAD }}{{
+          if .BranchStatus }} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{ 
+          if .Working.Changed }} <p:catppuccin_latte_maroon></>{{ end }}{{ 
+          if .Staging.Changed }} <p:catppuccin_latte_peach> </>{{ end }}{{ 
+          if gt .StashCount 0 }} <p:catppuccin_latte_red></>{{ .StashCount }}{{ end }}"
+        properties:
+          fetch_status: true
+          fetch_upstream_icon: true
+
+      - type: status
+        style: plain
+        foreground: "p:catppuccin_latte_red"
+        template: "{{ if .Error }} !{{ .String }}{{ end }}"
+        properties:
+          always_enabled: true
+
+      - type: text
+        style: plain
+        foreground: "p:catppuccin_latte_green"
+        template: " ❯ "
+
+  - type: rprompt
+    segments:
+      - type: session
+        style: plain
+        foreground: "p:catppuccin_latte_flamingo"
+        template: "{{ if .SSHSession }}  {{ .UserName }} {{ end }}"
+
+      - type: rust
+        style: plain
+        foreground: "p:catppuccin_latte_flamingo"
+        template: "  {{ .Full }} "
+
+      - type: python
+        style: plain
+        foreground: "p:catppuccin_latte_flamingo"
+        template: "   {{ .Venv }} ({{ .Full }}) "
+
+      - type: docker
+        style: plain
+        foreground: "p:catppuccin_latte_flamingo"
+        template: "   {{ .Context }} "
+
+      - type: executiontime
+        style: plain
+        foreground: "p:catppuccin_latte_sky"
+        template: "󰅒 {{ .FormattedMs }} "
+        properties:
+          threshold: 150
+          style: austin
+          always_enabled: false
+
+      - type: time
+        style: plain
+        foreground: "p:catppuccin_latte_sky"
+        template: " {{ .CurrentDate | date .Format }} "
+        properties:
+          time_format: "15:04:05"
