@@ -57,11 +57,26 @@ blocks:
           if and (.BranchStatus) (ne .BranchStatus \"≡\")}} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{ 
           if and (.BranchStatus) (eq .BranchStatus \"≡\")}} <p:catppuccin_latte_green>{{ .BranchStatus }}</>{{ end }}{{ 
           if .Working.Changed }} <p:catppuccin_latte_maroon></>{{ end }}{{ 
-          if .Staging.Changed }} <p:catppuccin_latte_peach> </>{{ end }}{{ 
+          if .Staging.Changed }} <p:catppuccin_latte_yellow> </>{{ end }}{{ 
           if gt .StashCount 0 }} <p:catppuccin_latte_red> {{ .StashCount }}</>{{ end }}"
         properties:
           fetch_status: true
           fetch_upstream_icon: true
+
+          commit_icon: " "
+          tag_icon: " "
+          rebase_icon: " "
+          cherry_pick_icon: " "
+          revert_icon: " "
+          merge_icon: " "
+          no_commits_icon: "? "
+          branch_icon: ""
+          branch_identical_icon: "≡"
+          branch_ahead_icon: "↑"
+          branch_behind_icon: "↓"
+          branch_gone_icon: "≢"
+          branch_max_length: 25
+          truncate_symbol: "…"
 
       - type: text
         style: plain
