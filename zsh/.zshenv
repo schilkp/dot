@@ -4,10 +4,6 @@ export EDITOR=nvim
 
 export TERMINAL=alacritty
 
-export HISTFILE="$HOME/.zhistory"
-export HISTSIZE=1000000
-export SAVEHIST=1000000
-
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.cargo/bin
 
