@@ -110,21 +110,81 @@ local function config_lsp()
     require 'lspconfig'.zls.setup({
         capabilities = capabilities,
     })
-
 end
 
 
-local lsp_diagnostics = true
+local function toggle_buffer_lsp_diagnostics()
+    local enabled = vim.diagnostic.is_enabled({ bufnr = 0 });
 
-local function toogle_lsp_diagnostics()
-    if (lsp_diagnostics) then
-        vim.print("Hiding LSP diagnostics..")
-        vim.diagnostic.disable()
-        lsp_diagnostics = false
+    if enabled then
+        vim.print("Hiding Buffer LSP diagnostics..")
+        vim.diagnostic.enable(false, { bufnr = 0 })
     else
+        vim.print("Showing Buffer LSP diagnostics..")
+        vim.diagnostic.enable(true, { bufnr = 0 })
+    end
+end
+
+local all_lsp_diagnostic_hidden = false;
+local function toggle_lsp_diagnostics()
+    if (all_lsp_diagnostic_hidden) then
         vim.print("Showing LSP diagnostics..")
-        vim.diagnostic.enable()
-        lsp_diagnostics = true
+        all_lsp_diagnostic_hidden = false
+    else
+        vim.print("Hiding LSP diagnostics..")
+        all_lsp_diagnostic_hidden = true
+    end
+
+    for _, v in ipairs(vim.fn.getwininfo()) do
+        if (all_lsp_diagnostic_hidden) then
+            vim.diagnostic.enable(false, { bufnr = v.bufnr })
+        else
+            vim.diagnostic.enable(true, { bufnr = v.bufnr })
+        end
+    end
+end
+
+local function toggle_buffer_semantic_highlight()
+    local hidden = vim.b.schilk_semantic_highlight_hidden or false
+    local bufnr = vim.fn.bufnr()
+
+    if (hidden) then
+        vim.print("Showing Buffer LSP semantic highlight..")
+        for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+            vim.lsp.semantic_tokens.start(bufnr, client.id)
+        end
+        vim.b.schilk_semantic_highlight_hidden = false
+    else
+        vim.print("Hiding Buffer LSP semantic highlight..")
+        for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+            vim.lsp.semantic_tokens.stop(bufnr, client.id)
+        end
+        vim.b.schilk_semantic_highlight_hidden = true
+    end
+end
+
+local all_semantic_highlight_hidden = false;
+local function toggle_semantic_highlight()
+    if (all_semantic_highlight_hidden) then
+        vim.print("Showing Semantic Highlight..")
+        all_semantic_highlight_hidden = false
+    else
+        vim.print("Hiding Semantic Highlight..")
+        all_semantic_highlight_hidden = true
+    end
+
+    for _, v in ipairs(vim.fn.getwininfo()) do
+        for _, client in ipairs(vim.lsp.get_clients({ bufnr = v.bufnr })) do
+            if (all_semantic_highlight_hidden) then
+                vim.print("bufnr " .. v.bufnr .. " client " .. client.name .. " OFF")
+                vim.lsp.semantic_tokens.stop(v.bufnr, client.id)
+            else
+                vim.print("bufnr " .. v.bufnr .. " client " .. client.name .. " ON")
+                vim.lsp.semantic_tokens.start(v.bufnr, client.id)
+            end
+        end
+
+        vim.b[v.bufnr].schilk_semantic_highlight_hidden = all_semantic_highlight_hidden
     end
 end
 
@@ -153,7 +213,14 @@ local function config_keybinds()
     vim.keymap.set({ 'n' }, '<C-k>', vim.lsp.buf.hover, { silent = true, desc = "LSP: Documentation" })
     vim.keymap.set({ 'n' }, '<leader>ge', vim.diagnostic.open_float, { silent = true, desc = "LSP: Diagnostics" })
 
-    vim.keymap.set("n", "<leader>md", toogle_lsp_diagnostics, { silent = true, desc = " 💡 Toggle LSP diagnostics." })
+    vim.keymap.set("n", "<leader>md", toggle_buffer_lsp_diagnostics,
+        { silent = true, desc = " 💡 Toggle LSP diagnostics for current buffer." })
+    vim.keymap.set("n", "<leader>mD", toggle_lsp_diagnostics,
+        { silent = true, desc = " 💡 Toggle LSP diagnostics for all buffers." })
+    vim.keymap.set("n", "<leader>ms", toggle_buffer_semantic_highlight,
+        { silent = true, desc = " 💡 Toggle LSP semantic highlight for current buffer." })
+    vim.keymap.set("n", "<leader>mS", toggle_semantic_highlight,
+        { silent = true, desc = " 💡 Toggle LSP semantic highlight for all buffers." })
 end
 
 function M.config()
