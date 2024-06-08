@@ -76,7 +76,10 @@ require('lazy').setup({
         name = "catppuccin",
         config = require('schilk.config.plugins.catppuccin').config
     },
-
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = require('schilk.config.plugins.colorizer').config
+    },
     -- LuaLine:
     {
         'nvim-lualine/lualine.nvim',
