@@ -67,7 +67,8 @@
     "hyprland/window": {
         "rewrite": {
             "(.*) — Mozilla Firefox": "🌎 $1",
-            "Alacritty": " "
+            "Alacritty": " ",
+            "Spotify Premium": "Spotify"
         },
         "separate-outputs": true
     },
@@ -172,6 +173,10 @@
         "icon-size": 14,
         "icon-theme": "Numix-Circle",
         "tooltip": "false",
-        "on-click": "activate"
+        "on-click": "activate",
+        "rewrite": {
+            ".*Alacritty.*": "   ",
+            ".*Spotify.*": "  Spotify"
+        }
     }
 }
