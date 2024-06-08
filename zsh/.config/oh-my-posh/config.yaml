@@ -37,7 +37,7 @@ blocks:
       - type: os
         style: plain
         foreground: "p:catppuccin_latte_teal"
-        template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}} "
+        template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
         properties:
           macos: 🍎
           linux: 🐧
@@ -46,36 +46,22 @@ blocks:
       - type: path
         style: plain
         foreground: "p:catppuccin_latte_sky"
-        template: " {{ .Path }} "
+        template: "  {{ .Path }}"
         properties:
           style: powerlevel
 
       - type: git
         style: plain
         foreground: "p:catppuccin_latte_green"
-        # foreground_templates:
-        #   - "{{ if .Working.Changed}}p:catppuccin_latte_yellow{{ end }}"
-        #   - "{{ if .Staging.Changed}}p:catppuccin_latte_peach{{ end }}"
-        #   - "{{ if gt .StashCount 0 }}p:catppuccin_latte_peach{{ end }}"
-        # template: "{{ .UpstreamIcon }} {{ .HEAD }}{{
-        #   if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{
-        #   if or (.Working.Changed) (.Staging.Changed) }} {{ end }}{{
-        #   if gt .StashCount 0 }}   {{ .StashCount }}{{ end }}"
-        template: "{{ .UpstreamIcon }} {{ .HEAD }}{{
-          if .BranchStatus }} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{ 
+        template: " {{ .UpstreamIcon }} {{ .HEAD }}{{
+          if and (.BranchStatus) (ne .BranchStatus \"≡\")}} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{ 
+          if and (.BranchStatus) (eq .BranchStatus \"≡\")}} <p:catppuccin_latte_green>{{ .BranchStatus }}</>{{ end }}{{ 
           if .Working.Changed }} <p:catppuccin_latte_maroon></>{{ end }}{{ 
           if .Staging.Changed }} <p:catppuccin_latte_peach> </>{{ end }}{{ 
-          if gt .StashCount 0 }} <p:catppuccin_latte_red></>{{ .StashCount }}{{ end }}"
+          if gt .StashCount 0 }} <p:catppuccin_latte_red> {{ .StashCount }}</>{{ end }}"
         properties:
           fetch_status: true
           fetch_upstream_icon: true
-
-      - type: status
-        style: plain
-        foreground: "p:catppuccin_latte_red"
-        template: "{{ if .Error }} !{{ .String }}{{ end }}"
-        properties:
-          always_enabled: true
 
       - type: text
         style: plain
@@ -87,22 +73,22 @@ blocks:
       - type: session
         style: plain
         foreground: "p:catppuccin_latte_flamingo"
-        template: "{{ if .SSHSession }}  {{ .UserName }} {{ end }}"
+        template: "{{ if .SSHSession }}  {{ .UserName }}{{ end }}"
 
       - type: rust
         style: plain
         foreground: "p:catppuccin_latte_flamingo"
-        template: "  {{ .Full }} "
+        template: " {{ .Full }} "
 
       - type: python
         style: plain
         foreground: "p:catppuccin_latte_flamingo"
-        template: "   {{ .Venv }} ({{ .Full }}) "
+        template: "  {{ .Venv }} ({{ .Full }}) "
 
       - type: docker
         style: plain
         foreground: "p:catppuccin_latte_flamingo"
-        template: "   {{ .Context }} "
+        template: "  {{ .Context }} "
 
       - type: executiontime
         style: plain
@@ -112,6 +98,13 @@ blocks:
           threshold: 150
           style: austin
           always_enabled: false
+      
+      - type: status
+        style: plain
+        foreground: "p:catppuccin_latte_red"
+        template: "{{ if .Error }}!{{ .String }} {{ end }}"
+        properties:
+          always_enabled: true
 
       - type: time
         style: plain
