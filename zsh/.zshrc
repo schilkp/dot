@@ -11,8 +11,7 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 setopt HIST_IGNORE_SPACE
 
-# Use same colors as LS:
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # Use same colors as LS
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
