@@ -133,6 +133,8 @@ require('lazy').setup({
     },
     -- Justfile syntax highlighting:
     'NoahTheDuke/vim-just',
+    -- Handlebars file type:
+    'mustache/vim-mustache-handlebars',
     -- HJSON syntax highlighting:
     'hjson/vim-hjson',
     -- Slime: Push-to-REPL:

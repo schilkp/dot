@@ -44,6 +44,7 @@
   "vim-hjson": { "branch": "master", "commit": "adc104d4a4041a482e1af1914895a119e343c7e1" },
   "vim-indent-object": { "branch": "master", "commit": "8ab36d5ec2a3a60468437a95e142ce994df598c6" },
   "vim-just": { "branch": "main", "commit": "152d4f62e16140183d6b4500b689f6bf851a6029" },
+  "vim-mustache-handlebars": { "branch": "master", "commit": "0153fe03a919add2d6cf2d41b2d5b6e1188bc0e0" },
   "vim-slime": { "branch": "main", "commit": "ca59df2570e1a12f9ddfa90b6118df4d87453fcd" },
   "vimtex": { "branch": "master", "commit": "0587a064f675fd85cdfb8a76d6a3ff698af3944b" },
   "which-key.nvim": { "branch": "main", "commit": "0099511294f16b81c696004fa6a403b0ae61f7a0" }
