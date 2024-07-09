@@ -78,6 +78,30 @@ local function config_lsp()
         capabilities = capabilities,
     })
 
+    -- typescript language server:
+    require 'lspconfig'.tsserver.setup({
+        capabilities = capabilities,
+        init_options = {
+            plugins = {
+                {
+                    name = "@vue/typescript-plugin",
+                    location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+                    languages = { "javascript", "typescript", "vue" },
+                },
+            },
+        },
+        filetypes = {
+            "javascript",
+            "typescript",
+            "vue",
+        },
+    })
+
+    -- emmet (html):
+    require 'lspconfig'.emmet_language_server.setup({
+        capabilities = capabilities,
+    })
+
     -- Yaml
     require 'lspconfig'.yamlls.setup({
         capabilities = capabilities,
