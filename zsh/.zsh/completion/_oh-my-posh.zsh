@@ -211,4 +211,4 @@ if [ "$funcstack[1]" = "_oh-my-posh" ]; then
     _oh-my-posh
 fi
 
-# 21.3.0
+# 21.10.1
