@@ -48,5 +48,6 @@ function completion_from_command() {
 completion_from_command "just" "just --completions zsh"
 completion_from_command "bender" "bender completion zsh"
 completion_from_command "reginald" "reginald completion zsh"
+completion_from_command "tband-cli" "tband-cli completion zsh"
 completion_from_command "oh-my-posh" "oh-my-posh completion zsh"
 
