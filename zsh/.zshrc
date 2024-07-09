@@ -96,6 +96,8 @@ activate() {
         source .env/bin/activate
     elif [ -f .venv/bin/activate ]; then
         source .venv/bin/activate
+    elif [ -f pyproject.toml ] && grep -q "tool.poetry" pyproject.toml ; then
+        poetry shell
     fi
 }
 
