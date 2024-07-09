@@ -10,7 +10,8 @@
         "extra/ttf-jetbrains-mono-nerd",
         "extra/noto-fonts-emoji",
         "extra/lua-language-server",
-        "extra/htop"
+        "extra/htop",
+        "extra/brightnessctl"
     ],
     "desktop": [
         "aur/insync",
