@@ -39,26 +39,54 @@ blocks:
         foreground: "p:catppuccin_latte_teal"
         template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
         properties:
+          windows: 🪟
           macos: 🍎
           linux: 🐧
-          windows: 🪟
+          alma: 🐧
+          almalinux: 🐧
+          almalinux9: 🐧
+          alpine:  🐧
+          android: 🐧
+          aosc: 🐧
+          arch: 🐧
+          centos: 🐧
+          coreos: 🐧
+          debian: 🐧
+          deepin: 🐧
+          devuan: 🐧
+          elementary: 🐧
+          endeavouros: 🐧
+          fedora: 🐧
+          gentoo: 🐧
+          mageia: 🐧
+          manjaro: 🐧
+          mint: 🐧
+          nixos: 🐧
+          opensuse: 🐧
+          opensuse-tumbleweed: 🐧
+          raspbian: 🐧
+          redhat: 🐧
+          rocky: 🐧
+          sabayon: 🐧
+          slackware: 🐧
+          ubuntu: 🐧
 
       - type: path
         style: plain
         foreground: "p:catppuccin_latte_sky"
-        template: "  {{ .Path }}"
+        template: " 󰉋 {{ .Path }}"
         properties:
           style: powerlevel
 
       - type: git
         style: plain
         foreground: "p:catppuccin_latte_green"
-        template: " {{ .UpstreamIcon }} {{ .HEAD }}{{
-          if and (.BranchStatus) (ne .BranchStatus \"≡\")}} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{ 
-          if and (.BranchStatus) (eq .BranchStatus \"≡\")}} <p:catppuccin_latte_green>{{ .BranchStatus }}</>{{ end }}{{ 
-          if .Working.Changed }} <p:catppuccin_latte_maroon></>{{ end }}{{ 
-          if .Staging.Changed }} <p:catppuccin_latte_yellow> </>{{ end }}{{ 
-          if gt .StashCount 0 }} <p:catppuccin_latte_red> {{ .StashCount }}</>{{ end }}"
+        template: ' {{ .UpstreamIcon }} {{ .HEAD }}{{
+          if and (.BranchStatus) (ne .BranchStatus "≡")}} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{
+          if and (.BranchStatus) (eq .BranchStatus "≡")}} <p:catppuccin_latte_green>{{ .BranchStatus }}</>{{ end }}{{
+          if .Working.Changed }} <p:catppuccin_latte_maroon></>{{ end }}{{
+          if .Staging.Changed }} <p:catppuccin_latte_yellow> </>{{ end }}{{
+          if gt .StashCount 0 }} <p:catppuccin_latte_red> {{ .StashCount }}</>{{ end }}'
         properties:
           fetch_status: true
           fetch_upstream_icon: true
@@ -78,6 +106,10 @@ blocks:
           branch_max_length: 25
           truncate_symbol: "…"
 
+          upstream_icons:
+            "iis-git.ee.ethz.ch": " iis"
+            "git.ee.ethz.ch": " eth"
+
       - type: text
         style: plain
         foreground: "p:catppuccin_latte_green"
@@ -85,6 +117,22 @@ blocks:
 
   - type: rprompt
     segments:
+      - type: executiontime
+        style: plain
+        foreground: "p:catppuccin_latte_sky"
+        template: "󰅒 {{ .FormattedMs }} "
+        properties:
+          threshold: 150
+          style: austin
+          always_enabled: false
+
+      - type: status
+        style: plain
+        foreground: "p:catppuccin_latte_red"
+        template: "{{ if .Error }}!{{ .String }} {{ end }}"
+        properties:
+          always_enabled: true
+
       - type: session
         style: plain
         foreground: "p:catppuccin_latte_flamingo"
@@ -104,22 +152,6 @@ blocks:
         style: plain
         foreground: "p:catppuccin_latte_flamingo"
         template: "  {{ .Context }} "
-
-      - type: executiontime
-        style: plain
-        foreground: "p:catppuccin_latte_sky"
-        template: "󰅒 {{ .FormattedMs }} "
-        properties:
-          threshold: 150
-          style: austin
-          always_enabled: false
-      
-      - type: status
-        style: plain
-        foreground: "p:catppuccin_latte_red"
-        template: "{{ if .Error }}!{{ .String }} {{ end }}"
-        properties:
-          always_enabled: true
 
       - type: time
         style: plain
