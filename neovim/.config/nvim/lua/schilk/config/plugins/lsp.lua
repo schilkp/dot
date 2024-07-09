@@ -15,14 +15,6 @@ local function config_lsp()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-    -- ClangD:
-    lspconfig.clangd.setup({
-        capabilities = capabilities,
-        on_attach = function()
-            require('schilk.config.plugins.lsp.clangd_extensions').on_attach()
-        end
-    })
-
     -- Lua:
     lspconfig.lua_ls.setup({
         capabilities = capabilities,
@@ -42,6 +34,11 @@ local function config_lsp()
 
     -- Verible:
     require 'lspconfig'.verible.setup({
+        capabilities = capabilities,
+    })
+
+    -- ClangD:
+    lspconfig.clangd.setup({
         capabilities = capabilities,
     })
 
