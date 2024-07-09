@@ -10,12 +10,18 @@ end
 
 function M.config()
     require("fzf-lua").setup({
+
         winopts = {
             width = 0.85,
             height = 0.85,
 
             preview = {
                 horizontal = 'right:50%',
+            }
+        },
+        keymap = {
+            fzf = {
+                ["ctrl-a"] = "select-all",
             }
         }
     })
