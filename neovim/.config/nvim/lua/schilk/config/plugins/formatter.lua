@@ -30,6 +30,12 @@ function M.config()
             ocaml = {
                 require("formatter.filetypes.ocaml").ocamlformat,
             },
+            html = {
+                require("formatter.filetypes.html").prettier,
+            },
+            vue = {
+                require("formatter.filetypes.vue").prettier,
+            },
             ["*"] = {
                 require("formatter.filetypes.any").remove_trailing_whitespace,
             },
