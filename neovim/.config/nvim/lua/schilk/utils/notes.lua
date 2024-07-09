@@ -69,9 +69,23 @@ function M.grep_journal()
     fzf_lua.live_grep_native({ cwd = M.journal_dir })
 end
 
+function M.logseq_hi()
+    -- Override header rules to allow '-' at start
+    vim.cmd("syn region markdownH1 matchgroup=markdownH1Delimiter start=\"[- ]*#\\s\"      end=\"#*\\s*$\" keepend oneline contains=@markdownInline,markdownAutomaticLink contained")
+    vim.cmd("syn region markdownH2 matchgroup=markdownH2Delimiter start=\"[- ]*##\\s\"     end=\"#*\\s*$\" keepend oneline contains=@markdownInline,markdownAutomaticLink contained")
+    vim.cmd("syn region markdownH3 matchgroup=markdownH3Delimiter start=\"[- ]*###\\s\"    end=\"#*\\s*$\" keepend oneline contains=@markdownInline,markdownAutomaticLink contained")
+    vim.cmd("syn region markdownH4 matchgroup=markdownH4Delimiter start=\"[- ]*####\\s\"   end=\"#*\\s*$\" keepend oneline contains=@markdownInline,markdownAutomaticLink contained")
+    vim.cmd("syn region markdownH5 matchgroup=markdownH5Delimiter start=\"[- ]*#####\\s\"  end=\"#*\\s*$\" keepend oneline contains=@markdownInline,markdownAutomaticLink contained")
+    vim.cmd("syn region markdownH6 matchgroup=markdownH6Delimiter start=\"[- ]*######\\s\" end=\"#*\\s*$\" keepend oneline contains=@markdownInline,markdownAutomaticLink contained")
+
+    -- Disable code blocks:
+    vim.cmd("syn clear markdownCodeBlock")
+end
+
 function M.setup()
     vim.api.nvim_create_user_command('Note', M.note, { nargs = '?' })
     vim.api.nvim_create_user_command('Journal', M.journal, { nargs = 0 })
+    vim.api.nvim_create_user_command('LogseqHighlight', M.logseq_hi, { nargs = 0 })
 
     vim.keymap.set('n', '<leader>fn', M.find_notes, { silent = true, desc = 'Open note.' })
     vim.keymap.set('n', '<leader>fN', M.grep_notes, { silent = true, desc = 'Find in notes.' })
