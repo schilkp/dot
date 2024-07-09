@@ -46,6 +46,13 @@ local function config_lsp()
     -- Note: LSP-Config is called/configured by rust-tools.nvim.
     require('schilk.config.plugins.lsp.rust_tools').config({
         capabilities = capabilities,
+        settings = {
+            ["rust-analyzer"] = {
+                procMacro = {
+                    enable = true
+                },
+            }
+        }
     })
 
     -- Pyright:
