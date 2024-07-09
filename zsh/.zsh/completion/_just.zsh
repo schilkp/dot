@@ -30,7 +30,7 @@ _just() {
 '--working-directory=[Use <WORKING-DIRECTORY> as working directory. --justfile must also be set]: :_files' \
 '*-c+[Run an arbitrary command with the working directory, \`.env\`, overrides, and exports set]: : ' \
 '*--command=[Run an arbitrary command with the working directory, \`.env\`, overrides, and exports set]: : ' \
-'*--completions=[Print shell completion script for <SHELL>]:SHELL:(bash elvish fish powershell zsh)' \
+'--completions=[Print shell completion script for <SHELL>]:SHELL:(bash elvish fish nushell powershell zsh)' \
 '()-l+[List available recipes]' \
 '()--list=[List available recipes]' \
 '-s+[Show recipe at <PATH>]: :(_just_commands)' \
@@ -171,4 +171,4 @@ else
     compdef _just just
 fi
 
-# just 1.28.0
+# just 1.29.1
