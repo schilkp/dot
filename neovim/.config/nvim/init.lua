@@ -198,6 +198,10 @@ require('lazy').setup({
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
         config = require('schilk.config.plugins.markdown_preview').config
+    },
+    {
+        "mbbill/undotree",
+        config = require('schilk.config.plugins.undotree').config
     }
 })
 

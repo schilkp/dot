@@ -39,6 +39,7 @@
   "telescope-symbols.nvim": { "branch": "master", "commit": "a6d0127a53d39b9fc2af75bd169d288166118aec" },
   "telescope.nvim": { "branch": "master", "commit": "3a743491e5c6be0ed0aa8c31c6905df8f66179ba" },
   "trouble.nvim": { "branch": "main", "commit": "806c50491078b66daf13c408042f2e74da46d0ff" },
+  "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
   "vim-easy-align": { "branch": "master", "commit": "9815a55dbcd817784458df7a18acacc6f82b1241" },
   "vim-fugitive": { "branch": "master", "commit": "4f59455d2388e113bd510e85b310d15b9228ca0d" },
   "vim-hjson": { "branch": "master", "commit": "adc104d4a4041a482e1af1914895a119e343c7e1" },
