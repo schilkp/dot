@@ -1,4 +1,4 @@
-" 
+" Clear slow highlights:
 syn clear texMathSymbol
 syn clear texMathDelim
 syn clear texMathSuperSub
