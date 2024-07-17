@@ -116,7 +116,7 @@ here() {
 }
 
 # SchilkFetch
-source ~/dotfiles/utils/SchilkFetch.bash
+source ~/dotfiles/scripts/SchilkFetch.bash
 SchilkFetch
 
 #### Plugins ###################################################################
