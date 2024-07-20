@@ -1,1 +1,3 @@
 neovim/.config/nvim/spell/*.spl
+zsh/.zsh/
+!zsh/.zsh/completion
