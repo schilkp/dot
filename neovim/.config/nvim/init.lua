@@ -215,3 +215,4 @@ require('schilk.config.spellfiles').config_spellfiles()
 -- Custom scripts/utils:
 require('schilk.utils.sv_module_instantiation').setup()
 require('schilk.utils.notes').setup()
+require('schilk.utils.ssh_clip').setup()
