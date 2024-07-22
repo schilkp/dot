@@ -64,7 +64,7 @@ end
 function M.setup()
     vim.api.nvim_create_user_command('OpenSshClip', M.open_ssh_clip_cmd, { nargs = '?' })
     vim.api.nvim_create_user_command('ToSshClip', M.to_ssh_clip_cmd, { nargs = '?' })
-    vim.api.nvim_create_user_command('PullShhClip', M.pull_ssh_clip, { nargs = '+' })
+    vim.api.nvim_create_user_command('PullShhClip', M.pull_ssh_clip_cmd, { nargs = '+' })
 
     vim.keymap.set('n', '<leader>mm', function() M.to_ssh_clip("\"") end, { silent = true, desc = 'Save " clip to ssh clip.' })
 end
