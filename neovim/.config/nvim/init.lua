@@ -159,10 +159,14 @@ require('lazy').setup({
         },
         config = require('schilk.config.plugins.nvim_tree').config
     },
-    -- NVIM Outline:
+    -- Outline:
     {
-        "hedyhli/outline.nvim",
-        config = require('schilk.config.plugins.nvim_outline').config
+        "stevearc/aerial.nvim",
+        config = require('schilk.config.plugins.aerial').config,
+        dependencies = {
+           "nvim-treesitter/nvim-treesitter",
+           "nvim-tree/nvim-web-devicons"
+        },
     },
     {
         'elihunter173/dirbuf.nvim',
