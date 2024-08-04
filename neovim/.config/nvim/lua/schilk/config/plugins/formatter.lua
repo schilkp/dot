@@ -42,12 +42,50 @@ function M.config()
         },
     })
 
+    -- Format whole file
     local function format()
         vim.lsp.buf.format()
         vim.cmd("Format")
     end
 
+    -- Format selection
+    local function format_selection()
+        -- Format using LSP:
+        vim.lsp.buf.format()
+
+        -- Note: formatter.nvim supports range-based selection using:
+        --         :'<,'>Format
+        --       But the "'<" and "'>" marks are not set until visual mode
+        --       is exited, which happends when EX mode is opened by pressing
+        --       ":". Since there is no simple way of exiting visual mode
+        --       in an blocking/sync fashion, we instead manually find the
+        --       first and last line of the selection, and pass those
+        --       numbers directly.
+
+        -- Determine range of lines selected:
+        local vstart = vim.fn.getpos("v")
+        local vcurrent = vim.fn.getcurpos()
+        local line_start = vstart[2]
+        local line_current = vcurrent[2]
+
+        -- Handle up-down vs down-up selection by the line numbers:
+        local line_first = line_start
+        local line_last = line_current
+        if (line_start > line_current) then
+            line_first = line_current
+            line_last = line_start
+        end
+
+        -- Format using formatter.nvim:
+        vim.cmd(tostring(line_first) .. "," .. tostring(line_last) .. " Format")
+
+        -- Exit visual mode:
+        local keys = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
+        vim.api.nvim_feedkeys(keys, 'm', false)
+    end
+
     vim.keymap.set({ "n" }, "<leader>F", format, { silent = true, desc = "🧹 Format." })
+    vim.keymap.set({ "v" }, "gf", format_selection, { silent = true, desc = "🧹 Format." })
 end
 
 return M
