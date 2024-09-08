@@ -33,9 +33,16 @@ function M.config()
     vim.cmd("nmap <Plug>NoSlimeRegionSend <Plug>SlimeRegionSend")
     vim.cmd("nmap <Plug>NoSlimeConfig <Plug>SlimeConfig")
     -- Mappings:
-    vim.keymap.set({ 'n' }, '<C-c><C-c>', slime_paragraph_send, { silent = true, desc = "Slime: Send current paragraph.", noremap = true })
-    vim.keymap.set({ 'x' }, '<C-c><C-c>', slime_region_send, { silent = true, desc = "Slime: Send current selection.", noremap = true })
+    vim.keymap.set({ 'n' }, '<C-c><C-c>', slime_paragraph_send,
+        { silent = true, desc = "Slime: Send current paragraph.", noremap = true })
+    vim.keymap.set({ 'x' }, '<C-c><C-c>', slime_region_send,
+        { silent = true, desc = "Slime: Send current selection.", noremap = true })
     vim.keymap.set({ 'n' }, '<C-c>v', slime_config, { silent = true, desc = "Slime: Config.", noremap = true })
 end
+
+M.spec = {
+    'jpalardy/vim-slime',
+    config = M.config
+}
 
 return M

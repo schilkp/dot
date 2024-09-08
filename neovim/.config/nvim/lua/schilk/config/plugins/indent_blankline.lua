@@ -9,4 +9,9 @@ function M.config()
     })
 end
 
+M.spec = {
+    "lukas-reineke/indent-blankline.nvim",
+    config = M.config,
+}
+
 return M

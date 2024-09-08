@@ -88,4 +88,9 @@ function M.config()
     vim.keymap.set({ "v" }, "gf", format_selection, { silent = true, desc = "🧹 Format." })
 end
 
+M.spec = {
+    'mhartington/formatter.nvim',
+    config = M.config
+}
+
 return M

@@ -19,4 +19,9 @@ function M.config()
     }, { prefix = "<leader>" })
 end
 
+M.spec = {
+    'folke/which-key.nvim',
+    config = M.config
+}
+
 return M

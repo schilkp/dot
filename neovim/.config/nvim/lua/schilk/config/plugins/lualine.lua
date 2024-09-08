@@ -43,4 +43,9 @@ function M.opts()
     }
 end
 
+M.spec = {
+    'nvim-lualine/lualine.nvim',
+    opts = M.opts()
+}
+
 return M

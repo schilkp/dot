@@ -17,4 +17,10 @@ function M.config()
     vim.keymap.set({ 'n' }, '<leader>mh', toggle_hardtime, { silent = true, desc = "😠 Toggle hardtime." })
 end
 
+M.spec = {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    config = M.config
+}
+
 return M
