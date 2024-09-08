@@ -4,26 +4,18 @@ function M.config()
     local wk = require("which-key")
 
     -- Document binding categories and bindings from vimrc:
-    wk.register({
-        f = {
-            name = "🔍 Find...",
-        },
-        g = {
-            name = "🖥️ LSP...",
-        },
-        s = {
-            name = "❗ Spelling...",
-        },
-        m = {
-            name = "🔧 Modes..",
-        },
-        a = "🔦 Select All.",
-        w = "💾 Save.",
-        W = "💾 Save All.",
-        R = "♻️  Reload.",
-        x = "✅ Toggle Checkbox.",
-        h = "🔦 Highlight Word Under Cursor.",
-        ["/"] = "🔦 Clear Highlighting.",
+    wk.add({
+        { "<leader>/", desc = "🔦 Clear Highlighting." },
+        { "<leader>R", desc = "♻️ Reload." },
+        { "<leader>W", desc = "💾 Save All." },
+        { "<leader>a", desc = "🔦 Select All." },
+        { "<leader>f", group = "🔍 Find..." },
+        { "<leader>g", group = "🖥️ LSP..." },
+        { "<leader>h", desc = "🔦 Highlight Word Under Cursor." },
+        { "<leader>m", group = "🔧 Modes.." },
+        { "<leader>s", group = "❗ Spelling..." },
+        { "<leader>w", desc = "💾 Save." },
+        { "<leader>x", desc = "✅ Toggle Checkbox." },
     }, { prefix = "<leader>" })
 end
 
