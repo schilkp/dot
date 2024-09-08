@@ -3,6 +3,14 @@ local M = {}
 function M.config()
     local wk = require("which-key")
 
+    -- Disable WK automatic icons:
+    -- FIXME: Move to this system to not loose pre-defined/default icons, espc for plugins?
+    wk.setup({
+        icons = {
+            mappings = false,
+        }
+    })
+
     -- Document binding categories and bindings from vimrc:
     wk.add({
         { "<leader>/", desc = "🔦 Clear Highlighting." },
