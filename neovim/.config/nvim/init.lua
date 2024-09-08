@@ -10,203 +10,74 @@ require('schilk.lazy').activate()
 
 -- Plugins:
 require('lazy').setup({
-    -- LSP Config + LSP Utils
-    {
-        'neovim/nvim-lspconfig',
-        dependencies = {
-            {
-                'j-hui/fidget.nvim',
-                tag = 'legacy',
-                config = require('schilk.config.plugins.fidget').config
-            },
-            'folke/neodev.nvim',
-            -- rust:
-            'simrat39/rust-tools.nvim',
-            'rust-lang/rust.vim',
-            -- json/yaml schemas:
-            'b0o/schemastore.nvim',
-        },
-        config = require('schilk.config.plugins.lsp').config
-    },
+
+    -- [[ COLOR SCHEMES ]] --
+    require('schilk.config.plugins.catppuccin').spec,
+    -- require('schilk.config.plugins.onedark').spec,
+
+    -- [[ LSP/COMPLETION ]] --
+    -- LSP:
+    require('schilk.config.plugins.lsp').spec,
+    -- Completion + Snippets:
+    require('schilk.config.plugins.cmp').spec,
+
+    -- [[ UI ]] --
+    -- Keybind help:
+    require('schilk.config.plugins.whichkey').spec,
+    -- Diagnostics window:
+    require('schilk.config.plugins.trouble').spec,
+    -- File tree:
+    require('schilk.config.plugins.nvim_tree').spec,
+    -- Undo tree:
+    require('schilk.config.plugins.undotree').spec,
+    -- File outline:
+    require('schilk.config.plugins.aerial').spec,
+    -- Status bar:
+    require('schilk.config.plugins.lualine').spec,
+    -- Indent guides:
+    require('schilk.config.plugins.indent_blankline').spec,
+    -- Color code visualizer:
+    require('schilk.config.plugins.colorizer').spec,
+    -- Top nav bar:
+    require('schilk.config.plugins.barbecue').spec,
+    -- Git status sidebar:
+    require('schilk.config.plugins.gitsigns').spec,
+
+    -- [[ TOOLS ]] --
+    -- Bulk file manage:
+    require('schilk.config.plugins.dirbuf').spec,
     -- Fuzzy finding:
-    {
-        "ibhagwan/fzf-lua",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons"
-        },
-        config = require('schilk.config.plugins.fzflua').config
-    },
-    -- CMP Autocomplete + LuaSnip:
-    {
-        'hrsh7th/nvim-cmp',
-        dependencies = {
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp-signature-help',
-            'saadparwaiz1/cmp_luasnip',
-            {
-                'L3MON4D3/LuaSnip',
-                config = require('schilk.config.plugins.lua_snip').config
-            }
-        },
-        config = require('schilk.config.plugins.cmp').config
-    },
-    -- Trouble:
-    {
-        'folke/trouble.nvim', opts = {}
-    },
-    -- Which-Key:
-    {
-        'folke/which-key.nvim',
-        config = require('schilk.config.plugins.whichkey').config
-    },
-    -- -- OneDark Colorscheme:
-    -- {
-    --     -- Theme inspired by Atom
-    --     'navarasu/onedark.nvim',
-    --     priority = 1000,
-    --     config = require('schilk.config.plugins.onedark').config
-    -- },
-    {
-        "catppuccin/nvim",
-        priority = 1000,
-        name = "catppuccin",
-        config = require('schilk.config.plugins.catppuccin').config
-    },
-    {
-        "norcalli/nvim-colorizer.lua",
-        config = require('schilk.config.plugins.colorizer').config
-    },
-    -- LuaLine:
-    {
-        'nvim-lualine/lualine.nvim',
-        opts = require('schilk.config.plugins.lualine').opts()
-    },
-    -- Commenting:
-    { 'numToStr/Comment.nvim', opts = {} },
-    -- Telescope
-    {
-        'nvim-telescope/telescope.nvim',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-            {
-                'nvim-telescope/telescope-fzf-native.nvim',
-                build = 'make',
-                cond = function() -- Only install fzf-native extension if "make" is available.
-                    return vim.fn.executable 'make' == 1
-                end,
-            },
-            'nvim-tree/nvim-web-devicons',
-            'nvim-telescope/telescope-symbols.nvim'
-        },
-        config = require('schilk.config.plugins.telescope').config
-    },
-    -- Treesitter:
-    {
-        'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
-        build = ':TSUpdate',
-        config = require('schilk.config.plugins.treesitter').config
-    },
-    -- Git Signs:
-    {
-        -- Adds git related signs to the gutter, as well as utilities for managing changes
-        'lewis6991/gitsigns.nvim',
-        opts = require('schilk.config.plugins.gitsigns').opts()
-    },
-    -- Git Integration:
-    'tpope/vim-fugitive',
-    -- Easy Align:
-    {
-        'junegunn/vim-easy-align',
-        config = require('schilk.config.plugins.easy_align').config,
-    },
-    -- Vim Indent Objects:
+    require('schilk.config.plugins.fzflua').spec,
+    require('schilk.config.plugins.telescope').spec,
+    -- In-browser markdown preview
+    require('schilk.config.plugins.markdown_preview').spec,
+    -- Code-to-image render:
+    require('schilk.config.plugins.silicon').spec,
+    -- Documentation boilerplate generation:
+    require('schilk.config.plugins.neogen').spec,
+    -- Code formatting:
+    require('schilk.config.plugins.formatter').spec,
+    -- Push-to-REPL:
+    require('schilk.config.plugins.vim_slime').spec,
+    -- Text alignment:
+    require('schilk.config.plugins.easy_align').spec,
+    -- TEX integration:
+    require('schilk.config.plugins.vimtex').spec,
+    -- Make me suffer:
+    require('schilk.config.plugins.hardtime').spec,
+    -- Indentation as text object:
     'michaeljsmith/vim-indent-object',
-    -- VimTEX:
-    {
-        'lervag/vimtex',
-        config = require('schilk.config.plugins.vimtex').config,
-    },
-    -- Justfile syntax highlighting:
+    -- Got integration:
+    'tpope/vim-fugitive',
+
+    -- [[ FILE TYPES ]] --
     'NoahTheDuke/vim-just',
-    -- Handlebars file type:
     'mustache/vim-mustache-handlebars',
-    -- HJSON syntax highlighting:
     'hjson/vim-hjson',
-    -- Slime: Push-to-REPL:
-    {
-        'jpalardy/vim-slime',
-        config = require('schilk.config.plugins.vim_slime').config
-    },
-    -- Barbecue top status/location line:
-    {
-        "utilyre/barbecue.nvim",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons",
-        },
-        opts = {},
-    },
-    -- NVIM Tree:
-    {
-        'nvim-tree/nvim-tree.lua',
-        dependencies = {
-            'nvim-tree/nvim-web-devicons'
-        },
-        config = require('schilk.config.plugins.nvim_tree').config
-    },
-    -- Outline:
-    {
-        "stevearc/aerial.nvim",
-        config = require('schilk.config.plugins.aerial').config,
-        dependencies = {
-           "nvim-treesitter/nvim-treesitter",
-           "nvim-tree/nvim-web-devicons"
-        },
-    },
-    {
-        'elihunter173/dirbuf.nvim',
-        config = require('schilk.config.plugins.dirbuf').config
-    },
-    {
-        "m4xshen/hardtime.nvim",
-        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        config = require('schilk.config.plugins.hardtime').config
-    },
-    {
-        'mhartington/formatter.nvim',
-        config = require('schilk.config.plugins.formatter').config
-    },
-    {
-        "danymat/neogen",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = require('schilk.config.plugins.neogen').config,
-    },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        config = require('schilk.config.plugins.indent_blankline').config,
-    },
-    {
-        "michaelrommel/nvim-silicon",
-        lazy = true,
-        cmd = "Silicon",
-        config = require('schilk.config.plugins.silicon').config,
-    },
-    {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function() vim.fn["mkdp#util#install"]() end,
-        config = require('schilk.config.plugins.markdown_preview').config
-    },
-    {
-        "mbbill/undotree",
-        config = require('schilk.config.plugins.undotree').config
-    }
+    'rust-lang/rust.vim',
+
+    -- [[ OTHER ]] --
+    require('schilk.config.plugins.treesitter').spec,
 })
 
 -- Config:

@@ -24,4 +24,13 @@ function M.config()
     })
 end
 
+M.spec = {
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    build = ':TSUpdate',
+    config = M.config
+}
+
 return M

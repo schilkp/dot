@@ -6,4 +6,11 @@ function M.config()
     })
 end
 
+M.spec = {
+    "michaelrommel/nvim-silicon",
+    lazy = true,
+    cmd = "Silicon",
+    config = M.config,
+}
+
 return M

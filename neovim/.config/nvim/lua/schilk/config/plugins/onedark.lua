@@ -48,4 +48,10 @@ function M.config()
     vim.cmd.colorscheme 'onedark'
 end
 
+M.spec = {
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    config = M.config
+}
+
 return M

@@ -1,9 +1,10 @@
 local M = {}
 
-function M.opts()
-    return {
+M.spec = {
+    'lewis6991/gitsigns.nvim',
+    opts = {
         current_line_blame = true
     }
-end
+}
 
 return M

@@ -256,4 +256,33 @@ function M.config()
     config_keybinds()
 end
 
+function M.fidget_config()
+    require("fidget").setup({
+        text = { spinner = "dots_snake" },
+        window = { blend = 0 },
+        sources = {
+            ltex = {
+                ignore = true
+            }
+        }
+    });
+end
+
+M.spec = {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+        {
+            'j-hui/fidget.nvim',
+            tag = 'legacy',
+            config = M.fidget_config
+        },
+        'folke/neodev.nvim',
+        -- rust:
+        'simrat39/rust-tools.nvim',
+        -- json/yaml schemas:
+        'b0o/schemastore.nvim',
+    },
+    config = M.config
+}
+
 return M

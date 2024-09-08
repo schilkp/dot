@@ -12,4 +12,12 @@ function M.config()
     })
 end
 
+M.spec = {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+    config = M.config
+}
+
 return M

@@ -93,4 +93,21 @@ function M.config()
         { silent = true, desc = 'Find file from compile_commands.json.' })
 end
 
+M.spec = {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            build = 'make',
+            cond = function() -- Only install fzf-native extension if "make" is available.
+                return vim.fn.executable 'make' == 1
+            end,
+        },
+        'nvim-tree/nvim-web-devicons',
+        'nvim-telescope/telescope-symbols.nvim'
+    },
+    config = M.config
+}
+
 return M

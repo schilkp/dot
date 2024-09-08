@@ -59,4 +59,30 @@ function M.config()
     }
 end
 
+function M.config_luasnip()
+    local luasnip = require('luasnip')
+    luasnip.add_snippets('c', require('schilk.snippets.c').snippets);
+    luasnip.add_snippets('cpp', require('schilk.snippets.c').snippets);
+    luasnip.add_snippets('tex', require('schilk.snippets.tex').snippets);
+    luasnip.add_snippets('python', require('schilk.snippets.python').snippets);
+    luasnip.add_snippets('rust', require('schilk.snippets.rust').snippets);
+    luasnip.add_snippets('lua', require('schilk.snippets.lua').snippets); luasnip.add_snippets('json', require('schilk.snippets.json').snippets);
+end
+
+M.spec = {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-nvim-lsp-signature-help',
+        'saadparwaiz1/cmp_luasnip',
+        {
+            'L3MON4D3/LuaSnip',
+            config = M.config_luasnip
+        }
+    },
+    config = M.config
+}
+
 return M
