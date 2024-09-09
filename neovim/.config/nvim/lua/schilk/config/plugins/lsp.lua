@@ -86,24 +86,25 @@ local function config_lsp()
     })
 
     -- typescript language server:
-    require 'lspconfig'.tsserver.setup({
-        capabilities = capabilities,
-        init_options = {
-            plugins = {
-                {
-                    name = "@vue/typescript-plugin",
-                    location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-                    languages = { "javascript", "typescript", "vue" },
-                },
-            },
-        },
-        filetypes = {
-            "javascript",
-            "typescript",
-            "vue",
-        },
-    })
-
+    -- TODO: LSPCONFIG deprecation warning - use "ts_ls" instead!
+    -- require 'lspconfig'.tsserver.setup({
+    --     capabilities = capabilities,
+    --     init_options = {
+    --         plugins = {
+    --             {
+    --                 name = "@vue/typescript-plugin",
+    --                 location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+    --                 languages = { "javascript", "typescript", "vue" },
+    --             },
+    --         },
+    --     },
+    --     filetypes = {
+    --         "javascript",
+    --         "typescript",
+    --         "vue",
+    --     },
+    -- })
+    --
     -- emmet (html):
     require 'lspconfig'.emmet_language_server.setup({
         capabilities = capabilities,
