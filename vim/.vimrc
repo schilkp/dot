@@ -121,31 +121,31 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 " Save on leader-w
-nnoremap <leader>w :w<CR>
+nnoremap <silent> <leader>w :w<CR>
 
 " Save all on leader-W
-nnoremap <leader>W :wa<CR>
+nnoremap <silent> <leader>W :wa<CR>
 
 " Clear highlighting on leader-/
-nnoremap <leader>/ :noh<CR>
+nnoremap <silent> <leader>/ :noh<CR>
 
 " Reload current file on leader-R
-nnoremap <leader>R :e!<CR>
+nnoremap <silent> <leader>R :e!<CR>
 
 " Select whole file on leader-a
-" nnoremap <C-a> ggVG
-nnoremap <leader>a ggVG
+" nnoremap <silent> <C-a> ggVG
+nnoremap <silent> <leader>a ggVG
 
 " Spell-checking:
 " Toggle on/off
-nnoremap <leader>ss :setlocal invspell<CR>
+nnoremap <silent> <leader>ss :setlocal invspell<CR>
 " Ignore current word (add to spellfile)
-nnoremap <leader>si zg
+nnoremap <silent> <leader>si zg
 " Suggest fixes
-nnoremap <leader>sf z=
+nnoremap <silent> <leader>sf z=
 
 " Highlight word under curose on leader-h
-nnoremap <leader>h mz*`z
+nnoremap <silent> <leader>h mz*`z
 
 " Allow pane control without escaping terminal mode:
 tnoremap <C-W><C-W> <C-\><C-n><C-W><C-W>
