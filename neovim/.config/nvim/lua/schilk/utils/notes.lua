@@ -83,6 +83,8 @@ function M.logseq_hi()
 end
 
 function M.setup()
+    if vim.g.vscode then return end -- Disable in vscode-neovim
+
     vim.api.nvim_create_user_command('Note', M.note, { nargs = '?' })
     vim.api.nvim_create_user_command('Journal', M.journal, { nargs = 0 })
     vim.api.nvim_create_user_command('LogseqHighlight', M.logseq_hi, { nargs = 0 })

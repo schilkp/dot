@@ -14,7 +14,8 @@ M.spec = {
     dependencies = {
         'nvim-tree/nvim-web-devicons'
     },
-    config = M.config
+    config = M.config,
+    cond = not vim.g.vscode, -- Disable in vscode-neovim
 }
 
 return M

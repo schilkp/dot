@@ -282,7 +282,8 @@ M.spec = {
         -- json/yaml schemas:
         'b0o/schemastore.nvim',
     },
-    config = M.config
+    config = M.config,
+    cond = not vim.g.vscode, -- Disable in vscode-neovim
 }
 
 return M

@@ -1,7 +1,7 @@
 local M = {}
 
-function M.opts()
-    return {
+function M.config()
+    require('lualine').setup {
         options = {
             icons_enabled = true,
             theme = 'auto',
@@ -45,7 +45,8 @@ end
 
 M.spec = {
     'nvim-lualine/lualine.nvim',
-    opts = M.opts()
+    config = M.config,
+    cond = not vim.g.vscode, -- Disable in vscode-neovim
 }
 
 return M

@@ -17,6 +17,7 @@ M.spec = {
         "nvim-treesitter/nvim-treesitter",
         "nvim-tree/nvim-web-devicons"
     },
+    cond = not vim.g.vscode, -- Disable in vscode-neovim
 }
 
 return M
