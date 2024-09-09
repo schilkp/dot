@@ -12,6 +12,7 @@ end
 M.spec = {
     "lukas-reineke/indent-blankline.nvim",
     config = M.config,
+    cond = not vim.g.vscode, -- Disable in vscode-neovim
 }
 
 return M

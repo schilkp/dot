@@ -1,6 +1,9 @@
 local M = {}
 
 function M.config_highlight_on_yank()
+    if vim.g.vscode then return end -- Disable in vscode-neovim
+
+
     local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
     vim.api.nvim_create_autocmd('TextYankPost', {
         callback = function()
@@ -12,6 +15,8 @@ function M.config_highlight_on_yank()
 end
 
 function M.config_floatterm_replacement()
+    if vim.g.vscode then return end -- Disable in vscode-neovim
+
     vim.keymap.set({ 'n' }, '<leader>t', ':split | terminal <CR>', { silent = true, desc = "📠 Open Terminal Split." })
 end
 
@@ -41,6 +46,8 @@ local function toggle_large_file_mode()
 end
 
 function M.config_large_file_mode()
+    if vim.g.vscode then return end -- Disable in vscode-neovim
+
     vim.keymap.set("n", "<leader>ml", toggle_large_file_mode, { silent = true, desc = "📁 Toggle Large-File-Mode" })
 end
 

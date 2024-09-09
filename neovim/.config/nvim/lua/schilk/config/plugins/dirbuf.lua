@@ -8,7 +8,8 @@ end
 
 M.spec = {
     'elihunter173/dirbuf.nvim',
-    config = M.config
+    config = M.config,
+    cond = not vim.g.vscode, -- Disable in vscode-neovim
 }
 
 return M

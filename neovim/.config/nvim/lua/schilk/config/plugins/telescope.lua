@@ -107,7 +107,8 @@ M.spec = {
         'nvim-tree/nvim-web-devicons',
         'nvim-telescope/telescope-symbols.nvim'
     },
-    config = M.config
+    config = M.config,
+    cond = not vim.g.vscode, -- Disable in vscode-neovim
 }
 
 return M
