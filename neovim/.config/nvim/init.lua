@@ -87,6 +87,10 @@ require('schilk.config.nvim').config_large_file_mode()
 require('schilk.config.py3_env').config_py3_env()
 require('schilk.config.spellfiles').config_spellfiles()
 
+if vim.g.vscode then
+    require('schilk.config.vscode').setup()
+end
+
 -- Custom scripts/utils:
 require('schilk.utils.sv_module_instantiation').setup()
 require('schilk.utils.notes').setup()
