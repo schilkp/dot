@@ -7,7 +7,7 @@ function M.config()
             min_width = 15,
         }
     })
-    vim.keymap.set({ 'n' }, '<leader>mo', '<cmd>AerialToggle!<CR>', { silent = true, desc = " 📋 Toggle Outline." }) -- TODO make saga?
+    vim.keymap.set({ 'n' }, '<leader>mo', '<cmd>AerialToggle!<CR>', { silent = true, desc = "📋 Toggle Outline." }) -- TODO make saga?
 end
 
 M.spec = {

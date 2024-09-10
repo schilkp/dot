@@ -243,13 +243,13 @@ local function config_keybinds()
     vim.keymap.set({ 'n' }, '<leader>ge', vim.diagnostic.open_float, { silent = true, desc = "LSP: Diagnostics" })
 
     vim.keymap.set("n", "<leader>md", toggle_buffer_lsp_diagnostics,
-        { silent = true, desc = " 💡 Toggle LSP diagnostics for current buffer." })
+        { silent = true, desc = "💡 Toggle LSP diagnostics for current buffer." })
     vim.keymap.set("n", "<leader>mD", toggle_lsp_diagnostics,
-        { silent = true, desc = " 💡 Toggle LSP diagnostics for all buffers." })
+        { silent = true, desc = "💡 Toggle LSP diagnostics for all buffers." })
     vim.keymap.set("n", "<leader>ms", toggle_buffer_semantic_highlight,
-        { silent = true, desc = " 💡 Toggle LSP semantic highlight for current buffer." })
+        { silent = true, desc = "💡 Toggle LSP semantic highlight for current buffer." })
     vim.keymap.set("n", "<leader>mS", toggle_semantic_highlight,
-        { silent = true, desc = " 💡 Toggle LSP semantic highlight for all buffers." })
+        { silent = true, desc = "💡 Toggle LSP semantic highlight for all buffers." })
 end
 
 function M.config()
