@@ -20,6 +20,7 @@ function M.config()
         { "<leader>f", group = "🔍 Find..." },
         { "<leader>g", group = "🖥️ LSP..." },
         { "<leader>h", desc = "🔦 Highlight Word Under Cursor." },
+        { "<leader>t", group = "🔨 Tools.." },
         { "<leader>m", group = "🔧 Modes.." },
         { "<leader>s", group = "❗ Spelling..." },
         { "<leader>w", desc = "💾 Save." },
