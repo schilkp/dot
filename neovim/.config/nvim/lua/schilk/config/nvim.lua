@@ -14,12 +14,6 @@ function M.config_highlight_on_yank()
     })
 end
 
-function M.config_floatterm_replacement()
-    if vim.g.vscode then return end -- Disable in vscode-neovim
-
-    vim.keymap.set({ 'n' }, '<leader>t', ':split | terminal <CR>', { silent = true, desc = "📠 Open Terminal Split." })
-end
-
 local large_file_mode = false
 
 -- FIXME: Make this per-buffer? Unlikely I need it enough to be worth it ;)
