@@ -14,7 +14,7 @@ function M.config()
     -- Document binding categories and bindings from vimrc:
     wk.add({
         { "<leader>/", desc = "🔦 Clear Highlighting." },
-        { "<leader>R", desc = "♻️ Reload." },
+        { "<leader>R", desc = "♻️  Reload." },
         { "<leader>W", desc = "💾 Save All." },
         { "<leader>a", desc = "🔦 Select All." },
         { "<leader>f", group = "🔍 Find..." },
