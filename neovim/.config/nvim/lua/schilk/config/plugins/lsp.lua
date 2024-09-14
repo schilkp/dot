@@ -5,9 +5,6 @@ local function config_lsp()
     -- It gets too big too fast..
     vim.lsp.set_log_level("off")
 
-    -- Configure NeoDev, which overrides Lua-LS LSP config for all NeoVim config files:
-    require('neodev').setup()
-
     -- LSP Config:
     local lspconfig = require('lspconfig')
 
@@ -277,7 +274,20 @@ M.spec = {
             tag = 'legacy',
             config = M.fidget_config
         },
-        'folke/neodev.nvim',
+        {
+            "folke/lazydev.nvim",
+            ft = "lua", -- only load on lua files
+            opts = {
+                library = {
+                    -- See the configuration section for more details
+                    -- Load luvit types when the `vim.uv` word is found
+                    { path = "luvit-meta/library", words = { "vim%.uv" } },
+                },
+            },
+            dependencies = {
+                { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+            }
+        },
         -- rust:
         'simrat39/rust-tools.nvim',
         -- json/yaml schemas:
