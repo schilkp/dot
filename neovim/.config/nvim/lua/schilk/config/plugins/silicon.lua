@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-    require("silicon").setup({
+    require("nvim-silicon").setup({
         font = "JetbrainsMono NF=34"
     })
 end
