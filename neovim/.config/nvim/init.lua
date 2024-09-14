@@ -12,8 +12,8 @@ require('schilk.lazy').activate()
 require('lazy').setup({
 
     -- [[ COLOR SCHEMES ]] --
-    require('schilk.config.plugins.catppuccin').spec,
-    -- require('schilk.config.plugins.onedark').spec,
+    -- require('schilk.config.plugins.catppuccin').spec,
+    require('schilk.config.plugins.onedark').spec,
 
     -- [[ LSP/COMPLETION ]] --
     -- LSP:
