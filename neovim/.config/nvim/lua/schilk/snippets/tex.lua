@@ -66,12 +66,12 @@ M.snippets = {
     \end{figure}
     ]]),
 
-    ls.parser.parse_snippet({ trig = "tcol_tasks" }, [[
-    \begin{tcolorbox}[title=Tasks]
-        \begin{itemize}
-          \item $0
+    ls.parser.parse_snippet({ trig = "tasks" }, [[
+    \begin{TasksBox}
+        \begin{itemize}[leftmargin=1em]
+            \item $0
         \end{itemize}
-    \end{tcolorbox}
+    \end{TasksBox}
     ]]),
 
     ls.parser.parse_snippet({ trig = "lst" }, [[
@@ -86,13 +86,28 @@ M.snippets = {
     ls.parser.parse_snippet({ trig = "lst_minted" }, [[
     \begin{listing}[htb]
         \begin{minted}{$1}
-        $0
+            $0
         \end{minted}
         \vspace{-1.5\baselineskip}
         \caption{$2}
         \label{lst:$3}
     \end{listing}
     ]]),
+
+    ls.parser.parse_snippet({ trig = "table" }, [[
+    \begin{table}[htbp]
+      \begin{center}
+        \begin{tabular}{ $1 }
+        $0 \\\\
+        \end{tabular}
+      \end{center}
+    \end{table}
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "inline_minted" }, [[
+    \mintinline{$1}{$0}
+    ]]),
+
 }
 
 return M
