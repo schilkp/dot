@@ -68,9 +68,9 @@ local function config_lsp()
     })
 
     -- ltex (Latex Spelling):
-    require 'lspconfig'.ltex.setup({
-        capabilities = capabilities,
-    })
+    -- require 'lspconfig'.ltex.setup({
+    --     capabilities = capabilities,
+    -- })
 
     -- marksman (Markdown):
     require 'lspconfig'.marksman.setup({
