@@ -1,6 +1,6 @@
 add-auto-load-safe-path /
 
-tui enable
+# tui enable
 
 # 'rust-gdb' is simply a shell script that launches gdb with the 
 # required configuration to load the rust pretty-printers if required.
