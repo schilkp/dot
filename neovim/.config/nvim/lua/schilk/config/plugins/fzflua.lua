@@ -1,7 +1,7 @@
 local M = {}
 
 local function find_dotfiles()
-    require('fzf-lua').files({ cwd = '~/dotfiles' })
+    require('fzf-lua').files({ cwd = '~/dot' })
 end
 
 local function find_in_parent()
