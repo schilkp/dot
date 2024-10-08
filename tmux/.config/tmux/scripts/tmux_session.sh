@@ -4,6 +4,7 @@ raw_dirs=$(                                                                     
       find ~/reps          -mindepth 1 -maxdepth 1 -type d &&                                      \
       find ~/dot           -mindepth 0 -maxdepth 1 -type d &&                                      \
       find ~/Desktop       -mindepth 0 -maxdepth 1 -type d &&                                      \
+      find ~/st_hls        -mindepth 0 -maxdepth 1 -type d &&                                      \
       echo ~/patch-it/fw/patchOS_ws/patchOS &&                                                     \
       echo ~/patch-it/software/patchCTRL &&                                                        \
       echo ~/notes/pages &&                                                                        \
