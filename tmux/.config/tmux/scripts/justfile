@@ -36,6 +36,10 @@ reload:
     @echo "Press any key to continue.."
     @read
 
+# Kill tmux server.
+kill_server:
+    tmux kill-server
+
 # Setup TMUX package manager.
 tpm_setup:
     -git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
