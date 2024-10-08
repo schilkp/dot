@@ -1,6 +1,5 @@
 #!/usr/bin/bash
-options_dirs=$(                                                                                    \
-    {                                                                                              \
+raw_dirs=$(                                                                                        \
       find ~/es            -mindepth 1 -maxdepth 2 -type d &&                                      \
       find ~/reps          -mindepth 1 -maxdepth 1 -type d &&                                      \
       find ~/dot           -mindepth 0 -maxdepth 1 -type d &&                                      \
@@ -10,7 +9,9 @@ options_dirs=$(                                                                 
       echo ~/notes/pages &&                                                                        \
       echo ~/notes/journals &&                                                                     \
       echo ~/calc;                                                                                 \
-    }                                                                                              \
+)
+
+options_dirs=$(echo "$raw_dirs"                                                                    \
     | grep -v -F -e ".bfg-report" -e "__pycache__"   `# Remove pointless files.`                   \
     | grep -v -e "\.git\($\|/\)"                     `# Remove .git and .git/ but not .github`     \
     | xargs -L 1 realpath -s --relative-to="${HOME}"    `# Remove path to home directory.`         \
