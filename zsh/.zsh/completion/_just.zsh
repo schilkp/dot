@@ -18,14 +18,18 @@ _just() {
 '--chooser=[Override binary invoked by \`--choose\`]: : ' \
 '--color=[Print colorful output]: :(auto always never)' \
 '--command-color=[Echo recipe lines in <COMMAND-COLOR>]: :(black blue cyan green purple red yellow)' \
-'--dump-format=[Dump justfile as <FORMAT>]:FORMAT:(just json)' \
-'--list-heading=[Print <TEXT> before list]:TEXT: ' \
-'--list-prefix=[Print <TEXT> before each list item]:TEXT: ' \
+'(-E --dotenv-path)--dotenv-filename=[Search for environment file named <DOTENV-FILENAME> instead of \`.env\`]: : ' \
+'-E+[Load <DOTENV-PATH> as environment file instead of searching for one]: :_files' \
+'--dotenv-path=[Load <DOTENV-PATH> as environment file instead of searching for one]: :_files' \
+'--dump-format=[Dump justfile as <FORMAT>]:FORMAT:(json just)' \
 '-f+[Use <JUSTFILE> as justfile]: :_files' \
 '--justfile=[Use <JUSTFILE> as justfile]: :_files' \
+'--list-heading=[Print <TEXT> before list]:TEXT: ' \
+'--list-prefix=[Print <TEXT> before each list item]:TEXT: ' \
 '*--set=[Override <VARIABLE> with <VALUE>]: :(_just_variables)' \
 '--shell=[Invoke <SHELL> to run recipes]: : ' \
 '*--shell-arg=[Invoke shell with <SHELL-ARG> as an argument]: : ' \
+'--timestamp-format=[Timestamp format string]: : ' \
 '-d+[Use <WORKING-DIRECTORY> as working directory. --justfile must also be set]: :_files' \
 '--working-directory=[Use <WORKING-DIRECTORY> as working directory. --justfile must also be set]: :_files' \
 '*-c+[Run an arbitrary command with the working directory, \`.env\`, overrides, and exports set]: : ' \
@@ -35,29 +39,30 @@ _just() {
 '()--list=[List available recipes]' \
 '-s+[Show recipe at <PATH>]: :(_just_commands)' \
 '--show=[Show recipe at <PATH>]: :(_just_commands)' \
-'(-E --dotenv-path)--dotenv-filename=[Search for environment file named <DOTENV-FILENAME> instead of \`.env\`]: : ' \
-'-E+[Load <DOTENV-PATH> as environment file instead of searching for one]: :_files' \
-'--dotenv-path=[Load <DOTENV-PATH> as environment file instead of searching for one]: :_files' \
-'--timestamp-format=[Timestamp format string]: : ' \
 '--check[Run \`--fmt\` in '\''check'\'' mode. Exits with 0 if justfile is formatted correctly. Exits with 1 and prints a diff if formatting is required.]' \
-'--yes[Automatically confirm all recipes.]' \
+'--clear-shell-args[Clear shell arguments]' \
 '(-q --quiet)-n[Print what just would do without doing it]' \
 '(-q --quiet)--dry-run[Print what just would do without doing it]' \
+'--explain[Print recipe doc comment before running it]' \
+'(-f --justfile -d --working-directory)-g[Use global justfile]' \
+'(-f --justfile -d --working-directory)--global-justfile[Use global justfile]' \
 '--highlight[Highlight echoed recipe lines in bold]' \
 '--list-submodules[List recipes in submodules]' \
 '--no-aliases[Don'\''t show aliases in list]' \
 '--no-deps[Don'\''t run recipe dependencies]' \
 '--no-dotenv[Don'\''t load \`.env\` file]' \
 '--no-highlight[Don'\''t highlight echoed recipe lines in bold]' \
+'--one[Forbid multiple recipes from being invoked on the command line]' \
 '(-n --dry-run)-q[Suppress all output]' \
 '(-n --dry-run)--quiet[Suppress all output]' \
 '--shell-command[Invoke <COMMAND> with the shell used to run recipe lines and backticks]' \
-'--clear-shell-args[Clear shell arguments]' \
+'--timestamp[Print recipe command timestamps]' \
 '-u[Return list and summary entries in source order]' \
 '--unsorted[Return list and summary entries in source order]' \
 '--unstable[Enable unstable features]' \
 '*-v[Use verbose output]' \
 '*--verbose[Use verbose output]' \
+'--yes[Automatically confirm all recipes.]' \
 '--changelog[Print changelog]' \
 '--choose[Select one or more recipes to run using a binary chooser. If \`--chooser\` is not passed the chooser defaults to the value of \$JUST_CHOOSER, falling back to \`fzf\`]' \
 '--dump[Print justfile]' \
@@ -65,14 +70,11 @@ _just() {
 '--edit[Edit justfile with editor given by \$VISUAL or \$EDITOR, falling back to \`vim\`]' \
 '--evaluate[Evaluate and print all variables. If a variable name is given as an argument, only print that variable'\''s value.]' \
 '--fmt[Format and overwrite justfile]' \
-'--init[Initialize new justfile in project root]' \
 '--groups[List recipe groups]' \
+'--init[Initialize new justfile in project root]' \
 '--man[Print man page]' \
 '--summary[List names of available recipes]' \
 '--variables[List names of variables]' \
-'(-f --justfile -d --working-directory)-g[Use global justfile]' \
-'(-f --justfile -d --working-directory)--global-justfile[Use global justfile]' \
-'--timestamp[Print recipe command timestamps]' \
 '-h[Print help]' \
 '--help[Print help]' \
 '-V[Print version]' \
@@ -171,4 +173,4 @@ else
     compdef _just just
 fi
 
-# just 1.29.1
+# just 1.36.0
