@@ -49,11 +49,10 @@ _arguments "${_arguments_options[@]}" : \
 ;;
 (serve)
 _arguments "${_arguments_options[@]}" : \
-'-i+[Perfetto trace file to be served]:INPUT:_files' \
-'--input=[Perfetto trace file to be served]:INPUT:_files' \
 '--open[Open perfetto in browser]' \
 '-h[Print help]' \
 '--help[Print help]' \
+':input -- Perfetto trace file to be served:_files' \
 && ret=0
 ;;
 (completion)
@@ -69,10 +68,9 @@ _arguments "${_arguments_options[@]}" : \
 '--format=[Input format]:FORMAT:(hex bin)' \
 '-m+[TraceMode]:MODE:(bare-metal free-rtos)' \
 '--mode=[TraceMode]:MODE:(bare-metal free-rtos)' \
-'-i+[Input files with optional core id]:INPUT: ' \
-'--input=[Input files with optional core id]:INPUT: ' \
 '-h[Print help (see more with '\''--help'\'')]' \
 '--help[Print help (see more with '\''--help'\'')]' \
+':input -- Input file with optional core id:' \
 && ret=0
 ;;
 (help)
