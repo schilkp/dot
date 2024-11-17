@@ -1,161 +1,158 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
-version: 2
-
 palette:
-  catppuccin_latte_rosewater: "#dc8a78"
-  catppuccin_latte_flamingo: "#dd7878"
-  catppuccin_latte_pink: "#ea76cb"
-  catppuccin_latte_mauve: "#8839ef"
-  catppuccin_latte_red: "#d20f39"
-  catppuccin_latte_maroon: "#e64553"
-  catppuccin_latte_peach: "#fe640b"
-  catppuccin_latte_yellow: "#df8e1d"
-  catppuccin_latte_green: "#40a02b"
-  catppuccin_latte_teal: "#179299"
-  catppuccin_latte_sky: "#04a5e5"
-  catppuccin_latte_sapphire: "#209fb5"
-  catppuccin_latte_blue: "#1e66f5"
-  catppuccin_latte_lavender: "#7287fd"
-  catppuccin_latte_text: "#4c4f69"
-  catppuccin_latte_subtext1: "#5c5f77"
-  catppuccin_latte_subtext0: "#6c6f85"
-  catppuccin_latte_overlay2: "#7c7f93"
-  catppuccin_latte_overlay1: "#8c8fa1"
-  catppuccin_latte_overlay0: "#9ca0b0"
-  catppuccin_latte_surface2: "#acb0be"
-  catppuccin_latte_surface1: "#bcc0cc"
-  catppuccin_latte_surface0: "#ccd0da"
   catppuccin_latte_base: "#eff1f5"
-  catppuccin_latte_mantle: "#e6e9ef"
+  catppuccin_latte_blue: "#1e66f5"
   catppuccin_latte_crust: "#dce0e8"
-
+  catppuccin_latte_flamingo: "#dd7878"
+  catppuccin_latte_green: "#40a02b"
+  catppuccin_latte_lavender: "#7287fd"
+  catppuccin_latte_mantle: "#e6e9ef"
+  catppuccin_latte_maroon: "#e64553"
+  catppuccin_latte_mauve: "#8839ef"
+  catppuccin_latte_overlay0: "#9ca0b0"
+  catppuccin_latte_overlay1: "#8c8fa1"
+  catppuccin_latte_overlay2: "#7c7f93"
+  catppuccin_latte_peach: "#fe640b"
+  catppuccin_latte_pink: "#ea76cb"
+  catppuccin_latte_red: "#d20f39"
+  catppuccin_latte_rosewater: "#dc8a78"
+  catppuccin_latte_sapphire: "#209fb5"
+  catppuccin_latte_sky: "#04a5e5"
+  catppuccin_latte_subtext0: "#6c6f85"
+  catppuccin_latte_subtext1: "#5c5f77"
+  catppuccin_latte_surface0: "#ccd0da"
+  catppuccin_latte_surface1: "#bcc0cc"
+  catppuccin_latte_surface2: "#acb0be"
+  catppuccin_latte_teal: "#179299"
+  catppuccin_latte_text: "#4c4f69"
+  catppuccin_latte_yellow: "#df8e1d"
 blocks:
-  - type: prompt
-    alignment: left
-    segments:
-      - type: os
-        style: plain
-        foreground: "p:catppuccin_latte_teal"
-        template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
-        properties:
-          windows: 🪟
-          macos: 🍎
-          linux: 🐧
-          alma: 🐧
-          almalinux: 🐧
-          almalinux9: 🐧
-          alpine:  🐧
-          android: 🐧
-          aosc: 🐧
-          arch: 🐧
-          centos: 🐧
-          coreos: 🐧
-          debian: 🐧
-          deepin: 🐧
-          devuan: 🐧
-          elementary: 🐧
-          endeavouros: 🐧
-          fedora: 🐧
-          gentoo: 🐧
-          mageia: 🐧
-          manjaro: 🐧
-          mint: 🐧
-          nixos: 🐧
-          opensuse: 🐧
-          opensuse-tumbleweed: 🐧
-          raspbian: 🐧
-          redhat: 🐧
-          rocky: 🐧
-          sabayon: 🐧
-          slackware: 🐧
-          ubuntu: 🐧
-
-      - type: path
-        style: plain
-        foreground: "p:catppuccin_latte_sky"
-        template: " 󰉋 {{ .Path }}"
-        properties:
-          style: powerlevel
-
-      - type: git
-        style: plain
-        foreground: "p:catppuccin_latte_green"
-        template: ' {{ .UpstreamIcon }} {{ .HEAD }}{{
-          if and (.BranchStatus) (ne .BranchStatus "≡")}} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{
-          if and (.BranchStatus) (eq .BranchStatus "≡")}} <p:catppuccin_latte_green>{{ .BranchStatus }}</>{{ end }}{{
-          if .Working.Changed }} <p:catppuccin_latte_maroon></>{{ end }}{{
-          if .Staging.Changed }} <p:catppuccin_latte_yellow> </>{{ end }}{{
-          if gt .StashCount 0 }} <p:catppuccin_latte_red> {{ .StashCount }}</>{{ end }}'
-        properties:
-          fetch_status: true
-          fetch_upstream_icon: true
-
-          commit_icon: " "
-          tag_icon: " "
-          rebase_icon: " "
-          cherry_pick_icon: " "
-          revert_icon: " "
-          merge_icon: " "
-          no_commits_icon: "? "
-          branch_icon: ""
-          branch_identical_icon: "≡"
-          branch_ahead_icon: "↑"
-          branch_behind_icon: "↓"
-          branch_gone_icon: "≢"
-          branch_max_length: 25
-          truncate_symbol: "…"
-
-          upstream_icons:
-            "iis-git.ee.ethz.ch": " iis"
-            "git.ee.ethz.ch": " eth"
-
-      - type: text
-        style: plain
-        foreground: "p:catppuccin_latte_green"
-        template: " ❯ "
-
-  - type: rprompt
-    segments:
-      - type: executiontime
-        style: plain
-        foreground: "p:catppuccin_latte_sky"
-        template: "󰅒 {{ .FormattedMs }} "
-        properties:
-          threshold: 150
-          style: austin
-          always_enabled: false
-
-      - type: status
-        style: plain
-        foreground: "p:catppuccin_latte_red"
-        template: "{{ if .Error }}!{{ .String }} {{ end }}"
-        properties:
-          always_enabled: true
-
-      - type: session
-        style: plain
-        foreground: "p:catppuccin_latte_flamingo"
-        template: "{{ if .SSHSession }}  {{ .UserName }}{{ end }}"
-
-      - type: rust
-        style: plain
-        foreground: "p:catppuccin_latte_flamingo"
-        template: " {{ .Full }} "
-
-      - type: python
-        style: plain
-        foreground: "p:catppuccin_latte_flamingo"
-        template: "  {{ .Venv }} ({{ .Full }}) "
-
-      - type: docker
-        style: plain
-        foreground: "p:catppuccin_latte_flamingo"
-        template: "  {{ .Context }} "
-
-      - type: time
-        style: plain
-        foreground: "p:catppuccin_latte_sky"
-        template: " {{ .CurrentDate | date .Format }} "
-        properties:
-          time_format: "15:04:05"
+- type: prompt
+  alignment: left
+  segments:
+  - properties:
+      alma: 🐧
+      almalinux: 🐧
+      almalinux9: 🐧
+      alpine: 🐧
+      android: 🐧
+      aosc: 🐧
+      arch: 🐧
+      cache_duration: none
+      centos: 🐧
+      coreos: 🐧
+      debian: 🐧
+      deepin: 🐧
+      devuan: 🐧
+      elementary: 🐧
+      endeavouros: 🐧
+      fedora: 🐧
+      gentoo: 🐧
+      linux: 🐧
+      macos: 🍎
+      mageia: 🐧
+      manjaro: 🐧
+      mint: 🐧
+      nixos: 🐧
+      opensuse: 🐧
+      opensuse-tumbleweed: 🐧
+      raspbian: 🐧
+      redhat: 🐧
+      rocky: 🐧
+      sabayon: 🐧
+      slackware: 🐧
+      ubuntu: 🐧
+      windows: 🪟
+    template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+    foreground: p:catppuccin_latte_teal
+    type: os
+    style: plain
+  - properties:
+      cache_duration: none
+      style: powerlevel
+    template: " \U000f024b {{ .Path }}"
+    foreground: p:catppuccin_latte_sky
+    type: path
+    style: plain
+  - properties:
+      branch_ahead_icon: ↑
+      branch_behind_icon: ↓
+      branch_gone_icon: ≢
+      branch_icon: 
+      branch_identical_icon: ≡
+      branch_max_length: 25
+      cache_duration: none
+      cherry_pick_icon: "\ue29b "
+      commit_icon: "\uf417 "
+      fetch_status: true
+      fetch_upstream_icon: true
+      merge_icon: "\ue727 "
+      no_commits_icon: "? "
+      rebase_icon: "\ue728 "
+      revert_icon: "\uf0e2 "
+      tag_icon: "\uf412 "
+      truncate_symbol: …
+      upstream_icons:
+        git.ee.ethz.ch:  eth
+        iis-git.ee.ethz.ch:  iis
+    template: " {{ .UpstreamIcon }} {{ .HEAD }}{{ if and (.BranchStatus) (ne .BranchStatus \"≡\")}} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{ if and (.BranchStatus) (eq .BranchStatus \"≡\")}} <p:catppuccin_latte_green>{{ .BranchStatus }}</>{{ end }}{{ if .Working.Changed }} <p:catppuccin_latte_maroon>\uea73</>{{ end }}{{ if .Staging.Changed }} <p:catppuccin_latte_yellow>\uf046 </>{{ end }}{{ if gt .StashCount 0 }} <p:catppuccin_latte_red>\uf51e {{ .StashCount }}</>{{ end }}"
+    foreground: p:catppuccin_latte_green
+    type: git
+    style: plain
+  - properties:
+      cache_duration: none
+    template: " ❯ "
+    foreground: p:catppuccin_latte_green
+    type: text
+    style: plain
+- type: rprompt
+  segments:
+  - properties:
+      always_enabled: false
+      cache_duration: none
+      style: austin
+      threshold: 150
+    template: "\U000f0152 {{ .FormattedMs }} "
+    foreground: p:catppuccin_latte_sky
+    type: executiontime
+    style: plain
+  - properties:
+      always_enabled: true
+      cache_duration: none
+    template: "{{ if .Error }}!{{ .String }} {{ end }}"
+    foreground: p:catppuccin_latte_red
+    type: status
+    style: plain
+  - properties:
+      cache_duration: none
+    template: "{{ if .SSHSession }} \ueba9 {{ .UserName }}{{ end }}"
+    foreground: p:catppuccin_latte_flamingo
+    type: session
+    style: plain
+  - properties:
+      cache_duration: none
+    template: "\ue7a8 {{ .Full }} "
+    foreground: p:catppuccin_latte_flamingo
+    type: rust
+    style: plain
+  - properties:
+      cache_duration: none
+    template: "\ue235  {{ .Venv }} ({{ .Full }}) "
+    foreground: p:catppuccin_latte_flamingo
+    type: python
+    style: plain
+  - properties:
+      cache_duration: none
+    template: "\uf308  {{ .Context }} "
+    foreground: p:catppuccin_latte_flamingo
+    type: docker
+    style: plain
+  - properties:
+      cache_duration: none
+      time_format: "15:04:05"
+    template: "\uf017 {{ .CurrentDate | date .Format }} "
+    foreground: p:catppuccin_latte_sky
+    type: time
+    style: plain
+version: 3
