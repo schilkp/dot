@@ -53,6 +53,8 @@
     ],
     "devel-c": [
         "extra/clang",
+        "extra/ccache",
+        "extra/bazel",
         "extra/cmake",
         "extra/ninja",
         "extra/bear"
