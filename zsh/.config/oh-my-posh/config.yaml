@@ -126,7 +126,7 @@ blocks:
     style: plain
   - properties:
       cache_duration: none
-    template: "{{ if .SSHSession }} \ueba9 {{ .UserName }}{{ end }}"
+    template: "{{ if .SSHSession }} \ueba9 {{ .UserName }} {{ end }}"
     foreground: p:catppuccin_latte_flamingo
     type: session
     style: plain
