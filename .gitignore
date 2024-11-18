@@ -2,3 +2,4 @@ neovim/.config/nvim/spell/*.spl
 zsh/.zsh/
 !zsh/.zsh/completion
 btop/.config/btop/themes/
+btop/.config/btop/btop.log
