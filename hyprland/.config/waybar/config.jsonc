@@ -11,6 +11,7 @@
         "hyprland/window"
     ],
     "modules-right": [
+        "systemd-failed-units",
         "pulseaudio",
         "pulseaudio/slider",
         "bluetooth",
