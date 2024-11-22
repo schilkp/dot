@@ -9,7 +9,6 @@
         "extra/firefox",
         "extra/ttf-jetbrains-mono-nerd",
         "extra/noto-fonts-emoji",
-        "extra/lua-language-server",
         "extra/htop",
         "extra/brightnessctl"
     ],
@@ -66,23 +65,6 @@
     ],
     "devel-rust": [
         "extra/rustup"
-    ],
-    "devel-yaml": [
-        "extra/yaml-language-server",
-        "extra/prettier"
-    ],
-    "devel-json_css_html": [
-        "aur/vscode-langservers-extracted"
-    ],
-    "devel-shell": [
-        "extra/bash-language-server",
-        "extra/shellcheck"
-    ],
-    "devel-rtl": [
-        "aur/verible-bin"
-    ],
-    "devel-md": [
-        "aur/marksman-bin"
     ],
     "devel-embedded": [
         "aur/jlink"
