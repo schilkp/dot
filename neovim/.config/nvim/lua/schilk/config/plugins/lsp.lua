@@ -5,6 +5,23 @@ local function config_lsp()
     -- It gets too big too fast..
     vim.lsp.set_log_level("off")
 
+    -- ---===--- MASON ---===---
+
+    require("mason").setup()
+    require("mason-lspconfig").setup {
+        ensure_installed = {
+            "bashls",
+            "jsonls",
+            "yamlls",
+            "lua_ls",
+            "marksman",
+            "pyright",
+            "neocmake",
+        }
+    }
+
+    -- ---===--- LSP CONFIG ---===---
+
     -- LSP Config:
     local lspconfig = require('lspconfig')
 
@@ -134,6 +151,11 @@ local function config_lsp()
 
     -- Zig language server
     require 'lspconfig'.zls.setup({
+        capabilities = capabilities,
+    })
+
+    -- Cmake language server
+    require 'lspconfig'.neocmake.setup({
         capabilities = capabilities,
     })
 end
@@ -288,6 +310,8 @@ M.spec = {
                 { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
             }
         },
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
         -- rust:
         'simrat39/rust-tools.nvim',
         -- json/yaml schemas:
