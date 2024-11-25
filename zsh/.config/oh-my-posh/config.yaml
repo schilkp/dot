@@ -118,7 +118,7 @@ blocks:
           always_enabled: true
           cache_duration: none
 
-      # == STATUS ==
+      # == SESSION ==
       - type: session
         template: "{{ if .SSHSession }} \ueba9 {{ .UserName }} {{ end }}"
         foreground: p:catppuccin_latte_flamingo
