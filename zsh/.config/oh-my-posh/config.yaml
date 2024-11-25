@@ -34,50 +34,22 @@ blocks:
     alignment: left
     segments:
       # == OS ==
-      - properties:
-          alma: 🐧
-          almalinux: 🐧
-          almalinux9: 🐧
-          alpine: 🐧
-          android: 🐧
-          aosc: 🐧
-          arch: 🐧
-          cache_duration: none
-          centos: 🐧
-          coreos: 🐧
-          debian: 🐧
-          deepin: 🐧
-          devuan: 🐧
-          elementary: 🐧
-          endeavouros: 🐧
-          fedora: 🐧
-          gentoo: 🐧
-          linux: 🐧
-          macos: 🍎
-          mageia: 🐧
-          manjaro: 🐧
-          mint: 🐧
-          nixos: 🐧
-          opensuse: 🐧
-          opensuse-tumbleweed: 🐧
-          raspbian: 🐧
-          redhat: 🐧
-          rocky: 🐧
-          sabayon: 🐧
-          slackware: 🐧
-          ubuntu: 🐧
-          windows: 🪟
-        template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
-        foreground: p:catppuccin_latte_teal
-        type: os
+      - type: text
+        template: >
+          {{ if      matchP "^SchilkTop$" .HostName }}🖥️
+          {{ else if matchP "^SchilkPad$" .HostName }}💻
+          {{ else }}🐧{{ end }}
+        foreground: p:catppuccin_latte_green
         style: plain
+        properties:
+          cache_duration: none
 
       # == PATH ==
       - type: path
         properties:
           cache_duration: none
           style: powerlevel
-        template: " \U000f024b {{ .Path }}"
+        template: "\U000f024b {{ .Path }}"
         foreground: p:catppuccin_latte_sky
         style: plain
 
@@ -118,7 +90,6 @@ blocks:
 
   - type: rprompt
     segments:
-
       # == EXECUTION TIME ==
       - type: executiontime
         template: "\U000f0152 {{ .FormattedMs }} "
