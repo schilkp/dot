@@ -44,6 +44,14 @@ blocks:
         properties:
           cache_duration: none
 
+      # == SESSION ==
+      - type: session
+        template: "{{ if .SSHSession }}📡 {{.UserName}} {{ end }}"
+        foreground: p:catppuccin_latte_flamingo
+        style: plain
+        properties:
+          cache_duration: none
+
       # == PATH ==
       - type: path
         properties:
