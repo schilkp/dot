@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+version: 3
 
 palette:
   catppuccin_latte_base: "#eff1f5"
@@ -27,132 +28,154 @@ palette:
   catppuccin_latte_teal: "#179299"
   catppuccin_latte_text: "#4c4f69"
   catppuccin_latte_yellow: "#df8e1d"
+
 blocks:
-- type: prompt
-  alignment: left
-  segments:
-  - properties:
-      alma: 🐧
-      almalinux: 🐧
-      almalinux9: 🐧
-      alpine: 🐧
-      android: 🐧
-      aosc: 🐧
-      arch: 🐧
-      cache_duration: none
-      centos: 🐧
-      coreos: 🐧
-      debian: 🐧
-      deepin: 🐧
-      devuan: 🐧
-      elementary: 🐧
-      endeavouros: 🐧
-      fedora: 🐧
-      gentoo: 🐧
-      linux: 🐧
-      macos: 🍎
-      mageia: 🐧
-      manjaro: 🐧
-      mint: 🐧
-      nixos: 🐧
-      opensuse: 🐧
-      opensuse-tumbleweed: 🐧
-      raspbian: 🐧
-      redhat: 🐧
-      rocky: 🐧
-      sabayon: 🐧
-      slackware: 🐧
-      ubuntu: 🐧
-      windows: 🪟
-    template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
-    foreground: p:catppuccin_latte_teal
-    type: os
-    style: plain
-  - properties:
-      cache_duration: none
-      style: powerlevel
-    template: " \U000f024b {{ .Path }}"
-    foreground: p:catppuccin_latte_sky
-    type: path
-    style: plain
-  - properties:
-      branch_ahead_icon: ↑
-      branch_behind_icon: ↓
-      branch_gone_icon: ≢
-      branch_icon: 
-      branch_identical_icon: ≡
-      branch_max_length: 25
-      cache_duration: none
-      cherry_pick_icon: "\ue29b "
-      commit_icon: "\uf417 "
-      fetch_status: true
-      fetch_upstream_icon: true
-      merge_icon: "\ue727 "
-      no_commits_icon: "? "
-      rebase_icon: "\ue728 "
-      revert_icon: "\uf0e2 "
-      tag_icon: "\uf412 "
-      truncate_symbol: …
-      upstream_icons:
-        git.ee.ethz.ch:  eth
-        iis-git.ee.ethz.ch:  iis
-    template: " {{ .UpstreamIcon }} {{ .HEAD }}{{ if and (.BranchStatus) (ne .BranchStatus \"≡\")}} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{ if and (.BranchStatus) (eq .BranchStatus \"≡\")}} <p:catppuccin_latte_green>{{ .BranchStatus }}</>{{ end }}{{ if .Working.Changed }} <p:catppuccin_latte_maroon>\uea73</>{{ end }}{{ if .Staging.Changed }} <p:catppuccin_latte_yellow>\uf046 </>{{ end }}{{ if gt .StashCount 0 }} <p:catppuccin_latte_red>\uf51e {{ .StashCount }}</>{{ end }}"
-    foreground: p:catppuccin_latte_green
-    type: git
-    style: plain
-  - properties:
-      cache_duration: none
-    template: " ❯ "
-    foreground: p:catppuccin_latte_green
-    type: text
-    style: plain
-- type: rprompt
-  segments:
-  - properties:
-      always_enabled: false
-      cache_duration: none
-      style: austin
-      threshold: 150
-    template: "\U000f0152 {{ .FormattedMs }} "
-    foreground: p:catppuccin_latte_sky
-    type: executiontime
-    style: plain
-  - properties:
-      always_enabled: true
-      cache_duration: none
-    template: "{{ if .Error }}!{{ .String }} {{ end }}"
-    foreground: p:catppuccin_latte_red
-    type: status
-    style: plain
-  - properties:
-      cache_duration: none
-    template: "{{ if .SSHSession }} \ueba9 {{ .UserName }} {{ end }}"
-    foreground: p:catppuccin_latte_flamingo
-    type: session
-    style: plain
-  - properties:
-      cache_duration: none
-    template: "\ue7a8 {{ .Full }} "
-    foreground: p:catppuccin_latte_flamingo
-    type: rust
-    style: plain
-  - properties:
-      cache_duration: none
-    template: "\ue235  {{ .Venv }} ({{ .Full }}) "
-    foreground: p:catppuccin_latte_flamingo
-    type: python
-    style: plain
-  - properties:
-      cache_duration: none
-    template: "\uf308  {{ .Context }} "
-    foreground: p:catppuccin_latte_flamingo
-    type: docker
-    style: plain
-  - properties:
-      cache_duration: none
-      time_format: "15:04:05"
-    template: "\uf017 {{ .CurrentDate | date .Format }} "
-    foreground: p:catppuccin_latte_sky
-    type: time
-    style: plain
-version: 3
+  - type: prompt
+    alignment: left
+    segments:
+      # == OS ==
+      - properties:
+          alma: 🐧
+          almalinux: 🐧
+          almalinux9: 🐧
+          alpine: 🐧
+          android: 🐧
+          aosc: 🐧
+          arch: 🐧
+          cache_duration: none
+          centos: 🐧
+          coreos: 🐧
+          debian: 🐧
+          deepin: 🐧
+          devuan: 🐧
+          elementary: 🐧
+          endeavouros: 🐧
+          fedora: 🐧
+          gentoo: 🐧
+          linux: 🐧
+          macos: 🍎
+          mageia: 🐧
+          manjaro: 🐧
+          mint: 🐧
+          nixos: 🐧
+          opensuse: 🐧
+          opensuse-tumbleweed: 🐧
+          raspbian: 🐧
+          redhat: 🐧
+          rocky: 🐧
+          sabayon: 🐧
+          slackware: 🐧
+          ubuntu: 🐧
+          windows: 🪟
+        template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+        foreground: p:catppuccin_latte_teal
+        type: os
+        style: plain
+
+      # == PATH ==
+      - type: path
+        properties:
+          cache_duration: none
+          style: powerlevel
+        template: " \U000f024b {{ .Path }}"
+        foreground: p:catppuccin_latte_sky
+        style: plain
+
+      # == GIT ==
+      - type: git
+        template: " {{ .UpstreamIcon }} {{ .HEAD }}{{ if and (.BranchStatus) (ne .BranchStatus \"≡\")}} <p:catppuccin_latte_yellow>{{ .BranchStatus }}</>{{ end }}{{ if and (.BranchStatus) (eq .BranchStatus \"≡\")}} <p:catppuccin_latte_green>{{ .BranchStatus }}</>{{ end }}{{ if .Working.Changed }} <p:catppuccin_latte_maroon>\uea73</>{{ end }}{{ if .Staging.Changed }} <p:catppuccin_latte_yellow>\uf046 </>{{ end }}{{ if gt .StashCount 0 }} <p:catppuccin_latte_red>\uf51e {{ .StashCount }}</>{{ end }}"
+        foreground: p:catppuccin_latte_green
+        style: plain
+        properties:
+          branch_ahead_icon: ↑
+          branch_behind_icon: ↓
+          branch_gone_icon: ≢
+          branch_icon: 
+          branch_identical_icon: ≡
+          branch_max_length: 25
+          cache_duration: none
+          cherry_pick_icon: "\ue29b "
+          commit_icon: "\uf417 "
+          fetch_status: true
+          fetch_upstream_icon: true
+          merge_icon: "\ue727 "
+          no_commits_icon: "? "
+          rebase_icon: "\ue728 "
+          revert_icon: "\uf0e2 "
+          tag_icon: "\uf412 "
+          truncate_symbol: …
+          upstream_icons:
+            git.ee.ethz.ch:  eth
+            iis-git.ee.ethz.ch:  iis
+
+      # == TEXT ==
+      - type: text
+        template: " ❯ "
+        foreground: p:catppuccin_latte_green
+        style: plain
+        properties:
+          cache_duration: none
+
+  - type: rprompt
+    segments:
+
+      # == EXECUTION TIME ==
+      - type: executiontime
+        template: "\U000f0152 {{ .FormattedMs }} "
+        foreground: p:catppuccin_latte_sky
+        style: plain
+        properties:
+          always_enabled: false
+          cache_duration: none
+          style: austin
+          threshold: 150
+
+      # == STATUS ==
+      - type: status
+        template: "{{ if .Error }}!{{ .String }} {{ end }}"
+        foreground: p:catppuccin_latte_red
+        style: plain
+        properties:
+          always_enabled: true
+          cache_duration: none
+
+      # == STATUS ==
+      - type: session
+        template: "{{ if .SSHSession }} \ueba9 {{ .UserName }} {{ end }}"
+        foreground: p:catppuccin_latte_flamingo
+        style: plain
+        properties:
+          cache_duration: none
+
+      # == RUST ==
+      - type: rust
+        template: "\ue7a8 {{ .Full }} "
+        foreground: p:catppuccin_latte_flamingo
+        style: plain
+        properties:
+          cache_duration: none
+
+      # == PYTHON ==
+      - type: python
+        template: "\ue235  {{ .Venv }} ({{ .Full }}) "
+        foreground: p:catppuccin_latte_flamingo
+        style: plain
+        properties:
+          cache_duration: none
+
+      # == DOCKER ==
+      - type: docker
+        template: "\uf308  {{ .Context }} "
+        foreground: p:catppuccin_latte_flamingo
+        style: plain
+        properties:
+          cache_duration: none
+
+      # == TIME ==
+      - type: time
+        template: "\uf017 {{ .CurrentDate | date .Format }} "
+        foreground: p:catppuccin_latte_sky
+        style: plain
+        properties:
+          cache_duration: none
+          time_format: "15:04:05"
