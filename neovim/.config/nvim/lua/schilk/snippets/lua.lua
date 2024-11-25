@@ -39,8 +39,17 @@ M.snippets = {
     local M = {}
 
     function M.config()
+        -- Call plugin setup:
+
+        -- Other config:
 
     end
+    
+    M.spec = {
+        '',
+        config = M.config,
+        cond = not vim.g.vscode, -- Disable in vscode-neovim
+    }
 
     return M
     ]]),
