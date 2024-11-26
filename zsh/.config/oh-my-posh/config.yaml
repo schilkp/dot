@@ -46,7 +46,7 @@ blocks:
 
       # == SESSION ==
       - type: session
-        template: "{{ if .SSHSession }}📡 {{.UserName}} {{ end }}"
+        template: "{{ if .SSHSession }}📡 {{ end }}"
         foreground: p:catppuccin_latte_flamingo
         style: plain
         properties:
@@ -120,7 +120,7 @@ blocks:
 
       # == SESSION ==
       - type: session
-        template: "{{ if .SSHSession }} \ueba9 {{ .UserName }} {{ end }}"
+        template: "{{ if .SSHSession }} \ueba9 {{ .UserName }}@{{ .HostName }} {{ end }}"
         foreground: p:catppuccin_latte_flamingo
         style: plain
         properties:
