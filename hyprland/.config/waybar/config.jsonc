@@ -25,8 +25,7 @@
         "format": "     {}     ",
         "exec": "~/dot/scripts/random_emoji.bash",
         "tooltip": "false",
-        "interval": 120,
-        "on-click": "exec fuzzel"
+        "interval": 120
     },
     "hyprland/workspaces": {
         "window-rewrite": {},
