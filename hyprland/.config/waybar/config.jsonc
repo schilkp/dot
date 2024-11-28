@@ -153,8 +153,6 @@
         }
     },
     "systemd-failed-units": {
-        "hide-on-ok": false, // Do not hide if there is zero failed units.
-        "format": "✗ {nr_failed}",
-        "format-ok": "✓"
+        "format": "   ✗ {nr_failed}   "
     }
 }
