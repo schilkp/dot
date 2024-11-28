@@ -11,13 +11,13 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "systemd-failed-units",
         "pulseaudio",
         "pulseaudio/slider",
         "bluetooth",
         "cpu",
         "memory",
         "battery",
+        "systemd-failed-units",
         "tray",
         "clock"
     ],
