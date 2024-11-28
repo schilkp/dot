@@ -133,6 +133,11 @@ window#waybar {
     background-color: green;
 }
 
+#taskbar button{
+    color: white;
+}
+
 #taskbar button.active {
-    background-color: grey;
+    color: black;
+    background-color: white;
 }
