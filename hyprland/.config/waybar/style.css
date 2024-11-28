@@ -141,3 +141,8 @@ window#waybar {
     color: black;
     background-color: white;
 }
+
+#systemd-failed-units.degraded {
+    color: black;
+    background-color: red;
+}
