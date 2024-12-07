@@ -29,3 +29,5 @@
 
 ;; set ui scale in terminal
 (set-face-attribute 'default nil :height 130) 
+
+(evil-define-key 'normal 'global (kbd "SPC x") 'org-toggle-checkbox)
