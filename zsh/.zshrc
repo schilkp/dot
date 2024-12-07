@@ -25,6 +25,7 @@ PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 
 alias vi='nvim'
 alias e='emacs -nw'
+alias em='emacs'
 
 # Git
 alias gs='git status'
