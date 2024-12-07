@@ -14,3 +14,5 @@
         fzf/window-height 15)
   :ensure (:wait t) 
   :demand t)
+
+(evil-define-key 'normal 'global (kbd "SPC o") 'fzf)
