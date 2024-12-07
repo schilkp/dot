@@ -4,6 +4,9 @@
   "Load a file in current user's configuration directory"
   (load-file (expand-file-name file user-init-dir)))
 
+;; Disable the splash screen
+(setq inhibit-splash-screen t)
+
 (load-user-file "schilk/elpaca.el")
 (load-user-file "schilk/evil.el")
 (load-user-file "schilk/fzf.el")
