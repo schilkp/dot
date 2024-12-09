@@ -13,15 +13,16 @@
     defaultBranch = main
 
 [diff]
-        tool = difftastic
+    tool = difftastic
 
 [difftool]
-        prompt = false
+    prompt = false
 
 [difftool "difftastic"]
-        cmd = difft "$LOCAL" "$REMOTE"
+    cmd = difft "$LOCAL" "$REMOTE"
 
 [pager]
-        difftool = true
+    difftool = true
+
 [commit]
-	verbose = true
+    verbose = true
