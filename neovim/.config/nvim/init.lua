@@ -19,7 +19,7 @@ require('lazy').setup({
     -- LSP:
     require('schilk.config.plugins.lsp').spec,
     -- Completion + Snippets:
-    require('schilk.config.plugins.cmp').spec,
+    require('schilk.config.plugins.blink_cmp').spec,
 
     -- [[ UI ]] --
     -- Keybind help:

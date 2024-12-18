@@ -24,9 +24,9 @@ local function config_lsp()
     -- LSP Config:
     local lspconfig = require('lspconfig')
 
-    -- nvim-cmp supports additional completion capabilities, so broadcast that to servers:
+    -- Blink CMP capabilities:
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+    capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
 
     -- Lua:
     lspconfig.lua_ls.setup({
