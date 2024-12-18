@@ -15,7 +15,7 @@ local function config_lsp()
             "yamlls",
             "lua_ls",
             "marksman",
-            -- "neocmake",
+            "neocmake",
         }
     }
 
