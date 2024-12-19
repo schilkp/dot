@@ -7,3 +7,5 @@ ltximg/
 .\#*
 \#*\#
 org-roam.db
+.org-id-locations
+bookmarks
