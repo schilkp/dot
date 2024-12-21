@@ -15,12 +15,6 @@ require('lazy').setup({
     -- require('schilk.config.plugins.catppuccin').spec,
     require('schilk.config.plugins.onedark').spec,
 
-    -- [[ LSP/COMPLETION ]] --
-    -- LSP:
-    require('schilk.config.plugins.lsp').spec,
-    -- Completion + Snippets:
-    require('schilk.config.plugins.blink_cmp').spec,
-
     -- [[ UI ]] --
     -- Keybind help:
     require('schilk.config.plugins.whichkey').spec,
@@ -69,6 +63,15 @@ require('lazy').setup({
     'michaeljsmith/vim-indent-object',
     -- Got integration:
     'tpope/vim-fugitive',
+    -- Make me suffer:
+    require('schilk.config.plugins.orgmode').spec,
+
+    -- [[ LSP/COMPLETION ]] --
+    -- LSP:
+    require('schilk.config.plugins.lsp').spec,
+    -- Completion + Snippets:
+    require('schilk.config.plugins.blink_cmp').spec,
+
 
     -- [[ FILE TYPES ]] --
     'NoahTheDuke/vim-just',
