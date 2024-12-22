@@ -35,7 +35,16 @@ function M.config_org_roam()
         -- }
         mappings = {
             prefix = "<leader>n",
+        },
+
+        templates = {
+            d = {
+                description = "default",
+                template = "%?",
+                target = "%[slug].org",
+            },
         }
+
     })
 
     vim.keymap.set('n', '<leader>nF', M.grep_notes, { silent = true, desc = 'Find in notes.' })
