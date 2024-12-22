@@ -99,6 +99,9 @@
   (setq completion-ignore-case t)
   )
 
+(setq org-startup-with-inline-images t)
+(setq org-startup-with-latex-preview t)
+
 ; === EVIL =====================================================================
 
 (use-package evil
