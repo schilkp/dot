@@ -16,7 +16,7 @@ function M.config()
             --   scroll_documentation_up, scroll_documentation_down, snippet_forward, snippet_backward, fallback
 
             ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-            -- ['<C-e>'] = { 'hide', 'fallback' },
+            ['<C-g>'] = { 'hide', 'fallback' },
             ['<CR>'] = { 'accept', 'fallback' },
 
             ['<Tab>'] = { 'snippet_forward', 'select_next', 'fallback' },
