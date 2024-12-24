@@ -44,7 +44,7 @@ function M.config()
 
         completion = {
             list = {
-                selection = "manual"
+                selection = "auto_insert"
             },
 
             trigger = {
