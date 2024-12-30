@@ -1,0 +1,4 @@
+#!/bin/bash
+set -x
+XDG_MENU_PREFIX=plasma- kbuildsycoca6
+
