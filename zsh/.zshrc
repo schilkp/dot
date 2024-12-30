@@ -6,10 +6,12 @@ autoload -Uz compinit promptinit
 _comp_options+=(globdots)
 
 # History:
-export HISTFILE="$HOME/.zhistory"
+export HISTFILE_ACTUAL="$HOME/.zhistory"
+export HISTFILE="$HISTFILE_ACTUAL"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 setopt HIST_IGNORE_SPACE
+setopt INC_APPEND_HISTORY
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # Use same colors as LS
 setopt AUTO_PUSHD
@@ -124,6 +126,25 @@ here() {
     elif command -v nautilus &> /dev/null
     then
         nautilus 1>/dev/null 2>/dev/null & disown
+    fi
+}
+
+incog () {
+    if [[ $1 = disable ]] || [[ $1 == d ]]
+    then
+        echo "Incog Disabled..."
+        export HISTFILE="$HISTFILE_ACTUAL"
+        if command -v atuin &> /dev/null; then
+           add-zsh-hook precmd _atuin_precmd
+           add-zsh-hook preexec _atuin_preexec
+        fi
+    else
+        echo "Incog Enabled..."
+        export HISTFILE=
+        if command -v atuin &> /dev/null; then
+          add-zsh-hook -d precmd _atuin_precmd
+          add-zsh-hook -d preexec _atuin_preexec
+        fi
     fi
 }
 
