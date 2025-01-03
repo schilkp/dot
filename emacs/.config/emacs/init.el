@@ -167,6 +167,10 @@
   (evil-define-key 'normal 'global (kbd "SPC nf") 'org-roam-node-find)
   (evil-define-key 'normal 'global (kbd "SPC ni") 'org-roam-node-insert)
 
+  ; TODO: Where should this be? IDK how use-package for org works since it is
+  ; builtin...
+  (evil-define-key 'normal 'global (kbd "SPC x") 'org-toggle-checkbox)
+
   :config
   (org-roam-db-autosync-mode)
   (setq org-roam-capture-templates
