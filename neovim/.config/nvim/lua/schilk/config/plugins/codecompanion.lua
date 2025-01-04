@@ -10,8 +10,18 @@ function M.config()
     local anthropic_key = key_file:read("*a"):gsub("%s+", "")
     key_file:close()
 
-    require('codecompanion').setup({
+    -- Pick message:
+    local options = {
+        { "Welcome to the ✨ AI Slop Bucket ✨! We hope you enjoy your stay.", "✨ AI Slop Bucket" },
+        { "Too stupid to think for yourself again?", "✨ Brainrot" },
+        { "To access all copyrighted material ever, please type below!", "✨ Imitation Station" },
+    }
+    local choice = options[math.random(#options)]
+    local intro_msg = choice[1]
+    local bind_msg = choice[2]
 
+    -- Setup:
+    require('codecompanion').setup({
         strategies = {
             chat = {
                 adapter = "anthropic",
@@ -46,6 +56,12 @@ function M.config()
             },
         },
 
+        display = {
+            chat = {
+                intro_message = intro_msg
+            }
+        },
+
         adapters = {
             anthropic = function()
                 return require("codecompanion.adapters").extend("anthropic", {
@@ -57,6 +73,8 @@ function M.config()
         },
 
     })
+
+    vim.keymap.set({ 'n' }, '<leader>tc', ":CodeCompanionChat<CR>", { silent = true, desc = bind_msg })
 end
 
 M.spec = {
