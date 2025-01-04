@@ -61,7 +61,7 @@ require('lazy').setup({
     'michaeljsmith/vim-indent-object',
     -- Got integration:
     'tpope/vim-fugitive',
-    -- Make me suffer:
+    -- Orgmode:
     require('schilk.config.plugins.orgmode').spec,
     -- Ai SlOp:
     require('schilk.config.plugins.codecompanion').spec,
