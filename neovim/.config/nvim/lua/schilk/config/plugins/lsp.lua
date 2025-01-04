@@ -276,11 +276,14 @@ end
 
 function M.fidget_config()
     require("fidget").setup({
-        text = { spinner = "dots_snake" },
-        window = { blend = 0 },
-        sources = {
-            ltex = {
-                ignore = true
+
+        notification = {
+            override_vim_notify = true,
+            view = {
+                stack_upwards = true,
+            },
+            window = {
+                winblend = 0
             }
         }
     });
@@ -291,8 +294,8 @@ M.spec = {
     dependencies = {
         {
             'j-hui/fidget.nvim',
-            tag = 'legacy',
-            config = M.fidget_config
+            config = M.fidget_config,
+            priority = 100,
         },
         {
             "folke/lazydev.nvim",
