@@ -79,7 +79,7 @@ function M.config()
         -- default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, via `opts_extend`
         sources = {
-            default = { 'lsp', 'path', 'luasnip', 'buffer', 'orgmode' },
+            default = { 'lsp', 'path', 'luasnip', 'buffer', 'orgmode', 'codecompanion' },
             -- optionally disable cmdline completions
             cmdline = {},
             providers = {
@@ -87,6 +87,12 @@ function M.config()
                     name = 'Orgmode',
                     module = 'orgmode.org.autocompletion.blink',
                 },
+                codecompanion = {
+                    name = "CodeCompanion",
+                    module = "codecompanion.providers.completion.blink",
+                    score_offset = 10,
+                },
+
             }
         },
 

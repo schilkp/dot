@@ -65,6 +65,9 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     -- Make me suffer:
     require('schilk.config.plugins.orgmode').spec,
+    -- Ai SlOp:
+    require('schilk.config.plugins.codecompanion').spec,
+
 
     -- [[ LSP/COMPLETION ]] --
     -- LSP:
