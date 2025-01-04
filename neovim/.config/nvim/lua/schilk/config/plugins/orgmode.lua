@@ -14,8 +14,13 @@ function M.config_org()
     })
 
     -- Enable conceal:
-    vim.opt.conceallevel = 2
-    vim.opt.concealcursor = 'nc'
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = "org",
+        callback = function()
+            vim.opt_local.conceallevel = 2
+            vim.opt_local.concealcursor = 'nc'
+        end,
+    })
 end
 
 --- Fuzzy-find in notes
