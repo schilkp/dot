@@ -14,7 +14,15 @@ function M.config()
     local options = {
         { "Welcome to the ✨ AI Slop Bucket ✨! We hope you enjoy your stay.", "✨ AI Slop Bucket" },
         { "Too stupid to think for yourself again?", "✨ Brainrot" },
-        { "To access all copyrighted material ever, please type below!", "✨ Imitation Station" },
+        { "🤖 Stop Thinking, start typing! 🤖", "✨ MaChInE LeArNinG" },
+        { "Tired of originality? ✨ We got you covered! ✨", "✨ The Idea Launderer" },
+        { "☣️  WARNING: May cause sudden loss of critical thinking. ☣️ ", " ✨ The Neural-Net Nanny" },
+        { "Get your daily dose of recycled thoughts here! 💩", " ✨ The Digital Landfill" },
+        { "Experience the joy of pre-chewed information!", "✨ The Cognitive Compost" },
+        { "Embrace the bland void of synthesized thought.", "✨ The Neural Neutralizer" },
+        { "Why be original when you can be algorithmically average?", "✨ The Conformity Engine" },
+        { "Join the hive mind, resistance is futile.", "✨ The Borg Collective of Banality" },
+        { "Your brain on autopilot. Please enjoy the ride.", "✨ The Dopamine Drip Feed" },
     }
     local choice = options[math.random(#options)]
     local intro_msg = choice[1]
