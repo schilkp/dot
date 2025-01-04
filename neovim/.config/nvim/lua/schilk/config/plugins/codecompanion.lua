@@ -4,7 +4,7 @@ function M.config()
     -- Load key:
     local key_file = io.open(os.getenv("HOME") .. "/.anthropic_api", "r")
     if not key_file then
-        vim.print("No anthropic api key.")
+        vim.notify("🤖 No anthropic api key. CodeCompanion not active.", vim.log.levels.WARN)
         return
     end
     local anthropic_key = key_file:read("*a"):gsub("%s+", "")
