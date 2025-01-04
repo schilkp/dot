@@ -1,6 +1,7 @@
 local M = {}
 
 function M.config()
+    -- Load key:
     local key_file = io.open(os.getenv("HOME") .. "/.anthropic_api", "r")
     if not key_file then
         vim.print("No anthropic api key.")
@@ -14,26 +15,25 @@ function M.config()
         strategies = {
             chat = {
                 adapter = "anthropic",
-
                 slash_commands = {
                     ["buffer"] = {
                         opts = {
-                            provider = "telescope", -- default|telescope|mini_pick|fzf_lua
+                            provider = "telescope",
                         },
                     },
                     ["file"] = {
                         opts = {
-                            provider = "fzf_lua", -- default|telescope|mini_pick|fzf_lua
+                            provider = "fzf_lua",
                         },
                     },
                     ["help"] = {
                         opts = {
-                            provider = "fzf_lua", -- telescope|mini_pick|fzf_lua
+                            provider = "fzf_lua",
                         },
                     },
                     ["symbols"] = {
                         opts = {
-                            provider = "fzf_lua", -- default|telescope|mini_pick|fzf_lua
+                            provider = "fzf_lua",
                         },
                     },
                 },
