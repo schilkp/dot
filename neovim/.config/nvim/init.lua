@@ -50,7 +50,7 @@ require('lazy').setup({
     -- Documentation boilerplate generation:
     require('schilk.config.plugins.neogen').spec,
     -- Code formatting:
-    require('schilk.config.plugins.formatter').spec,
+    require('schilk.config.plugins.conform').spec,
     -- Push-to-REPL:
     require('schilk.config.plugins.vim_slime').spec,
     -- Text alignment:
