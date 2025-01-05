@@ -115,16 +115,10 @@ function M.config()
     local openai_key = M.load_key(".openai_api")
     local gemini_key = M.load_key(".gemini_api")
 
-    if not anthropic_key and not openai_key and not gemini_key then
-        vim.notify("🤖 No API key.")
-        return
-    end
-
     -- Pick message:
     local choice = M.msg_options[math.random(#M.msg_options)]
     local bind_msg = choice[1]
     local intro_msg = choice[2]
-
 
     -- Setup:
     require("codecompanion").setup({
