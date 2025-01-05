@@ -100,14 +100,25 @@ function M.stop_req_fidget()
 end
 
 function M.config()
-    -- Load key:
-    local key_file = io.open(os.getenv("HOME") .. "/.anthropic_api", "r")
-    if not key_file then
-        vim.notify("🤖 No anthropic api key. CodeCompanion not active.", vim.log.levels.WARN)
+    -- Load keys:
+    local anthropic_key_file = io.open(os.getenv("HOME") .. "/.anthropic_api", "r")
+    local anthropic_key = nil
+    if anthropic_key_file then
+        anthropic_key = anthropic_key_file:read("*a"):gsub("%s+", "")
+        anthropic_key_file:close()
+    end
+
+    local openai_key_file = io.open(os.getenv("HOME") .. "/.openai_api", "r")
+    local openai_key = nil
+    if openai_key_file then
+        openai_key = openai_key_file:read("*a"):gsub("%s+", "")
+        openai_key_file:close()
+    end
+
+    if not anthropic_key and not openai_key then
+        vim.notify("🤖 No API key.")
         return
     end
-    local anthropic_key = key_file:read("*a"):gsub("%s+", "")
-    key_file:close()
 
     -- Pick message:
     local choice = M.msg_options[math.random(#M.msg_options)]
@@ -162,6 +173,13 @@ function M.config()
                 return require("codecompanion.adapters").extend("anthropic", {
                     env = {
                         api_key = anthropic_key,
+                    },
+                })
+            end,
+            openai = function()
+                return require("codecompanion.adapters").extend("openai", {
+                    env = {
+                        api_key = openai_key,
                     },
                 })
             end,
