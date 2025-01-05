@@ -115,7 +115,14 @@ function M.config()
         openai_key_file:close()
     end
 
-    if not anthropic_key and not openai_key then
+    local gemini_key_file = io.open(os.getenv("HOME") .. "/.gemini_api", "r")
+    local gemini_key = nil
+    if gemini_key_file then
+        gemini_key = gemini_key_file:read("*a"):gsub("%s+", "")
+        gemini_key_file:close()
+    end
+
+    if not anthropic_key and not openai_key and not gemini_key then
         vim.notify("🤖 No API key.")
         return
     end
@@ -160,6 +167,13 @@ function M.config()
                 return require("codecompanion.adapters").extend("openai", {
                     env = {
                         api_key = openai_key,
+                    },
+                })
+            end,
+            gemini = function()
+                return require("codecompanion.adapters").extend("gemini", {
+                    env = {
+                        api_key = gemini_key,
                     },
                 })
             end,
