@@ -17,6 +17,9 @@ M.msg_options = {
     { "✨ The Token Trash Compactor",       "Condensing human thought into digestible nonsense." },
     { "✨ The Borg Collective of Banality", "Join the hive mind, resistance is futile." },
     { "✨ The Dopamine Drip Feed",          "Your brain on autopilot. Please enjoy the ride." },
+    { "✨ Transformer's Anonymous",         "Attention is all YOU need (and your credit card) 🤑" },
+    { "✨ The Stochastic Parrot Paradise",  "Repeating training data with style since 2022! 🦜" },
+    { "✨ The LLM Echo Chamber",            "Your biases, amplified by billions of parameters! 📢" }
 }
 -- stylua: ignore end
 
