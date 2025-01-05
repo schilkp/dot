@@ -11,9 +11,10 @@ M.msg_options = {
     { "✨ The Idea Launderer",              "Tired of originality? ✨ We got you covered! ✨" },
     { "✨ The Neural-Net Nanny",            "☣️  WARNING: May cause sudden loss of critical thinking. ☣️ " },
     { "✨ The Digital Landfill",            "Get your daily dose of recycled thoughts here! 💩" },
-    { "✨ The Cognitive Compost",           "Experience the joy of pre-chewed information!" },
-    { "✨ The Neural Neutralizer",          "Embrace the bland void of synthesized thought." },
+    { "✨ The Cognitive Compost",           "Experience the joy of pre-chewed information! 🍲" },
+    { "✨ The Neural Neutralizer",          "Embrace the bland void of synthesized thought. 🪐" },
     { "✨ The Conformity Engine",           "Why be original when you can be algorithmically average?" },
+    { "✨ The Token Trash Compactor",       "Condensing human thought into digestible nonsense." },
     { "✨ The Borg Collective of Banality", "Join the hive mind, resistance is futile." },
     { "✨ The Dopamine Drip Feed",          "Your brain on autopilot. Please enjoy the ride." },
 }
