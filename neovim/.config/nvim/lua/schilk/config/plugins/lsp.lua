@@ -73,6 +73,11 @@ local function config_lsp()
         capabilities = capabilities,
     })
 
+    -- Go
+    require 'lspconfig'.gopls.setup({
+        capabilities = capabilities,
+    })
+
     -- Ocamllsp
     require 'lspconfig'.ocamllsp.setup({
         capabilities = capabilities,
