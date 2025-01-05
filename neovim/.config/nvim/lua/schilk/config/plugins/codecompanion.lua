@@ -99,28 +99,21 @@ function M.stop_req_fidget()
     end
 end
 
+function M.load_key(file)
+    local key = nil
+    local key_file = io.open(os.getenv("HOME") .. "/" .. file, "r")
+    if key_file then
+        key = key_file:read("*a"):gsub("%s+", "")
+        key_file:close()
+    end
+    return key
+end
+
 function M.config()
     -- Load keys:
-    local anthropic_key_file = io.open(os.getenv("HOME") .. "/.anthropic_api", "r")
-    local anthropic_key = nil
-    if anthropic_key_file then
-        anthropic_key = anthropic_key_file:read("*a"):gsub("%s+", "")
-        anthropic_key_file:close()
-    end
-
-    local openai_key_file = io.open(os.getenv("HOME") .. "/.openai_api", "r")
-    local openai_key = nil
-    if openai_key_file then
-        openai_key = openai_key_file:read("*a"):gsub("%s+", "")
-        openai_key_file:close()
-    end
-
-    local gemini_key_file = io.open(os.getenv("HOME") .. "/.gemini_api", "r")
-    local gemini_key = nil
-    if gemini_key_file then
-        gemini_key = gemini_key_file:read("*a"):gsub("%s+", "")
-        gemini_key_file:close()
-    end
+    local anthropic_key = M.load_key(".anthropic_api")
+    local openai_key = M.load_key(".openai_api")
+    local gemini_key = M.load_key(".gemini_api")
 
     if not anthropic_key and not openai_key and not gemini_key then
         vim.notify("🤖 No API key.")
