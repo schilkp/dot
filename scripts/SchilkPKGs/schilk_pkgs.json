@@ -10,7 +10,9 @@
         "extra/ttf-jetbrains-mono-nerd",
         "extra/noto-fonts-emoji",
         "extra/htop",
-        "extra/brightnessctl"
+        "extra/brightnessctl",
+        "extra/tree-sitter",
+        "extra/tree-sitter-cli"
     ],
     "desktop": [
         "aur/insync",
