@@ -11,6 +11,9 @@ function M.config()
     key_file:close()
 
     -- Pick message:
+
+    -- stylua: ignore start
+    ---@format disable-next
     local options = {
         { "✨ AI Slop Bucket",                  "Welcome to the ✨ AI Slop Bucket ✨! We hope you enjoy your stay." },
         { "✨ Brainrot",                        "Too stupid to think for yourself again?" },
@@ -24,6 +27,8 @@ function M.config()
         { "✨ The Borg Collective of Banality", "Join the hive mind, resistance is futile." },
         { "✨ The Dopamine Drip Feed",          "Your brain on autopilot. Please enjoy the ride." },
     }
+    -- stylua: ignore end
+
     local choice = options[math.random(#options)]
     local bind_msg = choice[1]
     local intro_msg = choice[2]
