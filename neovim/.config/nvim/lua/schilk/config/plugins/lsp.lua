@@ -289,7 +289,7 @@ function M.fidget_config()
         notification = {
             override_vim_notify = true,
             view = {
-                stack_upwards = true,
+                stack_upwards = false,
             },
             window = {
                 winblend = 0
