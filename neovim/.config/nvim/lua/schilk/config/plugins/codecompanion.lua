@@ -1,5 +1,24 @@
 local M = {}
 
+
+-- Pick message:
+-- stylua: ignore start
+---@format disable-next
+M.msg_options = {
+    { "✨ AI Slop Bucket",                  "Welcome to the ✨ AI Slop Bucket ✨! We hope you enjoy your stay." },
+    { "✨ Brainrot",                        "Too stupid to think for yourself again?" },
+    { "✨ MaChInE LeArNinG",                "🤖 Stop Thinking, start typing! 🤖" },
+    { "✨ The Idea Launderer",              "Tired of originality? ✨ We got you covered! ✨" },
+    { "✨ The Neural-Net Nanny",            "☣️  WARNING: May cause sudden loss of critical thinking. ☣️ " },
+    { "✨ The Digital Landfill",            "Get your daily dose of recycled thoughts here! 💩" },
+    { "✨ The Cognitive Compost",           "Experience the joy of pre-chewed information!" },
+    { "✨ The Neural Neutralizer",          "Embrace the bland void of synthesized thought." },
+    { "✨ The Conformity Engine",           "Why be original when you can be algorithmically average?" },
+    { "✨ The Borg Collective of Banality", "Join the hive mind, resistance is futile." },
+    { "✨ The Dopamine Drip Feed",          "Your brain on autopilot. Please enjoy the ride." },
+}
+-- stylua: ignore end
+
 function M.config()
     -- Load key:
     local key_file = io.open(os.getenv("HOME") .. "/.anthropic_api", "r")
@@ -11,27 +30,10 @@ function M.config()
     key_file:close()
 
     -- Pick message:
-
-    -- stylua: ignore start
-    ---@format disable-next
-    local options = {
-        { "✨ AI Slop Bucket",                  "Welcome to the ✨ AI Slop Bucket ✨! We hope you enjoy your stay." },
-        { "✨ Brainrot",                        "Too stupid to think for yourself again?" },
-        { "✨ MaChInE LeArNinG",                "🤖 Stop Thinking, start typing! 🤖" },
-        { "✨ The Idea Launderer",              "Tired of originality? ✨ We got you covered! ✨" },
-        { "✨ The Neural-Net Nanny",            "☣️  WARNING: May cause sudden loss of critical thinking. ☣️ " },
-        { "✨ The Digital Landfill",            "Get your daily dose of recycled thoughts here! 💩" },
-        { "✨ The Cognitive Compost",           "Experience the joy of pre-chewed information!" },
-        { "✨ The Neural Neutralizer",          "Embrace the bland void of synthesized thought." },
-        { "✨ The Conformity Engine",           "Why be original when you can be algorithmically average?" },
-        { "✨ The Borg Collective of Banality", "Join the hive mind, resistance is futile." },
-        { "✨ The Dopamine Drip Feed",          "Your brain on autopilot. Please enjoy the ride." },
-    }
-    -- stylua: ignore end
-
-    local choice = options[math.random(#options)]
+    local choice = M.msg_options[math.random(#M.msg_options)]
     local bind_msg = choice[1]
     local intro_msg = choice[2]
+
 
     -- Setup:
     require("codecompanion").setup({
