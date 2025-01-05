@@ -4,7 +4,7 @@ function M.config()
     local ts_highlight_langs = { "hyprlang", "markdown" };
 
     require 'nvim-treesitter.configs'.setup {
-        ensure_installed = { "hyprlang", "markdown" },
+        ensure_installed = "all",
 
         highlight = {
             enable = true,
