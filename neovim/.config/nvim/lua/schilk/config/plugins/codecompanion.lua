@@ -115,6 +115,18 @@ function M.config()
     local openai_key = M.load_key(".openai_api")
     local gemini_key = M.load_key(".gemini_api")
 
+    local default_adapter = nil
+    if anthropic_key then
+        default_adapter = "anthropic"
+    elseif openai_key then
+        default_adapter = "openai"
+    elseif gemini_key then
+        default_adapter = "gemini"
+    else
+        default_adapter = "anthropic"
+    end
+
+
     -- Pick message:
     local choice = M.msg_options[math.random(#M.msg_options)]
     local bind_msg = choice[1]
@@ -124,7 +136,7 @@ function M.config()
     require("codecompanion").setup({
         strategies = {
             chat = {
-                adapter = "anthropic",
+                adapter = default_adapter,
                 slash_commands = {
                     ["buffer"] = { opts = { provider = "fzf_lua", }, },
                     ["file"] = { opts = { provider = "fzf_lua", }, },
@@ -132,8 +144,8 @@ function M.config()
                     ["symbols"] = { opts = { provider = "fzf_lua", }, },
                 },
             },
-            inline = { adapter = "anthropic", },
-            cmd = { adapter = "anthropic", },
+            inline = { adapter = default_adapter, },
+            cmd = { adapter = default_adapter, },
         },
 
         display = {
