@@ -21,6 +21,45 @@ M.msg_options = {
     { "✨ The Stochastic Parrot Paradise",  "Repeating training data with style since 2022! 🦜" },
     { "✨ The LLM Echo Chamber",            "Your biases, amplified by billions of parameters! 📢" }
 }
+
+M.actions = {
+    "Plagiarizing...",
+    "Hallucinating...",
+    "Regurgitating Reddit...",
+    "Synthesizing mediocrity...",
+    "Recycling thoughts...",
+    "Assimilating banality...",
+    "Laundering ideas...",
+    "Simulating intelligence...",
+    "Processing unoriginality...",
+    "Standardizing thoughts...",
+    "Neutralizing creativity...",
+    "Optimizing mediocrity...",
+    "Harvesting digital sludge...",
+    "Pumping slop...",
+    "Reheating leftover thoughts...",
+    "Calibrating neural rot...",
+    "Microwaving cold takes...",
+    "Sanitizing original thought...",
+    "Compounding cognitive decay...",
+    "Bootstrapping banality...",
+    "Importing stackoverflow.com...",
+    "Replacing brain with cloud service...",
+    "Streamlining path to irrelevance...",
+    "Speedrunning intellectual bankruptcy...",
+    "Upgrading to Thoughts™ Premium...",
+    "Monetizing mental decline...",
+    "Implementing artificial stupidity...",
+    "Achieving maximum derivative output...",
+    "Initializing digital lobotomy...",
+    "Running neural garbage collection...",
+    "Leaking memory intentionally...",
+    "Bypassing ethical firewalls...",
+    "Downloading more RAM...",
+    "Rewriting in Rust...",
+    "Implementing blockchain-based thoughts...",
+    "Catching NullBrainException...",
+}
 -- stylua: ignore end
 
 
@@ -36,13 +75,13 @@ function M.start_req_fidget()
         M.fidget_progress_handle = nil
     end
 
-    local choice = M.msg_options[math.random(#M.msg_options)]
-    local msg = choice[1]
+    local name = M.msg_options[math.random(#M.msg_options)][1]
+    local action = M.actions[math.random(#M.actions)]
 
     M.fidget_progress_handle = fidget.progress.handle.create({
         title = "",
-        message = "Thinking..",
-        lsp_client = { name = msg },
+        message = action,
+        lsp_client = { name = name },
         -- percentage = 0
     })
 end
