@@ -50,7 +50,7 @@ function M.stop_req_fidget()
     end
 
     if M.fidget_progress_handle then
-        M.fidget_progress_handle.message = "Abort."
+        M.fidget_progress_handle.message = "Done."
         M.fidget_progress_handle:finish()
         M.fidget_progress_handle = nil
     end
