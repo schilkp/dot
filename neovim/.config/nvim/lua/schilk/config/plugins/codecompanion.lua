@@ -82,7 +82,8 @@ function M.config()
 
     })
 
-    vim.keymap.set({ 'n' }, '<leader>tc', ":CodeCompanionChat<CR>", { silent = true, desc = bind_msg })
+    vim.keymap.set({ "n" }, "<leader>ts", ":CodeCompanionChat<CR>", { silent = true, desc = bind_msg })
+    vim.keymap.set({ "v" }, "gs", ":CodeCompanion ", { desc = bind_msg })
 end
 
 M.spec = {
