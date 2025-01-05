@@ -29,7 +29,7 @@ function M.config()
     local intro_msg = choice[2]
 
     -- Setup:
-    require('codecompanion').setup({
+    require("codecompanion").setup({
         strategies = {
             chat = {
                 adapter = "anthropic",
@@ -66,20 +66,19 @@ function M.config()
 
         display = {
             chat = {
-                intro_message = intro_msg
-            }
+                intro_message = intro_msg,
+            },
         },
 
         adapters = {
             anthropic = function()
                 return require("codecompanion.adapters").extend("anthropic", {
                     env = {
-                        api_key = anthropic_key
+                        api_key = anthropic_key,
                     },
                 })
             end,
         },
-
     })
 
     vim.keymap.set({ "n" }, "<leader>ts", ":CodeCompanionChat<CR>", { silent = true, desc = bind_msg })
