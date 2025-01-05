@@ -179,10 +179,12 @@ function M.config()
         },
     })
 
+
+    -- Keybinds:
     vim.keymap.set({ "n" }, "<leader>ts", ":CodeCompanionChat<CR>", { silent = true, desc = bind_msg })
     vim.keymap.set({ "v" }, "gs", ":CodeCompanion ", { desc = bind_msg })
 
-
+    -- Fidget integration:
     local has_fidget, _ = pcall(require, "fidget")
     if has_fidget then
         -- New AU group:
