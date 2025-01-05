@@ -36,7 +36,7 @@ function M.config()
                 slash_commands = {
                     ["buffer"] = {
                         opts = {
-                            provider = "telescope",
+                            provider = "fzf_lua",
                         },
                     },
                     ["file"] = {
