@@ -87,12 +87,6 @@ function M.config()
                     name = 'Orgmode',
                     module = 'orgmode.org.autocompletion.blink',
                 },
-                codecompanion = {
-                    name = "CodeCompanion",
-                    module = "codecompanion.providers.completion.blink",
-                    score_offset = 10,
-                },
-
             }
         },
 
