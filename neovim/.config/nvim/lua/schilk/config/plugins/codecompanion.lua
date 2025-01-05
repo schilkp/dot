@@ -132,34 +132,14 @@ function M.config()
             chat = {
                 adapter = "anthropic",
                 slash_commands = {
-                    ["buffer"] = {
-                        opts = {
-                            provider = "fzf_lua",
-                        },
-                    },
-                    ["file"] = {
-                        opts = {
-                            provider = "fzf_lua",
-                        },
-                    },
-                    ["help"] = {
-                        opts = {
-                            provider = "fzf_lua",
-                        },
-                    },
-                    ["symbols"] = {
-                        opts = {
-                            provider = "fzf_lua",
-                        },
-                    },
+                    ["buffer"] = { opts = { provider = "fzf_lua", }, },
+                    ["file"] = { opts = { provider = "fzf_lua", }, },
+                    ["help"] = { opts = { provider = "fzf_lua", }, },
+                    ["symbols"] = { opts = { provider = "fzf_lua", }, },
                 },
             },
-            inline = {
-                adapter = "anthropic",
-            },
-            cmd = {
-                adapter = "anthropic",
-            },
+            inline = { adapter = "anthropic", },
+            cmd = { adapter = "anthropic", },
         },
 
         display = {
