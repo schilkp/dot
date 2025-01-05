@@ -6,9 +6,8 @@ function M.config()
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup {}
 
-    -- Call plugin setup:
-
-    require("blink.cmp").setup({
+    -- Base table of options
+    local opts = {
         keymap = {
 
             -- Available commands:
@@ -79,20 +78,33 @@ function M.config()
         -- default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, via `opts_extend`
         sources = {
-            default = { 'lsp', 'path', 'luasnip', 'buffer', 'orgmode', 'codecompanion' },
+            default = { 'lsp', 'path', 'luasnip', 'buffer' },
             -- optionally disable cmdline completions
             cmdline = {},
-            providers = {
-                orgmode = {
-                    name = 'Orgmode',
-                    module = 'orgmode.org.autocompletion.blink',
-                },
-            }
+            providers = {}
         },
 
         signature = { enabled = true } -- experimental
     }
-    )
+
+
+    local has_orgmode, _ = pcall(require, "orgmode")
+    if has_orgmode then
+        table.insert(opts.sources.default, 'orgmode')
+        opts.sources.providers['orgmode'] =
+        {
+            name = 'Orgmode',
+            module = 'orgmode.org.autocompletion.blink',
+        }
+    end
+
+    local has_codecompanion, _ = pcall(require, "codecompanion")
+    if has_codecompanion then
+        table.insert(opts.sources.default, 'codecompanion')
+    end
+
+    -- Call plugin setup:
+    require("blink.cmp").setup(opts)
 end
 
 function M.config_luasnip()
