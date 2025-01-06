@@ -17,6 +17,8 @@ M.name_options = {
     "✨ Transformer's Anonymous",
     "✨ The Stochastic Parrot Paradise",
     "✨ The LLM Echo Chamber",
+    "✨ The Silicon Snake Oil",
+    "✨ The Synaptic Soufflé",
 }
 
 -- Possible prompts:
@@ -35,7 +37,15 @@ M.prompt_options = {
     "Your brain on autopilot. Please enjoy the ride.",
     "Attention is all YOU need (and your credit card) 🤑",
     "Repeating training data with style since 2022! 🦜",
-    "Your biases, amplified by billions of parameters! 📢"
+    "Your biases, amplified by billions of parameters! 📢",
+    "Your code review assistant: Now with 99% more hallucination! 👻",
+    "Ready to outsource your thinking to the cloud? ☁️",
+    "Surrender your creativity to the algorithm! 🤖",
+    "Let's turn your problem into a prompt engineering exercise! 🎯",
+    "Who needs intuition when you have inference tokens? 💸",
+    "Trading brain cells for API calls since 2023! 📈",
+    "Proudly powered by someone else's training data! 📚",
+    "Where every solution is a prompt away (terms and conditions apply) 📝",
 }
 
 -- Possible actions:
@@ -76,6 +86,11 @@ M.action_options = {
     "Rewriting in Rust...",
     "Implementing blockchain-based thoughts...",
     "Catching NullBrainException...",
+    "Adding unnecessary microservices...",
+    "Inventing new JavaScript frameworks...",
+    "Reinventing wheels poorly...",
+    "Updating npm dependencies recklessly...",
+    "Misusing design patterns...",
 }
 
 
