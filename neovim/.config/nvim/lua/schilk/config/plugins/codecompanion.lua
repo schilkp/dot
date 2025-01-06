@@ -1,28 +1,45 @@
 local M = {}
 
-
--- Pick message:
--- stylua: ignore start
----@format disable-next
-M.msg_options = {
-    { "✨ AI Slop Bucket",                  "Welcome to the ✨ AI Slop Bucket ✨! We hope you enjoy your stay." },
-    { "✨ Brainrot",                        "Too stupid to think for yourself again?" },
-    { "✨ MaChInE LeArNinG",                "🤖 Stop Thinking, start typing! 🤖" },
-    { "✨ The Idea Launderer",              "Tired of originality? ✨ We got you covered! ✨" },
-    { "✨ The Neural-Net Nanny",            "☣️  WARNING: May cause sudden loss of critical thinking. ☣️ " },
-    { "✨ The Digital Landfill",            "Get your daily dose of recycled thoughts here! 💩" },
-    { "✨ The Cognitive Compost",           "Experience the joy of pre-chewed information! 🍲" },
-    { "✨ The Neural Neutralizer",          "Embrace the bland void of synthesized thought. 🪐" },
-    { "✨ The Conformity Engine",           "Why be original when you can be algorithmically average?" },
-    { "✨ The Token Trash Compactor",       "Condensing human thought into digestible nonsense." },
-    { "✨ The Borg Collective of Banality", "Join the hive mind, resistance is futile." },
-    { "✨ The Dopamine Drip Feed",          "Your brain on autopilot. Please enjoy the ride." },
-    { "✨ Transformer's Anonymous",         "Attention is all YOU need (and your credit card) 🤑" },
-    { "✨ The Stochastic Parrot Paradise",  "Repeating training data with style since 2022! 🦜" },
-    { "✨ The LLM Echo Chamber",            "Your biases, amplified by billions of parameters! 📢" }
+-- Possible names:
+M.name_options = {
+    "✨ AI Slop Bucket",
+    "✨ Brainrot",
+    "✨ MaChInE LeArNinG",
+    "✨ The Idea Launderer",
+    "✨ The Neural-Net Nanny",
+    "✨ The Digital Landfill",
+    "✨ The Cognitive Compost",
+    "✨ The Neural Neutralizer",
+    "✨ The Conformity Engine",
+    "✨ The Token Trash Compactor",
+    "✨ The Borg Collective of Banality",
+    "✨ The Dopamine Drip Feed",
+    "✨ Transformer's Anonymous",
+    "✨ The Stochastic Parrot Paradise",
+    "✨ The LLM Echo Chamber",
 }
 
-M.actions = {
+-- Possible prompts:
+M.prompt_options = {
+    "Welcome to the ✨ AI Slop Bucket ✨! We hope you enjoy your stay.",
+    "Too stupid to think for yourself again?",
+    "🤖 Stop Thinking, start typing! 🤖",
+    "Tired of originality? ✨ We got you covered! ✨",
+    "☣️  WARNING: May cause sudden loss of critical thinking. ☣️ ",
+    "Get your daily dose of recycled thoughts here! 💩",
+    "Experience the joy of pre-chewed information! 🍲",
+    "Embrace the bland void of synthesized thought. 🪐",
+    "Why be original when you can be algorithmically average?",
+    "Condensing human thought into digestible nonsense.",
+    "Join the hive mind, resistance is futile.",
+    "Your brain on autopilot. Please enjoy the ride.",
+    "Attention is all YOU need (and your credit card) 🤑",
+    "Repeating training data with style since 2022! 🦜",
+    "Your biases, amplified by billions of parameters! 📢"
+}
+
+-- Possible actions:
+M.action_options = {
     "Plagiarizing...",
     "Hallucinating...",
     "Regurgitating Reddit...",
@@ -60,7 +77,6 @@ M.actions = {
     "Implementing blockchain-based thoughts...",
     "Catching NullBrainException...",
 }
--- stylua: ignore end
 
 
 function M.start_req_fidget()
@@ -75,8 +91,8 @@ function M.start_req_fidget()
         M.fidget_progress_handle = nil
     end
 
-    local name = M.msg_options[math.random(#M.msg_options)][1]
-    local action = M.actions[math.random(#M.actions)]
+    local name = M.name_options[math.random(#M.name_options)]
+    local action = M.action_options[math.random(#M.action_options)]
 
     M.fidget_progress_handle = fidget.progress.handle.create({
         title = "",
@@ -127,10 +143,8 @@ function M.config()
     end
 
 
-    -- Pick message:
-    local choice = M.msg_options[math.random(#M.msg_options)]
-    local bind_msg = choice[1]
-    local intro_msg = choice[2]
+    -- Pick prompt:
+    local prompt = M.prompt_options[math.random(#M.prompt_options)]
 
     -- Setup:
     require("codecompanion").setup({
@@ -150,7 +164,7 @@ function M.config()
 
         display = {
             chat = {
-                intro_message = intro_msg,
+                intro_message = prompt,
             },
         },
 
@@ -181,8 +195,9 @@ function M.config()
 
 
     -- Keybinds:
-    vim.keymap.set({ "n" }, "<leader>ts", ":CodeCompanionChat<CR>", { silent = true, desc = bind_msg })
-    vim.keymap.set({ "v" }, "gs", ":CodeCompanion ", { desc = bind_msg })
+    local name = M.name_options[math.random(#M.name_options)]
+    vim.keymap.set({ "n" }, "<leader>ts", ":CodeCompanionChat<CR>", { silent = true, desc = name })
+    vim.keymap.set({ "v" }, "gs", ":CodeCompanion ", { desc = name })
 
     -- Fidget integration:
     local has_fidget, _ = pcall(require, "fidget")
