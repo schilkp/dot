@@ -47,7 +47,9 @@ function M.config()
             list = {
                 selection = {
                     preselect = false,
-                    auto_insert = true,
+                    auto_insert = function(ctx)
+                        return vim.bo[ctx.bufnr].filetype ~= "codecompanion"
+                    end,
                 }
             },
 
