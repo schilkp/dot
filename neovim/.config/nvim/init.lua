@@ -33,7 +33,7 @@ require('lazy').setup({
     -- Color code visualizer:
     require('schilk.config.plugins.colorizer').spec,
     -- Top nav bar:
-    require('schilk.config.plugins.barbecue').spec,
+    require('schilk.config.plugins.dropbar').spec,
     -- Git status sidebar:
     require('schilk.config.plugins.gitsigns').spec,
 
