@@ -23,6 +23,11 @@ function M.config()
             fzf = {
                 ["ctrl-a"] = "select-all",
             }
+        },
+        files = {
+            git_cions = true,
+            rg_opts   = [[--color=never --files --hidden --follow -g "!.git"]],
+            fd_opts   = [[--color=never --type f --type l --hidden --follow --exclude .git]],
         }
     })
 
