@@ -9,6 +9,7 @@ local function find_in_parent()
 end
 
 function M.config()
+    local actions = require("fzf-lua.actions");
     require("fzf-lua").setup({
 
         winopts = {
@@ -25,9 +26,13 @@ function M.config()
             }
         },
         files = {
-            git_cions = true,
-            rg_opts   = [[--color=never --files --hidden --follow -g "!.git"]],
-            fd_opts   = [[--color=never --type f --type l --hidden --follow --exclude .git]],
+            git_icons = true,
+            hidden = true,
+            follow = true,
+            no_ignore = false,
+            actions = {
+                ["ctrl-g"] = { actions.toggle_ignore },
+            }
         }
     })
 
