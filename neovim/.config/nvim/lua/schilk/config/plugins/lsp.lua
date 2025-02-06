@@ -165,6 +165,12 @@ local function config_lsp()
     require 'lspconfig'.neocmake.setup({
         capabilities = capabilities,
     })
+
+    -- Typst
+    require 'lspconfig'.tinymist.setup({
+        capabilities = capabilities,
+    })
+
 end
 
 

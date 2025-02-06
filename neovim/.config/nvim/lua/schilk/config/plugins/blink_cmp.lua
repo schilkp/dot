@@ -111,8 +111,9 @@ function M.config_luasnip()
     luasnip.add_snippets('tex', require('schilk.snippets.tex').snippets);
     luasnip.add_snippets('python', require('schilk.snippets.python').snippets);
     luasnip.add_snippets('rust', require('schilk.snippets.rust').snippets);
-    luasnip.add_snippets('lua', require('schilk.snippets.lua').snippets); luasnip.add_snippets('json',
-        require('schilk.snippets.json').snippets);
+    luasnip.add_snippets('lua', require('schilk.snippets.lua').snippets);
+    luasnip.add_snippets('json', require('schilk.snippets.json').snippets);
+    luasnip.add_snippets('typst', require('schilk.snippets.typst').snippets);
 end
 
 M.spec = {
