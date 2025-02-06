@@ -57,6 +57,8 @@ require('lazy').setup({
     require('schilk.config.plugins.easy_align').spec,
     -- TEX integration:
     require('schilk.config.plugins.vimtex').spec,
+    -- Typst integration:
+    require('schilk.config.plugins.typst_preview').spec,
     -- Indentation as text object:
     'michaeljsmith/vim-indent-object',
     -- Got integration:
