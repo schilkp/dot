@@ -79,6 +79,7 @@ require('lazy').setup({
     'mustache/vim-mustache-handlebars',
     'hjson/vim-hjson',
     'rust-lang/rust.vim',
+    'kaarmu/typst.vim',
 
     -- [[ OTHER ]] --
     require('schilk.config.plugins.treesitter').spec,
