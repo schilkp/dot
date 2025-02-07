@@ -68,8 +68,9 @@ alias bat="bat --style=plain"
 
 # Re-run last shell command with sudo:
 function ffs {
-  local last_cmd=$(fc -ln -1)
-  local sudo_cmd="sudo zsh -c '"$(fc -ln -1)"'"
+  local last_cmds=$(fc -ln -20 | grep -v -e " *ffs *")
+  local last_cmd=$(echo "$last_cmds" | tail -n 1)
+  local sudo_cmd="sudo zsh -c '"$last_cmd"'"
   echo $sudo_cmd
   eval $sudo_cmd
 }
