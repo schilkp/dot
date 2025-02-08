@@ -85,7 +85,8 @@ require('lazy').setup({
 
     -- [[ OTHER ]] --
     require('schilk.config.plugins.treesitter').spec,
-})
+
+}, require('schilk.lazy').lazy_settings())
 
 -- Config:
 require('schilk.config.nvim').config_highlight_on_yank()
