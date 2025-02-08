@@ -19,4 +19,15 @@ function M.activate()
     vim.opt.rtp:prepend(lazypath)
 end
 
+function M.lazy_settings()
+    return {
+        dev = {
+            path = "~/reps/"
+        },
+        install = {
+            colorscheme = { "onedark", "habamax" }
+        }
+    }
+end
+
 return M
