@@ -85,6 +85,11 @@
         "extra/texlab",
         "aur/ltex-ls-bin"
     ],
+    "devel-typst": [
+        "extra/typst",
+        "extra/tinymist",
+        "aur/typstfmt"
+    ],
     "office": [
         "aur/onlyoffice-bin",
         "extra/inkscape",
