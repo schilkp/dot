@@ -1,12 +1,13 @@
 #!/bin/bash
+set -e -x
 
 TARGET="$HOME/.local/packages/nvim"
 INSTALL_DIR="$HOME/.local/bin"
 JOBS=32
 
-mkdir -p $TARGET
+mkdir -p "$TARGET"
 
-cd $TARGET
+cd "$TARGET"
 
 git clone https://github.com/neovim/neovim.git
 cd neovim
