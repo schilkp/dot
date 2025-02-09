@@ -23,6 +23,7 @@ function M.config()
             html = { "prettier" },
             vue = { "prettier" },
             markdown = { "mdformat" },
+            typst = { "typstyle" }
         },
 
         default_format_opts = {
