@@ -88,7 +88,7 @@
     "devel-typst": [
         "extra/typst",
         "extra/tinymist",
-        "aur/typstfmt"
+        "aur/typstyle"
     ],
     "office": [
         "aur/onlyoffice-bin",
