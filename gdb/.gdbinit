@@ -30,3 +30,4 @@ add-auto-load-safe-path /
 
 # end
 
+set debuginfod enabled off
