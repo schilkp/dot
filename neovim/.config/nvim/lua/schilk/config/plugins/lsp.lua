@@ -59,6 +59,27 @@ local function config_lsp()
         capabilities = capabilities,
     })
 
+    -- MLIR:
+    lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
+        if config.name ~= "mlir_lsp_server" then return end -- other lsp
+
+        local dynamatic_proj_path = vim.fs.find('dynamatic', { path = vim.fn.getcwd(), upward = true })[1]
+        if not dynamatic_proj_path then return end -- not in dynamatic
+
+        local lsp_bin = dynamatic_proj_path .. "/bin/dynamatic-mlir-lsp-server"
+        if not vim.uv.fs_stat(lsp_bin) then
+            vim.notify("Dynamatic MLIR LSP does not exist.", vim.log.levels.WARN)
+            return
+        end
+
+        vim.notify("Using local MLIR LSP (" .. dynamatic_proj_path .. ")", vim.log.levels.INFO)
+        config.cmd = { lsp_bin }
+    end)
+    lspconfig.mlir_lsp_server.setup({
+        capabilities = capabilities,
+    })
+
+
     -- Rust-Analyzer:
     -- Note: LSP-Config is called/configured by rust-tools.nvim.
     require('schilk.config.plugins.lsp.rust_tools').config({
@@ -170,7 +191,6 @@ local function config_lsp()
     require 'lspconfig'.tinymist.setup({
         capabilities = capabilities,
     })
-
 end
 
 
