@@ -76,9 +76,11 @@ function M.config()
         -- elsewhere in your config, without redefining it, via `opts_extend`
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
-            -- optionally disable cmdline completions
-            cmdline = {},
             providers = {}
+        },
+
+        cmdline = {
+            sources = {}
         },
 
         signature = { enabled = true } -- experimental
@@ -87,6 +89,7 @@ function M.config()
 
     local has_orgmode, _ = pcall(require, "orgmode")
     if has_orgmode then
+        ---@diagnostic disable-next-line: param-type-mismatch
         table.insert(opts.sources.default, 'orgmode')
         opts.sources.providers['orgmode'] =
         {
@@ -97,6 +100,7 @@ function M.config()
 
     local has_codecompanion, _ = pcall(require, "codecompanion")
     if has_codecompanion then
+        ---@diagnostic disable-next-line: param-type-mismatch
         table.insert(opts.sources.default, 'codecompanion')
     end
 
