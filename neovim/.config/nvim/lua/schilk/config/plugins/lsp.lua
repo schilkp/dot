@@ -94,7 +94,7 @@ local function config_lsp()
     })
 
     -- Pyright:
-    require 'lspconfig'.pyright.setup({
+    require 'lspconfig'.basedpyright.setup({
         capabilities = capabilities,
     })
 

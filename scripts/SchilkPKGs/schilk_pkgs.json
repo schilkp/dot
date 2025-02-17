@@ -61,7 +61,7 @@
         "extra/bear"
     ],
     "devel-python": [
-        "extra/pyright",
+        "aur/basedpyright",
         "extra/python-isort",
         "extra/autopep8"
     ],
