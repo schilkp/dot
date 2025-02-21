@@ -89,6 +89,16 @@ local function config_lsp()
         capabilities = capabilities,
     })
 
+    -- Tablegen:
+    lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
+        find_local_lsp("tblgen_lsp_server", {
+            { "llvm-project", { "/build/bin/tblgen-lsp-server" } }
+        }, config)
+    end)
+    lspconfig.tblgen_lsp_server.setup({
+        capabilities = capabilities,
+    })
+
     -- MLIR:
     lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
         find_local_lsp("mlir_lsp_server", {
