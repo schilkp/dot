@@ -79,10 +79,6 @@ function M.config()
             providers = {}
         },
 
-        cmdline = {
-            sources = {}
-        },
-
         signature = { enabled = true } -- experimental
     }
 
