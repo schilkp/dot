@@ -1,5 +1,35 @@
 local M = {}
 
+--- @param lsp_name string
+--- @param search_targets {[1]: string, [2]:string[]}[]
+--- Each target consists of a folder name to search to, and a list of potential
+--- LSP locations relative to this folder.
+local function find_local_lsp(lsp_name, search_targets, config)
+    if config.name ~= lsp_name then return end -- other lsp
+
+    for _, target in ipairs(search_targets) do
+        local proj_name, lsp_rel_paths = target[1], target[2]
+
+        local proj_path = vim.fs.find(proj_name, { path = vim.fn.getcwd(), upward = true })[1]
+        if not proj_path then goto continue end -- not in project
+
+
+        for _, lsp_rel_path in ipairs(lsp_rel_paths) do
+            local lsp_bin = proj_path .. lsp_rel_path
+            if vim.uv.fs_stat(lsp_bin) then
+                vim.notify("Using local " .. lsp_name .. " LSP (" .. proj_path .. ")", vim.log.levels.INFO)
+                config.cmd = { lsp_bin }
+                return
+            end
+        end
+
+        vim.notify("Project found but " .. lsp_name .. " LSP does not exist.", vim.log.levels.WARN)
+
+        ::continue::
+    end
+end
+
+
 local function config_lsp()
     -- Disable the LSP log:
     -- It gets too big too fast..
@@ -61,19 +91,10 @@ local function config_lsp()
 
     -- MLIR:
     lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
-        if config.name ~= "mlir_lsp_server" then return end -- other lsp
-
-        local dynamatic_proj_path = vim.fs.find('dynamatic', { path = vim.fn.getcwd(), upward = true })[1]
-        if not dynamatic_proj_path then return end -- not in dynamatic
-
-        local lsp_bin = dynamatic_proj_path .. "/bin/dynamatic-mlir-lsp-server"
-        if not vim.uv.fs_stat(lsp_bin) then
-            vim.notify("Dynamatic MLIR LSP does not exist.", vim.log.levels.WARN)
-            return
-        end
-
-        vim.notify("Using local MLIR LSP (" .. dynamatic_proj_path .. ")", vim.log.levels.INFO)
-        config.cmd = { lsp_bin }
+        find_local_lsp("mlir_lsp_server", {
+            { "dynamatic",    { "/bin/dynamatic-mlir-lsp-server" } },
+            { "llvm-project", { "/build/bin/mlir-lsp-server" } }
+        }, config)
     end)
     lspconfig.mlir_lsp_server.setup({
         capabilities = capabilities,
