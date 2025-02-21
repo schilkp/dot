@@ -3,7 +3,7 @@ local M = {}
 local function config_lsp()
     -- Disable the LSP log:
     -- It gets too big too fast..
-    vim.lsp.set_log_level("off")
+    vim.lsp.set_log_level("ERROR")
 
     -- ---===--- MASON ---===---
 
