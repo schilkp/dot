@@ -222,6 +222,25 @@ local function config_lsp()
     require 'lspconfig'.tinymist.setup({
         capabilities = capabilities,
     })
+
+
+    -- DSLX
+    lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
+        find_local_lsp("dslx_ls", {
+            { "xls", { "/bazel-bin/xls/dslx/lsp/dslx_ls", "/../bazel-bin/xls/dslx/lsp/dslx_ls" } }
+        }, config)
+    end)
+    require('lspconfig.configs').dslx_ls = {
+        default_config = {
+            cmd = { "dslx_ls" },
+            filetypes = { 'dslx' },
+            root_dir = vim.fn.getcwd(),
+            settings = {},
+        },
+    }
+    require 'lspconfig'.dslx_ls.setup({
+        capabilities = capabilities,
+    })
 end
 
 
