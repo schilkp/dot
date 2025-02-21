@@ -101,3 +101,4 @@ end
 -- Custom scripts/utils:
 require('schilk.utils.sv_module_instantiation').setup()
 require('schilk.utils.ssh_clip').setup()
+require('schilk.utils.typst_spellcheck').setup()
