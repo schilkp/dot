@@ -3,3 +3,6 @@ zsh/.zsh/
 !zsh/.zsh/completion
 btop/.config/btop/themes/
 btop/.config/btop/btop.log
+*_priv
+hyprland_*
+autorandr
