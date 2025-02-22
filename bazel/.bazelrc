@@ -1,0 +1,7 @@
+build --disk_cache=/home/schilkp/.bazel_disk_cache
+build --experimental_disk_cache_gc_max_size 200G
+build --experimental_guard_against_concurrent_changes 
+
+test --disk_cache=/home/schilkp/.bazel_disk_cache
+test --experimental_disk_cache_gc_max_size 200G
+test --experimental_guard_against_concurrent_changes 
