@@ -23,6 +23,9 @@ for index ({1..9}) alias "$index"="cd +${index}"; unset index
 # Ultra basic prompt:
 PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 
+# Force the `path` array to be unique:
+typeset -U path PATH
+
 #### Util Aliases + Functions ##################################################
 
 alias vi='nvim'
