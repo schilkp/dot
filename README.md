@@ -1,1 +1,3 @@
-# DotFiles
+# Dotfiles
+
+Managed with stow.
