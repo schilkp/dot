@@ -4,6 +4,10 @@ local function find_dotfiles()
     require('fzf-lua').files({ cwd = '~/dot' })
 end
 
+local function find_priv_dotfiles()
+    require('fzf-lua').files({ cwd = '~/dot_priv' })
+end
+
 local function find_in_parent()
     require('fzf-lua').files({ cwd = '..' })
 end
@@ -44,6 +48,7 @@ function M.config()
 
     -- leader-f Find maps:
     vim.keymap.set('n', '<leader>fd', find_dotfiles, { silent = true, desc = 'Open Dotfiles.' })
+    vim.keymap.set('n', '<leader>fD', find_priv_dotfiles, { silent = true, desc = 'Open Private Dotfiles.' })
     vim.keymap.set('n', '<leader>fb', require('fzf-lua').buffers, { silent = true, desc = 'Open Buffer.' })
     vim.keymap.set('n', '<leader>fh', require('fzf-lua').help_tags, { silent = true, desc = 'Search Help Tag.' })
     vim.keymap.set('n', '<leader>fr', require('fzf-lua').oldfiles, { silent = true, desc = 'Open Recent File.' })
