@@ -1,16 +1,17 @@
 #!/usr/bin/bash
+SCRIPT_DIR=$(dirname "$0")
+
 raw_dirs=$(                                                                                        \
-      find ~/es            -mindepth 1 -maxdepth 2 -type d &&                                      \
       find ~/reps          -mindepth 1 -maxdepth 1 -type d &&                                      \
       find ~/dot           -mindepth 0 -maxdepth 1 -type d &&                                      \
-      find ~/Desktop       -mindepth 0 -maxdepth 1 -type d &&                                      \
-      find ~/st_hls        -mindepth 0 -maxdepth 1 -type d &&                                      \
-      echo ~/patch-it/fw/patchOS_ws/patchOS &&                                                     \
-      echo ~/patch-it/software/patchCTRL &&                                                        \
-      echo ~/notes/pages &&                                                                        \
-      echo ~/notes/journals &&                                                                     \
-      echo ~/calc;                                                                                 \
+      find ~/Desktop       -mindepth 0 -maxdepth 1 -type d                                         \
 )
+
+
+if [ -L "$SCRIPT_DIR/tmux_session_locs_priv.sh" ] || [ -f "$SCRIPT_DIR/tmux_session_locs_priv.sh" ]; then
+    raw_dirs="$raw_dirs
+$("$SCRIPT_DIR/tmux_session_locs_priv.sh")"
+fi
 
 options_dirs=$(echo "$raw_dirs"                                                                    \
     | grep -v -F -e ".bfg-report" -e "__pycache__"   `# Remove pointless files.`                   \
