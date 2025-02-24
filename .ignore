@@ -1,1 +1,4 @@
 .git/
+!*_priv
+!hyprland_*
+!autorandr
