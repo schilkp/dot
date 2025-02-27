@@ -26,3 +26,15 @@
 
 [commit]
     verbose = true
+
+# Enable "column mode" for list UIs:
+[column]
+    ui = auto
+
+# Sort branches by recent commits:
+[branch]
+    sort = -committerdate
+
+# Properly sort tags (that are usually version nos) instead of alpha order:
+[tag]
+    sort = version:refname
