@@ -22,6 +22,14 @@
 
 [diff]
     tool = difftastic
+    # Better diffing algo:
+    algorithm = histogram
+    # Show moved lines in different colors:
+    colorMoved = plain
+    # Instead of a/b, use more meaningful prefixes:
+    mnemonicPrefix = true
+    # Better detection of renamed files:
+    renames = true
 
 [difftool]
     prompt = false
