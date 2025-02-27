@@ -62,3 +62,13 @@
 [tag]
     sort = version:refname
 
+
+# ===----------------------------------------------------------------------=== #
+# Remote Management
+# ===----------------------------------------------------------------------=== #
+
+[fetch]
+    # Auto-prune local originName/branchName tracking branches if remote tags change:
+    prune = true
+    # Auto-prune local tags if remote tags change:
+    pruneTags = true
