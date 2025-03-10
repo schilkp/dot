@@ -23,7 +23,8 @@ local function find_local_lsp(lsp_name, search_targets, config)
             end
         end
 
-        vim.notify("Project found but " .. lsp_name .. " LSP does not exist.", vim.log.levels.WARN)
+        vim.notify("Project found but " .. lsp_name .. " LSP does not exist. ('" .. proj_path .. "')",
+            vim.log.levels.WARN)
 
         ::continue::
     end
