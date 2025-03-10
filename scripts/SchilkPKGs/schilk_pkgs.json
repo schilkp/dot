@@ -85,6 +85,11 @@
         "extra/texlab",
         "aur/ltex-ls-bin"
     ],
+    "devel-bazel": [
+        "extra/bazel",
+        "aur/buildifier",
+        "aur/buildozer"
+    ],
     "devel-typst": [
         "extra/typst",
         "extra/tinymist",
