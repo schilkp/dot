@@ -189,6 +189,11 @@ function M.config()
                     env = {
                         api_key = anthropic_key,
                     },
+                    schema = {
+                        extended_thinking = {
+                            default = false,
+                        }
+                    }
                 })
             end,
             openai = function()
