@@ -50,10 +50,6 @@
 [commit]
     verbose = true
 
-# Enable "column mode" for list UIs:
-[column]
-    ui = auto
-
 # Sort branches by recent commits:
 [branch]
     sort = -committerdate
