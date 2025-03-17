@@ -24,7 +24,8 @@ function M.config()
             vue = { "prettier" },
             markdown = { "mdformat" },
             typst = { "typstyle" },
-            bzl = { "buildifier" }
+            bzl = { "buildifier" },
+            ["*"] = { "codespell", "trim_whitespace" },
         },
 
         default_format_opts = {
