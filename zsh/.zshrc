@@ -78,8 +78,6 @@ function ffs {
   eval $sudo_cmd
 }
 
-alias csb="echo 'cool story bro'|cowsay"
-
 # Correct git author
 alias git_author_priv="git config user.name \"schilkp\"; git config user.email \"schilk.philipp@gmail.com\""
 alias git_author_ethz="git config user.name \"schilkp\"; git config user.email \"schilkp@ethz.ch\""
