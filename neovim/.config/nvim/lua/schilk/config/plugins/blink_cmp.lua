@@ -116,6 +116,7 @@ function M.config_luasnip()
     luasnip.add_snippets('typst', require('schilk.snippets.typst').snippets);
     luasnip.add_snippets('bash', require('schilk.snippets.bash').snippets);
     luasnip.add_snippets('sh', require('schilk.snippets.bash').snippets);
+    luasnip.add_snippets('org', require('schilk.snippets.org').snippets);
 end
 
 M.spec = {
