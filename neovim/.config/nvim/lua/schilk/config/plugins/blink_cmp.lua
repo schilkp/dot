@@ -79,7 +79,19 @@ function M.config()
             providers = {}
         },
 
-        signature = { enabled = true } -- experimental
+        signature = { enabled = true }, -- experimental
+
+        cmdline = {
+            enabled = true,
+            keymap = {
+                preset = 'cmdline',
+            },
+            completion = {
+                list = { selection = { preselect = false, auto_insert = true } },
+                menu = { auto_show = true }
+            },
+        }
+
     }
 
 
