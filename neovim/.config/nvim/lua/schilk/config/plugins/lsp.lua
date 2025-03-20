@@ -165,21 +165,23 @@ local function config_lsp()
     require 'lspconfig'.ts_ls.setup({
         capabilities = capabilities,
         init_options = {
-            plugins = {
-                {
-                    name = "@vue/typescript-plugin",
-                    location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-                    languages = { "javascript", "typescript", "vue" },
-                },
-            },
+            -- plugins = {
+            --     {
+            --         name = "@vue/typescript-plugin",
+            --         location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+            --         languages = { "javascript", "typescript", "vue" },
+            --     },
+            -- },
         },
         filetypes = {
             "javascript",
+            "javascriptreact",
             "typescript",
+            "typescriptreact",
             "vue",
         },
     })
-    --
+
     -- emmet (html):
     require 'lspconfig'.emmet_language_server.setup({
         capabilities = capabilities,
