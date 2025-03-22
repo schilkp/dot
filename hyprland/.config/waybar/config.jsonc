@@ -32,7 +32,9 @@
         "format": "{}",
         "exec": "~/dot_priv/scripts_priv/schilktop_status.sh || echo \"\"",
         "tooltip": "false",
-        "interval": 120 
+        "interval": 120,
+        "on-click": "pkill -RTMIN+8 waybar",
+        "signal": 8
     },
     "hyprland/workspaces": {
         "window-rewrite": {},
