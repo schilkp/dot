@@ -126,14 +126,6 @@ blocks:
         properties:
           cache_duration: none
 
-      # == RUST ==
-      - type: rust
-        template: "\ue7a8 {{ .Full }} "
-        foreground: p:catppuccin_latte_flamingo
-        style: plain
-        properties:
-          cache_duration: none
-
       # == PYTHON ==
       - type: python
         template: "\ue235  {{ .Venv }} ({{ .Full }}) "
