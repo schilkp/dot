@@ -323,6 +323,24 @@ local function toggle_semantic_highlight()
     end
 end
 
+
+local next_style_map = {
+    underline = "virtual_lines",
+    virtual_lines = "underline"
+}
+
+local all_diagnostics_style = "virtual_lines";
+local function cycle_diagnostics_style()
+    local new_style = next_style_map[all_diagnostics_style]
+
+    vim.print("Setting diagnostics style to " .. new_style .. "!")
+        vim.diagnostic.config({
+            virtual_lines = (new_style == "virtual_lines"),
+            underline = (new_style == "underline"),
+        })
+    all_diagnostics_style = new_style
+end
+
 local function config_keybinds()
     -- LSP Navigation Binds:
     vim.keymap.set({ 'n' }, '<leader>gd', vim.lsp.buf.definition, { silent = true, desc = "LSP: Goto Definition." })      -- TODO make saga?
@@ -354,16 +372,21 @@ local function config_keybinds()
         { silent = true, desc = "💡 Toggle LSP semantic highlight for current buffer." })
     vim.keymap.set("n", "<leader>mS", toggle_semantic_highlight,
         { silent = true, desc = "💡 Toggle LSP semantic highlight for all buffers." })
+    vim.keymap.set("n", "<leader>me", cycle_diagnostics_style,
+        { silent = true, desc = "💡 Toggle LSP diagnostics for current buffer." })
 end
 
 function M.config()
     config_lsp()
     config_keybinds()
+    vim.diagnostic.config({
+        virtual_lines = (all_diagnostics_style == "virtual_lines"),
+        underline = (all_diagnostics_style == "underline"),
+    })
 end
 
 function M.fidget_config()
     require("fidget").setup({
-
         notification = {
             override_vim_notify = true,
             view = {
