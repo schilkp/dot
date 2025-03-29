@@ -326,10 +326,11 @@ end
 
 local next_style_map = {
     underline = "virtual_lines",
-    virtual_lines = "underline"
+    virtual_lines = "virtual_text",
+    virtual_text = "underline"
 }
 
-local all_diagnostics_style = "virtual_lines";
+local all_diagnostics_style = "virtual_text";
 local function cycle_diagnostics_style()
     local new_style = next_style_map[all_diagnostics_style]
 
@@ -337,6 +338,7 @@ local function cycle_diagnostics_style()
         vim.diagnostic.config({
             virtual_lines = (new_style == "virtual_lines"),
             underline = (new_style == "underline"),
+            virtual_text = (new_style == "virtual_text")
         })
     all_diagnostics_style = new_style
 end
@@ -382,6 +384,7 @@ function M.config()
     vim.diagnostic.config({
         virtual_lines = (all_diagnostics_style == "virtual_lines"),
         underline = (all_diagnostics_style == "underline"),
+        virtual_text = (all_diagnostics_style == "virtual_text")
     })
 end
 
