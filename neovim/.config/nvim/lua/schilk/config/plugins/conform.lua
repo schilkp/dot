@@ -29,7 +29,7 @@ function M.config()
             typescriptreact = { "prettier" },
             typst = { "typstyle" },
             bzl = { "buildifier" },
-            ["*"] = { "codespell", "trim_whitespace" },
+            ["*"] = { "trim_whitespace" },
         },
 
         default_format_opts = {
