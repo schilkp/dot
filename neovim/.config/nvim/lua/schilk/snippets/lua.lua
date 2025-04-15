@@ -62,6 +62,11 @@ M.snippets = {
         _G.SCHILK_LOCAL_PLUGINS = {
         }
 
+        -- Skip config LSPs
+        _G.SCHILK_SKIP_LSPS = {
+            -- ts_ls: true
+        }
+
         -- Additional LSPs
         _G.SCHILK_LOCAL_LSPS_CB = function(capabilities, on_attach)
             local lspconfig = require "lspconfig";
