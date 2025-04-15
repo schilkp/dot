@@ -37,32 +37,72 @@ local function config_lsp()
         _G.SCHILK_LOCAL_LSPS_CB(capabilities, function() end)
     end
 
-    -- Lua:
-    lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-            Lua = {
-                workspace = { checkThirdParty = false },
-                telemetry = { enable = false },
-                completion = {
-                    callSnippet = "Replace"
-                },
-                diagnostics = {
-                    disable = { "missing-fields" }
+    local basic_lsps = {
+        verible = {},
+        clangd = {},
+        basedpyright = {},
+        gopls = {},
+        ocamllsp = {},
+        texlab = {},
+        -- ltext = {},
+        marksman = {},
+        bashls = {},
+        tailwindcss = {},
+        emmet_language_server = {},
+        zls = {},
+        neocmake = {},
+        tinymist = {},
+        lua_ls = {
+            settings = {
+                Lua = {
+                    workspace = { checkThirdParty = false },
+                    telemetry = { enable = false },
+                    completion = {
+                        callSnippet = "Replace"
+                    },
+                    diagnostics = {
+                        disable = { "missing-fields" }
+                    }
                 }
             }
+        },
+        ts_ls = {
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "vue",
+            },
+        },
+        yamlls = {
+            settings = {
+                yaml = {
+                    schemaStore = {
+                        enable = false,
+                        url = "",
+                    },
+                    schemas = require('schilk.config.plugins.lsp.schemas').yaml_schemas()
+                }
+            }
+        },
+        jsonls = {
+            settings = {
+                json = {
+                    schemas = require('schilk.config.plugins.lsp.schemas').json_schemas(),
+                    validate = { enable = true },
+                },
+            },
         }
-    })
+    }
 
-    -- Verible:
-    require 'lspconfig'.verible.setup({
-        capabilities = capabilities,
-    })
-
-    -- ClangD:
-    lspconfig.clangd.setup({
-        capabilities = capabilities,
-    })
+    for lsp, config in pairs(basic_lsps) do
+        lspconfig[lsp].setup({
+            capabilities = capabilities,
+            settings = config.settings,
+            filetypes = config.filetypes,
+        })
+    end
 
     -- Rust-Analyzer:
     -- Note: LSP-Config is called/configured by rust-tools.nvim.
@@ -75,112 +115,6 @@ local function config_lsp()
                 },
             }
         }
-    })
-
-    -- Pyright:
-    require 'lspconfig'.basedpyright.setup({
-        capabilities = capabilities,
-    })
-
-    -- Go
-    require 'lspconfig'.gopls.setup({
-        capabilities = capabilities,
-    })
-
-    -- Ocamllsp
-    require 'lspconfig'.ocamllsp.setup({
-        capabilities = capabilities,
-    })
-
-    -- texlab (Latex LSP):
-    require 'lspconfig'.texlab.setup({
-        capabilities = capabilities,
-    })
-
-    -- ltex (Latex Spelling):
-    -- require 'lspconfig'.ltex.setup({
-    --     capabilities = capabilities,
-    -- })
-
-    -- marksman (Markdown):
-    require 'lspconfig'.marksman.setup({
-        capabilities = capabilities,
-    })
-
-    -- bash-language-server (Bash/Shell sripting):
-    require 'lspconfig'.bashls.setup({
-        capabilities = capabilities,
-    })
-
-    -- typescript language server:
-    require 'lspconfig'.ts_ls.setup({
-        capabilities = capabilities,
-        init_options = {
-            -- plugins = {
-            --     {
-            --         name = "@vue/typescript-plugin",
-            --         location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-            --         languages = { "javascript", "typescript", "vue" },
-            --     },
-            -- },
-        },
-        filetypes = {
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "vue",
-        },
-    })
-
-    -- tailwind language server:
-    require 'lspconfig'.tailwindcss.setup({
-        capabilities = capabilities,
-    })
-
-    -- emmet (html):
-    require 'lspconfig'.emmet_language_server.setup({
-        capabilities = capabilities,
-    })
-
-    -- Yaml
-    require 'lspconfig'.yamlls.setup({
-        capabilities = capabilities,
-        settings = {
-            yaml = {
-                schemaStore = {
-                    enable = false,
-                    url = "",
-                },
-                schemas = require('schilk.config.plugins.lsp.schemas').yaml_schemas()
-            }
-        }
-    })
-
-    -- JSON
-    require 'lspconfig'.jsonls.setup({
-        capabilities = capabilities,
-        settings = {
-            json = {
-                schemas = require('schilk.config.plugins.lsp.schemas').json_schemas(),
-                validate = { enable = true },
-            },
-        },
-    })
-
-    -- Zig language server
-    require 'lspconfig'.zls.setup({
-        capabilities = capabilities,
-    })
-
-    -- Cmake language server
-    require 'lspconfig'.neocmake.setup({
-        capabilities = capabilities,
-    })
-
-    -- Typst
-    require 'lspconfig'.tinymist.setup({
-        capabilities = capabilities,
     })
 end
 
