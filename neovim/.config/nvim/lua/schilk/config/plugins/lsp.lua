@@ -1,36 +1,5 @@
 local M = {}
 
---- @param lsp_name string
---- @param search_targets {[1]: string, [2]:string[]}[]
---- Each target consists of a folder name to search to, and a list of potential
---- LSP locations relative to this folder.
-local function find_local_lsp(lsp_name, search_targets, config)
-    if config.name ~= lsp_name then return end -- other lsp
-
-    for _, target in ipairs(search_targets) do
-        local proj_name, lsp_rel_paths = target[1], target[2]
-
-        local proj_path = vim.fs.find(proj_name, { path = vim.fn.getcwd(), upward = true })[1]
-        if not proj_path then goto continue end -- not in project
-
-
-        for _, lsp_rel_path in ipairs(lsp_rel_paths) do
-            local lsp_bin = proj_path .. lsp_rel_path
-            if vim.uv.fs_stat(lsp_bin) then
-                vim.notify("Using local " .. lsp_name .. " LSP (" .. proj_path .. ")", vim.log.levels.INFO)
-                config.cmd = { lsp_bin }
-                return
-            end
-        end
-
-        vim.notify("Project found but " .. lsp_name .. " LSP does not exist. ('" .. proj_path .. "')",
-            vim.log.levels.WARN)
-
-        ::continue::
-    end
-end
-
-
 local function config_lsp()
     -- Disable the LSP log:
     -- It gets too big too fast..
@@ -63,6 +32,11 @@ local function config_lsp()
         capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
     end
 
+    -- Inject local lsps:
+    if _G.SCHILK_LOCAL_LSPS_CB then
+        _G.SCHILK_LOCAL_LSPS_CB(capabilities, function() end)
+    end
+
     -- Lua:
     lspconfig.lua_ls.setup({
         capabilities = capabilities,
@@ -89,29 +63,6 @@ local function config_lsp()
     lspconfig.clangd.setup({
         capabilities = capabilities,
     })
-
-    -- Tablegen:
-    lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
-        find_local_lsp("tblgen_lsp_server", {
-            { "llvm-project", { "/build/bin/tblgen-lsp-server" } }
-        }, config)
-    end)
-    lspconfig.tblgen_lsp_server.setup({
-        capabilities = capabilities,
-    })
-
-    -- MLIR:
-    lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
-        find_local_lsp("mlir_lsp_server", {
-            { "dynamatic",    { "/bin/dynamatic-mlir-lsp-server" } },
-            { "llvm-project", { "/build/bin/mlir-lsp-server" } },
-            { "xls_repo",     { "/bazel-bin/xls/contrib/mlir/xls_mlir_lsp_server" } }
-        }, config)
-    end)
-    lspconfig.mlir_lsp_server.setup({
-        capabilities = capabilities,
-    })
-
 
     -- Rust-Analyzer:
     -- Note: LSP-Config is called/configured by rust-tools.nvim.
@@ -231,25 +182,6 @@ local function config_lsp()
     require 'lspconfig'.tinymist.setup({
         capabilities = capabilities,
     })
-
-
-    -- DSLX
-    lspconfig.util.on_setup = lspconfig.util.add_hook_before(lspconfig.util.on_setup, function(config)
-        find_local_lsp("dslx_ls", {
-            { "xls", { "/bazel-bin/xls/dslx/lsp/dslx_ls", "/../bazel-bin/xls/dslx/lsp/dslx_ls" } }
-        }, config)
-    end)
-    require('lspconfig.configs').dslx_ls = {
-        default_config = {
-            cmd = { "dslx_ls" },
-            filetypes = { 'dslx' },
-            root_dir = vim.fn.getcwd(),
-            settings = {},
-        },
-    }
-    require 'lspconfig'.dslx_ls.setup({
-        capabilities = capabilities,
-    })
 end
 
 
@@ -340,11 +272,11 @@ local function cycle_diagnostics_style()
     local new_style = next_style_map[all_diagnostics_style]
 
     vim.print("Setting diagnostics style to " .. new_style .. "!")
-        vim.diagnostic.config({
-            virtual_lines = (new_style == "virtual_lines"),
-            underline = (new_style == "underline"),
-            virtual_text = (new_style == "virtual_text")
-        })
+    vim.diagnostic.config({
+        virtual_lines = (new_style == "virtual_lines"),
+        underline = (new_style == "underline"),
+        virtual_text = (new_style == "virtual_text")
+    })
     all_diagnostics_style = new_style
 end
 
