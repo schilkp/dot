@@ -182,6 +182,11 @@ local function config_lsp()
         },
     })
 
+    -- tailwind language server:
+    require 'lspconfig'.tailwindcss.setup({
+        capabilities = capabilities,
+    })
+
     -- emmet (html):
     require 'lspconfig'.emmet_language_server.setup({
         capabilities = capabilities,
