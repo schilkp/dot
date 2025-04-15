@@ -37,6 +37,12 @@ local function config_lsp()
         _G.SCHILK_LOCAL_LSPS_CB(capabilities, function() end)
     end
 
+    -- Allow skipping of default LSPs:
+    local skip_lsp = {};
+    if _G.SCHILK_SKIP_LSPS then
+        skip_lsp = _G.SCHILK_SKIP_LSPS
+    end
+
     local basic_lsps = {
         verible = {},
         clangd = {},
@@ -97,11 +103,13 @@ local function config_lsp()
     }
 
     for lsp, config in pairs(basic_lsps) do
-        lspconfig[lsp].setup({
-            capabilities = capabilities,
-            settings = config.settings,
-            filetypes = config.filetypes,
-        })
+        if not skip_lsp[lsp] then
+            lspconfig[lsp].setup({
+                capabilities = capabilities,
+                settings = config.settings,
+                filetypes = config.filetypes,
+            })
+        end
     end
 
     -- Rust-Analyzer:
