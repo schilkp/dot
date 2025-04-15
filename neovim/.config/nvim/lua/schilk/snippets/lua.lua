@@ -1,5 +1,4 @@
 local M = {}
-
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -44,7 +43,7 @@ M.snippets = {
         -- Other config:
 
     end
-    
+
     M.spec = {
         '',
         config = M.config,
@@ -52,6 +51,47 @@ M.snippets = {
     }
 
     return M
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "schilk.nvim.lua" }, [[
+        local utils = require('schilk.utils.project_config_utils');
+        local local_config_file = utils.get_local_config_path(debug.getinfo(1).source)
+        local local_config_dir = utils.get_local_config_dir(local_config_file)
+
+        -- Extra plugins to be inserted into the lazy spec
+        _G.SCHILK_LOCAL_PLUGINS = {
+        }
+
+        -- Additional LSPs
+        _G.SCHILK_LOCAL_LSPS_CB = function(capabilities, on_attach)
+            local lspconfig = require "lspconfig";
+        end
+
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "schilk.nvim.lua_plugin" }, [[
+        {
+            '',
+            dependencies = {
+            },
+            config = function()
+            end,
+            cond = not vim.g.vscode, -- Disable in vscode-neovim
+        }$0
+    ]]),
+
+    ls.parser.parse_snippet({ trig = "schilk.nvim.lua_lsp" }, [[
+        local $1_lsp_path = vim.fs.joinpath(local_config_dir, "");
+        if vim.uv.fs_stat($1_lsp_path) then
+            lspconfig.$2.setup({
+                capabilities = capabilities,
+                on_attach = function()
+                    vim.notify("Using local $1 lsp (" .. $1_lsp_path .. ")", vim.log.levels.INFO)
+                    on_attach()
+                end,
+                cmd = { $1_lsp_path }
+            })
+        end
     ]]),
 
 }
