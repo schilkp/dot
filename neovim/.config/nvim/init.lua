@@ -5,11 +5,19 @@ vim.cmd('source $HOME/.vimrc')
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Make everything immediatly transparent. This prevents a default color-scheme
+-- flashbang until the colorscheme loads.
+vim.api.nvim_command('highlight Normal guibg=NONE ctermbg=NONE')
+
+-- Look for trusted local config file:
+require('schilk.local_config').setup()
+require('schilk.local_config').source()
+
 -- Activate/install package manager:
 require('schilk.lazy').activate()
 
 -- Plugins:
-require('lazy').setup({
+local plugins = {
 
     -- [[ COLOR SCHEMES ]] --
     -- require('schilk.config.plugins.catppuccin').spec,
@@ -86,7 +94,16 @@ require('lazy').setup({
     -- [[ OTHER ]] --
     require('schilk.config.plugins.treesitter').spec,
 
-}, require('schilk.lazy').lazy_settings())
+}
+
+-- Inject local plugins:
+if _G.SCHILK_LOCAL_PLUGINS then
+    for _, plugin in ipairs(_G.SCHILK_LOCAL_PLUGINS) do
+        table.insert(plugins, plugin)
+    end
+end
+
+require('lazy').setup(plugins, require('schilk.lazy').lazy_settings())
 
 -- Config:
 require('schilk.config.nvim').config_highlight_on_yank()
