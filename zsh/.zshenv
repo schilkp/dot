@@ -5,8 +5,8 @@ export EDITOR=nvim
 export TERMINAL=alacritty
 
 typeset -U path PATH
-path+=(~/.local/bin)
-path+=(~/.cargo/bin)
+path=(~/.local/bin $path)
+path=(~/.cargo/bin $path)
 path+=(~/.config/commas/shared/)
 path+=(~/.config/commas/local/)
 
