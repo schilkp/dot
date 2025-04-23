@@ -14,9 +14,9 @@ tar xvfz tmux-"$VERSION".tar.gz
 cd tmux-"$VERSION"
 
 # For local ncurses + libevent:
-PKG_CONFIG_PATH="$HOME"/.local/lib/pkgconfig ./configure --prefix="$HOME"/local
+PKG_CONFIG_PATH="$HOME"/.local/lib/pkgconfig ./configure --prefix="$HOME"/.local
 # For global ncurses + libevent:
-# ./configure --prefix="$HOME/local"
+# ./configure --prefix="$HOME/.local"
 
 make -j "$JOBS"
 make install
