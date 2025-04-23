@@ -11,11 +11,7 @@ local function config_lsp()
     require("mason-lspconfig").setup {
         ensure_installed = {
             "bashls",
-            "jsonls",
-            "yamlls",
             "lua_ls",
-            "marksman",
-            "neocmake",
         }
     }
 
