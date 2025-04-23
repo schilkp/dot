@@ -51,8 +51,6 @@ local plugins = {
     -- Fuzzy finding:
     require('schilk.config.plugins.fzflua').spec,
     require('schilk.config.plugins.telescope').spec,
-    -- In-browser markdown preview
-    require('schilk.config.plugins.markdown_preview').spec,
     -- Code-to-image render:
     require('schilk.config.plugins.silicon').spec,
     -- Documentation boilerplate generation:
