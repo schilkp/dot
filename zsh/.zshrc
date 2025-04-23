@@ -177,13 +177,8 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
         echo "[${CYAN}zshrc${NC}] ${RED}Installing zsh-completions..${NC}"
         git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
     fi
-    if ! type oh-my-posh &> /dev/null ; then
-        echo "[${CYAN}zshrc${NC}] ${RED}Installing oh-my-posh..${NC}"
-        ~/.config/oh-my-posh/install_oh_my_posh.sh -d ~/.local/bin/
-    fi
-
-    if type oh-my-posh &> /dev/null ; then
-        eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config.yaml)"
+    if [[ -r "$HOME/.config/oh-my-posh" ]]; then
+        source ~/.config/oh-my-posh/zshrc_init.zsh
     fi
 
     # Load zsh-vi-mode:
