@@ -55,6 +55,8 @@ function M.config()
     vim.keymap.set('n', '<leader>fl', require('fzf-lua').blines, { silent = true, desc = 'Search in current buffer.' })
     vim.keymap.set('n', '<leader>fC', require('fzf-lua').colorschemes, { silent = true, desc = 'Find colorscheme.' })
     vim.keymap.set('n', '<leader>fP', require('fzf-lua').commands, { silent = true, desc = 'Find command.' })
+
+    require("fzf-lua").register_ui_select();
 end
 
 M.spec = {
