@@ -142,9 +142,9 @@ end
 
 function M.config()
     -- Load keys:
-    local anthropic_key = M.load_key(".anthropic_api")
-    local openai_key = M.load_key(".openai_api")
-    local gemini_key = M.load_key(".gemini_api")
+    local anthropic_key = M.load_key(".an_api")
+    local openai_key = M.load_key(".oa_api")
+    local gemini_key = M.load_key(".gm_api")
 
     local default_adapter = nil
     if anthropic_key then
