@@ -26,10 +26,3 @@ mv "$HOME"/.local/bin/tmux "$HOME"/.local/bin/tmux_actual
 echo "#!/bin/bash" > ~/.local/bin/tmux
 echo "LD_LIBRARY_PATH_ORIG="\$LD_LIBRARY_PATH" LD_LIBRARY_PATH=\"$HOME\"/.local/lib \"$HOME\"/.local/bin/tmux_actual \$@" >>  ~/.local/bin/tmux
 chmod +x ~/.local/bin/tmux
-
-set +x
-echo
-echo
-echo "NOTE: Running tmux with modified LD_LIBRARY_PATH! You may have to resture LD_LIBRARY_PATH in your shell profile!"
-echo
-echo echo \"unset LD_LIBRARY_PATH\" \>\> ~/.zshenv_local
