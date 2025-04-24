@@ -104,5 +104,9 @@
         "extra/kicad",
         "extra/kicad-library",
         "extra/kicad-library-3d"
+    ],
+    "vnc": [
+        "extra/remmina",
+        "extra/libvncserver"
     ]
 }
