@@ -66,8 +66,9 @@ function M.config()
                 enabled = false,
             },
 
-            -- Disable auto-show in org-roam-select panel:
-            menu = { auto_show = function(ctx) return ctx.mode ~= 'org-roam-select' end }
+            menu = {
+                auto_show = true,
+            }
         },
 
         snippets = { preset = 'luasnip' },

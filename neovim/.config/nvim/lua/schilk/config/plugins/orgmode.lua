@@ -53,6 +53,15 @@ function M.config_org_roam()
     })
 
     vim.keymap.set('n', '<leader>nF', M.grep_notes, { silent = true, desc = 'Find in notes.' })
+
+    -- Disable blink completion in select buffer:
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = "org-roam-select",
+        callback = function()
+            vim.b.completion = false
+        end,
+        desc = "Disable completion in org-roam-select buffers",
+    })
 end
 
 M.spec = {
