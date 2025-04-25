@@ -32,16 +32,9 @@ end
 function M.config_org_roam()
     require("org-roam").setup({
         directory = M.org_roam_dir,
-        -- optional
-        -- org_files = {
-        --     "~/another_org_dir",
-        --     "~/some/folder/*.org",
-        --     "~/a/single/org_file.org",
-        -- }
         mappings = {
             prefix = "<leader>n",
         },
-
         templates = {
             d = {
                 description = "default",
