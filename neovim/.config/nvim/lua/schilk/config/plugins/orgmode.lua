@@ -12,6 +12,9 @@ function M.config_org()
 
         mappings = {
             prefix = "<leader>N",
+            org = {
+                org_open_at_point = "<leader>no",
+            }
         }
     })
 
@@ -34,8 +37,10 @@ end
 function M.config_org_roam()
     require("org-roam").setup({
         directory = M.org_roam_dir,
-        mappings = {
+        bindings = {
             prefix = "<leader>n",
+            add_origin = "<prefix>Oa",
+            remove_origin = "<prefix>Or",
         },
         templates = {
             d = {
