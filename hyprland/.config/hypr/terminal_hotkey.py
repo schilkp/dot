@@ -10,7 +10,7 @@ def run_cmd(cmd, silent=False):
         if len(out) > 0:
             print(out.decode('utf-8'))
         if len(err) > 0:
-            print(err.decode('utf-8'))
+           print(err.decode('utf-8'))
     if p.returncode != 0:
         raise Exception(f"cmd error! ({p.returncode})")
     return out, err
@@ -24,7 +24,7 @@ def workspace_contains_app(workspace, app) -> bool:
         if client['workspace']['id'] != workspace:
             continue
 
-        if client['title'] != app:
+        if client['initialTitle'] != app:
             continue
 
         return True
@@ -32,8 +32,8 @@ def workspace_contains_app(workspace, app) -> bool:
     return False
 
 
-if workspace_contains_app(1, "Alacritty"):
+if workspace_contains_app(1, "kitty"):
     run_cmd(['hyprctl', '--batch', 'dispatch workspace 1;'])
 else:
-    run_cmd(['hyprctl', '--batch', 'dispatch workspace 1;', 
-             'dispatch exec alacritty -e /usr/bin/zsh -c "tmux new-session -A -s main -c ${HOME} && exec zsh"'])
+    run_cmd(['hyprctl', '--batch', 'dispatch workspace 1;',
+             'dispatch exec kitty --session tmux_session'])

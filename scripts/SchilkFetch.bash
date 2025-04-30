@@ -51,7 +51,7 @@ function SchilkFetch() {
 
 # Only run in the second shell.
 # This is usually the first terminal that gets opened, since my META-ENTER runs
-# alacritty (with a zsh shell), then opens tmux with another zsh shell inside.
+# kitty (with a zsh shell), then opens tmux with another zsh shell inside.
 function SchilkFetch_auto() {
     LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty" | uniq | wc -l);
     if [ "$LIVE_COUNTER" -eq 2 ]; then
