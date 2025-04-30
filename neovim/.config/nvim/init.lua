@@ -44,6 +44,8 @@ local plugins = {
     require('schilk.config.plugins.dropbar').spec,
     -- Git status sidebar:
     require('schilk.config.plugins.gitsigns').spec,
+    -- Snacks:
+    require('schilk.config.plugins.snacks').spec,
 
     -- [[ TOOLS ]] --
     -- Bulk file manage:
