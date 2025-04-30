@@ -33,7 +33,7 @@
         "extra/hyprland",
         "extra/hyprpaper",
         "extra/wl-clipboard",
-        "extra/alacritty",
+        "extra/kitty",
         "aur/swaylock-effects",
         "aur/nwg-displays",
         "aur/wlr-randr",
