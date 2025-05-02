@@ -28,18 +28,16 @@ local function config_lsp()
         capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
     end
 
-    -- Inject local lsps:
-    if _G.SCHILK_LOCAL_LSPS_CB then
-        _G.SCHILK_LOCAL_LSPS_CB(capabilities, function() end)
-    end
+    -- Inject manually configured local lsps:
+    _G.SCHILK_LOCAL_LSPS_CB = _G.SCHILK_LOCAL_LSPS_CB or function(_, on_attach) on_attach() end
+    _G.SCHILK_LOCAL_LSPS_CB(capabilities, function() end)
 
     -- Allow skipping of default LSPs:
-    local skip_lsp = {};
-    if _G.SCHILK_SKIP_LSPS then
-        skip_lsp = _G.SCHILK_SKIP_LSPS
-    end
+    ---@type string[]
+    _G.SCHILK_SKIP_LSPS = _G.SCHILK_SKIP_LSPS or {}
+    local skip_lsp = _G.SCHILK_SKIP_LSPS
 
-    local basic_lsps = {
+    local lsps = {
         verible = {},
         clangd = {},
         basedpyright = {},
@@ -98,8 +96,12 @@ local function config_lsp()
         }
     }
 
-    for lsp, config in pairs(basic_lsps) do
-        if not skip_lsp[lsp] then
+    -- Inject standard local lsps:
+    _G.SCHILK_LOCAL_LSPS = _G.SCHILK_LOCAL_LSPS or {}
+    lsps = vim.tbl_extend("force", lsps, _G.SCHILK_LOCAL_LSPS)
+
+    for lsp, config in pairs(lsps) do
+        if skip_lsp[lsp] == nil or not skip_lsp[lsp] then
             lspconfig[lsp].setup({
                 capabilities = capabilities,
                 settings = config.settings,
