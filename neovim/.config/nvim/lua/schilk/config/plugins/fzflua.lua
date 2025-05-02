@@ -59,6 +59,7 @@ function M.config()
     require("fzf-lua").register_ui_select();
 end
 
+---@type LazyPluginSpec
 M.spec = {
     "ibhagwan/fzf-lua",
     dependencies = {

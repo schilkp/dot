@@ -28,6 +28,7 @@ function M.config()
     }, { prefix = "<leader>" })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'folke/which-key.nvim',
     config = M.config,

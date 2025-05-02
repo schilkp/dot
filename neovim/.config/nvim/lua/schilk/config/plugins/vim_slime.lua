@@ -40,6 +40,7 @@ function M.config()
     vim.keymap.set({ 'n' }, '<C-c>v', slime_config, { silent = true, desc = "Slime: Config.", noremap = true })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'jpalardy/vim-slime',
     config = M.config,

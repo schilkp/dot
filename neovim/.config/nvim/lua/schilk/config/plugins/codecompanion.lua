@@ -240,6 +240,7 @@ function M.config()
     end
 end
 
+---@type LazyPluginSpec
 M.spec = {
 
     "olimorris/codecompanion.nvim",

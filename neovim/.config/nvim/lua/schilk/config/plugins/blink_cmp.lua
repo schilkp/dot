@@ -125,6 +125,7 @@ function M.config_luasnip()
     luasnip.add_snippets('org', require('schilk.snippets.org').snippets);
 end
 
+---@type LazyPluginSpec
 M.spec = {
 
     'saghen/blink.cmp',

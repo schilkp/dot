@@ -6,6 +6,7 @@ function M.config()
     })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     "michaelrommel/nvim-silicon",
     lazy = true,

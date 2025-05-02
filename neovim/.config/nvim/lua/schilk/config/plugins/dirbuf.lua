@@ -6,6 +6,7 @@ function M.config()
     vim.keymap.set({ 'n' }, '<leader>Q', '<Plug>(dirbuf_up)', { silent = true, noremap = false, desc = "🌳 Open DirBuf." })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'elihunter173/dirbuf.nvim',
     config = M.config,

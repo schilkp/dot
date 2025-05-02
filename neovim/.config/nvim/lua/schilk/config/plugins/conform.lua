@@ -42,6 +42,7 @@ function M.config()
     vim.keymap.set({ "v" }, "gf", require('conform').format, { silent = true, desc = "🧹 Format." })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'stevearc/conform.nvim',
     config = M.config,

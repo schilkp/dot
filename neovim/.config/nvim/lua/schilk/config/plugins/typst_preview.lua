@@ -7,6 +7,7 @@ function M.config()
     vim.keymap.set({ 'n' }, '<leader>lv', ":TypstPreviewSyncCursor<cr>", { silent = true, desc = "Typst: Sync Cursor." })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'chomosuke/typst-preview.nvim',
     ft = 'typst',

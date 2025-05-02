@@ -93,6 +93,7 @@ function M.config()
         { silent = true, desc = 'Find file from compile_commands.json.' })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'nvim-telescope/telescope.nvim',
     dependencies = {

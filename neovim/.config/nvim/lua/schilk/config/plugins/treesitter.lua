@@ -24,6 +24,7 @@ function M.config()
     })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {

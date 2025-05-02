@@ -48,6 +48,7 @@ function M.config()
     vim.cmd.colorscheme 'onedark'
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'navarasu/onedark.nvim',
     priority = 1000,

@@ -8,6 +8,7 @@ function M.config()
     vim.cmd.colorscheme 'catppuccin'
 end
 
+---@type LazyPluginSpec
 M.spec = {
     "catppuccin/nvim",
     priority = 1000,
