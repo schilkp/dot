@@ -98,6 +98,9 @@ local plugins = {
 }
 
 -- Inject local plugins:
+---@type LazySpec[]|nil
+_G.SCHILK_LOCAL_PLUGINS = _G.SCHILK_LOCAL_PLUGINS or {}
+
 if _G.SCHILK_LOCAL_PLUGINS then
     for _, plugin in ipairs(_G.SCHILK_LOCAL_PLUGINS) do
         table.insert(plugins, plugin)

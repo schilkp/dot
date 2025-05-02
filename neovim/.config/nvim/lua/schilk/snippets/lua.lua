@@ -70,10 +70,13 @@ M.snippets = {
         }
 
         -- Additional LSPs
+        _G.SCHILK_LOCAL_LSPS = {
+        }
+
         _G.SCHILK_LOCAL_LSPS_CB = function(capabilities, on_attach)
             local lspconfig = require "lspconfig";
         end
-
+        
     ]]),
 
     ls.parser.parse_snippet({ trig = "schilk.nvim.lua_plugin" }, [[
@@ -101,7 +104,6 @@ M.snippets = {
             })
         end
     ]]),
-
 }
 
 return M
