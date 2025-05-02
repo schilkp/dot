@@ -112,7 +112,7 @@ window#waybar {
 #pulseaudio-slider highlight {
     min-width: 10px;
     border-radius: 5px;
-    background-color: green;
+    background-color: #4e7496;
 }
 
 #tray {
@@ -130,7 +130,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-    background-color: green;
+    background-color: #4e7496;
 }
 
 #taskbar button{
