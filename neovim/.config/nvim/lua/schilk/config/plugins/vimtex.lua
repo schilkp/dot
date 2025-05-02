@@ -8,6 +8,7 @@ function M.config()
     vim.cmd("let maplocalleader = \" \"")
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'lervag/vimtex',
     config = M.config,

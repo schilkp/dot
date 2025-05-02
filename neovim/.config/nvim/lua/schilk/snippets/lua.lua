@@ -44,6 +44,7 @@ M.snippets = {
 
     end
 
+    ---@type LazyPluginSpec
     M.spec = {
         '',
         config = M.config,
@@ -59,6 +60,7 @@ M.snippets = {
         local local_config_dir = utils.get_local_config_dir(local_config_file)
 
         -- Extra plugins to be inserted into the lazy spec
+        ---@type LazySpec[]
         _G.SCHILK_LOCAL_PLUGINS = {
         }
 
@@ -75,6 +77,7 @@ M.snippets = {
     ]]),
 
     ls.parser.parse_snippet({ trig = "schilk.nvim.lua_plugin" }, [[
+        ---@type LazyPluginSpec
         {
             '',
             dependencies = {

@@ -43,6 +43,7 @@ function M.config()
     }
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'nvim-lualine/lualine.nvim',
     config = M.config,

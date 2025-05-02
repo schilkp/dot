@@ -277,6 +277,7 @@ function M.fidget_config()
     });
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'neovim/nvim-lspconfig',
     dependencies = {

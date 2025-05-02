@@ -33,6 +33,7 @@ function M.config()
     vim.keymap.set({ 'n' }, '<leader>mo', '<cmd>AerialToggle!<CR>', { silent = true, desc = "📋 Toggle Outline." }) -- TODO make saga?
 end
 
+---@type LazyPluginSpec
 M.spec = {
     "schilkp/aerial.nvim",
     config = M.config,

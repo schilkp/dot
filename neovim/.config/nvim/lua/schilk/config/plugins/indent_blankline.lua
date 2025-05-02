@@ -9,6 +9,7 @@ function M.config()
     })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     "lukas-reineke/indent-blankline.nvim",
     config = M.config,

@@ -1,5 +1,6 @@
 local M = {}
 
+---@type LazyPluginSpec
 M.spec = {
     "folke/snacks.nvim",
     ---@type snacks.Config

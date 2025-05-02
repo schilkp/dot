@@ -64,6 +64,7 @@ function M.config_org_roam()
     })
 end
 
+---@type LazyPluginSpec
 M.spec = {
     "chipsenkbeil/org-roam.nvim",
     dependencies = {

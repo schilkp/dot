@@ -17,6 +17,7 @@ require('schilk.local_config').source()
 require('schilk.lazy').activate()
 
 -- Plugins:
+---@type LazySpec[]
 local plugins = {
 
     -- [[ COLOR SCHEMES ]] --

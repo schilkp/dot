@@ -9,6 +9,7 @@ function M.config()
     vim.keymap.set({ 'n' }, '<leader>q', ':NvimTreeToggle<CR>', { silent = true, desc = "🌳 Toggle File Tree." }) -- TODO make saga?
 end
 
+---@type LazyPluginSpec
 M.spec = {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
