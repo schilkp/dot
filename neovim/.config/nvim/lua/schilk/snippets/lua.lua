@@ -58,6 +58,10 @@ M.snippets = {
         local utils = require('schilk.utils.project_config_utils');
         local local_config_file = utils.get_local_config_path(debug.getinfo(1).source)
         local local_config_dir = utils.get_local_config_dir(local_config_file)
+        
+        -- Startup note/message
+        ---@type string[]|nil
+        _G.SCHILK_LOCAL_NOTE = nil
 
         -- Extra plugins to be inserted into the lazy spec
         ---@type LazySpec[]
