@@ -65,7 +65,15 @@ function M.source()
     if content ~= nil then
         vim.api.nvim_command("source " .. file)
         vim.defer_fn(function()
-            vim.notify("[local_config]: loaded local config file.", vim.log.levels.INFO)
+            local msg = "[local_config]: loaded local config file"
+            ---@type string|nil
+            _G.SCHILK_LOCAL_NOTE = _G.SCHILK_LOCAL_NOTE or nil
+            if _G.SCHILK_LOCAL_NOTE then
+                msg = msg .. " (" .. _G.SCHILK_LOCAL_NOTE .. ")."
+            else
+                msg = msg .. "."
+            end
+            vim.notify(msg, vim.log.levels.INFO)
         end, 250)
     else
         vim.defer_fn(function()
