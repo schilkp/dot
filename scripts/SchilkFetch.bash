@@ -2,12 +2,11 @@
 # set -euo pipefail
 
 # Same/Similar 256-color codes used in p10k:
-C_GIT="\e[38;5;31m"
-C_OK="\e[38;5;76m"
-C_WARN="\e[38;5;220m"
-C_ERR="\e[38;5;160m"
-
-C_OFF="\x1b[0m"
+C_GIT="\033[38;5;31m"
+C_OK="\033[38;5;76m"
+C_WARN="\033[38;5;220m"
+C_ERR="\033[38;5;160m"
+C_OFF="\033[0m"
 
 # Arg1: Name
 # Arg2: Repo path
@@ -27,34 +26,22 @@ function SchilkFetch_repo_status() {
     if [ -z "$REPO_BEHIND" ] && [ -z "$REPO_AHEAD" ]; then
         # In sync.
         printf "%b %b" "$C_OK" "$C_OFF"
-    fi
-    if [ -n "$REPO_BEHIND" ]; then
+    elif [ -n "$REPO_BEHIND" ]; then
         # Behind.
         printf "%b %b" "$C_WARN" "$C_OFF"
-    fi
-    if [ -n "$REPO_AHEAD" ]; then
+    else
         # Ahead.
         printf "%b %b" "$C_WARN" "$C_OFF"
     fi
 }
-
-
 function SchilkFetch() {
-    printf "📦 "
-    SchilkFetch_repo_status dot "$HOME/dot"
+    if [ -d "$HOME/dot" ]; then
+        printf "📦 "
+        SchilkFetch_repo_status dot "$HOME/dot"
+    fi
     if [ -d "$HOME/dot_priv" ]; then
         printf "🏡 "
         SchilkFetch_repo_status dot_priv "$HOME/dot_priv"
     fi
-    printf "\n"
-}
-
-# Only run in the second shell.
-# This is usually the first terminal that gets opened, since my META-ENTER runs
-# kitty (with a zsh shell), then opens tmux with another zsh shell inside.
-function SchilkFetch_auto() {
-    LIVE_COUNTER=$(ps a | awk '{print $2}' | grep -vi "tty" | uniq | wc -l);
-    if [ "$LIVE_COUNTER" -eq 2 ]; then
-        SchilkFetch
-    fi
+    echo
 }
