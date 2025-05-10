@@ -1,16 +1,17 @@
 local M = {}
 
 function M.config_highlight_on_yank()
-    if vim.g.vscode then return end -- Disable in vscode-neovim
+    if vim.g.vscode then
+        return
+    end -- Disable in vscode-neovim
 
-
-    local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-    vim.api.nvim_create_autocmd('TextYankPost', {
+    local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+    vim.api.nvim_create_autocmd("TextYankPost", {
         callback = function()
             vim.highlight.on_yank({ timeout = 40 })
         end,
         group = highlight_group,
-        pattern = '*',
+        pattern = "*",
     })
 end
 
@@ -18,7 +19,7 @@ local large_file_mode = false
 
 -- FIXME: Make this per-buffer? Unlikely I need it enough to be worth it ;)
 local function toggle_large_file_mode()
-    if (not large_file_mode) then
+    if not large_file_mode then
         vim.print("Entering Large-File-Mode..")
         vim.cmd("syntax off")
         vim.cmd("filetype off")
@@ -40,7 +41,9 @@ local function toggle_large_file_mode()
 end
 
 function M.config_large_file_mode()
-    if vim.g.vscode then return end -- Disable in vscode-neovim
+    if vim.g.vscode then
+        return
+    end -- Disable in vscode-neovim
 
     vim.keymap.set("n", "<leader>ml", toggle_large_file_mode, { silent = true, desc = "📁 Toggle Large-File-Mode" })
 end

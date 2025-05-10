@@ -4,7 +4,7 @@ local SV_IDENTIFIER_PATTERN = "[%a_][%a_%$%d]*"
 
 function M.sperate_comment(line)
     local idx, _ = line:find("//")
-    if (idx ~= nil) then
+    if idx ~= nil then
         local comment = string.sub(line, idx)
         local line_content = string.sub(line, 0, idx - 1)
         return line_content, comment
@@ -12,7 +12,7 @@ function M.sperate_comment(line)
 
     local idx_start, _ = line:find("/%*")
     local idx_end, _ = line:find("%*/")
-    if (idx_start ~= nil and idx_end ~= nil) then
+    if idx_start ~= nil and idx_end ~= nil then
         local comment = string.sub(line, idx_start, idx_end)
         local line_content = string.sub(line, 0, idx_start - 1) .. string.sub(line, idx_end + 1)
         return line_content, comment
@@ -35,20 +35,20 @@ function M.process_parameter_line(orig_line)
     -- Seperate trailing comma:
     local trailing_comma = ""
     local idx_comma, _ = line:find(",")
-    if (idx_comma ~= nil) then
+    if idx_comma ~= nil then
         trailing_comma = ","
         line = string.sub(line, 0, idx_comma - 1)
     end
 
     -- Strip default value:
     local idx_eq, _ = line:find("=")
-    if (idx_eq ~= nil) then
+    if idx_eq ~= nil then
         line = string.sub(line, 0, idx_eq - 1)
     end
 
     -- Isolate identifier:
     local ident_start, indent_stop = line:find(SV_IDENTIFIER_PATTERN .. "%s*$")
-    if (ident_start ~= nil and indent_stop ~= nil) then
+    if ident_start ~= nil and indent_stop ~= nil then
         local identifier = string.sub(line, ident_start, indent_stop)
         identifier = string.gsub(identifier, "%s", "")
         return "  ." .. identifier .. "( )" .. trailing_comma .. comment
@@ -72,7 +72,7 @@ function M.process_input_output_line(orig_line, line_without_io)
     -- Seperate trailing comma:
     local trailing_comma = ""
     local idx_comma, _ = line:find(",")
-    if (idx_comma ~= nil) then
+    if idx_comma ~= nil then
         trailing_comma = ","
         line = string.sub(line, 0, idx_comma - 1)
     end
@@ -82,7 +82,7 @@ function M.process_input_output_line(orig_line, line_without_io)
 
     -- Isolate identifier:
     local ident_start, indent_stop = line:find(SV_IDENTIFIER_PATTERN .. "%s*$")
-    if (ident_start ~= nil and indent_stop ~= nil) then
+    if ident_start ~= nil and indent_stop ~= nil then
         local identifier = string.sub(line, ident_start, indent_stop)
         identifier = string.gsub(identifier, "%s", "")
         return "  ." .. identifier .. "( )" .. trailing_comma .. comment
@@ -96,15 +96,15 @@ function M.convert_to_instantiation(inp)
     local result = {}
 
     for _, line in ipairs(inp) do
-        if (line:find("^%s*parameter") ~= nil) then
+        if line:find("^%s*parameter") ~= nil then
             local processed_line = M.process_parameter_line(line)
             table.insert(result, processed_line)
-        elseif (line:find("^%s*input") ~= nil) then
+        elseif line:find("^%s*input") ~= nil then
             local _, idx_end = line:find("^%s*input")
             local processed_line = line:sub(idx_end + 1)
             processed_line = M.process_input_output_line(line, processed_line)
             table.insert(result, processed_line)
-        elseif (line:find("^%s*output") ~= nil) then
+        elseif line:find("^%s*output") ~= nil then
             local _, idx_end = line:find("^%s*output")
             local processed_line = line:sub(idx_end + 1)
             processed_line = M.process_input_output_line(line, processed_line)
@@ -119,7 +119,6 @@ end
 
 -- Convert the selected system-verilog module definition to an instantiation:
 function M.convert_selection()
-
     -- Determine range of lines selected:
     local vstart = vim.fn.getpos("v")
     local vcurrent = vim.fn.getcurpos()
@@ -129,7 +128,7 @@ function M.convert_selection()
 
     local line_first = line_start
     local line_last = line_current
-    if (line_start > line_current) then
+    if line_start > line_current then
         line_first = line_current
         line_last = line_start
     end
@@ -144,9 +143,8 @@ function M.convert_selection()
     vim.api.nvim_buf_set_lines(bufn, line_first - 1, line_last, false, processed_lines)
 
     -- Exit visual mode:
-    local keys = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
-    vim.api.nvim_feedkeys(keys, 'm', false)
-
+    local keys = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
+    vim.api.nvim_feedkeys(keys, "m", false)
 end
 
 function M.setup()

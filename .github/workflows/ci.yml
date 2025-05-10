@@ -1,0 +1,19 @@
+name: Dotfile Checks
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  neovim-stylua:
+    name: StyLua
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stylua
+        uses: JohnnyMorganz/stylua-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: v2.0.2
+          args: --check neovim/.config/nvim/

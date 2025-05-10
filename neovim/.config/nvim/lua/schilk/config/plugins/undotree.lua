@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-    vim.keymap.set({ 'n' }, '<leader>mu', ':UndotreeToggle<CR>', { silent = true, desc = "📝 Toggle Undotree." })
+    vim.keymap.set({ "n" }, "<leader>mu", ":UndotreeToggle<CR>", { silent = true, desc = "📝 Toggle Undotree." })
 end
 
 ---@type LazyPluginSpec

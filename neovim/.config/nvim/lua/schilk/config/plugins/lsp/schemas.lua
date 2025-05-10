@@ -1,7 +1,7 @@
 local M = {}
 
 function M.yaml_schemas()
-    return require('schemastore').yaml.schemas {
+    return require("schemastore").yaml.schemas({
         -- select subset from the JSON schema catalog:
         select = {
             -- 'docker-compose.yml'
@@ -15,15 +15,14 @@ function M.yaml_schemas()
             --     name = 'out.json',
             --     url = 'file:///home/schilkp/reps/reginald/reginald/out.json',
             -- },
-        }
-    }
+        },
+    })
 end
 
 function M.json_schemas()
-    return require('schemastore').json.schemas {
+    return require("schemastore").json.schemas({
         -- select subset from the JSON schema catalog:
-        select = {
-        },
+        select = {},
 
         -- additional schemas (not in the catalog):
         extra = {
@@ -33,8 +32,8 @@ function M.json_schemas()
             --     name = 'out.json',
             --     url = 'file:///home/schilkp/reps/reginald/reginald/out.json',
             -- },
-        }
-    }
+        },
+    })
 end
 
 return M

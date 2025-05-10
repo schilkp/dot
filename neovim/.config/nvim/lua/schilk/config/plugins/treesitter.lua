@@ -1,9 +1,9 @@
 local M = {}
 
 function M.config()
-    local ts_highlight_langs = { "hyprlang", "markdown" };
+    local ts_highlight_langs = { "hyprlang", "markdown" }
 
-    require 'nvim-treesitter.configs'.setup {
+    require("nvim-treesitter.configs").setup({
         ensure_installed = "all",
 
         highlight = {
@@ -11,14 +11,13 @@ function M.config()
             disable = function(lang, _) -- (lang, buf)
                 for _, en_lang in pairs(ts_highlight_langs) do
                     if lang == en_lang then
-                        return false;
+                        return false
                     end
                 end
-                return true;
+                return true
             end,
         },
-
-    }
+    })
     vim.filetype.add({
         pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
     })
@@ -26,12 +25,12 @@ end
 
 ---@type LazyPluginSpec
 M.spec = {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     dependencies = {
-        'nvim-treesitter/nvim-treesitter-textobjects',
+        "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    build = ':TSUpdate',
-    config = M.config
+    build = ":TSUpdate",
+    config = M.config,
 }
 
 return M

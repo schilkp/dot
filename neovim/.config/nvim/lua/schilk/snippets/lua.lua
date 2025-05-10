@@ -1,3 +1,4 @@
+-- stylua: ignore
 local M = {}
 local ls = require("luasnip")
 local s = ls.snippet

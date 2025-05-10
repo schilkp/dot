@@ -8,7 +8,7 @@ function M.config()
     wk.setup({
         icons = {
             mappings = false,
-        }
+        },
     })
 
     -- Document binding categories and bindings from vimrc:
@@ -30,7 +30,7 @@ end
 
 ---@type LazyPluginSpec
 M.spec = {
-    'folke/which-key.nvim',
+    "folke/which-key.nvim",
     config = M.config,
     cond = not vim.g.vscode, -- Disable in vscode-neovim
 }

@@ -4,9 +4,9 @@ M.org_roam_dir = "~/org-roam"
 
 function M.config_org()
     -- Setup orgmode
-    require('orgmode').setup({
-        org_agenda_files = '~/orgfiles/**/*',
-        org_default_notes_file = '~/orgfiles/refile.org',
+    require("orgmode").setup({
+        org_agenda_files = "~/orgfiles/**/*",
+        org_default_notes_file = "~/orgfiles/refile.org",
 
         org_adapt_indentation = false,
 
@@ -14,8 +14,8 @@ function M.config_org()
             prefix = "<leader>N",
             org = {
                 org_open_at_point = "<leader>no",
-            }
-        }
+            },
+        },
     })
 
     -- Enable conceal:
@@ -23,14 +23,14 @@ function M.config_org()
         pattern = "org",
         callback = function()
             vim.opt_local.conceallevel = 2
-            vim.opt_local.concealcursor = 'nc'
+            vim.opt_local.concealcursor = "nc"
         end,
     })
 end
 
 --- Fuzzy-find in notes
 function M.grep_notes()
-    local fzf_lua = require 'fzf-lua'
+    local fzf_lua = require("fzf-lua")
     fzf_lua.live_grep_native({ cwd = M.org_roam_dir })
 end
 
@@ -48,11 +48,10 @@ function M.config_org_roam()
                 template = "%?",
                 target = "%[slug].org",
             },
-        }
-
+        },
     })
 
-    vim.keymap.set('n', '<leader>nF', M.grep_notes, { silent = true, desc = 'Find in notes.' })
+    vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, desc = "Find in notes." })
 
     -- Disable blink completion in select buffer:
     vim.api.nvim_create_autocmd("FileType", {
@@ -70,11 +69,11 @@ M.spec = {
     dependencies = {
         {
             "nvim-orgmode/orgmode",
-            config = M.config_org
+            config = M.config_org,
         },
     },
     config = M.config_org_roam,
-    cond = not vim.g.vscode -- Disable in vscode-neovim
+    cond = not vim.g.vscode, -- Disable in vscode-neovim
 }
 
 return M

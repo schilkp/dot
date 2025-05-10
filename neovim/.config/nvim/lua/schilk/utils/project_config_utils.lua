@@ -10,7 +10,7 @@ function M.get_local_config_path(p)
 end
 
 function M.get_local_config_dir(p)
-  return vim.fn.fnamemodify(M.get_local_config_path(p), ":h")
+    return vim.fn.fnamemodify(M.get_local_config_path(p), ":h")
 end
 
 return M

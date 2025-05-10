@@ -1,14 +1,13 @@
 local M = {}
 
-local ALL_KINDS = vim.tbl_filter(
-    function(k) return type(k) == "string" end,
-    vim.tbl_keys(vim.lsp.protocol.SymbolKind)
-)
+local ALL_KINDS = vim.tbl_filter(function(k)
+    return type(k) == "string"
+end, vim.tbl_keys(vim.lsp.protocol.SymbolKind))
 
 function M.config()
     require("aerial").setup({
         backends = {
-            ['_'] = { "lsp", "treesitter", "markdown", "asciidoc", "man" },
+            ["_"] = { "lsp", "treesitter", "markdown", "asciidoc", "man" },
             verilog = { "treesitter" },
             systemverilog = { "treesitter" },
         },
@@ -16,7 +15,7 @@ function M.config()
             min_width = 15,
         },
         filter_kind = {
-            ['_'] = {
+            ["_"] = {
                 "Class",
                 "Constructor",
                 "Enum",
@@ -27,10 +26,10 @@ function M.config()
                 "Struct",
             },
             verilog = ALL_KINDS,
-            systemverilog = ALL_KINDS
-        }
+            systemverilog = ALL_KINDS,
+        },
     })
-    vim.keymap.set({ 'n' }, '<leader>mo', '<cmd>AerialToggle!<CR>', { silent = true, desc = "📋 Toggle Outline." }) -- TODO make saga?
+    vim.keymap.set({ "n" }, "<leader>mo", "<cmd>AerialToggle!<CR>", { silent = true, desc = "📋 Toggle Outline." }) -- TODO make saga?
 end
 
 ---@type LazyPluginSpec
@@ -39,7 +38,7 @@ M.spec = {
     config = M.config,
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons",
     },
     cond = not vim.g.vscode, -- Disable in vscode-neovim
 }

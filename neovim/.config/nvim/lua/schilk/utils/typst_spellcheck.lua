@@ -11,8 +11,8 @@ function M.typst_spell_check(root_file_name)
     if root_dir then
         vim.notify("Starting in " .. root_dir)
         vim.lsp.start({
-            cmd = { 'typst-languagetool-lsp' },
-            filetype = { 'typst' },
+            cmd = { "typst-languagetool-lsp" },
+            filetype = { "typst" },
             root_dir = root_dir,
             init_options = {
                 backend = "bundle", -- "bundle" | "jar" | "server"
@@ -21,7 +21,7 @@ function M.typst_spell_check(root_file_name)
                 -- port = "8081",
                 root = root_dir,
                 main = root_dir .. "/" .. root_file_name,
-                languages = { de = "de-DE", en = "en-US" }
+                languages = { de = "de-DE", en = "en-US" },
             },
         })
     else
@@ -42,7 +42,7 @@ function M.TypstSpellCheckCmd(args)
 end
 
 function M.setup()
-    vim.api.nvim_create_user_command('TypstSpellCheck', M.TypstSpellCheckCmd, { nargs = "?" })
+    vim.api.nvim_create_user_command("TypstSpellCheck", M.TypstSpellCheckCmd, { nargs = "?" })
 end
 
 return M

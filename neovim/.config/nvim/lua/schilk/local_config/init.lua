@@ -4,8 +4,8 @@ local M = {}
 --// Config Constants
 --//===--------------------------------------------------------------------===//
 
-M.CONFIG_FILE_NAMES = { ".schilk.nvim.lua" };
-M.CONFIG_SAMPLES_DIR = vim.fs.joinpath(vim.fn.stdpath("config"), "example_local_configs");
+M.CONFIG_FILE_NAMES = { ".schilk.nvim.lua" }
+M.CONFIG_SAMPLES_DIR = vim.fs.joinpath(vim.fn.stdpath("config"), "example_local_configs")
 
 --//===--------------------------------------------------------------------===//
 --// Commands
@@ -57,7 +57,7 @@ end
 
 --Look for config file & source if trusted
 function M.source()
-    local file = M.lookup();
+    local file = M.lookup()
     if not file or file == "" then
         return
     end
@@ -83,8 +83,8 @@ function M.source()
 end
 
 function M.setup()
-    vim.api.nvim_command "command! LocalEdit lua require'schilk.local_config'.edit()<CR>"
-    vim.api.nvim_command "command! LocalSaveAsSample lua require'schilk.local_config'.copy_to_samples()<CR>"
+    vim.api.nvim_command("command! LocalEdit lua require'schilk.local_config'.edit()<CR>")
+    vim.api.nvim_command("command! LocalSaveAsSample lua require'schilk.local_config'.copy_to_samples()<CR>")
 end
 
 return M

@@ -93,7 +93,6 @@ M.action_options = {
     "Misusing design patterns...",
 }
 
-
 function M.start_req_fidget()
     local has_fidget, fidget = pcall(require, "fidget")
     if not has_fidget then
@@ -157,7 +156,6 @@ function M.config()
         default_adapter = "anthropic"
     end
 
-
     -- Pick prompt:
     local prompt = M.prompt_options[math.random(#M.prompt_options)]
 
@@ -167,14 +165,14 @@ function M.config()
             chat = {
                 adapter = default_adapter,
                 slash_commands = {
-                    ["buffer"] = { opts = { provider = "fzf_lua", }, },
-                    ["file"] = { opts = { provider = "fzf_lua", }, },
-                    ["help"] = { opts = { provider = "fzf_lua", }, },
-                    ["symbols"] = { opts = { provider = "fzf_lua", }, },
+                    ["buffer"] = { opts = { provider = "fzf_lua" } },
+                    ["file"] = { opts = { provider = "fzf_lua" } },
+                    ["help"] = { opts = { provider = "fzf_lua" } },
+                    ["symbols"] = { opts = { provider = "fzf_lua" } },
                 },
             },
-            inline = { adapter = default_adapter, },
-            cmd = { adapter = default_adapter, },
+            inline = { adapter = default_adapter },
+            cmd = { adapter = default_adapter },
         },
 
         display = {
@@ -192,8 +190,8 @@ function M.config()
                     schema = {
                         extended_thinking = {
                             default = false,
-                        }
-                    }
+                        },
+                    },
                 })
             end,
             openai = function()
@@ -212,7 +210,6 @@ function M.config()
             end,
         },
     })
-
 
     -- Keybinds:
     local name = M.name_options[math.random(#M.name_options)]

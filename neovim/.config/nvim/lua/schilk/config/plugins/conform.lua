@@ -35,16 +35,15 @@ function M.config()
         default_format_opts = {
             lsp_format = "first",
         },
-
     })
 
-    vim.keymap.set({ "n" }, "<leader>F", require('conform').format, { silent = true, desc = "🧹 Format." })
-    vim.keymap.set({ "v" }, "gf", require('conform').format, { silent = true, desc = "🧹 Format." })
+    vim.keymap.set({ "n" }, "<leader>F", require("conform").format, { silent = true, desc = "🧹 Format." })
+    vim.keymap.set({ "v" }, "gf", require("conform").format, { silent = true, desc = "🧹 Format." })
 end
 
 ---@type LazyPluginSpec
 M.spec = {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     config = M.config,
     cond = not vim.g.vscode, -- Disable in vscode-neovim
 }

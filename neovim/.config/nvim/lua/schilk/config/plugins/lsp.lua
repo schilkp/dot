@@ -8,28 +8,30 @@ local function config_lsp()
     -- ---===--- MASON ---===---
 
     require("mason").setup()
-    require("mason-lspconfig").setup {
+    require("mason-lspconfig").setup({
         ensure_installed = {
             "bashls",
             "lua_ls",
-        }
-    }
+        },
+    })
 
     -- ---===--- LSP CONFIG ---===---
 
     -- LSP Config:
-    local lspconfig = require('lspconfig')
+    local lspconfig = require("lspconfig")
 
     -- Blink CMP capabilities:
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     local has_blink, _ = pcall(require, "blink.cmp")
     if has_blink then
-        capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+        capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
     end
 
     -- Inject manually configured local lsps:
-    _G.SCHILK_LOCAL_LSPS_CB = _G.SCHILK_LOCAL_LSPS_CB or function(_, on_attach) on_attach() end
+    _G.SCHILK_LOCAL_LSPS_CB = _G.SCHILK_LOCAL_LSPS_CB or function(_, on_attach)
+        on_attach()
+    end
     _G.SCHILK_LOCAL_LSPS_CB(capabilities, function() end)
 
     -- Allow skipping of default LSPs:
@@ -58,13 +60,13 @@ local function config_lsp()
                     workspace = { checkThirdParty = false },
                     telemetry = { enable = false },
                     completion = {
-                        callSnippet = "Replace"
+                        callSnippet = "Replace",
                     },
                     diagnostics = {
-                        disable = { "missing-fields" }
-                    }
-                }
-            }
+                        disable = { "missing-fields" },
+                    },
+                },
+            },
         },
         ts_ls = {
             filetypes = {
@@ -82,18 +84,18 @@ local function config_lsp()
                         enable = false,
                         url = "",
                     },
-                    schemas = require('schilk.config.plugins.lsp.schemas').yaml_schemas()
-                }
-            }
+                    schemas = require("schilk.config.plugins.lsp.schemas").yaml_schemas(),
+                },
+            },
         },
         jsonls = {
             settings = {
                 json = {
-                    schemas = require('schilk.config.plugins.lsp.schemas').json_schemas(),
+                    schemas = require("schilk.config.plugins.lsp.schemas").json_schemas(),
                     validate = { enable = true },
                 },
             },
-        }
+        },
     }
 
     -- Inject standard local lsps:
@@ -112,21 +114,20 @@ local function config_lsp()
 
     -- Rust-Analyzer:
     -- Note: LSP-Config is called/configured by rust-tools.nvim.
-    require('schilk.config.plugins.lsp.rust_tools').config({
+    require("schilk.config.plugins.lsp.rust_tools").config({
         capabilities = capabilities,
         settings = {
             ["rust-analyzer"] = {
                 procMacro = {
-                    enable = true
+                    enable = true,
                 },
-            }
-        }
+            },
+        },
     })
 end
 
-
 local function toggle_buffer_lsp_diagnostics()
-    local enabled = vim.diagnostic.is_enabled({ bufnr = 0 });
+    local enabled = vim.diagnostic.is_enabled({ bufnr = 0 })
 
     if enabled then
         vim.print("Hiding Buffer LSP diagnostics..")
@@ -137,9 +138,9 @@ local function toggle_buffer_lsp_diagnostics()
     end
 end
 
-local all_lsp_diagnostic_hidden = false;
+local all_lsp_diagnostic_hidden = false
 local function toggle_lsp_diagnostics()
-    if (all_lsp_diagnostic_hidden) then
+    if all_lsp_diagnostic_hidden then
         vim.print("Showing LSP diagnostics..")
         all_lsp_diagnostic_hidden = false
     else
@@ -148,7 +149,7 @@ local function toggle_lsp_diagnostics()
     end
 
     for _, v in ipairs(vim.fn.getwininfo()) do
-        if (all_lsp_diagnostic_hidden) then
+        if all_lsp_diagnostic_hidden then
             vim.diagnostic.enable(false, { bufnr = v.bufnr })
         else
             vim.diagnostic.enable(true, { bufnr = v.bufnr })
@@ -160,7 +161,7 @@ local function toggle_buffer_semantic_highlight()
     local hidden = vim.b.schilk_semantic_highlight_hidden or false
     local bufnr = vim.fn.bufnr()
 
-    if (hidden) then
+    if hidden then
         vim.print("Showing Buffer LSP semantic highlight..")
         for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
             vim.lsp.semantic_tokens.start(bufnr, client.id)
@@ -175,9 +176,9 @@ local function toggle_buffer_semantic_highlight()
     end
 end
 
-local all_semantic_highlight_hidden = false;
+local all_semantic_highlight_hidden = false
 local function toggle_semantic_highlight()
-    if (all_semantic_highlight_hidden) then
+    if all_semantic_highlight_hidden then
         vim.print("Showing Semantic Highlight..")
         all_semantic_highlight_hidden = false
     else
@@ -187,7 +188,7 @@ local function toggle_semantic_highlight()
 
     for _, v in ipairs(vim.fn.getwininfo()) do
         for _, client in ipairs(vim.lsp.get_clients({ bufnr = v.bufnr })) do
-            if (all_semantic_highlight_hidden) then
+            if all_semantic_highlight_hidden then
                 vim.print("bufnr " .. v.bufnr .. " client " .. client.name .. " OFF")
                 vim.lsp.semantic_tokens.stop(v.bufnr, client.id)
             else
@@ -200,14 +201,13 @@ local function toggle_semantic_highlight()
     end
 end
 
-
 local next_style_map = {
     underline = "virtual_lines",
     virtual_lines = "virtual_text",
-    virtual_text = "underline"
+    virtual_text = "underline",
 }
 
-local all_diagnostics_style = "virtual_text";
+local all_diagnostics_style = "virtual_text"
 local function cycle_diagnostics_style()
     local new_style = next_style_map[all_diagnostics_style]
 
@@ -215,44 +215,85 @@ local function cycle_diagnostics_style()
     vim.diagnostic.config({
         virtual_lines = (new_style == "virtual_lines"),
         underline = (new_style == "underline"),
-        virtual_text = (new_style == "virtual_text")
+        virtual_text = (new_style == "virtual_text"),
     })
     all_diagnostics_style = new_style
 end
 
 local function config_keybinds()
     -- LSP Navigation Binds:
-    vim.keymap.set({ 'n' }, '<leader>gd', vim.lsp.buf.definition, { silent = true, desc = "LSP: Goto Definition." })      -- TODO make saga?
-    vim.keymap.set({ 'n' }, '<leader>gD', vim.lsp.buf.declaration, { silent = true, desc = "LSP: Goto Declaration." })
-    vim.keymap.set({ 'n' }, '<leader>gr', vim.lsp.buf.references, { silent = true, desc = "LSP: Goto References." })      -- TODO mage saga?
-    vim.keymap.set({ 'n' }, '<leader>gI', vim.lsp.buf.implementation,
-        { silent = true, desc = "LSP: Goto Implementation." })                                                            -- TODO make telescope?
-    vim.keymap.set({ 'n' }, '<leader>gi', vim.lsp.buf.incoming_calls,
-        { silent = true, desc = "LSP: Goto Incoming Calls." })                                                            -- TODO make SAGA?
-    vim.keymap.set({ 'n' }, '<leader>gt', vim.lsp.buf.type_definition, { silent = true, desc = "LSP: Type Definition." }) -- TODO make SAGA?
-    vim.keymap.set({ 'n' }, '<leader>go', vim.lsp.buf.outgoing_calls,
-        { silent = true, desc = "LSP: Goto Outgoing Calls." })                                                            -- TODO make SAGA?
-    vim.keymap.set({ 'n' }, '<leader>gh', ':ClangdSwitchSourceHeader<CR>',
-        { silent = true, desc = "LSP: Switch Header/Source." })
+    vim.keymap.set({ "n" }, "<leader>gd", vim.lsp.buf.definition, { silent = true, desc = "LSP: Goto Definition." }) -- TODO make saga?
+    vim.keymap.set({ "n" }, "<leader>gD", vim.lsp.buf.declaration, { silent = true, desc = "LSP: Goto Declaration." })
+    vim.keymap.set({ "n" }, "<leader>gr", vim.lsp.buf.references, { silent = true, desc = "LSP: Goto References." }) -- TODO mage saga?
+    vim.keymap.set(
+        { "n" },
+        "<leader>gI",
+        vim.lsp.buf.implementation,
+        { silent = true, desc = "LSP: Goto Implementation." }
+    ) -- TODO make telescope?
+    vim.keymap.set(
+        { "n" },
+        "<leader>gi",
+        vim.lsp.buf.incoming_calls,
+        { silent = true, desc = "LSP: Goto Incoming Calls." }
+    ) -- TODO make SAGA?
+    vim.keymap.set(
+        { "n" },
+        "<leader>gt",
+        vim.lsp.buf.type_definition,
+        { silent = true, desc = "LSP: Type Definition." }
+    ) -- TODO make SAGA?
+    vim.keymap.set(
+        { "n" },
+        "<leader>go",
+        vim.lsp.buf.outgoing_calls,
+        { silent = true, desc = "LSP: Goto Outgoing Calls." }
+    ) -- TODO make SAGA?
+    vim.keymap.set(
+        { "n" },
+        "<leader>gh",
+        ":ClangdSwitchSourceHeader<CR>",
+        { silent = true, desc = "LSP: Switch Header/Source." }
+    )
 
     -- LSP Action Binds:
-    vim.keymap.set({ 'n' }, '<leader>gn', vim.lsp.buf.rename, { silent = true, desc = "LSP: Rename." })
-    vim.keymap.set({ 'n' }, '<leader>ga', vim.lsp.buf.code_action, { silent = true, desc = "LSP: Code Actions" })
+    vim.keymap.set({ "n" }, "<leader>gn", vim.lsp.buf.rename, { silent = true, desc = "LSP: Rename." })
+    vim.keymap.set({ "n" }, "<leader>ga", vim.lsp.buf.code_action, { silent = true, desc = "LSP: Code Actions" })
 
     -- Diagnostics:
-    vim.keymap.set({ 'n' }, '<C-k>', vim.lsp.buf.hover, { silent = true, desc = "LSP: Documentation" })
-    vim.keymap.set({ 'n' }, '<leader>ge', vim.diagnostic.open_float, { silent = true, desc = "LSP: Diagnostics" })
+    vim.keymap.set({ "n" }, "<C-k>", vim.lsp.buf.hover, { silent = true, desc = "LSP: Documentation" })
+    vim.keymap.set({ "n" }, "<leader>ge", vim.diagnostic.open_float, { silent = true, desc = "LSP: Diagnostics" })
 
-    vim.keymap.set("n", "<leader>md", toggle_buffer_lsp_diagnostics,
-        { silent = true, desc = "💡 Toggle LSP diagnostics for current buffer." })
-    vim.keymap.set("n", "<leader>mD", toggle_lsp_diagnostics,
-        { silent = true, desc = "💡 Toggle LSP diagnostics for all buffers." })
-    vim.keymap.set("n", "<leader>ms", toggle_buffer_semantic_highlight,
-        { silent = true, desc = "💡 Toggle LSP semantic highlight for current buffer." })
-    vim.keymap.set("n", "<leader>mS", toggle_semantic_highlight,
-        { silent = true, desc = "💡 Toggle LSP semantic highlight for all buffers." })
-    vim.keymap.set("n", "<leader>me", cycle_diagnostics_style,
-        { silent = true, desc = "💡 Toggle LSP diagnostics for current buffer." })
+    vim.keymap.set(
+        "n",
+        "<leader>md",
+        toggle_buffer_lsp_diagnostics,
+        { silent = true, desc = "💡 Toggle LSP diagnostics for current buffer." }
+    )
+    vim.keymap.set(
+        "n",
+        "<leader>mD",
+        toggle_lsp_diagnostics,
+        { silent = true, desc = "💡 Toggle LSP diagnostics for all buffers." }
+    )
+    vim.keymap.set(
+        "n",
+        "<leader>ms",
+        toggle_buffer_semantic_highlight,
+        { silent = true, desc = "💡 Toggle LSP semantic highlight for current buffer." }
+    )
+    vim.keymap.set(
+        "n",
+        "<leader>mS",
+        toggle_semantic_highlight,
+        { silent = true, desc = "💡 Toggle LSP semantic highlight for all buffers." }
+    )
+    vim.keymap.set(
+        "n",
+        "<leader>me",
+        cycle_diagnostics_style,
+        { silent = true, desc = "💡 Toggle LSP diagnostics for current buffer." }
+    )
 end
 
 function M.config()
@@ -261,7 +302,7 @@ function M.config()
     vim.diagnostic.config({
         virtual_lines = (all_diagnostics_style == "virtual_lines"),
         underline = (all_diagnostics_style == "underline"),
-        virtual_text = (all_diagnostics_style == "virtual_text")
+        virtual_text = (all_diagnostics_style == "virtual_text"),
     })
 end
 
@@ -273,18 +314,18 @@ function M.fidget_config()
                 stack_upwards = false,
             },
             window = {
-                winblend = 0
-            }
-        }
-    });
+                winblend = 0,
+            },
+        },
+    })
 end
 
 ---@type LazyPluginSpec
 M.spec = {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     dependencies = {
         {
-            'j-hui/fidget.nvim',
+            "j-hui/fidget.nvim",
             config = M.fidget_config,
             priority = 100,
         },
@@ -300,14 +341,14 @@ M.spec = {
             },
             dependencies = {
                 { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-            }
+            },
         },
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         -- rust:
-        'simrat39/rust-tools.nvim',
+        "simrat39/rust-tools.nvim",
         -- json/yaml schemas:
-        'b0o/schemastore.nvim',
+        "b0o/schemastore.nvim",
     },
     config = M.config,
     cond = not vim.g.vscode, -- Disable in vscode-neovim
