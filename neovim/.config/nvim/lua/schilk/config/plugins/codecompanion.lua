@@ -211,6 +211,33 @@ function M.config()
                 })
             end,
         },
+        extensions = {
+            history = {
+                enabled = true,
+                opts = {
+                    -- Keymap to open history from chat buffer
+                    keymap = "gh",
+                    -- Automatically generate titles for new chats
+                    auto_generate_title = true,
+                    ---On exiting and entering neovim, loads the last chat on opening chat
+                    continue_last_chat = false,
+                    ---When chat is cleared with `gx` delete the chat from history
+                    delete_on_clearing_chat = false,
+                    -- Picker interface ("telescope", "snacks" or "default")
+                    picker = "telescope",
+                    ---Enable detailed logging for history extension
+                    enable_logging = false,
+                    ---Directory path to save the chats
+                    dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+                    -- Save all chats by default
+                    auto_save = true,
+                    -- Keymap to save the current chat manually
+                    save_chat_keymap = "sc",
+                    -- Number of days after which chats are automatically deleted (0 to disable)
+                    expiration_days = 60,
+                }
+            }
+        }
     })
 
 
@@ -247,6 +274,7 @@ M.spec = {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
+        "ravitemer/codecompanion-history.nvim"
     },
 
     config = M.config,
