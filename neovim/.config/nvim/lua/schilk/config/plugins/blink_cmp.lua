@@ -123,6 +123,8 @@ function M.config_luasnip()
     luasnip.add_snippets('bash', require('schilk.snippets.bash').snippets);
     luasnip.add_snippets('sh', require('schilk.snippets.bash').snippets);
     luasnip.add_snippets('org', require('schilk.snippets.org').snippets);
+    luasnip.add_snippets('verilog', require('schilk.snippets.verilog').snippets);
+    luasnip.add_snippets('systemverilog', require('schilk.snippets.verilog').snippets);
 end
 
 ---@type LazyPluginSpec
