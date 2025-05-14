@@ -106,6 +106,18 @@ function M.config()
         table.insert(opts.sources.default, 'codecompanion')
     end
 
+    local has_lazydev, _ = pcall(require, "lazydev")
+    if has_lazydev then
+        ---@diagnostic disable-next-line: param-type-mismatch
+        table.insert(opts.sources.default, 'lazydev')
+        opts.sources.providers['lazydev'] =
+        {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+        }
+    end
+
     -- Call plugin setup:
     require("blink.cmp").setup(opts)
 end
