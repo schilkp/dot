@@ -222,7 +222,7 @@ function M.config()
                     ---On exiting and entering neovim, loads the last chat on opening chat
                     continue_last_chat = false,
                     ---When chat is cleared with `gx` delete the chat from history
-                    delete_on_clearing_chat = false,
+                    delete_on_clearing_chat = true,
                     -- Picker interface ("telescope", "snacks" or "default")
                     picker = "telescope",
                     ---Enable detailed logging for history extension
@@ -234,7 +234,7 @@ function M.config()
                     -- Keymap to save the current chat manually
                     save_chat_keymap = "sc",
                     -- Number of days after which chats are automatically deleted (0 to disable)
-                    expiration_days = 60,
+                    expiration_days = 0,
                 }
             }
         }
