@@ -14,6 +14,7 @@ function M.config_org()
             prefix = "<leader>N",
             org = {
                 org_open_at_point = "<leader>no",
+                org_edit_special = "<leader>ne"
             }
         }
     })
