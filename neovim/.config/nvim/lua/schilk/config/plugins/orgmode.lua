@@ -35,31 +35,39 @@ function M.grep_notes()
     fzf_lua.live_grep_native({ cwd = M.org_roam_dir })
 end
 
+local have_priv, org_templates = pcall(require, "schilk.private.org_templates")
+
 function M.config_org_roam()
-    require("org-roam").setup({
-        directory = M.org_roam_dir,
-        bindings = {
-            prefix = "<leader>n",
-            add_origin = "<prefix>Oa",
-            remove_origin = "<prefix>Or",
-        },
-        templates = {
-            d = {
-                description = "default",
-                template = "%?",
-                target = "%[slug].org",
-            },
-        }
 
-    })
+	local templates = {
+		d = {
+			description = "default",
+			template = "%?",
+			target = "%[slug].org",
+		},
+	}
 
-    vim.keymap.set('n', '<leader>nF', M.grep_notes, { silent = true, desc = 'Find in notes.' })
+	if have_priv then
+		templates["w"] = org_templates.w
+	end
+
+	require("org-roam").setup({
+		directory = M.org_roam_dir,
+		bindings = {
+			prefix = "<leader>n",
+			add_origin = "<prefix>Oa",
+			remove_origin = "<prefix>Or",
+		},
+		templates = templates,
+	})
+
+	vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, desc = "Find in notes." })
 
     -- Disable blink completion in select buffer:
     vim.api.nvim_create_autocmd("FileType", {
         pattern = "org-roam-select",
         callback = function()
-            vim.b.completion = false
+		vim.b.completion = false
         end,
         desc = "Disable completion in org-roam-select buffers",
     })
