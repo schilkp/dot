@@ -66,6 +66,17 @@ M.snippets = {
         t({ " * @author Philipp Schilk, " }), f(function(_, _) return os.date("%Y", os.time()) end), t({ "", "" }),
         t({ " */", "" }),
         i(0)
+    }),
+    s({ trig = "cpp_extern_c_guard" }, {
+        t({ "#ifdef __cplusplus", "" }),
+        t({ "extern \"C\" {", "" }),
+        t({ "#endif /* __cplusplus */", "" }),
+        t({ "", "" }),
+        i(0), t({ "", "" }),
+        t({ "", "" }),
+        t({ "#ifdef __cplusplus", "" }),
+        t({ "}", "" }),
+        t({ "#endif /* __cplusplus */", "" }),
     })
 }
 return M
