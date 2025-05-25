@@ -172,6 +172,18 @@ function M.config()
                     ["help"] = { opts = { provider = "fzf_lua", }, },
                     ["symbols"] = { opts = { provider = "fzf_lua", }, },
                 },
+                keymaps = {
+                  next_chat = {
+                    modes = {
+                      n = "<C-S-F12>", -- can't disabled !#@! Move out of the way..
+                    },
+                  },
+                  previous_chat = {
+                    modes = {
+                      n = "<C-S-F11>", -- can't disabled !#@! Move out of the way..
+                    },
+                  },
+                },
             },
             inline = { adapter = default_adapter, },
             cmd = { adapter = default_adapter, },
