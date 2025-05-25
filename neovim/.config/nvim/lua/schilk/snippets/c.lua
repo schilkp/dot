@@ -77,6 +77,12 @@ M.snippets = {
         t({ "#ifdef __cplusplus", "" }),
         t({ "}", "" }),
         t({ "#endif /* __cplusplus */", "" }),
+    }),
+    s({ trig = "clang_format_off" }, {
+        t({ "// clang-format off", "" }),
+    }),
+    s({ trig = "clang_format_on" }, {
+        t({ "// clang-format on", "" }),
     })
 }
 return M
