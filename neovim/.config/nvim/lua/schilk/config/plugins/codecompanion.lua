@@ -291,6 +291,8 @@ M.spec = {
 
     config = M.config,
     cond = not vim.g.vscode, -- Disable in vscode-neovim
+
+    priority = 2,
 }
 
 return M
