@@ -76,7 +76,7 @@
         "aur/zephyr-sdk",
         "aur/nrf5x-command-line-tools",
         "extra/python-intelhex",
-        "extra/python-pylink-square",
+        "aur/python-pylink-square",
         "aur/python-pykwalify",
         "aur/nrfconnect-appimage"
     ],
