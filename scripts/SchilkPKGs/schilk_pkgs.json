@@ -50,7 +50,8 @@
         "extra/qt5ct",
         "extra/qt5-wayland",
         "extra/qt6ct",
-        "extra/qt6-wayland"
+        "extra/qt6-wayland",
+        "extra/playerctl",
     ],
     "devel-c": [
         "extra/clang",
