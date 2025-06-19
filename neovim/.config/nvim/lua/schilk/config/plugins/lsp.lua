@@ -95,17 +95,20 @@ local function config_lsp()
             })
         end
     end
+    
+    _G.SCHILK_LOCAL_RUST_ANALYZER_CONFIG = _G.SCHILK_LOCAL_RUST_ANALYZER_CONFIG or {
+        procMacro = {
+            enable = true
+        },
+    }
 
     -- Rust-Analyzer:
     -- Note: LSP-Config is called/configured by rust-tools.nvim.
     require('schilk.config.plugins.lsp.rust_tools').config({
         capabilities = capabilities,
         settings = {
-            ["rust-analyzer"] = {
-                procMacro = {
-                    enable = true
-                },
-            }
+            ["rust-analyzer"] =
+                _G.SCHILK_LOCAL_RUST_ANALYZER_CONFIG
         }
     })
 end
