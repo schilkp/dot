@@ -1,6 +1,24 @@
 local M = {}
 
 function M.config()
+    local have_copilot, _ = pcall(require, "copilot")
+    local lualine_x = { 'encoding', 'fileformat', 'filetype' };
+    if have_copilot then
+        local copilot = {
+            'copilot',
+            -- Default values
+            symbols = {
+                status = {
+                    icons = {
+                        disabled = "",
+                        unknown = ""
+                    },
+                },
+            },
+        };
+        table.insert(lualine_x, 1, copilot)
+    end
+
     require('lualine').setup {
         options = {
             icons_enabled = true,
@@ -24,7 +42,7 @@ function M.config()
             lualine_a = { 'mode' },
             lualine_b = { 'branch', 'diff', { 'diagnostics', colored = false } },
             lualine_c = { 'filename' },
-            lualine_x = { 'encoding', 'fileformat', 'filetype' },
+            lualine_x = lualine_x,
             lualine_y = { 'progress', file_prog }, -- TODO? Undefined?
             lualine_z = { 'location' }
         },
@@ -48,6 +66,9 @@ M.spec = {
     'nvim-lualine/lualine.nvim',
     config = M.config,
     cond = not vim.g.vscode, -- Disable in vscode-neovim
+    dependencies = {
+        'AndreM222/copilot-lualine'
+    }
 }
 
 return M

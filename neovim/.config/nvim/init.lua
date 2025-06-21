@@ -76,6 +76,7 @@ local plugins = {
     require('schilk.config.plugins.orgmode').spec,
     -- Ai SlOp:
     require('schilk.config.plugins.codecompanion').spec,
+    require('schilk.config.plugins.copilot').spec,
 
 
     -- [[ LSP/COMPLETION ]] --
