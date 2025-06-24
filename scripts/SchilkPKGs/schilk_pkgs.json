@@ -67,7 +67,8 @@
         "extra/autopep8"
     ],
     "devel-rust": [
-        "extra/rustup"
+        "extra/rustup",
+        "extra/taplo-cli"
     ],
     "devel-embedded": [
         "aur/jlink"
