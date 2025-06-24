@@ -52,6 +52,7 @@ local function config_lsp()
         zls = {},
         neocmake = {},
         tinymist = {},
+        taplo = {},
         ts_ls = {
             filetypes = {
                 "javascript",
