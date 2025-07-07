@@ -147,10 +147,10 @@ function M.config()
     local gemini_key = M.load_key(".gm_api")
 
     local default_adapter = nil
-    if anthropic_key then
-        default_adapter = "anthropic"
-    elseif openai_key then
+    if openai_key then
         default_adapter = "openai"
+    elseif anthropic_key then
+        default_adapter = "anthropic"
     elseif gemini_key then
         default_adapter = "gemini"
     else
