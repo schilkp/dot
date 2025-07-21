@@ -3,3 +3,7 @@ default_clock_highlight_type = "Line"
 
 [layout]
 default_zoom_factor = 1.25
+
+[wcp]
+autostart = true
+address = "127.0.0.1:54321"
