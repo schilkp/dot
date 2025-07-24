@@ -68,6 +68,17 @@ alias ll='ls --color=auto -la'
 # Bat: Remove sidebar/linenos
 alias bat="bat --style=plain"
 
+# Do not permit "rm" in interactive shell:
+rm_if_not_shell() {
+  if [[ $- == *i* ]]; then
+    # Interactive shell
+    printf "\033[91mI'm sorry, Dave. I’m afraid I can’t do that.\33[0m\n"
+  else
+    # Script
+    rm $@
+  fi
+}
+alias rm=rm_if_not_shell
 
 # Re-run last shell command with sudo:
 function ffs {
