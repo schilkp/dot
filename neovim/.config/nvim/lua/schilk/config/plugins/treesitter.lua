@@ -1,10 +1,11 @@
 local M = {}
 
 function M.config()
-    local ts_highlight_langs = { "hyprlang", "markdown" };
+    local ts_highlight_langs = { "hyprlang", "markdown", "vimdoc" };
 
     require 'nvim-treesitter.configs'.setup {
-        ensure_installed = "all",
+     	ensure_installed = { "hyprlang", "markdown", "verilog", "vimdoc" },
+        auto_install = true,
 
         highlight = {
             enable = true,
