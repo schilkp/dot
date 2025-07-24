@@ -12,7 +12,8 @@
         "extra/htop",
         "extra/brightnessctl",
         "extra/tree-sitter",
-        "extra/tree-sitter-cli"
+        "extra/tree-sitter-cli",
+        "extra/trash-cli"
     ],
     "desktop": [
         "aur/insync",
