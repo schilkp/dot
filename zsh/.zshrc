@@ -82,14 +82,6 @@ function ffs {
 alias git_author_priv="git config user.name \"schilkp\"; git config user.email \"schilk.philipp@gmail.com\""
 alias git_author_ethz="git config user.name \"schilkp\"; git config user.email \"schilkp@ethz.ch\""
 
-function journal {
-  nvim +"Journal"
-}
-
-function note {
-  nvim +"Note "$1
-}
-
 # Activate python venv
 activate() {
     if [ "$#" -eq 1 ]; then
