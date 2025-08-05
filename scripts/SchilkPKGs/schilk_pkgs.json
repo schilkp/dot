@@ -65,8 +65,7 @@
     "devel-python": [
         "aur/basedpyright",
         "extra/python-isort",
-        "extra/autopep8",
-        "aur/python-jupytext"
+        "extra/autopep8"
     ],
     "devel-rust": [
         "extra/rustup",
