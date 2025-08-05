@@ -68,8 +68,6 @@ local plugins = {
     require('schilk.config.plugins.vimtex').spec,
     -- Typst integration:
     require('schilk.config.plugins.typst_preview').spec,
-    -- Jupyter Notebook Integration:
-    require('schilk.config.plugins.jupytext').spec,
     -- Indentation as text object:
     'michaeljsmith/vim-indent-object',
     -- Got integration:
