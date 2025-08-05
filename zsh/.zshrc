@@ -139,6 +139,7 @@ incog () {
     then
         echo "Incog Disabled..."
         export HISTFILE="$HISTFILE_ACTUAL"
+        unset ZSH_INCOG
         if command -v atuin &> /dev/null; then
            add-zsh-hook precmd _atuin_precmd
            add-zsh-hook preexec _atuin_preexec
@@ -146,6 +147,7 @@ incog () {
     else
         echo "Incog Enabled..."
         export HISTFILE=
+        export ZSH_INCOG=1
         if command -v atuin &> /dev/null; then
           add-zsh-hook -d precmd _atuin_precmd
           add-zsh-hook -d preexec _atuin_preexec

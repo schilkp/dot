@@ -35,7 +35,7 @@ blocks:
     segments:
       # == OS ==
       - type: text
-        template: "{{ if matchP \"^SchilkTop$\" .HostName }}🏠{{ else if matchP \"^SchilkPad$\" .HostName }}💻{{ else }}🐧{{ end }} "
+        template: "{{ if .Env.ZSH_INCOG }}🥸{{ else if matchP \"^SchilkTop$\" .HostName }}🏠{{ else if matchP \"^SchilkPad$\" .HostName }}💻{{ else }}🐧{{ end }} "
         foreground: p:catppuccin_latte_green
         style: plain
         properties:
