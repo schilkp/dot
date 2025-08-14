@@ -15,28 +15,32 @@ _just() {
 
     local context curcontext="$curcontext" state line
     local common=(
-'--chooser=[Override binary invoked by \`--choose\`]: : ' \
-'--color=[Print colorful output]: :(auto always never)' \
+'(--no-aliases)--alias-style=[Set list command alias display style]: :(left right separate)' \
+'--chooser=[Override binary invoked by \`--choose\`]: :_default' \
+'--color=[Print colorful output]: :(always auto never)' \
 '--command-color=[Echo recipe lines in <COMMAND-COLOR>]: :(black blue cyan green purple red yellow)' \
-'(-E --dotenv-path)--dotenv-filename=[Search for environment file named <DOTENV-FILENAME> instead of \`.env\`]: : ' \
+'--cygpath=[Use binary at <CYGPATH> to convert between unix and Windows paths.]: :_files' \
+'(-E --dotenv-path)--dotenv-filename=[Search for environment file named <DOTENV-FILENAME> instead of \`.env\`]: :_default' \
 '-E+[Load <DOTENV-PATH> as environment file instead of searching for one]: :_files' \
 '--dotenv-path=[Load <DOTENV-PATH> as environment file instead of searching for one]: :_files' \
 '--dump-format=[Dump justfile as <FORMAT>]:FORMAT:(json just)' \
 '-f+[Use <JUSTFILE> as justfile]: :_files' \
 '--justfile=[Use <JUSTFILE> as justfile]: :_files' \
-'--list-heading=[Print <TEXT> before list]:TEXT: ' \
-'--list-prefix=[Print <TEXT> before each list item]:TEXT: ' \
+'--list-heading=[Print <TEXT> before list]:TEXT:_default' \
+'--list-prefix=[Print <TEXT> before each list item]:TEXT:_default' \
 '*--set=[Override <VARIABLE> with <VALUE>]: :(_just_variables)' \
-'--shell=[Invoke <SHELL> to run recipes]: : ' \
-'*--shell-arg=[Invoke shell with <SHELL-ARG> as an argument]: : ' \
-'--timestamp-format=[Timestamp format string]: : ' \
+'--shell=[Invoke <SHELL> to run recipes]: :_default' \
+'*--shell-arg=[Invoke shell with <SHELL-ARG> as an argument]: :_default' \
+'--tempdir=[Save temporary files to <TEMPDIR>.]: :_files' \
+'--timestamp-format=[Timestamp format string]: :_default' \
 '-d+[Use <WORKING-DIRECTORY> as working directory. --justfile must also be set]: :_files' \
 '--working-directory=[Use <WORKING-DIRECTORY> as working directory. --justfile must also be set]: :_files' \
-'*-c+[Run an arbitrary command with the working directory, \`.env\`, overrides, and exports set]: : ' \
-'*--command=[Run an arbitrary command with the working directory, \`.env\`, overrides, and exports set]: : ' \
+'*-c+[Run an arbitrary command with the working directory, \`.env\`, overrides, and exports set]: :_default' \
+'*--command=[Run an arbitrary command with the working directory, \`.env\`, overrides, and exports set]: :_default' \
 '--completions=[Print shell completion script for <SHELL>]:SHELL:(bash elvish fish nushell powershell zsh)' \
-'()-l+[List available recipes]' \
-'()--list=[List available recipes]' \
+'()-l+[List available recipes in <MODULE> or root if omitted]' \
+'()--list=[List available recipes in <MODULE> or root if omitted]' \
+'--request=[Execute <REQUEST>. For internal testing purposes only. May be changed or removed at any time.]: :_default' \
 '-s+[Show recipe at <PATH>]: :(_just_commands)' \
 '--show=[Show recipe at <PATH>]: :(_just_commands)' \
 '--check[Run \`--fmt\` in '\''check'\'' mode. Exits with 0 if justfile is formatted correctly. Exits with 1 and prints a diff if formatting is required.]' \
@@ -55,6 +59,7 @@ _just() {
 '--one[Forbid multiple recipes from being invoked on the command line]' \
 '(-n --dry-run)-q[Suppress all output]' \
 '(-n --dry-run)--quiet[Suppress all output]' \
+'--allow-missing[Ignore missing recipe and module errors]' \
 '--shell-command[Invoke <COMMAND> with the shell used to run recipe lines and backticks]' \
 '--timestamp[Print recipe command timestamps]' \
 '-u[Return list and summary entries in source order]' \
@@ -173,4 +178,4 @@ else
     compdef _just just
 fi
 
-# just 1.36.0
+# just 1.42.4
