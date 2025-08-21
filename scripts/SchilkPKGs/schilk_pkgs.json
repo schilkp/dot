@@ -60,6 +60,7 @@
         "extra/wl-clipboard",
         "extra/kitty",
         "aur/swaylock-effects",
+        "extra/swayidle",
         "aur/nwg-displays",
         "aur/wlr-randr",
         "extra/waybar",
