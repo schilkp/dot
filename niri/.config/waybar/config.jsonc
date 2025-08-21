@@ -1,0 +1,156 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-left": [
+        "custom/logo",
+        "niri/workspaces",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "niri/window"
+    ],
+    "modules-right": [
+        "niri/language",
+        "pulseaudio",
+        "pulseaudio/slider",
+        "bluetooth",
+        "cpu",
+        "memory",
+        "battery",
+        "systemd-failed-units",
+        "custom/SchilkTop",
+        "tray",
+        "clock"
+    ],
+    "custom/logo": {
+        "format": "     {}     ",
+        "exec": "~/dot/scripts/random_emoji.bash",
+        "tooltip": "false",
+        "interval": 120
+    },
+    "custom/SchilkTop": {
+        "format": "{}",
+        "exec": "~/dot_priv/scripts_priv/schilktop_status.sh || echo \"\"",
+        "tooltip": "false",
+        "interval": 120,
+        "on-click": "pkill -RTMIN+8 waybar",
+        "signal": 8
+    },
+    "niri/workspaces": {
+    },
+    "niri/window": {
+    },
+    "niri/language": {
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format": "󰥔   {:%H:%M   󰃮   %Y-%m-%d}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "cpu": {
+        "format": "  {usage}% {icon} ",
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ]
+    },
+    "memory": {
+        "format": "   {}% "
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}% ",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%)   ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr}   ",
+        "format-disconnected": "Disconnected ⚠  "
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "headphone": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    "bluetooth": {
+        "format": " {status}  ",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {num_connections} connected  ",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "on-click": "blueman-manager"
+    },
+    "wlr/taskbar": {
+        "format": "{icon} {title:.15}",
+        "icon-size": 14,
+        "icon-theme": "Numix-Circle",
+        "tooltip": "false",
+        "on-click": "activate",
+        "rewrite": {
+            ".*Alacritty.*": "   ",
+            ".*Spotify.*": "  Spotify"
+        }
+    },
+    "systemd-failed-units": {
+        "format": "   ✗ {nr_failed}   "
+    }
+}
