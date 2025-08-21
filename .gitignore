@@ -1,6 +1,6 @@
 neovim/.config/nvim/spell/*.spl
 zsh/.zsh/
-!zsh/.zsh/completion
+!zsh/.zsh/completion/_*.zsh
 btop/.config/btop/themes/
 btop/.config/btop/btop.log
 *_priv
