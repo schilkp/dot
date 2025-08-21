@@ -147,7 +147,7 @@ spawn-at-startup "sh" "-c" "XDG_MENU_PREFIX=plasma- kbuildsycoca6"
 
 environment {
     // For xwayland:
-    DISPLAY ":0"
+    DISPLAY ":1"
     // For fileassoc:
     XDG_MENU_PREFIX "plasma-"
 }
