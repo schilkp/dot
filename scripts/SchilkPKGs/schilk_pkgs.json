@@ -58,6 +58,7 @@
         "extra/niri",
         "extra/xwayland-satellite",
         "extra/wl-clipboard",
+        "extra/wl-mirror",
         "extra/kitty",
         "aur/swaylock-effects",
         "extra/swayidle",
