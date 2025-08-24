@@ -92,12 +92,12 @@ def main():
     main_output = find_main_output()
     print(f"main output: {main_output}")
     focus_output(main_output)
+    focus_workspace(1)
 
     main_workspace = find_output_workspace(main_output, 1)
     print(f"main workspace: {main_workspace}")
     if main_workspace is None:
         print("launching kitty in workspace 1")
-        focus_workspace(1)
         launch_kitty()
         return
 
@@ -105,7 +105,6 @@ def main():
     print(f"kitty window: {kitty_window}")
     if kitty_window is None:
         print("launching kitty in main workspace")
-        focus_workspace(main_workspace)
         launch_kitty()
         return
 
