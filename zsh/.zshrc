@@ -32,6 +32,8 @@ alias vi='nvim'
 alias e='emacs -nw'
 alias em='emacs'
 
+alias tr='trash'
+
 # Git
 alias gs='git status'
 alias gl='git log -n 8'
