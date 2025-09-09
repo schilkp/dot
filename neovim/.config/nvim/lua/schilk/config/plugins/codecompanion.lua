@@ -196,32 +196,34 @@ function M.config()
         },
 
         adapters = {
-            anthropic = function()
-                return require("codecompanion.adapters").extend("anthropic", {
-                    env = {
-                        api_key = anthropic_key,
-                    },
-                    schema = {
-                        extended_thinking = {
-                            default = false,
+            http = {
+                anthropic = function()
+                    return require("codecompanion.adapters").extend("anthropic", {
+                        env = {
+                            api_key = anthropic_key,
+                        },
+                        schema = {
+                            extended_thinking = {
+                                default = false,
+                            }
                         }
-                    }
-                })
-            end,
-            openai = function()
-                return require("codecompanion.adapters").extend("openai", {
-                    env = {
-                        api_key = openai_key,
-                    },
-                })
-            end,
-            gemini = function()
-                return require("codecompanion.adapters").extend("gemini", {
-                    env = {
-                        api_key = gemini_key,
-                    },
-                })
-            end,
+                    })
+                end,
+                openai = function()
+                    return require("codecompanion.adapters").extend("openai", {
+                        env = {
+                            api_key = openai_key,
+                        },
+                    })
+                end,
+                gemini = function()
+                    return require("codecompanion.adapters").extend("gemini", {
+                        env = {
+                            api_key = gemini_key,
+                        },
+                    })
+                end,
+            },
         },
         extensions = {
             history = {
