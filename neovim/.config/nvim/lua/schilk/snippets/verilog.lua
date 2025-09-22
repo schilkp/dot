@@ -76,5 +76,11 @@ M.snippets = {
         t({"  end", "" }),
         t({"end", "" }),
     }),
+    s({ trig = "once" }, {
+        t("`ifndef "), i(1), t({ "_SVH", "" }),
+        t("`define "), rep(1), t({ "_SVH", "" }),
+        i(0), t({ "", "" }),
+        t("`endif // "), rep(1), t("_SVH")
+    }),
 }
 return M
