@@ -31,11 +31,11 @@ local k = require("luasnip.nodes.key_indexer").new_key
 M.snippets = {
     s({ trig = "always_ff" }, {
         t({ "always_ff @(posedge clk_i or negedge rst_ni) begin", "" }),
-        t({ "    if (~rst_ni) begin", "" }),
-        t({ "        " }), i(0), t({ "", "" }),
-        t({ "    end else begin", "" }),
-        t({ "        ", "" }),
-        t({ "    end", "" }),
+        t({ "  if (!rst_ni) begin", "" }),
+        t({ "    " }), i(0), t({ "", "" }),
+        t({ "  end else begin", "" }),
+        t({ "    ", "" }),
+        t({ "  end", "" }),
         t({ "end", "" }),
     }),
     s({ trig = "header" }, {
