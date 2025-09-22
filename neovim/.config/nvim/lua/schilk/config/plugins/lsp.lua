@@ -101,15 +101,6 @@ local function config_lsp()
         },
     }
 
-    -- Rust-Analyzer:
-    -- Note: LSP-Config is called/configured by rust-tools.nvim.
-    require('schilk.config.plugins.lsp.rust_tools').config({
-        capabilities = capabilities,
-        settings = {
-            ["rust-analyzer"] =
-                _G.SCHILK_LOCAL_RUST_ANALYZER_CONFIG
-        }
-    })
 end
 
 
@@ -291,7 +282,10 @@ M.spec = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         -- rust:
-        'simrat39/rust-tools.nvim',
+        {
+            'mrcjkb/rustaceanvim',
+            lazy = false,
+        },
         -- json/yaml schemas:
         'b0o/schemastore.nvim',
     },
