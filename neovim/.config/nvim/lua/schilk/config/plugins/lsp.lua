@@ -17,9 +17,6 @@ local function config_lsp()
 
     -- ---===--- LSP CONFIG ---===---
 
-    -- LSP Config:
-    local lspconfig = require('lspconfig')
-
     -- Blink CMP capabilities:
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -89,11 +86,12 @@ local function config_lsp()
 
     for lsp, config in pairs(lsps) do
         if skip_lsp[lsp] == nil or not skip_lsp[lsp] then
-            lspconfig[lsp].setup({
+            vim.lsp.config(lsp, {
                 capabilities = capabilities,
                 settings = config.settings,
                 filetypes = config.filetypes,
             })
+            vim.lsp.enable(lsp);
         end
     end
     
