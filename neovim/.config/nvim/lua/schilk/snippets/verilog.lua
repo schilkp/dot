@@ -55,6 +55,26 @@ M.snippets = {
         t({ "  " }), i(0), t({ "", "" }),
         t({ "endmodule", "" })
     }),
+    s({ trig = "dq_vars" }, {
+        i(1), t("_d, "), rep(1), t({"_q;", ""}),
+        rep(1), t("_d = "), rep(1), t({"_q;", ""}),
+        rep(1), t({"_q <= 'b0;", ""}),
+        rep(1), t("_q <= "), rep(1), t({"_d;", ""}),
+    }),
+    s({ trig = "dq" }, {
+        i(1), t("_d, "), rep(1), t({"_q;", ""}),
+        t({"", ""}),
+        t({"always_comb begin", ""}),
+        t("  "), rep(1), t("_d = "), rep(1), t({"_q;", ""}),
+        t({"end", ""}),
+        t({"", ""}),
+        t({"always_ff @(posedge clk_i or negedge rst_ni) begin", "" }),
+        t({"  if (!rst_ni) begin", "" }),
+        t({"    " }), rep(1), t({"_q <= 'b0;", ""}),
+        t({"  end else begin", "" }),
+        t({"    " }), rep(1), t("_q <= "), rep(1), t({"_d;", ""}),
+        t({"  end", "" }),
+        t({"end", "" }),
+    }),
 }
-
 return M
