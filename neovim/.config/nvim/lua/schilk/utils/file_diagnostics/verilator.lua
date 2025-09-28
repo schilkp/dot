@@ -67,7 +67,11 @@ function M.generate_diags(log_file)
 
 	-- Iterate through data:
 	for _, result in ipairs(data) do
-		local message = result["ruleId"] .. ": " .. (result["message"]["text"] or "No message")
+		local rule_id = ""
+		if result["ruleId"] then
+			rule_id = result["ruleId"] .. ": "
+		end
+		local message = rule_id .. (result["message"]["text"] or "No message")
 
 		local level = vim.diagnostic.severity.INFO
 		if result["level"] == "error" then
@@ -105,7 +109,7 @@ function M.generate_diags(log_file)
 		end
 
 		table.insert(diagnostics[bufnr], {
-			bufnr = vim.fn.bufnr(file_path, true),
+			bufnr = bufnr,
 			lnum = start_line - 1,
 			col = start_column,
 			message = message,
