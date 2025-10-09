@@ -70,7 +70,7 @@
         "extra/xdg-desktop-portal-gtk",
         "extra/xdg-desktop-portal-gnome",
         "extra/gnome-keyring",
-        "extra/dunst",
+        "extra/mako",
         "extra/polkit-kde-agent",
         "extra/cliphist",
         "extra/fuzzel",
