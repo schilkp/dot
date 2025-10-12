@@ -63,6 +63,25 @@ troot() {
     fi
 }
 
+# Open TMUX pane output in neovim:
+tvi() {
+    # Content:
+    local content=""
+    if [ $# -eq 0 ]; then
+        content=$(tmux capture-pane -Jp)
+    else
+        content=$(tmux capture-pane -Jp -t $1)
+    fi
+
+    # Remove leading/trailing whitespace only lines:
+    content=$(echo "$content" | sed '/[^[:space:]]/,$!d' | tac | sed '/[^[:space:]]/,$!d' | tac)
+
+    # Open:
+    if [ -n "$content" ]; then
+        echo "$content" | vi -
+    fi
+}
+
 alias ls='ls --color=auto'
 alias la='ls --color=auto -a'
 alias ll='ls --color=auto -la'
