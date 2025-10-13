@@ -1,6 +1,7 @@
 local M = {}
 
 M.org_roam_dir = "~/org-roam"
+M.org_roam_assets_dir = "~/org-roam/assets"
 
 function M.config_org()
     -- Setup orgmode
@@ -35,6 +36,22 @@ function M.grep_notes()
     fzf_lua.live_grep_native({ cwd = M.org_roam_dir })
 end
 
+--- Find + Insert image
+function M.find_insert_image()
+    local fzf_lua = require("fzf-lua")
+    fzf_lua.files({
+        cwd = M.org_roam_assets_dir,
+        file_icons = false,
+        actions = {
+            ["default"] = function(selected)
+                if selected and selected[1] then
+                    vim.api.nvim_put({ "[[./assets/" .. selected[1] .. "]]", "" }, "c", true, true)
+                end
+            end,
+        },
+    })
+end
+
 local have_priv, org_templates = pcall(require, "schilk.private.org_templates")
 
 function M.config_org_roam()
@@ -61,7 +78,8 @@ function M.config_org_roam()
 		templates = templates,
 	})
 
-	vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, desc = "Find in notes." })
+    vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, desc = "Find in notes." })
+    vim.keymap.set("n", "<leader>nI", M.find_insert_image, { silent = true, desc = "Insert image." })
 
     -- Disable blink completion in select buffer:
     vim.api.nvim_create_autocmd("FileType", {
