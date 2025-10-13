@@ -128,7 +128,7 @@ layout {
     }
 }
 
-spawn-at-startup "waybar"
+spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "nm-applet"
 spawn-at-startup "mako"
 
