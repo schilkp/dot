@@ -39,8 +39,8 @@ local plugins = {
     require('schilk.config.plugins.lualine').spec,
     -- Indent guides:
     require('schilk.config.plugins.indent_blankline').spec,
-    -- Color code visualizer:
-    require('schilk.config.plugins.colorizer').spec,
+    -- Color code visualizer/changer:
+    require('schilk.config.plugins.ccc').spec,
     -- Top nav bar:
     require('schilk.config.plugins.dropbar').spec,
     -- Git status sidebar:
