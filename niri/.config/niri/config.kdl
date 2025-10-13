@@ -218,6 +218,9 @@ binds {
 
     Mod+Shift+P { spawn "sh" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
 
+    Mod+N { spawn "sh" "-c" "makoctl dismiss"; }
+    Mod+Shift+N { spawn "sh" "-c" "makoctl mode -t do-not-disturb && notify-send 'Toggled Do-Not-Disturb.' -u low"; }
+
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
