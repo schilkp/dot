@@ -25,7 +25,7 @@
     ],
     "custom/logo": {
         "format": "     {}     ",
-        "exec": "~/dot/scripts/random_emoji.bash",
+        "exec": "~/.config/waybar/random_emoji.bash",
         "tooltip": "false",
         "interval": 120
     },
