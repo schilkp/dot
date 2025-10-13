@@ -13,3 +13,6 @@ default-timeout=0
 [urgency=critical]
 default-timeout=0
 text-color=#CB4B16
+
+[mode=do-not-disturb]
+invisible=1
