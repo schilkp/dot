@@ -25,7 +25,7 @@
     ],
     "custom/logo": {
         "format": "     {}     ",
-        "exec": "~/.config/waybar/random_emoji.bash",
+        "exec": "~/.config/niri/waybar/random_emoji.bash",
         "tooltip": "false",
         "interval": 120
     },
