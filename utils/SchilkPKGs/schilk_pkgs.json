@@ -57,6 +57,7 @@
     "niri": [
         "extra/niri",
         "extra/xwayland-satellite",
+        "extra/labwc",
         "extra/wl-clipboard",
         "extra/wl-mirror",
         "extra/kitty",
