@@ -1,6 +1,7 @@
 neovim/.config/nvim/spell/*.spl
 zsh/.zsh/
 !zsh/.zsh/completion/_*.zsh
+!zsh/.zsh/SchilkFetch.bash
 btop/.config/btop/themes/
 btop/.config/btop/btop.log
 *_priv

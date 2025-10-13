@@ -177,7 +177,7 @@ incog () {
 }
 
 # SchilkFetch
-source ~/dot/scripts/SchilkFetch.bash
+source ~/.zsh/SchilkFetch.bash
 SchilkFetch
 
 #### Plugins ###################################################################
