@@ -101,6 +101,11 @@ end
 
 function M.setup()
 	vim.keymap.set("v", "gm", utils.visual_process_selection(M.convert_to_instantiation))
+	vim.api.nvim_create_user_command(
+		"SvModuleInstant",
+		utils.cmd_process_selection(M.convert_to_instantiation),
+		{ range = true, desc = "Convert SV module to instantiation." }
+	)
 end
 
 return M

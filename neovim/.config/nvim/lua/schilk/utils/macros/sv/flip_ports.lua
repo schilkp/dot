@@ -35,6 +35,11 @@ end
 
 function M.setup()
 	vim.keymap.set("v", "gF", utils.visual_process_selection(M.flip_input_output))
+	vim.api.nvim_create_user_command(
+		"SvFlipPorts",
+		utils.cmd_process_selection(M.flip_input_output),
+		{ range = true, desc = "Flip SV port directions" }
+	)
 end
 
 return M
