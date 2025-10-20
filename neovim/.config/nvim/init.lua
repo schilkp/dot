@@ -122,6 +122,5 @@ end
 
 -- Custom scripts/utils:
 require('schilk.utils.macros').setup()
-require('schilk.utils.ssh_clip').setup()
 require('schilk.utils.typst_spellcheck').setup()
 require('schilk.utils.file_diagnostics').setup()

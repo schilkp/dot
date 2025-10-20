@@ -131,16 +131,6 @@ activate() {
     fi
 }
 
-# Pull clip file from ssh srver
-pull_clip() {
-    if [ "$#" -eq 1 ]; then
-        ssh $1 "cat ~/.ssh_clip.txt" > ~/.ssh_clip.txt
-        echo "See ~/.ssh_clip!"
-    else
-        echo "Require ssh server."
-    fi
-}
-
 # here
 here() {
     if command -v dolphin &> /dev/null
