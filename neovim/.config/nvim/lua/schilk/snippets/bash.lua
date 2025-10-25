@@ -31,7 +31,8 @@ local k = require("luasnip.nodes.key_indexer").new_key
 M.snippets = {
     s({ trig = "cd_to_script_dir" }, {
         t({ "# Move to location of this script", "" }),
-        t({ "cd \"$(dirname \"$0\")\"", "" }),
+        t({ 'SCRIPT_DIR="$(realpath "$(dirname "$0")")"', "" }),
+        t({ 'cd "$SCRIPT_DIR"', "" }),
     }),
 }
 return M
