@@ -131,8 +131,6 @@ spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "insync start"
 
-spawn-at-startup "swaybg" "-i" "~/dot/wallpapers/poly_4.jpg"
-
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
 spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
