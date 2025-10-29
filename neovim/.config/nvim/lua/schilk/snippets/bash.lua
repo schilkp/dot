@@ -29,6 +29,12 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
 M.snippets = {
+    s({ trig = "basic_script" }, {
+        t({ "#!/usr/bin/env bash", "" }),
+        t({ '', "" }),
+        t({ '# Fail on error code, unknown var, and propagate errors from pipes:', "" }),
+        t({ 'set -euo pipefail', "" }),
+    }),
     s({ trig = "cd_to_script_dir" }, {
         t({ "# Move to location of this script", "" }),
         t({ 'SCRIPT_DIR="$(realpath "$(dirname "$0")")"', "" }),
