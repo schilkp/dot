@@ -16,6 +16,7 @@ function M.config()
     -- })
 
     formatters_by_ft = {
+      lua = { "stylua" },
       yaml = { "yamlfmt" },
       python = { "autopep8", "isort" },
       ocaml = { "ocamlformat" },
