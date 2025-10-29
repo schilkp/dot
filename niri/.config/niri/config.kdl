@@ -1,4 +1,4 @@
-include "monitors.kdl"
+include "device_config.kdl"
 
 input {
     keyboard {
