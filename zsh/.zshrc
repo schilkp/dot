@@ -218,4 +218,6 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
     fpath=(~/.zsh/completion $fpath)
     fpath=(~/.zsh/zsh-completion/src $fpath)
     compinit
+
+    compdef -d top
 fi
