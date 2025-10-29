@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+  # ===--------------------------------------------------------------------=== #
+  # NVIM Lua format check
+  # ===--------------------------------------------------------------------=== #
+  rust-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install StyLua
+        run: |
+          curl -L -o stylua.zip https://github.com/JohnnyMorganz/StyLua/releases/download/v2.3.0/stylua-linux-x86_64.zip
+          echo "4c06b5963b8e832b51ebafc8051bab90ee3322e51d2f5ea59f4eacae78ce8bfc  stylua.zip" | sha256sum -c
+          unzip stylua.zip
+          chmod +x stylua
+          sudo mv stylua /usr/local/bin/
+      
+      - name: Check NVIM format
+        run: |
+          cd ./neovim/.config/nvim/
+          stylua --check ./init.lua lua
