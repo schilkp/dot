@@ -2,7 +2,9 @@ local M = {}
 
 function M.config()
   require("typst-preview").setup({
-    port = 9002,
+    dependencies_bin = {
+      ["tinymist"] = "tinymist", -- Use system tinymist
+    },
   })
   vim.keymap.set({ "n" }, "<leader>ll", ":TypstPreviewToggle<cr>", { silent = true, desc = "Typst: Preview Toggle." })
   vim.keymap.set(
