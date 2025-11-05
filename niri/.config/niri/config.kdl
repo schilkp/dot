@@ -123,7 +123,7 @@ window-rule {
     clip-to-geometry true
 }
 
-spawn-at-startup "sh" "-c" "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
+spawn-sh-at-startup "waybar -c ~/.config/niri/waybar/config.jsonc -s ~/.config/niri/waybar/style.css"
 spawn-at-startup "nm-applet"
 spawn-at-startup "mako"
 
@@ -136,9 +136,9 @@ spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 
 spawn-at-startup "xwayland-satellite"
 
-spawn-at-startup "sh" "-c" "XDG_MENU_PREFIX=plasma- kbuildsycoca6"
+spawn-sh-at-startup "XDG_MENU_PREFIX=plasma- kbuildsycoca6"
 
-spawn-at-startup "sh" "-c" "swayidle -w  timeout 300  \"niri msg action power-off-monitors\" timeout 310 ~/.config/niri/swaylock_lock.sh before-sleep ~/.config/niri/swaylock_lock.sh"
+spawn-sh-at-startup "swayidle -w timeout 300 'niri msg action power-off-monitors' timeout 310 ~/.config/niri/swaylock_lock.sh before-sleep ~/.config/niri/swaylock_lock.sh"
 
 environment {
     // For xwayland:
@@ -171,15 +171,15 @@ binds {
     XF86AudioPrev  {spawn "playerctl" "previous"; }
     XF86AudioStop  {spawn "playerctl" "stop"; }
 
-    Mod+Return hotkey-overlay-title="Main Terminal" { spawn "sh" "-c" "python ~/.config/niri/terminal_hotkey.py"; }
+    Mod+Return hotkey-overlay-title="Main Terminal" { spawn-sh "~/.config/niri/swaylock_lock.sh"; }
     Mod+Shift+Return hotkey-overlay-title="New Terminal" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="App Select" { spawn "fuzzel"; }
     Mod+E hotkey-overlay-title="File Explorer" { spawn "dolphin"; }
 
-    Mod+Shift+P { spawn "sh" "-c" "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
+    Mod+Shift+P { spawn-sh "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
 
-    Mod+N { spawn "sh" "-c" "makoctl dismiss"; }
-    Mod+Shift+N { spawn "sh" "-c" "makoctl mode -t do-not-disturb && notify-send 'Toggled Do-Not-Disturb.' -u low"; }
+    Mod+N { spawn-sh "makoctl dismiss"; }
+    Mod+Shift+N { spawn-sh "makoctl mode -t do-not-disturb && notify-send 'Toggled Do-Not-Disturb.' -u low"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
