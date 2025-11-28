@@ -13,10 +13,12 @@ tar xvfz tmux-"$VERSION".tar.gz
 
 cd tmux-"$VERSION"
 
+CONFIGURE_FLAGS="--enable-sixel"
+
 # For local ncurses + libevent:
-PKG_CONFIG_PATH="$HOME"/.local/lib/pkgconfig ./configure --prefix="$HOME"/.local
+PKG_CONFIG_PATH="$HOME"/.local/lib/pkgconfig ./configure --prefix="$HOME"/.local $CONFIGURE_FLAGS
 # For global ncurses + libevent:
-# ./configure --prefix="$HOME/.local"
+# ./configure --prefix="$HOME/.local" $CONFIGURE_FLAGS
 
 make -j "$JOBS"
 make install
