@@ -250,6 +250,8 @@ function M.config()
         },
       },
     },
+
+    ignore_warnings = true,
   })
 
   -- Keybinds:
