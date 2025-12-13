@@ -287,11 +287,15 @@ M.spec = {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "ravitemer/codecompanion-history.nvim",
+    {
+      "ravitemer/codecompanion-history.nvim",
+      pin = true,
+    },
   },
 
   config = M.config,
   cond = not vim.g.vscode, -- Disable in vscode-neovim
+  pin = true,
 
   priority = 2,
 }
