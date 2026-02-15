@@ -289,13 +289,11 @@ M.spec = {
     "nvim-treesitter/nvim-treesitter",
     {
       "ravitemer/codecompanion-history.nvim",
-      pin = true,
     },
   },
 
   config = M.config,
   cond = not vim.g.vscode, -- Disable in vscode-neovim
-  pin = true,
 
   priority = 2,
 }
