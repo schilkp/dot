@@ -55,31 +55,45 @@ function M.lookup()
   end
 end
 
+local function defer_notif(msg, level)
+  vim.defer_fn(function()
+    vim.notify(msg, level)
+  end, 250)
+end
+
 --Look for config file & source if trusted
 function M.source()
   local file = M.lookup()
   if not file or file == "" then
     return
   end
-  local content = vim.secure.read(file)
-  if content ~= nil then
-    vim.api.nvim_command("source " .. file)
-    vim.defer_fn(function()
-      local msg = "[local_config]: loaded local config file"
-      ---@type string|nil
-      _G.SCHILK_LOCAL_NOTE = _G.SCHILK_LOCAL_NOTE or nil
-      if _G.SCHILK_LOCAL_NOTE then
-        msg = msg .. " (" .. _G.SCHILK_LOCAL_NOTE .. ")."
-      else
-        msg = msg .. "."
-      end
-      vim.notify(msg, vim.log.levels.INFO)
-    end, 250)
-  else
-    vim.defer_fn(function()
-      vim.notify("[local_config]: local config file found but not trusted!", vim.log.levels.WARN)
-    end, 250)
+
+  local content = vim.secure.read(file) --[[@as string|nil]]
+  if not content then
+    defer_notif("[local_config]: local config file found but not trusted!", vim.log.levels.WARN)
+    return
   end
+
+  local config_fn, err_load = loadstring(content, "@" .. file)
+  if not config_fn then
+    defer_notif("[local_config]: failed to load local config file: " .. err_load, vim.log.levels.ERROR)
+    return
+  end
+
+  local success, err_call = pcall(config_fn)
+  if not success then
+    defer_notif("[local_config]: failed to load local config file: " .. err_call, vim.log.levels.ERROR)
+    return
+  end
+
+  local msg = "[local_config]: loaded local config file"
+  _G.SCHILK_LOCAL_NOTE = _G.SCHILK_LOCAL_NOTE or nil --[[@as string|nil]]
+  if _G.SCHILK_LOCAL_NOTE then
+    msg = msg .. " (" .. _G.SCHILK_LOCAL_NOTE .. ")."
+  else
+    msg = msg .. "."
+  end
+  defer_notif(msg, vim.log.levels.INFO)
 end
 
 function M.setup()
