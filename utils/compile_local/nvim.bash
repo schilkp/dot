@@ -19,7 +19,7 @@ fi
 cd "$TARGET/neovim"
 git checkout $VERSION
 
-make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX="$TARGET" -j "$JOBS"
+make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX="$TARGET" -j "$JOBS"
 make install
 
 install "$TARGET"/neovim/build/bin/nvim "$INSTALL_DIR"
