@@ -4,7 +4,7 @@ set -e -x
 TARGET="$HOME/.local/packages/nvim"
 INSTALL_DIR="$HOME/.local/bin"
 JOBS=32
-VERSION="v0.11.0"
+VERSION="v0.11.6"
 
 mkdir -p "$TARGET"
 cd "$TARGET"
