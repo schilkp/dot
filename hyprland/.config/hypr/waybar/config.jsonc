@@ -18,7 +18,6 @@
         "memory",
         "battery",
         "systemd-failed-units",
-        "custom/SchilkTop",
         "tray",
         "clock"
     ],
@@ -27,14 +26,6 @@
         "exec": "~/.config/waybar/random_emoji.bash",
         "tooltip": "false",
         "interval": 120
-    },
-    "custom/SchilkTop": {
-        "format": "{}",
-        "exec": "~/dot_priv/utils_priv/schilktop_status.sh || echo \"\"",
-        "tooltip": "false",
-        "interval": 120,
-        "on-click": "pkill -RTMIN+8 waybar",
-        "signal": 8
     },
     "hyprland/workspaces": {
         "window-rewrite": {},
