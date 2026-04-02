@@ -28,7 +28,8 @@
         "extra/ripgrep",
         "extra/fzf",
         "extra/just",
-        "extra/atuin"
+        "extra/atuin",
+        "extra/btop"
     ],
     "niri": [
         "extra/niri",
@@ -39,7 +40,8 @@
         "extra/kitty",
         "aur/swaylock-effects",
         "extra/swayidle",
-        "aur/nwg-displays",
+        "extra/swaybg",
+        "extra/nwg-displays",
         "aur/wlr-randr",
         "extra/waybar",
         "extra/blueman",
