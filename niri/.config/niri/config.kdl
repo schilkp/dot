@@ -179,7 +179,7 @@ binds {
     Mod+Shift+P { spawn-sh "cliphist list | fuzzel -d | cliphist decode | wl-copy"; }
 
     Mod+N { spawn-sh "makoctl dismiss"; }
-    Mod+Shift+N { spawn-sh "makoctl mode -t do-not-disturb && notify-send 'Toggled Do-Not-Disturb.' -u low"; }
+    Mod+Shift+N { spawn-sh "~/.config/niri/do_not_disturb_hotkey.bash"; }
 
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
