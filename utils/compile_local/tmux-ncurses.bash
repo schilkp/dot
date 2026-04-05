@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e -x
 
-TARGET="$HOME/.local/packages/tmux-ncurses"
-JOBS=32
+TARGET="$HOME/.local/compile_local/tmux-ncurses"
+JOBS=$(nproc)
 
 mkdir -p "$TARGET"
 cd "$TARGET"

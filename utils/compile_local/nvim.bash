@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e -x
 
-TARGET="$HOME/.local/packages/nvim"
+TARGET="$HOME/.local/compile_local/nvim"
 INSTALL_DIR="$HOME/.local/bin"
-JOBS=32
-VERSION="v0.11.6"
+VERSION="v0.11.0"
+JOBS=$(nproc)
 
 mkdir -p "$TARGET"
 cd "$TARGET"

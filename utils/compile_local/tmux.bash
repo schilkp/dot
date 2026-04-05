@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e -x
 
-TARGET="$HOME/.local/packages/tmux"
-JOBS=32
+TARGET="$HOME/.local/compile_local/tmux"
 VERSION="3.5a"
+JOBS=$(nproc)
 
 mkdir -p "$TARGET"
 cd "$TARGET"

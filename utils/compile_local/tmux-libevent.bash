@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e -x
 
-TARGET="$HOME/.local/packages/tmux-libevent"
-JOBS=32
+TARGET="$HOME/.local/compile_local/tmux-libevent"
 VERSION="2.1.12-stable"
+JOBS=$(nproc)
 
 mkdir -p "$TARGET"
 cd "$TARGET"
