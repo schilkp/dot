@@ -141,11 +141,11 @@ end
 ---@type LazyPluginSpec
 M.spec = {
   "chipsenkbeil/org-roam.nvim",
-  commit = "946c3289d8aa5a84b84458b8c9aa869c2a10f836",
+  commit = "6c21c867b178a80fb4ad243c445545e5583d8232",
   dependencies = {
     {
       "nvim-orgmode/orgmode",
-      commit = "03777caca5c2df4c5b2067734b7829e9df07a423",
+      commit = "1ab7b456020de8bdaed7d8135b5376a0b4419b11",
       config = M.config_org,
     },
   },
