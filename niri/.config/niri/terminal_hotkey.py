@@ -27,7 +27,8 @@ def find_main_output() -> str:
 
     # Sort monitors by x:
     outputs = sorted(
-        outputs, key=lambda item: outputs_json[item]["logical"]["x"])
+        outputs, key=lambda item: outputs_json[item]["logical"]["x"],
+        reverse=True)
 
     return outputs[1]
 
