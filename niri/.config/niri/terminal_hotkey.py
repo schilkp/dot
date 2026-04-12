@@ -30,7 +30,12 @@ def find_main_output() -> str:
         outputs, key=lambda item: outputs_json[item]["logical"]["x"],
         reverse=True)
 
-    return outputs[1]
+    # If there is a monitor called "eDP-1" (internal laptop monitor), pick
+    # the second from the right. If there is no such monitor, pick the right-most monitor.
+    if "eDP-1" in outputs:
+        return outputs[1]
+    else:
+        return outputs[0]
 
 
 def focus_output(output: str):
