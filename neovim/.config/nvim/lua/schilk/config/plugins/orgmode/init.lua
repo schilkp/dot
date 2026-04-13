@@ -84,6 +84,18 @@ function M.config_org_roam()
     desc = "Export current buffer to HTML and open in Firefox for email copy-paste",
   })
 
+  local docwm = require("schilk.config.plugins.orgmode.doc_wm")
+  vim.api.nvim_create_user_command("RoamWMNew", function()
+    docwm.new()
+  end, {
+    desc = "Create a new DocWM org-roam node with the next running index.",
+  })
+  vim.api.nvim_create_user_command("RoamWMDone", function()
+    docwm.done()
+  end, {
+    desc = "Mark current DocWM org-roam node as done/remove next label.",
+  })
+
   vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, desc = "Find in notes." })
   vim.keymap.set("n", "<leader>nI", M.find_insert_image, { silent = true, desc = "Insert image." })
 
