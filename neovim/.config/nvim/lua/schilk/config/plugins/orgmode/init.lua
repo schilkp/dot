@@ -52,48 +52,6 @@ function M.find_insert_image()
   })
 end
 
---- Export + Open as HTML (for copy-paste to email)
-function M.to_html()
-  -- absolute path:
-  local current_file = vim.fn.expand("%:p")
-
-  -- Sanity/error checks:
-  if current_file == "" then
-    vim.notify("No file in current buffer", vim.log.levels.ERROR)
-    return
-  end
-  if vim.fn.executable("pandoc") == 0 then
-    vim.notify("pandoc is not available in PATH", vim.log.levels.ERROR)
-    return
-  end
-  if vim.fn.executable("firefox") == 0 then
-    vim.notify("firefox is not available in PATH", vim.log.levels.ERROR)
-    return
-  end
-
-  -- Run pandoc
-  local pandoc_cmd = {
-    "pandoc",
-    "--embed-resources",
-    "--standalone",
-    "--mathml",
-    "--variable",
-    "maxwidth=60em",
-    current_file,
-    "-o",
-    "/tmp/roam.html",
-  }
-  local pandoc_result = vim.system(pandoc_cmd, { cwd = vim.fn.expand(M.org_roam_dir) }):wait()
-  if pandoc_result.code ~= 0 then
-    vim.notify("Pandoc conversion failed: " .. (pandoc_result.stderr or ""), vim.log.levels.ERROR)
-    return
-  end
-
-  -- Open in firefox
-  vim.system({ "firefox", "/tmp/roam.html" })
-  vim.notify("Opening HTML..", vim.log.levels.INFO)
-end
-
 local have_priv, org_templates = pcall(require, "schilk.private.org_templates")
 
 function M.config_org_roam()
@@ -119,8 +77,9 @@ function M.config_org_roam()
     templates = templates,
   })
 
+  local to_html = require("schilk.config.plugins.orgmode.to_html").to_html
   vim.api.nvim_create_user_command("RoamToEmail", function()
-    M.to_html()
+    to_html()
   end, {
     desc = "Export current buffer to HTML and open in Firefox for email copy-paste",
   })
