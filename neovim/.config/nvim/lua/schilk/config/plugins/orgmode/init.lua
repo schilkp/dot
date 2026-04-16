@@ -64,7 +64,7 @@ function M.config_org_roam()
   }
 
   if have_priv then
-    templates["w"] = org_templates.w
+    -- templates["w"] = org_templates.w
   end
 
   require("org-roam").setup({
