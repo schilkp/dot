@@ -2,10 +2,16 @@ local M = {}
 
 M.org_roam_dir = vim.fn.expand(require("schilk.config.plugins.orgmode").org_roam_dir)
 M.idx_file_name = "docupdt_next_idx"
+M.root_file = "Doc.org"
 
 function M.new()
   local idx = M.read_idx()
   if not idx then
+    return
+  end
+
+  local root_id = M.read_root_id()
+  if not root_id then
     return
   end
 
@@ -20,6 +26,7 @@ function M.new()
   end
 
   local title = "NEXT DocUpdt-" .. padded
+  local heading = string.format("* [[id:%s][Doc]]Updt-%s\n%%?", root_id, padded)
 
   local roam = require("org-roam")
   roam.api
@@ -28,7 +35,7 @@ function M.new()
       templates = {
         d = {
           description = "DocUpdt",
-          template = "%?",
+          template = heading,
           target = filename,
         },
       },
@@ -78,6 +85,28 @@ function M.write_idx(idx)
   f:write(tostring(idx) .. "\n")
   f:close()
   return true
+end
+
+function M.read_root_id()
+  local root_path = vim.fs.joinpath(M.org_roam_dir, M.root_file)
+  local f = io.open(root_path, "r")
+  if not f then
+    vim.notify("[DocUpdt] Could not open " .. root_path, vim.log.levels.ERROR)
+    return nil
+  end
+  local id = nil
+  for line in f:lines() do
+    local match = line:match("^:ID:%s+(.+)%s*$")
+    if match then
+      id = vim.trim(match)
+      break
+    end
+  end
+  f:close()
+  if not id then
+    vim.notify("[DocUpdt] Could not find :ID: in " .. root_path, vim.log.levels.ERROR)
+  end
+  return id
 end
 
 return M
