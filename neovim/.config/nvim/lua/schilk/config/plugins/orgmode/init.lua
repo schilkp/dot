@@ -52,6 +52,15 @@ function M.find_insert_image()
   })
 end
 
+--- Open quickfix of all links for org-roam node under cursor
+function M.open_quickfix_all_links()
+  require("org-roam").ui.open_quickfix_list({
+    backlinks = true,
+    links = true,
+    show_preview = true,
+  })
+end
+
 local have_priv, org_templates = pcall(require, "schilk.private.org_templates")
 
 function M.config_org_roam()
@@ -98,6 +107,12 @@ function M.config_org_roam()
 
   vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, desc = "Find in notes." })
   vim.keymap.set("n", "<leader>nI", M.find_insert_image, { silent = true, desc = "Insert image." })
+  vim.keymap.set(
+    "n",
+    "<leader>nQ",
+    M.open_quickfix_all_links,
+    { silent = true, desc = "Open quickfix of all links for org-roam node under cursor." }
+  )
 
   -- Disable blink completion in select buffer:
   vim.api.nvim_create_autocmd("FileType", {
