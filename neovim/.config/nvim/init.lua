@@ -31,8 +31,6 @@ local plugins = {
   require("schilk.config.plugins.trouble").spec,
   -- File tree:
   require("schilk.config.plugins.nvim_tree").spec,
-  -- Undo tree:
-  require("schilk.config.plugins.undotree").spec,
   -- File outline:
   require("schilk.config.plugins.aerial").spec,
   -- Status bar:
@@ -114,6 +112,9 @@ require("schilk.config.spellfiles").config_spellfiles()
 if vim.g.vscode then
   require("schilk.config.vscode").setup()
 end
+
+-- Builtin plugins:
+vim.cmd("packadd nvim.undotree")
 
 -- Custom scripts/utils:
 require("schilk.utils.macros").setup()
