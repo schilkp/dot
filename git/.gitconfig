@@ -41,8 +41,8 @@
 [difftool "difftastic"]
     cmd = difft "$LOCAL" "$REMOTE"
 
-[pager]
-    difftool = true
+[difftool "nvimdiff"]
+    cmd = nvim -c \"packadd nvim.difftool\" -c \"DiffTool $LOCAL $REMOTE\"
 
 # ===----------------------------------------------------------------------=== #
 # UI
