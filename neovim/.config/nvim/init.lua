@@ -115,6 +115,8 @@ end
 
 -- Builtin plugins:
 vim.cmd("packadd nvim.undotree")
+vim.cmd("packadd nvim.difftool")
+vim.cmd("packadd nvim.tohtml")
 
 -- Custom scripts/utils:
 require("schilk.utils.macros").setup()
