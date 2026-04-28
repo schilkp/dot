@@ -1,4 +1,4 @@
-include "device_config.kdl"
+include optional=true "device_config.kdl"
 
 input {
     keyboard {
