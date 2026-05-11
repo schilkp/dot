@@ -105,11 +105,13 @@ function M.config_org_roam()
     desc = "Mark current docupdt org-roam node as done/remove next label.",
   })
 
-  -- Custom org bindings:
+  -- Custom org bindings (all buffers):
+  vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, buffer = true, desc = "Find in notes." })
+
+  -- Custom org bindings (org buffers):
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "org",
     callback = function()
-      vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, buffer = true, desc = "Find in notes." })
       vim.keymap.set("n", "<leader>nI", M.find_insert_image, { silent = true, buffer = true, desc = "Insert image." })
       vim.keymap.set(
         "n",
