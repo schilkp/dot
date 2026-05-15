@@ -19,6 +19,10 @@ M.snippets = {
     i(0), t({ "", "" }),
     t("#+end_src"), t("")
   }),
+  s({ trig = "todo" }, {
+    t("[[id:556e377b-a04c-458e-b3d8-94be0fb1f9e4][NOTE_TODO]]"), i(0),
+  }),
+
 }
 -- stylua: ignore end
 
