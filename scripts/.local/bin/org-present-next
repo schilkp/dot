@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Extract markdown block from the current next doc-upt org-roam node, and open 
+# it in presenterm. Features auto-update with file watching.
+set -euo pipefail
+
+# Directory containing org-roam files.
+ORGROAM_DIR="${ORGROAM_DIR:-$HOME/org-roam}"
+
+# Find next docupdt:
+for f in "$ORGROAM_DIR"/DocUpdt_*.org; do
+    [[ -f "$f" ]] || continue
+    if grep -qP '^\#\+TITLE: NEXT DocUpdt-' "$f"; then
+        TARGET_FILE="$f"
+        break
+    fi
+done
+
+if [[ -z "$TARGET_FILE" ]]; then
+    echo "No matching file found." >&2
+    exit 1
+fi
+
+org-present "$TARGET_FILE"

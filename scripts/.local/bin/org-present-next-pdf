@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Extract markdown block from the current next doc-upt org-roam node, and render 
+# it to pdf using presenterm.
+set -euo pipefail
+
+# Check for required tools:
+missing=()
+for cmd in weasyprint; do
+    if ! command -v "$cmd" &>/dev/null; then
+        missing+=("$cmd")
+    fi
+done
+if [[ ${#missing[@]} -gt 0 ]]; then
+    echo "Error: missing required tool(s): ${missing[*]}"
+    exit 1
+fi
+
+ORGPRESENT_PDF="true" org-present-next
