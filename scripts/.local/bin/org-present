@@ -8,7 +8,7 @@ ORGROAM_DIR="${ORGROAM_DIR:-$HOME/org-roam}"
 
 # Check for required tools:
 missing=()
-for cmd in fzf inotifywait presenterm; do
+for cmd in fzf inotifywait presenterm mmdc; do
     if ! command -v "$cmd" &>/dev/null; then
         missing+=("$cmd")
     fi
