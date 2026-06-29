@@ -129,35 +129,9 @@ function M.stop_req_fidget()
   end
 end
 
-function M.load_key(file)
-  local key = nil
-  local key_file = io.open(os.getenv("HOME") .. "/" .. file, "r")
-  if key_file then
-    key = key_file:read("*a"):gsub("%s+", "")
-    key_file:close()
-  end
-  return key
-end
-
 function M.config()
-  -- Load keys:
-  local anthropic_key = M.load_key(".an_api")
-  local gemini_key = M.load_key(".gm_api")
-
-  local default_adapter = nil
-  if gemini_key then
-    default_adapter = {
-      name = "gemini",
-      model = "gemini-3.5-flash",
-    }
-  elseif anthropic_key then
-    default_adapter = "anthropic"
-  else
-    default_adapter = {
-      name = "gemini",
-      model = "gemini-3.5-flash",
-    }
-  end
+  local priv = require("schilk.private.codecompanion_models")
+  local default_adapter = priv.setup()
 
   -- Pick prompt:
   local prompt = M.prompt_options[math.random(#M.prompt_options)]
@@ -201,26 +175,21 @@ function M.config()
         anthropic = function()
           return require("codecompanion.adapters").extend("anthropic", {
             env = {
-              api_key = anthropic_key,
-            },
-            schema = {
-              extended_thinking = {
-                default = false,
-              },
+              api_key = priv.anthropic_key,
             },
           })
         end,
         openai = function()
           return require("codecompanion.adapters").extend("openai", {
             env = {
-              api_key = openai_key,
+              api_key = priv.openai_key,
             },
           })
         end,
         gemini = function()
           return require("codecompanion.adapters").extend("gemini", {
             env = {
-              api_key = gemini_key,
+              api_key = priv.gemini_key,
             },
           })
         end,
