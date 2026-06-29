@@ -45,6 +45,13 @@ M.snippets = {
     t("#+end_src"), t({ "", "" }),
     t(""), t({ "", "" }),
   }),
+  s({ trig = "presenterm_slide" }, {
+    t("[TITLE]"), t({ "", "" }),
+    t("---"), t({ "", "" }),
+    t(""), t({ "", "" }),
+    t("<!-- end_slide -->"), t({ "", "" }),
+    t(""), t({ "", "" }),
+  }),
 }
 -- stylua: ignore end
 
