@@ -52,6 +52,14 @@ M.snippets = {
     t("<!-- end_slide -->"), t({ "", "" }),
     t(""), t({ "", "" }),
   }),
+  s({ trig = "presenterm_twocol" }, {
+    t("<!-- column_layout: [1, 1] -->"), t({ "", "" }),
+    t("<!-- column: 0 -->"), t({ "", "" }),
+    t(""), t({ "", "" }),
+    t("<!-- column: 1 -->"), t({ "", "" }),
+    t(""), t({ "", "" }),
+    t("<!-- reset_layout -->"), t({ "", "" }),
+  }),
 }
 -- stylua: ignore end
 
