@@ -145,12 +145,18 @@ function M.config()
   local gemini_key = M.load_key(".gm_api")
 
   local default_adapter = nil
-  if anthropic_key then
+  if gemini_key then
+    default_adapter = {
+      name = "gemini",
+      model = "gemini-3.5-flash",
+    }
+  elseif anthropic_key then
     default_adapter = "anthropic"
-  elseif gemini_key then
-    default_adapter = "gemini"
   else
-    default_adapter = "anthropic"
+    default_adapter = {
+      name = "gemini",
+      model = "gemini-3.5-flash",
+    }
   end
 
   -- Pick prompt:
