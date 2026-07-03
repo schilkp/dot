@@ -27,6 +27,7 @@ function M.config()
       javascriptreact = { "prettier" },
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
+      json = { "jq" },
       typst = { "typstyle" },
       bzl = { "buildifier" },
       ["*"] = { "trim_whitespace" },
