@@ -1,0 +1,24 @@
+# Base directories to strip from source paths during cache key
+# computation.
+#
+# Similar to ccache's CCACHE_BASEDIR, but supports multiple paths.
+#
+# 'basedirs' enables cache hits across different absolute root
+# paths when compiling the same source code, such as between
+# parallel checkouts of the same project, Git worktrees, or different
+# users in a shared environment.
+# When multiple matching paths are provided, the longest prefix
+# is used.
+#
+# Path matching is case-insensitive on Windows and case-sensitive on other OSes.
+#
+# Example:
+#   basedir = ["/home/user/project"] results in the path prefix rewrite:
+#   "/home/user/project/src/main.c" -> "src/main.c"
+basedirs = ["/home/schilkp/reps", "/home/schilkp/doc"]
+
+[dist]
+toolchain_cache_size = 5368709120 # 5 GiBytes
+
+[cache.disk]
+size = 53687091200 # 50 GiBytes

@@ -72,7 +72,8 @@
     ],
     "devel-rust": [
         "extra/rustup",
-        "extra/taplo-cli"
+        "extra/taplo-cli",
+        "extra/sccache"
     ],
     "devel-embedded": [
         "aur/jlink"
