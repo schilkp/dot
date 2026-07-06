@@ -1,5 +1,19 @@
 local M = {}
 
+-- ---===--- Language-specific Plugins ---===---
+
+M.language_plugins = {
+  -- rust:
+  {
+    "mrcjkb/rustaceanvim",
+    lazy = false,
+  },
+  -- json/yaml schemas:
+  "b0o/schemastore.nvim",
+}
+
+-- ---===--- LSP ---===---
+
 local function config_lsp()
   -- Disable the LSP log:
   -- It gets too big too fast..
@@ -317,13 +331,7 @@ M.spec = {
     },
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    -- rust:
-    {
-      "mrcjkb/rustaceanvim",
-      lazy = false,
-    },
-    -- json/yaml schemas:
-    "b0o/schemastore.nvim",
+    unpack(M.language_plugins),
   },
   config = M.config,
   cond = not vim.g.vscode, -- Disable in vscode-neovim
