@@ -35,6 +35,7 @@ end
 ---@type LazyPluginSpec
 M.spec = {
   "schilkp/aerial.nvim",
+  branch = "schilkp/orgmode",
   config = M.config,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
