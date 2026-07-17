@@ -33,23 +33,17 @@ M.snippets = {
     t("author: Philipp Schilk"), t({ "", "" }),
     t("---"), t({ "", "" }),
     t(""), t({ "", "" }),
-    t("Customizability"), t({ "", "" }),
+    t("MySlide"), t({ "", "" }),
     t("---"), t({ "", "" }),
-    t("This.."), t({ "", "" }),
-    t("<!-- pause -->"), t({ "", "" }),
-    t(""), t({ "", "" }),
-    t("is a test!"), t({ "", "" }),
-    t(""), t({ "", "" }),
-    t(""), t({ "", "" }),
-    t("<!-- end_slide -->"), t({ "", "" }),
+    t({ "", "" }),
     t("#+end_src"), t({ "", "" }),
     t(""), t({ "", "" }),
   }),
   s({ trig = "presenterm_slide" }, {
-    t("[TITLE]"), t({ "", "" }),
-    t("---"), t({ "", "" }),
     t(""), t({ "", "" }),
     t("<!-- end_slide -->"), t({ "", "" }),
+    t("[TITLE]"), t({ "", "" }),
+    t("---"), t({ "", "" }),
     t(""), t({ "", "" }),
   }),
   s({ trig = "presenterm_twocol" }, {
@@ -59,6 +53,12 @@ M.snippets = {
     t("<!-- column: 1 -->"), t({ "", "" }),
     t(""), t({ "", "" }),
     t("<!-- reset_layout -->"), t({ "", "" }),
+  }),
+  s({ trig = "presenterm_pause" }, {
+    t("<!-- pause -->"), t({ "", "" }),
+  }),
+  s({ trig = "presenterm_newline" }, {
+    t("<!-- new_line -->"), t({ "", "" }),
   }),
 }
 -- stylua: ignore end
