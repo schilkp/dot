@@ -74,7 +74,7 @@ local function config_lsp()
   local lsps = {
     verible = {},
     clangd = {},
-    basedpyright = {},
+    pyright = {},
     gopls = {},
     ocamllsp = {},
     texlab = {},
