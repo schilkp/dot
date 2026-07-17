@@ -6,6 +6,7 @@ M.language_plugins = {
   -- rust:
   {
     "mrcjkb/rustaceanvim",
+    branch = "main",
     lazy = false,
   },
   -- json/yaml schemas:
