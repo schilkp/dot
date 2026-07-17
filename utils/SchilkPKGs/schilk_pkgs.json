@@ -108,6 +108,11 @@
         "extra/sbt",
         "aur/coursier"
     ],
+    "devel-presenterm": [
+        "extra/presenterm",
+        "extra/mermaid-cli",
+        "extra/inotify-tools"
+    ],
     "office": [
         "aur/onlyoffice-bin",
         "extra/inkscape",
