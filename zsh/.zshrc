@@ -209,3 +209,10 @@ if [[ ! -a ~/.zsh/basic_install ]]; then
 
     compdef -d top
 fi
+
+#### Post-Plugins ##############################################################
+
+# Re-set incog if parent shell/env was incog:
+if [[ -n "$ZSH_INCOG" ]]; then
+    incog
+fi
