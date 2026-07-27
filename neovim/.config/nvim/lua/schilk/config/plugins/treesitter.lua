@@ -27,6 +27,7 @@ end
 ---@type LazyPluginSpec
 M.spec = {
   "nvim-treesitter/nvim-treesitter",
+  branch = "main",
   build = ":TSUpdate",
   config = M.config,
 }
