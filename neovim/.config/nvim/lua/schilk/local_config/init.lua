@@ -27,6 +27,11 @@ function M.copy_to_samples()
       return
     end
 
+    if name:match("[/%.]") then
+      vim.notify("Sample name must not contain '/' or '.'", vim.log.levels.WARN)
+      return
+    end
+
     local dest = M.CONFIG_SAMPLES_DIR .. "/" .. name .. ".lua"
     local result = vim.fn.writefile(vim.fn.readfile(filename), dest)
 
