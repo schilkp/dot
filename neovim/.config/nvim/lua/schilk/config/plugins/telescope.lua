@@ -114,6 +114,14 @@ M.spec = {
   },
   config = M.config,
   cond = not vim.g.vscode, -- Disable in vscode-neovim
+  -- Lazy load:
+  cmd = "Telescope",
+  keys = {
+    "<leader>fe",
+    "<leader>fg",
+    "<leader>fs",
+    "<leader>fc",
+  },
 }
 
 return M
