@@ -30,4 +30,10 @@ function M.lazy_settings()
   }
 end
 
+-- Check whether a plugin is present in the lazy spec WITHOUT loading it.
+function M.has_plugin(name)
+  local ok, cfg = pcall(require, "lazy.core.config")
+  return ok and cfg.plugins[name] ~= nil
+end
+
 return M
