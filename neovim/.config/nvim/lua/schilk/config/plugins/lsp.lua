@@ -280,7 +280,7 @@ local function config_keybinds()
     "n",
     "<leader>me",
     cycle_diagnostics_style,
-    { silent = true, desc = "💡 Toggle LSP diagnostics for current buffer." }
+    { silent = true, desc = "💡 Cycle LSP diagnostics style." }
   )
 end
 
