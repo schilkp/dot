@@ -1,7 +1,7 @@
 local M = {}
 
-M.py_env_dir = vim.fs.normalize("~/.config/nvim/nvim_env")
-M.py = vim.fs.normalize(M.py_env_dir .. "/bin/python")
+M.py_env_dir = vim.fn.expand("~/.config/nvim/nvim_env")
+M.py = M.py_env_dir .. "/bin/python"
 
 function M.config_py3_env()
   -- Register commands:

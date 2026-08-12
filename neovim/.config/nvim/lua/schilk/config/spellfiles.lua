@@ -1,6 +1,6 @@
 local M = {}
 
-M.spell_dir = vim.fs.normalize("~/.config/nvim/spell/")
+M.spell_dir = vim.fn.expand("~/.config/nvim/spell/")
 M.spell_files = { "en.utf-8.spl", "de.utf-8.spl" }
 
 -- Download a spellfile if it does not already exists:
