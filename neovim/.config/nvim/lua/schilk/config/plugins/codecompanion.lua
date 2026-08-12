@@ -70,12 +70,12 @@ function M.config()
         keymaps = {
           next_chat = {
             modes = {
-              n = "<C-S-F12>", -- can't disabled !#@! Move out of the way..
+              n = "<C-S-F12>", -- Can't assign no keybind
             },
           },
           previous_chat = {
             modes = {
-              n = "<C-S-F11>", -- can't disabled !#@! Move out of the way..
+              n = "<C-S-F11>", -- Can't assign no keybind
             },
           },
         },
