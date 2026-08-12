@@ -10,7 +10,7 @@ end
 
 local function slime_region_send()
   print_slime_note(false)
-  vim.cmd("normal")
+  vim.cmd("normal! \27")
   vim.cmd("'<,'>SlimeSend")
 end
 
