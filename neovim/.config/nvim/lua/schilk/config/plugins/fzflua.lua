@@ -1,17 +1,5 @@
 local M = {}
 
-local function find_dotfiles()
-  require("fzf-lua").files({ cwd = "~/dot" })
-end
-
-local function find_priv_dotfiles()
-  require("fzf-lua").files({ cwd = "~/dot_priv" })
-end
-
-local function find_in_parent()
-  require("fzf-lua").files({ cwd = ".." })
-end
-
 function M.config()
   local actions = require("fzf-lua.actions")
   require("fzf-lua").setup({
@@ -40,24 +28,96 @@ function M.config()
     },
   })
 
-  -- Global maps:
-  vim.keymap.set("n", "<leader>o", require("fzf-lua").files, { silent = true, desc = "🔍 Find File." })
-  vim.keymap.set("n", "<leader>O", find_in_parent, { silent = true, desc = "🔍 Find File in Parent Dir." })
-  vim.keymap.set("n", "<leader>i", require("fzf-lua").git_files, { silent = true, desc = "🔍 Open Git File." })
-  vim.keymap.set("n", "<leader>p", require("fzf-lua").live_grep_native, { silent = true, desc = "🔍 Live RipGrep." })
-
-  -- leader-f Find maps:
-  vim.keymap.set("n", "<leader>fd", find_dotfiles, { silent = true, desc = "Open Dotfiles." })
-  vim.keymap.set("n", "<leader>fD", find_priv_dotfiles, { silent = true, desc = "Open Private Dotfiles." })
-  vim.keymap.set("n", "<leader>fb", require("fzf-lua").buffers, { silent = true, desc = "Open Buffer." })
-  vim.keymap.set("n", "<leader>fh", require("fzf-lua").help_tags, { silent = true, desc = "Search Help Tag." })
-  vim.keymap.set("n", "<leader>fr", require("fzf-lua").oldfiles, { silent = true, desc = "Open Recent File." })
-  vim.keymap.set("n", "<leader>fl", require("fzf-lua").blines, { silent = true, desc = "Search in current buffer." })
-  vim.keymap.set("n", "<leader>fC", require("fzf-lua").colorschemes, { silent = true, desc = "Find colorscheme." })
-  vim.keymap.set("n", "<leader>fP", require("fzf-lua").commands, { silent = true, desc = "Find command." })
-
   require("fzf-lua").register_ui_select()
 end
+
+---@type LazyKeys[]
+M.keybinds = {
+  {
+    "<leader>o",
+    function()
+      require("fzf-lua").files()
+    end,
+    desc = "🔍 Find File.",
+  },
+  {
+    "<leader>O",
+    function()
+      require("fzf-lua").files({ cwd = ".." })
+    end,
+    desc = "🔍 Find File in Parent Dir.",
+  },
+  {
+    "<leader>i",
+    function()
+      require("fzf-lua").git_files()
+    end,
+    desc = "🔍 Open Git File.",
+  },
+  {
+    "<leader>p",
+    function()
+      require("fzf-lua").live_grep_native()
+    end,
+    desc = "🔍 Live RipGrep.",
+  },
+  {
+    "<leader>fd",
+    function()
+      require("fzf-lua").files({ cwd = "~/dot" })
+    end,
+    desc = "Open Dotfiles.",
+  },
+  {
+    "<leader>fD",
+    function()
+      require("fzf-lua").files({ cwd = "~/dot_priv" })
+    end,
+    desc = "Open Private Dotfiles.",
+  },
+  {
+    "<leader>fb",
+    function()
+      require("fzf-lua").buffers()
+    end,
+    desc = "Open Buffer.",
+  },
+  {
+    "<leader>fh",
+    function()
+      require("fzf-lua").help_tags()
+    end,
+    desc = "Search Help Tag.",
+  },
+  {
+    "<leader>fr",
+    function()
+      require("fzf-lua").oldfiles()
+    end,
+    desc = "Open Recent File.",
+  },
+  {
+    "<leader>fl",
+    function()
+      require("fzf-lua").blines()
+    end,
+    desc = "Search in current buffer.",
+  },
+  {
+    "<leader>fC",
+    function()
+      require("fzf-lua").colorschemes()
+    end,
+    desc = "Find colorscheme.",
+  },
+  {
+    "<leader>fP",
+    function()
+      require("fzf-lua").commands()
+    end,
+    desc = "Find command.",
+  },
+}
 
 ---@type LazyPluginSpec
 M.spec = {
@@ -69,20 +129,7 @@ M.spec = {
   cond = not vim.g.vscode, -- Disable in vscode-neovim
   -- Lazy load:
   cmd = "FzfLua",
-  keys = {
-    "<leader>o",
-    "<leader>O",
-    "<leader>i",
-    "<leader>p",
-    "<leader>fd",
-    "<leader>fD",
-    "<leader>fb",
-    "<leader>fh",
-    "<leader>fr",
-    "<leader>fl",
-    "<leader>fC",
-    "<leader>fP",
-  },
+  keys = M.keybinds,
 }
 
 return M
