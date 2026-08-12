@@ -87,13 +87,11 @@ end
 function M.env_node()
   if vim.env.ZOTERO_ITEM == nil then
     error("[ZoteroToRoam]: ZOTERO_ITEM not set!")
-    return
   end
 
   local success, data = pcall(vim.json.decode, vim.env.ZOTERO_ITEM)
   if not success then
     error("[ZoteroToRoam]: ZOTERO_ITEM is invalid JSON")
-    return
   end
   local node_content = content(data)
 
