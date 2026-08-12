@@ -67,6 +67,22 @@ M.spec = {
   },
   config = M.config,
   cond = not vim.g.vscode, -- Disable in vscode-neovim
+  -- Lazy load:
+  cmd = "FzfLua",
+  keys = {
+    "<leader>o",
+    "<leader>O",
+    "<leader>i",
+    "<leader>p",
+    "<leader>fd",
+    "<leader>fD",
+    "<leader>fb",
+    "<leader>fh",
+    "<leader>fr",
+    "<leader>fl",
+    "<leader>fC",
+    "<leader>fP",
+  },
 }
 
 return M
