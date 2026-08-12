@@ -97,8 +97,8 @@ function M.source()
 end
 
 function M.setup()
-  vim.api.nvim_command("command! LocalEdit lua require'schilk.local_config'.edit()<CR>")
-  vim.api.nvim_command("command! LocalSaveAsSample lua require'schilk.local_config'.copy_to_samples()<CR>")
+  vim.api.nvim_command("command! LocalEdit lua require('schilk.local_config').edit()")
+  vim.api.nvim_command("command! LocalSaveAsSample lua require('schilk.local_config').copy_to_samples()")
 end
 
 return M
