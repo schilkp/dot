@@ -268,6 +268,19 @@ M.spec = {
   cond = not vim.g.vscode, -- Disable in vscode-neovim
 
   priority = 2,
+
+  -- Lazy load:
+  cmd = {
+    "CodeCompanion",
+    "CodeCompanionChat",
+    "CodeCompanionCmd",
+    "CodeCompanionToggle",
+    "CodeCompanionActions",
+  },
+  keys = {
+    { "<leader>ts", mode = "n" },
+    { "gs", mode = "v" },
+  },
 }
 
 return M

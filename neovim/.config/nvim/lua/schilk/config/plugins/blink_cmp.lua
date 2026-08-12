@@ -87,7 +87,9 @@ function M.config()
     },
   }
 
-  local has_orgmode, _ = pcall(require, "orgmode")
+  local has_plugin = require("schilk.lazy").has_plugin
+
+  local has_orgmode = has_plugin("orgmode")
   if has_orgmode then
     ---@diagnostic disable-next-line: param-type-mismatch
     table.insert(opts.sources.default, "orgmode")
@@ -97,13 +99,7 @@ function M.config()
     }
   end
 
-  local has_codecompanion, _ = pcall(require, "codecompanion")
-  if has_codecompanion then
-    ---@diagnostic disable-next-line: param-type-mismatch
-    table.insert(opts.sources.default, "codecompanion")
-  end
-
-  local has_lazydev, _ = pcall(require, "lazydev")
+  local has_lazydev = has_plugin("lazydev.nvim")
   if has_lazydev then
     ---@diagnostic disable-next-line: param-type-mismatch
     table.insert(opts.sources.default, "lazydev")
@@ -112,6 +108,21 @@ function M.config()
       module = "lazydev.integrations.blink",
       score_offset = 100,
     }
+  end
+
+  -- codecompanion is a built-in blink source that registers its own provider
+  -- when the plugin loads. Adding it to `sources.default` before the plugin is
+  -- loaded causes an error. Instead, enable it per-filetype once loaded.
+  if has_plugin("codecompanion.nvim") then
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "LazyLoad",
+      once = true,
+      callback = function(event)
+        if event.data == "codecompanion.nvim" then
+          require("blink.cmp").add_filetype_source("codecompanion", "codecompanion")
+        end
+      end,
+    })
   end
 
   -- Call plugin setup:
