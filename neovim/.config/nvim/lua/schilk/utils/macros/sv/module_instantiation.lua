@@ -29,9 +29,9 @@ function M.process_parameter_line(orig_line)
   end
 
   -- Isolate identifier:
-  local ident_start, indent_stop = line:find(sv_utils.SV_IDENTIFIER_PATTERN .. "%s*$")
-  if ident_start ~= nil and indent_stop ~= nil then
-    local identifier = string.sub(line, ident_start, indent_stop)
+  local ident_start, ident_stop = line:find(sv_utils.SV_IDENTIFIER_PATTERN .. "%s*$")
+  if ident_start ~= nil and ident_stop ~= nil then
+    local identifier = string.sub(line, ident_start, ident_stop)
     identifier = string.gsub(identifier, "%s", "")
     return "  ." .. identifier .. "( )" .. trailing_comma .. comment
   else
@@ -63,9 +63,9 @@ function M.process_input_output_line(orig_line, line_without_io)
   line = line:gsub("%[.*%]%s*$", "")
 
   -- Isolate identifier:
-  local ident_start, indent_stop = line:find(sv_utils.SV_IDENTIFIER_PATTERN .. "%s*$")
-  if ident_start ~= nil and indent_stop ~= nil then
-    local identifier = string.sub(line, ident_start, indent_stop)
+  local ident_start, ident_stop = line:find(sv_utils.SV_IDENTIFIER_PATTERN .. "%s*$")
+  if ident_start ~= nil and ident_stop ~= nil then
+    local identifier = string.sub(line, ident_start, ident_stop)
     identifier = string.gsub(identifier, "%s", "")
     return "  ." .. identifier .. "( )" .. trailing_comma .. comment
   else
