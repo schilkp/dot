@@ -16,7 +16,7 @@ local function find_from_compile_cmds()
 
   local include_pattern = "-I[%w/%p_-]+%s?"
 
-  for i, v in pairs(content) do
+  for i, v in ipairs(content) do
     -- Extract actual source file:
     source_files[i] = v["file"]
 
