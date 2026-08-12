@@ -1,7 +1,7 @@
 local M = {}
 
 local function print_slime_note(always)
-  if always or vim.b.slime_config == nil or vim.b.slime_conig == "" then
+  if always or vim.b.slime_config == nil or vim.b.slime_config == "" then
     vim.fn.input(
       "Default TMUX socket: 'default'\nTMUX target pane syntax:\n':i.j'  - Current session, window i, pane j\n'h:i.j' - Session h, window i, pane j\n[Press Enter]"
     )
