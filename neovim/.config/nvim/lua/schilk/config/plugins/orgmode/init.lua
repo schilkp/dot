@@ -61,8 +61,6 @@ function M.open_quickfix_all_links()
   })
 end
 
-local have_priv, org_templates = pcall(require, "schilk.private.org_templates")
-
 function M.config_org_roam()
   local templates = {
     d = {
@@ -71,10 +69,6 @@ function M.config_org_roam()
       target = "%[slug].org",
     },
   }
-
-  if have_priv then
-    -- templates["w"] = org_templates.w
-  end
 
   require("org-roam").setup({
     directory = M.org_roam_dir,
