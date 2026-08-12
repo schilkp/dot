@@ -9,8 +9,6 @@ M.language_plugins = {
     branch = "main",
     lazy = false,
   },
-  -- json/yaml schemas:
-  "b0o/schemastore.nvim",
   -- scala/chisel:
   {
     "scalameta/nvim-metals",
@@ -94,25 +92,6 @@ local function config_lsp()
         "typescript",
         "typescriptreact",
         "vue",
-      },
-    },
-    yamlls = {
-      settings = {
-        yaml = {
-          schemaStore = {
-            enable = false,
-            url = "",
-          },
-          schemas = require("schilk.config.plugins.lsp.schemas").yaml_schemas(),
-        },
-      },
-    },
-    jsonls = {
-      settings = {
-        json = {
-          schemas = require("schilk.config.plugins.lsp.schemas").json_schemas(),
-          validate = { enable = true },
-        },
       },
     },
   }
