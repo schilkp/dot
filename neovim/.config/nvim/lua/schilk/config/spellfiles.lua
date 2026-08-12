@@ -10,7 +10,7 @@ local function download_spellfile(f)
 
   if vim.fn.filereadable(spellfile_path) == 0 then
     vim.print("Spellfile " .. f .. " missing! Downloading..")
-    vim.cmd("!wget --no-verbose --no-check-certificate '" .. spellfile_url .. "' -P '" .. M.spell_dir .. "'")
+    vim.cmd("!wget --no-verbose '" .. spellfile_url .. "' -P '" .. M.spell_dir .. "'")
     if vim.v.shell_error ~= 0 then
       vim.print("Warning: Failed to download!")
     end
