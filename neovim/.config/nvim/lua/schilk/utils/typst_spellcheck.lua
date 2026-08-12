@@ -6,6 +6,10 @@ function M.typst_spell_check(root_file_name)
   end
 
   local paths = vim.fs.find(root_file_name, { stop = vim.env.HOME })
+  if not paths[1] then
+    vim.notify("Main file `" .. root_file_name .. "` not found.", vim.log.levels.ERROR)
+    return
+  end
   local root_dir = vim.fs.dirname(paths[1])
 
   if root_dir then
