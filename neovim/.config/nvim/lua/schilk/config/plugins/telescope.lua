@@ -45,7 +45,6 @@ local function find_from_compile_cmds()
   local n = 1
 
   for k, _ in pairs(dir_set) do
-    k = string.gsub(k, "^-I", "")
     k = string.gsub(k, "%s+$", "")
     search_dirs[n] = k
     n = n + 1
