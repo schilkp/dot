@@ -76,8 +76,19 @@ function M.config()
     -- default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
-      providers = {},
+      default = { "lsp", "path", "snippets", "buffer", "emoji" },
+      providers = {
+        -- Emoji (trigger on `:`)
+        emoji = {
+          name = "Emoji",
+          module = "blink-emoji",
+          min_keyword_length = 5,
+          max_items = 10,
+          opts = {
+            insert = true,
+          },
+        },
+      },
     },
 
     signature = { enabled = true }, -- experimental
@@ -160,6 +171,8 @@ M.spec = {
       "L3MON4D3/LuaSnip",
       config = M.config_luasnip,
     },
+    -- Community completion sources:
+    "moyiz/blink-emoji.nvim",
   },
 
   -- use a release tag to download pre-built binaries
