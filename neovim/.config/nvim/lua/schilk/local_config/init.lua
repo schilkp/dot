@@ -87,7 +87,7 @@ function M.source()
   end
 
   local msg = "[local_config]: loaded local config file"
-  _G.SCHILK_LOCAL_NOTE = _G.SCHILK_LOCAL_NOTE or nil --[[@as string|nil]]
+  _G.SCHILK_LOCAL_NOTE = _G.SCHILK_LOCAL_NOTE --[[@as string|nil]]
   if _G.SCHILK_LOCAL_NOTE then
     msg = msg .. " (" .. _G.SCHILK_LOCAL_NOTE .. ")."
   else

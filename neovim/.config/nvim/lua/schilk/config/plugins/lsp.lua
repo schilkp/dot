@@ -101,7 +101,7 @@ local function config_lsp()
   lsps = vim.tbl_extend("force", lsps, _G.SCHILK_LOCAL_LSPS)
 
   for lsp, config in pairs(lsps) do
-    if skip_lsp[lsp] == nil or not skip_lsp[lsp] then
+    if not skip_lsp[lsp] then
       vim.lsp.config(lsp, {
         capabilities = capabilities,
         settings = config.settings,
