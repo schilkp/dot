@@ -106,7 +106,7 @@ function M.config_org_roam()
   })
 
   -- Custom org bindings (all buffers):
-  vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, buffer = true, desc = "Find in notes." })
+  vim.keymap.set("n", "<leader>nF", M.grep_notes, { silent = true, desc = "Find in notes." })
 
   -- Custom org bindings (org buffers):
   vim.api.nvim_create_autocmd("FileType", {
