@@ -1,17 +1,5 @@
 local M = {}
 
-local function find_emoji()
-  require("telescope.builtin").symbols({ sources = { "emoji" } })
-end
-
-local function find_gitmoji()
-  require("telescope.builtin").symbols({ sources = { "gitmoji" } })
-end
-
-local function find_symbol()
-  require("telescope.builtin").symbols({ sources = { "emoji", "gitmoji", "julia", "math" } })
-end
-
 local function find_from_compile_cmds()
   local f = io.open("compile_commands.json", "r")
   if f == nil then
@@ -85,17 +73,37 @@ function M.config()
   })
   -- Enable telescope fzf native, if installed
   pcall(require("telescope").load_extension, "fzf")
+end
 
-  vim.keymap.set("n", "<leader>fe", find_emoji, { silent = true, desc = "Find Emoji." })
-  vim.keymap.set("n", "<leader>fg", find_gitmoji, { silent = true, desc = "Find Gitmoji." })
-  vim.keymap.set("n", "<leader>fs", find_symbol, { silent = true, desc = "Find Symbol." })
-  vim.keymap.set(
-    "n",
+---@type LazyKeys[]
+M.keybinds = {
+  {
+    "<leader>fe",
+    function()
+      require("telescope.builtin").symbols({ sources = { "emoji" } })
+    end,
+    desc = "Find Emoji.",
+  },
+  {
+    "<leader>fg",
+    function()
+      require("telescope.builtin").symbols({ sources = { "gitmoji" } })
+    end,
+    desc = "Find Gitmoji.",
+  },
+  {
+    "<leader>fs",
+    function()
+      require("telescope.builtin").symbols({ sources = { "emoji", "gitmoji", "julia", "math" } })
+    end,
+    desc = "Find Symbol.",
+  },
+  {
     "<leader>fc",
     find_from_compile_cmds,
-    { silent = true, desc = "Find file from compile_commands.json." }
-  )
-end
+    desc = "Find file from compile_commands.json.",
+  },
+}
 
 ---@type LazyPluginSpec
 M.spec = {
@@ -116,12 +124,7 @@ M.spec = {
   cond = not vim.g.vscode, -- Disable in vscode-neovim
   -- Lazy load:
   cmd = "Telescope",
-  keys = {
-    "<leader>fe",
-    "<leader>fg",
-    "<leader>fs",
-    "<leader>fc",
-  },
+  keys = M.keybinds,
 }
 
 return M
