@@ -2,7 +2,7 @@ local M = {}
 
 function M.config()
   local have_copilot, _ = pcall(require, "copilot")
-  local lualine_x = { "encoding", "fileformat", "filetype" }
+  local lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" }
   if have_copilot then
     local copilot = {
       "copilot",
@@ -43,7 +43,7 @@ function M.config()
       lualine_b = { "branch", "diff", { "diagnostics", colored = false } },
       lualine_c = { "filename" },
       lualine_x = lualine_x,
-      lualine_y = { "progress", file_prog }, -- TODO? Undefined?
+      lualine_y = { "progress" },
       lualine_z = { "location" },
     },
     inactive_sections = {
