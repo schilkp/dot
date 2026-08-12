@@ -81,11 +81,11 @@ local plugins = {
   require("schilk.config.plugins.blink_cmp").spec,
 
   -- [[ FILE TYPES ]] --
-  "NoahTheDuke/vim-just",
+  { "NoahTheDuke/vim-just", ft = "just" },
   "mustache/vim-mustache-handlebars",
-  "hjson/vim-hjson",
-  "rust-lang/rust.vim",
-  "kaarmu/typst.vim",
+  { "hjson/vim-hjson", ft = "hjson" },
+  { "rust-lang/rust.vim", ft = "rust" },
+  { "kaarmu/typst.vim", ft = "typst" },
 
   -- [[ OTHER ]] --
   require("schilk.config.plugins.treesitter").spec,
