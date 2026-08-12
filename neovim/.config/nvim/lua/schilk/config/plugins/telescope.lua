@@ -14,7 +14,7 @@ local function find_from_compile_cmds()
 
   local dir_set = {}
 
-  local include_pattern = "-I[%w/%p_-]+%s"
+  local include_pattern = "-I[%w/%p_-]+%s?"
 
   for i, v in pairs(content) do
     -- Extract actual source file:
