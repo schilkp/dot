@@ -42,21 +42,27 @@ function M.config()
       vim.b.copilot_suggestion_hidden = false
     end,
   })
+end
 
-  vim.keymap.set({ "n" }, "<leader>tM", ":Copilot! attach<CR>", { silent = false, desc = "🤖 Copilot: Attach" })
-  vim.keymap.set(
-    { "n" },
+---@type LazyKeys[]
+M.keybinds = {
+  { "<leader>tM", ":Copilot! attach<CR>", desc = "🤖 Copilot: Attach", silent = false },
+  {
     "<leader>tm",
     ":Copilot suggestion toggle_auto_trigger<CR>",
-    { silent = true, desc = "🤖 Copilot: Toggle Auto Trigger" }
-  )
-end
+    desc = "🤖 Copilot: Toggle Auto Trigger",
+    silent = true,
+  },
+}
 
 ---@type LazyPluginSpec
 M.spec = {
   "zbirenbaum/copilot.lua",
   config = M.config,
   cond = not vim.g.vscode, -- Disable in vscode-neovim
+  -- Lazy load:
+  cmd = "Copilot",
+  keys = M.keybinds,
 }
 
 return M
