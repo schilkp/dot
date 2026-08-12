@@ -45,8 +45,13 @@ function M.stop_req_fidget()
 end
 
 function M.config()
-  local priv = require("schilk.private.codecompanion_models")
-  local default_adapter = priv.setup()
+  local has_priv, priv = pcall(require, "schilk.private.codecompanion_models")
+  local default_adapter = nil
+  if has_priv then
+    default_adapter = priv.setup()
+  else
+    vim.notify("[codecompanion] no private config found.")
+  end
 
   -- Pick prompt:
   local prompt = flavour.prompt_options[math.random(#flavour.prompt_options)]
