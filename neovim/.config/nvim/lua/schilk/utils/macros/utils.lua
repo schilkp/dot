@@ -3,21 +3,16 @@ local M = {}
 function M.visual_process_selection(processing_func)
   return function()
     -- Determine range of lines selected:
-    local vstart = vim.fn.getpos("v")
-    local vcurrent = vim.fn.getcurpos()
-    local bufn = vstart[1]
-    local line_start = vstart[2]
-    local line_current = vcurrent[2]
-
-    local line_first = line_start
-    local line_last = line_current
-    if line_start > line_current then
-      line_first = line_current
-      line_last = line_start
+    local line_first = vim.fn.line("v")
+    local line_last = vim.fn.line(".")
+    if line_first > line_last then
+      line_first, line_last = line_last, line_first
     end
 
+    local bufn = vim.api.nvim_get_current_buf()
+
     -- Retrieve selected lines:
-    local lines = vim.fn.getline(line_first, line_last)
+    local lines = vim.api.nvim_buf_get_lines(bufn, line_first - 1, line_last, false)
 
     -- Process selected lines using the provided function:
     local processed_lines = processing_func(lines)
@@ -44,7 +39,7 @@ function M.cmd_process_selection(processing_func)
     local lines = vim.api.nvim_buf_get_lines(bufn, line_start - 1, line_end, false)
 
     -- Process selected lines using the provided function
-    local processed_lines = processing_func(lines, opts)
+    local processed_lines = processing_func(lines)
 
     -- Replace selected lines (nvim_buf_set_lines uses 0-indexed)
     vim.api.nvim_buf_set_lines(bufn, line_start - 1, line_end, false, processed_lines)
