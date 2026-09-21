@@ -136,14 +136,6 @@ nnoremap <silent> <leader>R :e!<CR>
 " nnoremap <silent> <C-a> ggVG
 nnoremap <silent> <leader>a ggVG
 
-" Spell-checking:
-" Toggle on/off
-nnoremap <silent> <leader>ss :setlocal invspell<CR>
-" Ignore current word (add to spellfile)
-nnoremap <silent> <leader>si zg
-" Suggest fixes
-nnoremap <silent> <leader>sf z=
-
 " Highlight word under curose on leader-h
 nnoremap <silent> <leader>h mz*`z
 

@@ -48,4 +48,33 @@ function M.config_large_file_mode()
   vim.keymap.set("n", "<leader>ml", toggle_large_file_mode, { silent = true, desc = "📁 Toggle Large-File-Mode" })
 end
 
+function M.config_unteach_bad_mappings()
+  -- Helper to discourage bad habit mappings
+  local function punish_key(key, mode, message)
+    mode = mode or "n"
+    message = message or ("Don't use " .. key .. "!")
+
+    local ns = vim.api.nvim_create_namespace("flash_warning")
+    vim.api.nvim_set_hl(ns, "Normal", { bg = "#550000", fg = "#ffffff" })
+    vim.keymap.set(mode, key, function()
+      vim.notify(message, vim.log.levels.ERROR)
+      -- Highlight:
+      vim.api.nvim_win_set_hl_ns(0, ns)
+      vim.cmd("redraw")
+      -- Reset highlight:
+      vim.defer_fn(function()
+        -- Check if the window is still valid before resetting
+        if vim.api.nvim_get_current_win() then
+          vim.api.nvim_win_set_hl_ns(0, 0)
+        end
+      end, 150)
+    end, { desc = "Bad habit breaker: " .. key })
+  end
+
+  -- Unteach custom spelling mappings, use built-in:
+  punish_key("<leader>sf", "n", "use 'z=' instead!")
+  punish_key("<leader>ss", "n", "use ':set spell' instead!")
+  punish_key("<leader>si", "n", "use 'zg' instead!")
+end
+
 return M

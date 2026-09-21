@@ -106,6 +106,7 @@ require("lazy").setup(plugins, require("schilk.lazy").lazy_settings())
 -- Config:
 require("schilk.config.nvim").config_highlight_on_yank()
 require("schilk.config.nvim").config_large_file_mode()
+require("schilk.config.nvim").config_unteach_bad_mappings()
 require("schilk.config.py3_env").config_py3_env()
 require("schilk.config.spellfiles").config_spellfiles()
 
