@@ -6,6 +6,11 @@ function M.config()
   -- Disable WK automatic icons:
   -- FIXME: Move to this system to not loose pre-defined/default icons, espc for plugins?
   wk.setup({
+    plugins = {
+      spelling = {
+        enabled = false,
+      },
+    },
     icons = {
       mappings = false,
     },
