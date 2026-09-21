@@ -28,7 +28,16 @@ function M.config()
     },
   })
 
+  -- Use fzf-lua for selection, except for spell suggestions (`z=`):
+  local builtin_ui_select = vim.ui.select
   require("fzf-lua").register_ui_select()
+  local fzf_ui_select = vim.ui.select
+  vim.ui.select = function(items, opts, on_choice)
+    if opts and opts.kind == "spell" then
+      return builtin_ui_select(items, opts, on_choice)
+    end
+    return fzf_ui_select(items, opts, on_choice)
+  end
 end
 
 ---@type LazyKeys[]
@@ -128,6 +137,7 @@ M.spec = {
   config = M.config,
   cond = not vim.g.vscode, -- Disable in vscode-neovim
   -- Lazy load:
+  lazy = false,
   cmd = "FzfLua",
   keys = M.keybinds,
 }
