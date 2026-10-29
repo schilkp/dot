@@ -12,6 +12,6 @@ if [[ $dnd_active ]]; then
 else
     # Off -> On
     notify-send 'Do-Not-Disturb: ON' -u normal
-    sleep 1
+    sleep 0.2
     makoctl mode -a do-not-disturb
 fi
