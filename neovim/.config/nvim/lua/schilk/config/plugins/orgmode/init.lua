@@ -11,6 +11,9 @@ function M.config_org()
 
     org_adapt_indentation = false,
 
+    -- Don't collapse all folds when (re-)opening a file:
+    org_startup_folded = "showeverything",
+
     mappings = {
       prefix = "<leader>N",
       org = {
